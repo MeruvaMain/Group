@@ -314,6 +314,42 @@ footer{
 }
 #lang-overlay.active{opacity:1;pointer-events:all}
 
+/* ─── FORM SHARED (dùng trên tất cả trang) ──── */
+.cf-row{margin-bottom:2rem}
+.cf-row label{
+  display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--silver-soft);margin-bottom:.7rem;
+}
+.cf-row input,.cf-row textarea{
+  width:100%;background:transparent;
+  border:none;border-bottom:1px solid var(--line-soft);
+  color:var(--cream);font-family:'Inter',sans-serif;font-size:1rem;
+  padding:.7rem 0;outline:none;transition:border-color .3s;
+}
+.cf-row input:focus,.cf-row textarea:focus{border-bottom-color:var(--gold)}
+.cf-row textarea{resize:none;min-height:80px}
+.cf-row select{
+  width:100%;background:var(--black);
+  border:none;border-bottom:1px solid var(--line-soft);
+  color:var(--silver);font-family:'Inter',sans-serif;font-size:.9rem;
+  padding:.8rem 0;outline:none;appearance:none;cursor:pointer;
+  transition:border-color .3s;
+}
+.cf-row select:focus{border-bottom-color:var(--gold)}
+.btn-submit{
+  display:inline-flex;align-items:center;gap:.8rem;
+  padding:1.2rem 2.8rem;background:transparent;
+  border:1px solid var(--gold);color:var(--gold);
+  font-family:'Inter',sans-serif;font-size:.7rem;
+  letter-spacing:.3em;text-transform:uppercase;font-weight:600;
+  cursor:pointer;transition:all .4s;
+}
+.btn-submit:hover{background:var(--gold);color:var(--black)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed}
+
+/* ─── SUBPAGE — ẩn burger (không có nav links) ─ */
+.subpage .nav-burger{display:none!important}
+
 /* ─── RESPONSIVE ──────────────────────────── */
 @media(max-width:1024px){
   footer{grid-template-columns:1fr;gap:2rem;text-align:center}
