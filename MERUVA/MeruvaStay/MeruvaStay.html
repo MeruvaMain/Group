@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../logo-mark.png">
+<link rel="apple-touch-icon" href="../logo-mark.png">
 <link rel="stylesheet" href="../meruva-shared.css?v=2">
 
 <style>
@@ -1829,7 +1831,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <option value="24">Phòng 24m² — 8tr/tháng</option>
             </optgroup>
             <optgroup label="Mặt bằng">
-              <option value="mb">Mặt bằng 26m² + sân — 29tr/tháng</option>
+              <option value="mb">Mặt bằng 26m² + sân — 20tr/tháng</option>
             </optgroup>
           </select>
         </div>
@@ -1896,9 +1898,9 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="cc-grp c-hide" id="c-cgMBDeposit">
           <label>Số tháng cọc</label>
           <select id="c-mbDeposit" class="cc-sel" onchange="calcRender()">
-            <option value="2">2 tháng</option>
-            <option value="3">3 tháng</option>
-            <option value="4">4 tháng</option>
+            <option value="2">2 tháng — không giảm</option>
+            <option value="3">3 tháng — giảm thêm 2%</option>
+            <option value="4">4 tháng — giảm thêm 4%</option>
           </select>
         </div>
 
@@ -1980,7 +1982,14 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById(id).classList.toggle('c-hide',!mb);
     });
     document.getElementById('calc-confirm').classList.toggle('c-hide',mb);
-    if(!mb) calcOnCustChange(); else { setTheme('gold'); calcRender(); }
+    if(!mb){
+      document.getElementById('c-sCust').value='worker';
+      calcOnCustChange();
+    } else {
+      document.getElementById('c-cgScholarLevel').classList.add('c-hide');
+      setTheme('gold');
+      calcRender();
+    }
   };
 
   /* Customer change */
@@ -2153,9 +2162,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var tM=parseInt(document.getElementById('c-mbTerm').value);
     var isPt=document.getElementById('c-mbType').value==='partner';
     var dep=parseInt(document.getElementById('c-mbDeposit').value);
-    var base=29,tP=tM===6?.05:.10,pP=isPt?.03:0;
-    var aft=base*(1-tP),mo=aft*(1-pP);
-    var tD=base*tP,pD=aft*pP,saved=base*tM-mo*tM;
+    var base=20,tP=tM===6?.05:.10,pP=isPt?.03:0,dP=dep===3?.02:dep===4?.04:0;
+    var aft=base*(1-tP),aft2=aft*(1-pP),mo=aft2*(1-dP);
+    var tD=base*tP,pD=aft*pP,dD=aft2*dP,saved=base*tM-mo*tM;
     document.getElementById('c-bill').innerHTML=
       '<div class="cb-head"><div class="cb-title">▲ Mặt Bằng Tầng Trệt <span class="cb-badge">THƯƠNG MẠI</span></div>'+
       '<div class="cb-sub">654A Quang Trung, Gò Vấp — 26m² + sân, mặt tiền</div>'+
@@ -2164,6 +2173,7 @@ document.addEventListener('DOMContentLoaded', function() {
       '<div class="cb-row"><span class="l">Giá niêm yết</span><span class="a">'+v(base)+'</span></div>'+
       '<div class="cb-row disc"><span class="l">Giảm HĐ '+tM+'th ('+(tP*100)+'%)</span><span class="a grn">'+v(tD)+'</span></div>'+
       (isPt?'<div class="cb-row disc"><span class="l">Giảm Partner (3%)</span><span class="a grn">'+v(pD)+'</span></div>':'')+
+      (dP>0?'<div class="cb-row disc"><span class="l">Giảm cọc '+dep+' tháng ('+(dP*100)+'%)</span><span class="a grn">'+v(dD)+'</span></div>':'')+
       '<div class="cb-tot"><span class="l">Giá thực / tháng</span><span class="a">'+v(mo)+'</span></div></div>'+
       '<div class="cb-sec"><div class="cb-lbl">Chi trả khi ký</div>'+
       '<div class="cb-row"><span class="l">Cọc ('+dep+' tháng)</span><span class="a">'+v(mo*dep)+'</span></div>'+
