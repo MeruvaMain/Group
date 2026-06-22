@@ -1,0 +1,1457 @@
+/* ═══════════════════════════════════════
+   VEMIL — Partner Page Styles
+   Accent: #6BA26B (natural green)
+   ═══════════════════════════════════════ */
+
+:root {
+  --vemil: #6BA26B;
+  --vemil-light: #8FBF8F;
+  --vemil-dark: #4A7A4A;
+  --vemil-dim: rgba(107,162,107,.12);
+}
+
+/* ── LOADER MARK ── */
+.vemil-loader-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: var(--vemil);
+  line-height: 1;
+  margin-bottom: .5rem;
+}
+
+/* ── NAV ── */
+.vemil-nav-active { color: var(--vemil) !important; }
+
+/* ── HERO ── */
+.vemil-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 3rem 5rem;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+.vemil-hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.vemil-hero-glow--1 {
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(107,162,107,.06), transparent 60%);
+}
+.vemil-hero-glow--2 {
+  bottom: -150px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(212,164,55,.04), transparent 60%);
+}
+
+.vemil-hero-inner {
+  max-width: 950px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.vemil-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .65rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--silver-soft);
+  margin-bottom: 2rem;
+}
+.vemil-breadcrumb a {
+  color: var(--silver-soft);
+  text-decoration: none;
+  transition: color .3s;
+}
+.vemil-breadcrumb a:hover { color: var(--vemil); }
+.vemil-bc-active { color: var(--vemil); }
+
+.vemil-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .6rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--vemil);
+  font-weight: 600;
+  border: 1px solid rgba(107,162,107,.3);
+  padding: .4rem 1rem;
+  margin-bottom: 2.5rem;
+}
+.vemil-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--vemil);
+  animation: vemilPulse 2s ease-in-out infinite;
+}
+@keyframes vemilPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(.7); }
+}
+
+.vemil-hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+.vemil-logo-mark {
+  width: 72px; height: 72px;
+  color: var(--vemil);
+  flex-shrink: 0;
+}
+.vemil-logo-mark svg { width: 100%; height: 100%; }
+
+.vemil-hero-eyebrow {
+  font-size: .62rem;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--vemil);
+  opacity: .8;
+  margin-bottom: .5rem;
+  font-weight: 500;
+}
+.vemil-hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: .95;
+  letter-spacing: -.02em;
+  color: var(--cream);
+  margin: 0;
+}
+
+.vemil-hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  color: var(--silver);
+  margin-bottom: 1.5rem;
+}
+.vemil-hero-tagline em {
+  font-style: italic;
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--vemil-light), var(--vemil));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vemil-hero-desc {
+  font-size: 1.02rem;
+  color: var(--silver);
+  line-height: 1.8;
+  max-width: 620px;
+  margin-bottom: 2.5rem;
+}
+
+.vemil-hero-meta {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2.5rem;
+}
+.vemil-meta-item { display: flex; flex-direction: column; gap: .35rem; }
+.vemil-meta-label {
+  font-size: .6rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--vemil);
+  font-weight: 500;
+}
+.vemil-meta-value {
+  font-size: 1rem;
+  color: var(--cream);
+  font-weight: 400;
+}
+
+.vemil-hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ── BUTTONS ── */
+.vemil-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: 1rem 2.2rem;
+  background: var(--vemil);
+  color: var(--black);
+  font-size: .68rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid var(--vemil);
+  cursor: pointer;
+  transition: all .4s cubic-bezier(.22,1,.36,1);
+}
+.vemil-btn-primary:hover {
+  background: transparent;
+  color: var(--vemil);
+  transform: translateX(4px);
+}
+
+.vemil-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: 1rem 2.2rem;
+  background: transparent;
+  color: var(--vemil);
+  font-size: .68rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid rgba(107,162,107,.4);
+  cursor: pointer;
+  transition: all .4s cubic-bezier(.22,1,.36,1);
+}
+.vemil-btn-ghost:hover {
+  border-color: var(--vemil);
+  background: var(--vemil-dim);
+}
+
+.vemil-btn-submit {
+  width: 100%;
+  padding: 1.1rem 2rem;
+  background: var(--vemil);
+  color: var(--black);
+  font-size: .7rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid var(--vemil);
+  cursor: pointer;
+  transition: all .4s;
+  margin-top: .5rem;
+}
+.vemil-btn-submit:hover {
+  background: transparent;
+  color: var(--vemil);
+}
+.vemil-btn-submit:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+/* ── SECTION LABELS & TITLES ── */
+.vemil-section-label {
+  font-size: .62rem;
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  color: var(--vemil);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.vemil-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -.01em;
+  color: var(--cream);
+  margin-bottom: 3rem;
+}
+.vemil-section-title em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--vemil);
+}
+.vemil-body-text {
+  font-size: .98rem;
+  color: var(--silver);
+  line-height: 1.82;
+  margin-bottom: 1.5rem;
+}
+
+/* ── ABOUT ── */
+.vemil-about {
+  padding: 7rem 3rem;
+  background: var(--black-2);
+  border-top: 1px solid var(--line);
+}
+.vemil-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.vemil-values { display: flex; flex-direction: column; gap: 0; }
+.vemil-value {
+  display: flex;
+  gap: 1.6rem;
+  align-items: flex-start;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.vemil-value:first-child { border-top: 1px solid var(--line-soft); }
+.vemil-value-icon {
+  width: 40px; height: 40px;
+  color: var(--vemil);
+  flex-shrink: 0;
+  border: 1px solid rgba(107,162,107,.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+}
+.vemil-value-icon svg { width: 100%; height: 100%; }
+.vemil-value-title {
+  font-size: .72rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--vemil);
+  font-weight: 600;
+  margin-bottom: .45rem;
+}
+.vemil-value-desc {
+  font-size: .9rem;
+  color: var(--silver);
+  line-height: 1.7;
+}
+
+/* ── PRODUCTS ── */
+.vemil-products {
+  padding: 7rem 3rem;
+  background: var(--black);
+  border-top: 1px solid var(--line);
+}
+.vemil-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line-soft);
+}
+
+.vemil-product {
+  background: var(--black-2);
+  padding: 2.5rem 2.2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all .45s cubic-bezier(.22,1,.36,1);
+}
+.vemil-product::before {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--vemil);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s cubic-bezier(.22,1,.36,1);
+}
+.vemil-product:hover { background: var(--black-3); transform: translateY(-3px); }
+.vemil-product:hover::before { transform: scaleX(1); }
+
+.vemil-product--custom {
+  border: 1px solid rgba(107,162,107,.18);
+  background: rgba(107,162,107,.04);
+}
+.vemil-product--custom:hover { background: rgba(107,162,107,.08); }
+
+.vemil-product-icon {
+  width: 44px; height: 44px;
+  color: var(--vemil);
+  margin-bottom: 1.4rem;
+  opacity: .8;
+}
+.vemil-product-icon svg { width: 100%; height: 100%; }
+
+.vemil-product-cat {
+  font-size: .58rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--vemil);
+  opacity: .75;
+  margin-bottom: .6rem;
+}
+.vemil-product-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--cream);
+  margin-bottom: .7rem;
+  letter-spacing: .02em;
+}
+.vemil-product-desc {
+  font-size: .88rem;
+  color: var(--silver);
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+.vemil-product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-bottom: 1.5rem;
+}
+.vemil-product-tags span {
+  font-size: .55rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--vemil);
+  border: 1px solid rgba(107,162,107,.35);
+  padding: .18rem .55rem;
+}
+
+.vemil-product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 1.2rem;
+  gap: 1rem;
+}
+.vemil-product-size {
+  font-size: .72rem;
+  color: var(--cream);
+  font-weight: 500;
+}
+.vemil-product-fresh {
+  font-size: .65rem;
+  color: var(--silver-soft);
+  letter-spacing: .12em;
+  text-align: right;
+}
+
+/* ── PARTNERSHIP ── */
+.vemil-partnership {
+  padding: 7rem 3rem;
+  background: var(--black-2);
+  border-top: 1px solid var(--line);
+}
+.vemil-partnership-inner { max-width: 960px; }
+
+.vemil-collab-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line-soft);
+}
+.vemil-collab-item {
+  background: var(--black);
+  padding: 2.5rem 2rem;
+  transition: background .35s;
+}
+.vemil-collab-item:hover { background: var(--black-3); }
+.vemil-collab-icon {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  display: block;
+  filter: grayscale(.3);
+}
+.vemil-collab-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: .6rem;
+}
+.vemil-collab-desc {
+  font-size: .88rem;
+  color: var(--silver);
+  line-height: 1.7;
+}
+
+/* ── CONTACT ── */
+.vemil-contact {
+  padding: 7rem 3rem;
+  background: var(--black);
+  border-top: 1px solid var(--line);
+}
+.vemil-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 7rem;
+  align-items: start;
+}
+
+.vemil-info-items { display: flex; flex-direction: column; gap: 0; }
+.vemil-info-item {
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.vemil-info-item:first-child { border-top: 1px solid var(--line-soft); }
+.vemil-info-label {
+  font-size: .6rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--vemil);
+  margin-bottom: .35rem;
+}
+.vemil-info-val {
+  font-size: .95rem;
+  color: var(--cream);
+}
+
+/* ── FORM (reuse cf-row from shared, override accent) ── */
+.vemil-contact-form .cf-row label { color: var(--silver-soft); }
+.vemil-contact-form input:focus,
+.vemil-contact-form select:focus,
+.vemil-contact-form textarea:focus {
+  border-color: var(--vemil) !important;
+  outline: none;
+}
+
+/* ── FOOTER ── */
+.vemil-footer {
+  background: var(--black-2);
+  border-top: 1px solid var(--line-soft);
+  padding: 3rem;
+}
+.vemil-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.vemil-footer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--cream);
+}
+.vemil-footer-sub {
+  font-size: .65rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--vemil);
+  opacity: .75;
+}
+.vemil-footer-links {
+  display: flex;
+  gap: 2rem;
+}
+.vemil-footer-links a {
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--silver-soft);
+  text-decoration: none;
+  transition: color .3s;
+}
+.vemil-footer-links a:hover { color: var(--vemil); }
+.vemil-footer-copy {
+  font-size: .65rem;
+  color: rgba(192,192,200,.3);
+  letter-spacing: .1em;
+}
+
+/* ── PAGE LOADER: MERUVA → VEMIL ── */
+.vemil-loader-custom {
+  position: fixed;
+  inset: 0;
+  background: var(--black, #0a0a0b);
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* shared phases */
+.vpl-ph1,
+.vpl-ph2 {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Phase 1: MERUVA — visible then fades up-out */
+.vpl-ph1 {
+  animation: vplPh1Out .65s cubic-bezier(.4,0,.6,1) 1.8s forwards;
+}
+@keyframes vplPh1Out {
+  to { opacity: 0; transform: translate(-50%, calc(-50% - 28px)); }
+}
+
+/* Phase 2: VEMIL — fades in from below */
+.vpl-ph2 {
+  opacity: 0;
+  animation: vplPh2In .75s cubic-bezier(.22,1,.36,1) 2.3s forwards;
+}
+@keyframes vplPh2In {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 24px)); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Transition sweep bar */
+.vpl-bar {
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 3px;
+  background: var(--vemil, #6BA26B);
+  opacity: 0;
+  animation: vplBarRun .85s cubic-bezier(.77,0,.18,1) 1.75s forwards;
+}
+@keyframes vplBarRun {
+  0%   { opacity: 1; left: -3px; }
+  50%  { opacity: 1; left: 50%; }
+  100% { opacity: 0; left: calc(100% + 3px); }
+}
+
+/* MERUVA logo-mark image */
+.vpl-logo-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: .8rem;
+  mix-blend-mode: screen;
+  filter: brightness(1.1);
+}
+
+/* Letter mark (VEMIL "V") */
+.vpl-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.8rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: .5rem;
+}
+.vpl-letter--green { color: var(--vemil, #6BA26B); }
+
+/* Brand name */
+.vpl-brand {
+  font-family: 'Inter', sans-serif;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .55em;
+  text-transform: uppercase;
+  color: #e8e8e2;
+  margin-bottom: .55rem;
+}
+
+/* Sub tag */
+.vpl-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: .58rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: rgba(192,192,200,.45);
+}
+
+/* ── ORDER SUCCESS OVERLAY ── */
+.vemil-order-success {
+  position: fixed;
+  inset: 0;
+  background: var(--black, #0a0a0b);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s cubic-bezier(.22,1,.36,1);
+}
+.vemil-order-success.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.vos-inner {
+  text-align: center;
+  max-width: 480px;
+  padding: 2rem;
+}
+
+.vos-icon {
+  width: 72px; height: 72px;
+  color: var(--vemil, #6BA26B);
+  margin: 0 auto 2rem;
+  animation: vosIconIn .7s cubic-bezier(.22,1,.36,1) .15s both;
+}
+.vos-icon svg { width: 100%; height: 100%; }
+
+@keyframes vosIconIn {
+  from { opacity: 0; transform: scale(.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.vos-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 500;
+  color: var(--cream, #e8e8e2);
+  margin-bottom: 1.2rem;
+  animation: vosFadeUp .6s cubic-bezier(.22,1,.36,1) .3s both;
+}
+
+.vos-msg {
+  font-size: .98rem;
+  color: var(--silver, #a0a0aa);
+  line-height: 1.85;
+  margin-bottom: 2.5rem;
+  animation: vosFadeUp .6s cubic-bezier(.22,1,.36,1) .45s both;
+}
+
+@keyframes vosFadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.vos-btn {
+  animation: vosFadeUp .6s cubic-bezier(.22,1,.36,1) .6s both;
+  display: inline-flex !important;
+  align-items: center;
+  gap: .5rem;
+}
+
+/* ── LANGUAGE SWITCHER ── */
+.vemil-lang-sw {
+  display: flex;
+  gap: .25rem;
+  align-items: center;
+  margin-right: 1rem;
+}
+.vls-btn {
+  font-size: .58rem;
+  letter-spacing: .18em;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  padding: .28rem .55rem;
+  border: 1px solid rgba(107,162,107,.25);
+  background: transparent;
+  color: var(--silver-soft);
+  cursor: pointer;
+  transition: all .3s;
+}
+.vls-btn:hover { color: var(--vemil); border-color: rgba(107,162,107,.5); }
+.vls-btn.active {
+  background: var(--vemil);
+  color: var(--black);
+  border-color: var(--vemil);
+}
+
+/* ── CART FAB ── */
+.vemil-cart-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+  width: 52px; height: 52px;
+  background: var(--vemil);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+  transition: all .4s cubic-bezier(.22,1,.36,1);
+  box-shadow: 0 4px 20px rgba(107,162,107,.35);
+}
+.vemil-cart-fab svg { width: 22px; height: 22px; }
+.vemil-cart-fab:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(107,162,107,.5); }
+.vemil-cart-badge {
+  position: absolute;
+  top: -6px; right: -6px;
+  background: var(--cream);
+  color: var(--black);
+  font-size: .58rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.vemil-cart-badge.pop { transform: scale(1.4); }
+
+/* ── CART OVERLAY ── */
+.vemil-cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s;
+}
+.vemil-cart-overlay.open { opacity: 1; pointer-events: all; }
+
+/* ── CART DRAWER ── */
+.vemil-cart-drawer {
+  position: fixed;
+  top: 0; right: 0;
+  width: 380px; max-width: 100vw;
+  height: 100vh;
+  background: var(--black-2);
+  border-left: 1px solid var(--line);
+  z-index: 1010;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform .45s cubic-bezier(.22,1,.36,1);
+}
+.vemil-cart-drawer.open { transform: translateX(0); }
+
+.vcd-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1.8rem;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.vcd-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--cream);
+  letter-spacing: .02em;
+}
+.vcd-close {
+  background: none;
+  border: none;
+  color: var(--silver-soft);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: .4rem;
+  transition: color .3s;
+}
+.vcd-close:hover { color: var(--cream); }
+
+.vcd-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.vcd-items { flex: 1; padding: 1rem 1.8rem; }
+.vcd-empty {
+  color: var(--silver-soft);
+  font-size: .88rem;
+  text-align: center;
+  padding: 2rem 0;
+  letter-spacing: .1em;
+}
+
+/* cart item row */
+.vcd-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.vcd-item-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--cream);
+  flex: 1;
+}
+.vcd-item-price {
+  font-size: .8rem;
+  color: var(--vemil);
+  font-weight: 600;
+  min-width: 60px;
+  text-align: right;
+}
+.vcd-qty {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+.vcd-qty-btn {
+  width: 24px; height: 24px;
+  background: transparent;
+  border: 1px solid rgba(107,162,107,.35);
+  color: var(--vemil);
+  font-size: .9rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vcd-qty-btn:hover { background: var(--vemil); color: var(--black); }
+.vcd-qty-val {
+  font-size: .82rem;
+  color: var(--cream);
+  font-weight: 500;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* cart footer */
+.vcd-footer {
+  padding: 1.2rem 1.8rem 1.8rem;
+  border-top: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.vcd-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  font-size: .82rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--silver-soft);
+}
+.vcd-total-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--vemil);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.vcd-thank {
+  color: var(--vemil);
+  font-size: .88rem;
+  margin-top: 1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ── HAPPY MENU ── */
+.vemil-happy-menu {
+  padding: 7rem 3rem;
+  background: var(--black-2);
+  border-top: 1px solid var(--line);
+}
+
+.vemil-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line-soft);
+  margin-top: 3.5rem;
+}
+
+.vemil-menu-card {
+  background: var(--black);
+  padding: 2.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  position: relative;
+  overflow: hidden;
+  transition: background .4s;
+}
+.vemil-menu-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--vemil);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s cubic-bezier(.22,1,.36,1);
+}
+.vemil-menu-card:hover { background: var(--black-3); }
+.vemil-menu-card:hover::after { transform: scaleX(1); }
+
+.vmc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--cream);
+  letter-spacing: .04em;
+  line-height: 1;
+}
+.vmc-price {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .25em;
+  color: var(--vemil);
+  text-transform: uppercase;
+}
+.vmc-divider {
+  width: 32px;
+  height: 1px;
+  background: rgba(107,162,107,.35);
+  margin: .4rem 0;
+}
+.vmc-ing-label {
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--silver-soft);
+  margin-top: .2rem;
+}
+.vmc-ing {
+  font-size: .88rem;
+  color: var(--silver);
+  line-height: 1.75;
+  flex: 1;
+}
+
+.vemil-btn-add-cart {
+  margin-top: .8rem;
+  padding: .65rem 1.2rem;
+  background: transparent;
+  border: 1px solid rgba(107,162,107,.4);
+  color: var(--vemil);
+  font-size: .6rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all .35s;
+  width: 100%;
+  text-align: center;
+}
+.vemil-btn-add-cart:hover, .vemil-btn-add-cart.added {
+  background: var(--vemil);
+  color: var(--black);
+  border-color: var(--vemil);
+}
+
+.vemil-menu-contact {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+  padding: 1.4rem 1.8rem;
+  border: 1px solid var(--line-soft);
+  background: rgba(107,162,107,.03);
+  font-size: .82rem;
+  color: var(--silver-soft);
+  letter-spacing: .08em;
+}
+.vmc-sep { color: rgba(107,162,107,.4); }
+
+/* ── INFO SECTION ── */
+.vemil-info-sec {
+  padding: 7rem 3rem;
+  background: var(--black);
+  border-top: 1px solid var(--line);
+}
+
+.vemil-info-blocks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line-soft);
+  margin-top: 3.5rem;
+}
+
+.vib-block {
+  background: var(--black-2);
+  padding: 2.5rem 2rem;
+  transition: background .35s;
+}
+.vib-block:hover { background: var(--black-3); }
+.vib-icon {
+  font-size: 1rem;
+  color: var(--vemil);
+  opacity: .6;
+  margin-bottom: 1.2rem;
+}
+.vib-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: .75rem;
+}
+.vib-content {
+  font-size: .88rem;
+  color: var(--silver-soft);
+  line-height: 1.75;
+  font-style: italic;
+}
+
+.vemil-info-coming {
+  margin-top: 2.5rem;
+  font-size: .78rem;
+  letter-spacing: .2em;
+  color: var(--vemil);
+  opacity: .7;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .vemil-about-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+  .vemil-products-grid { grid-template-columns: repeat(2, 1fr); }
+  .vemil-collab-grid { grid-template-columns: 1fr; }
+  .vemil-contact-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+  .vemil-menu-grid { grid-template-columns: repeat(2, 1fr); }
+  .vemil-info-blocks { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .vemil-hero { padding: 6rem 1.5rem 4rem; }
+  .vemil-hero-brand { flex-direction: column; gap: 1rem; align-items: flex-start; }
+  .vemil-hero-meta { gap: 1.8rem; }
+  .vemil-about, .vemil-products, .vemil-partnership, .vemil-contact { padding: 5rem 1.5rem; }
+  .vemil-products-grid { grid-template-columns: 1fr; }
+  .vemil-footer-inner { flex-direction: column; align-items: flex-start; }
+  .vemil-footer-links { flex-wrap: wrap; gap: 1.2rem; }
+  .vemil-happy-menu, .vemil-info-sec { padding: 5rem 1.5rem; }
+  .vemil-menu-grid { grid-template-columns: 1fr; }
+  .vemil-cart-drawer { width: 100vw; }
+  .vemil-lang-sw { margin-right: .5rem; }
+  .vemil-cart-fab { bottom: 1.2rem; right: 1.2rem; }
+}
+
+/* ══════════════════════════════════════
+   VEMIL REDESIGN — New Components
+   ══════════════════════════════════════ */
+
+/* ── HERO 2-COLUMN ── */
+.vemil-hero-inner {
+  max-width: 1300px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 5rem;
+  align-items: center;
+}
+.vemil-hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.vemil-drink-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .6rem;
+}
+.vds-item {
+  border: 1px solid rgba(255,255,255,.06);
+  padding: 1.1rem 1.3rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color .35s, transform .4s cubic-bezier(.22,1,.36,1), background .35s;
+  background: var(--black-2);
+}
+.vds-item::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--drink-accent, var(--vemil));
+  transition: width .35s;
+}
+.vds-item:hover {
+  border-color: var(--drink-accent, var(--vemil));
+  transform: translateX(5px);
+  background: rgba(255,255,255,.03);
+}
+.vds-item:hover::before { width: 5px; }
+.vds-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: .35rem;
+}
+.vds-taste {
+  font-size: .56rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--drink-accent, var(--vemil));
+  opacity: .8;
+}
+.vds-label-top {
+  font-size: .52rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--silver-soft);
+  margin-bottom: 2rem;
+  padding-left: .2rem;
+}
+
+/* ── PROOF STRIP ── */
+.vemil-proof-strip {
+  background: var(--black-2);
+  border-top: 1px solid rgba(107,162,107,.15);
+  border-bottom: 1px solid rgba(107,162,107,.15);
+  padding: 2rem 3rem;
+  overflow: hidden;
+}
+.vps-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  align-items: center;
+  justify-content: center;
+}
+.vps-item {
+  text-align: center;
+  padding: 0 3rem;
+  flex-shrink: 0;
+}
+.vps-sep {
+  color: rgba(107,162,107,.25);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.vps-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--vemil);
+  line-height: 1;
+}
+.vps-label {
+  font-size: .58rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--silver-soft);
+  margin-top: .3rem;
+}
+
+/* ── MENU CARDS — NEW ── */
+.vemil-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  background: transparent;
+}
+.vemil-menu-card {
+  background: var(--black-2);
+  border: 1px solid rgba(255,255,255,.07);
+  position: relative;
+  overflow: hidden;
+  transition: border-color .4s, transform .5s cubic-bezier(.22,1,.36,1), box-shadow .4s;
+  display: flex;
+  flex-direction: column;
+}
+.vemil-menu-card::after { display: none; }
+.vemil-menu-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--drink-accent, var(--vemil));
+}
+.vemil-menu-card:hover {
+  border-color: var(--drink-accent, var(--vemil));
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+  background: var(--black-2);
+}
+
+/* Badge (bestseller) */
+.vmc-badge-wrap {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  z-index: 2;
+}
+.vmc-badge {
+  font-size: .52rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(212,164,55,.1);
+  border: 1px solid rgba(212,164,55,.3);
+  padding: .25rem .7rem;
+  display: inline-block;
+}
+
+/* Card top */
+.vmc-top {
+  padding: 2rem 2rem 1.5rem;
+  background: linear-gradient(135deg, rgba(255,255,255,.02), transparent);
+  position: relative;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.vmc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 6rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.03);
+  position: absolute;
+  top: -.5rem;
+  right: .8rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.vmc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  font-weight: 500;
+  color: var(--cream);
+  letter-spacing: .05em;
+  line-height: 1;
+  margin-bottom: .5rem;
+  font-style: normal;
+}
+.vmc-taste {
+  font-size: .6rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--drink-accent, var(--vemil));
+}
+
+/* Card body */
+.vmc-body {
+  padding: 1.5rem 2rem;
+  flex: 1;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+.vmc-ing-label {
+  font-size: .57rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--silver-soft);
+  margin-bottom: .6rem;
+  margin-top: 0;
+}
+.vmc-ing {
+  font-size: .88rem;
+  color: var(--silver);
+  line-height: 1.7;
+  flex: unset;
+}
+
+/* Card footer */
+.vmc-footer {
+  padding: 1.2rem 2rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.vmc-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.vmc-price-note {
+  font-size: .55rem;
+  color: var(--silver-soft);
+  letter-spacing: .1em;
+  margin-top: .15rem;
+}
+.vemil-btn-add-cart {
+  flex-shrink: 0;
+  padding: .65rem 1.3rem;
+  border: 1px solid var(--drink-accent, var(--vemil));
+  background: transparent;
+  color: var(--drink-accent, var(--vemil));
+  font-size: .6rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s;
+  font-family: 'Inter', sans-serif;
+  width: auto;
+  margin-top: 0;
+  text-align: left;
+}
+.vemil-btn-add-cart:hover,
+.vemil-btn-add-cart.added {
+  background: var(--drink-accent, var(--vemil));
+  color: var(--black);
+  border-color: var(--drink-accent, var(--vemil));
+}
+
+/* ── WHY VEMIL SECTION ── */
+.vemil-why {
+  padding: 8rem 3rem;
+  background: var(--black);
+  border-top: 1px solid var(--line);
+}
+.vemil-why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(107,162,107,.08);
+  margin-top: 4rem;
+}
+.vwy-item {
+  background: var(--black);
+  padding: 2.5rem;
+  transition: background .4s;
+}
+.vwy-item:hover { background: var(--black-2); }
+.vwy-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: rgba(107,162,107,.12);
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+.vwy-title {
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--vemil);
+  font-weight: 600;
+  margin-bottom: .8rem;
+}
+.vwy-desc {
+  font-size: .9rem;
+  color: var(--silver);
+  line-height: 1.75;
+}
+
+/* ── MENU CONTACT STRIP (updated) ── */
+.vemil-menu-contact {
+  margin-top: 3rem;
+  padding: 1.2rem 2rem;
+  border: 1px solid rgba(107,162,107,.15);
+  background: rgba(107,162,107,.04);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: .78rem;
+  color: var(--silver-soft);
+  flex-wrap: wrap;
+}
+
+/* ── RESPONSIVE (additions) ── */
+@media (max-width: 1024px) {
+  .vemil-hero-inner { grid-template-columns: 1fr; gap: 4rem; }
+  .vemil-why-grid { grid-template-columns: repeat(2, 1fr); }
+  .vemil-menu-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .vemil-hero { padding: 6rem 1.4rem 4rem; }
+  .vemil-proof-strip { padding: 1.5rem 1.4rem; }
+  .vps-inner { flex-wrap: wrap; gap: 1.5rem; }
+  .vps-item { padding: 0 1rem; }
+  .vps-sep { display: none; }
+  .vemil-menu-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .vemil-why { padding: 4rem 1.4rem; }
+  .vemil-why-grid { grid-template-columns: 1fr 1fr; }
+  .vwy-item { padding: 1.8rem 1.4rem; }
+  .vemil-drink-showcase { grid-template-columns: 1fr 1fr; gap: .5rem; }
+}
