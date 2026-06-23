@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#06101D">
+<title>FORGE · Chồng — MERUVA</title>
+<meta name="description" content="FORGE — demo ứng dụng theo dõi calo và dinh dưỡng dành cho nam giới: nạp, tiêu hao và mục tiêu thể chất. Một sản phẩm minh hoạ hệ thống cá nhân của MERUVA.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://meruva.vn/MeruvaService/demo/trackingcaloNam.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meruva.vn/MeruvaService/demo/trackingcaloNam.html">
+<meta property="og:title" content="FORGE · Chồng — MERUVA">
+<meta property="og:description" content="Demo theo dõi calo & dinh dưỡng cho nam giới: nạp, tiêu hao và mục tiêu thể chất.">
+<meta property="og:image" content="https://meruva.vn/logo-mark.png">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FORGE · MERUVA">
+<meta name="twitter:description" content="Demo theo dõi calo & dinh dưỡng cho nam giới.">
+<meta name="twitter:image" content="https://meruva.vn/logo-mark.png">
+<link rel="icon" type="image/png" href="../../logo-mark.png">
+<link rel="apple-touch-icon" href="../../logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   FORGE — Trợ lý sức khỏe nam, mạnh mẽ & data-driven
+   Triết lý: deep navy + cyan + lime, sans condensed, KPI focus
+   ========================================================= */
+
+:root{
+  --n0:#04101F;
+  --n1:#081B30;
+  --n2:#0E2842;
+  --n3:#143656;
+
+  --ink:#F0F6FF;
+  --ink-2:#A8C2E0;
+  --ink-3:#6B89AE;
+  --ink-4:#3D5A82;
+
+  --blue:#3B82F6;
+  --blue-d:#1D4ED8;
+  --blue-l:#60A5FA;
+  --blue-bg:rgba(59,130,246,.12);
+
+  --cyan:#00D4FF;
+  --cyan-d:#0EA5E9;
+  --cyan-glow:rgba(0,212,255,.4);
+
+  --lime:#A3E635;
+  --lime-d:#84CC16;
+  --lime-bg:rgba(163,230,53,.12);
+
+  --gold:#FBBF24;
+  --gold-d:#F59E0B;
+
+  --rose:#F43F5E;
+  --rose-d:#E11D48;
+
+  --line:rgba(120,170,255,.12);
+  --line-2:rgba(120,170,255,.22);
+
+  --r:18px;
+  --r-sm:12px;
+  --r-xs:9px;
+
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-bounce:cubic-bezier(.34,1.4,.64,1);
+
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --display:'Space Grotesk','Inter',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{
+  font-family:var(--sans);color:var(--ink);
+  background:var(--n0);letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+.app{
+  position:relative;width:100%;max-width:420px;height:100dvh;margin:0 auto;
+  background:var(--n0);overflow:hidden;
+  box-shadow:0 0 80px rgba(0,0,0,.7);
+}
+
+.aurora{position:absolute;inset:-15%;z-index:0;filter:blur(80px);opacity:.55;pointer-events:none}
+.aurora b{position:absolute;border-radius:50%;mix-blend-mode:screen;display:block}
+.b1{width:320px;height:320px;background:radial-gradient(circle,#1E40AF,transparent 70%);top:-80px;right:-80px;animation:au1 18s ease-in-out infinite}
+.b2{width:280px;height:280px;background:radial-gradient(circle,#0EA5E9,transparent 70%);top:220px;left:-110px;opacity:.4;animation:au2 22s ease-in-out infinite}
+.b3{width:260px;height:260px;background:radial-gradient(circle,#06B6D4,transparent 70%);bottom:60px;right:-90px;opacity:.45;animation:au3 25s ease-in-out infinite}
+.b4{width:200px;height:200px;background:radial-gradient(circle,#A3E635,transparent 70%);top:50%;left:50%;opacity:.18;animation:au4 30s ease-in-out infinite}
+@keyframes au1{50%{transform:translate(-25px,32px) scale(1.12)}}
+@keyframes au2{50%{transform:translate(30px,-20px) scale(1.1)}}
+@keyframes au3{50%{transform:translate(-18px,-30px) scale(1.15)}}
+@keyframes au4{50%{transform:translate(-40px,30px) scale(1.2)}}
+
+.grain{position:absolute;inset:0;z-index:1;opacity:.05;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.grid-bg{position:absolute;inset:0;z-index:1;opacity:.04;pointer-events:none;background-image:linear-gradient(rgba(120,170,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(120,170,255,.5) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(ellipse at center,#000 0%,transparent 70%)}
+
+/* ============================================================
+   PAGER
+   ============================================================ */
+.pager{position:relative;z-index:2;display:flex;width:100%;height:100dvh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.pager::-webkit-scrollbar{display:none}
+.page{position:relative;flex:0 0 100%;height:100dvh;overflow-y:auto;overflow-x:hidden;scroll-snap-align:start;scrollbar-width:none}
+.page::-webkit-scrollbar{display:none}
+.inner{padding:16px 14px 92px;display:flex;flex-direction:column;gap:10px}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px}
+.hd-left{display:flex;flex-direction:column;gap:2px}
+.hd .date{font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
+.hd .name{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.025em;line-height:1}
+.hd .name b{font-family:var(--display);font-weight:600;color:var(--cyan);font-style:normal}
+.hd .tagline{font-size:11px;color:var(--ink-2);font-weight:500;margin-top:2px;letter-spacing:.01em}
+
+.hd-right{display:flex;align-items:center;gap:8px}
+.streak{
+  display:flex;align-items:center;gap:7px;
+  background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(244,63,94,.08));
+  border:1px solid rgba(251,191,36,.3);
+  color:#fff;font-size:11px;font-weight:700;
+  padding:6px 12px 6px 8px;border-radius:22px;
+  font-family:var(--mono);
+  transition:box-shadow .6s var(--ease);
+  box-shadow:0 4px 14px rgba(251,191,36,.18);
+  cursor:pointer;
+}
+.streak .flame-ic{width:18px;height:18px;display:block;filter:drop-shadow(0 0 6px rgba(251,191,36,.7))}
+.streak .flame-ic path{fill:#FBBF24;stroke:none}
+.streak .v{color:#FCD34D;font-weight:800;letter-spacing:-.02em}
+
+/* ============================================================
+   HABIT FLAME CELEBRATION
+   ============================================================ */
+.flame-cele{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:rgba(4,16,31,0);backdrop-filter:blur(0);opacity:0;visibility:hidden;transition:opacity .45s,background .45s,backdrop-filter .45s}
+.flame-cele.show{opacity:1;visibility:visible;background:rgba(4,16,31,.88);backdrop-filter:blur(8px)}
+.fc-inner{text-align:center;padding:0 24px;transform:scale(.25);opacity:0;transition:transform 1.6s var(--ease),opacity .6s}
+.flame-cele.show .fc-inner{transform:scale(1);opacity:1}
+.fc-flame{width:60vw;max-width:280px;height:auto;display:block;margin:0 auto;animation:fcGlow 2s ease-in-out infinite}
+.fc-flame path{fill:#FBBF24;transition:fill .4s}
+@keyframes fcGlow{0%,100%{filter:drop-shadow(0 0 32px rgba(251,191,36,.6))}50%{filter:drop-shadow(0 0 72px rgba(251,191,36,1))}}
+.fc-days{font-family:var(--display);font-size:78px;font-weight:800;line-height:1;margin-top:-12px;letter-spacing:-.05em;background:linear-gradient(180deg,#FBBF24,#F59E0B);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fc-unit{font-family:var(--mono);font-size:11px;letter-spacing:.34em;color:var(--ink-2);margin-top:6px;text-transform:uppercase;font-weight:600}
+.fc-tier{font-family:var(--display);font-size:24px;font-weight:600;margin-top:18px;color:#FBBF24;letter-spacing:-.01em}
+.fc-hint{font-family:var(--mono);font-size:9px;color:var(--ink-4);margin-top:30px;letter-spacing:.08em;text-transform:uppercase}
+
+/* ============================================================
+   VERDICT
+   ============================================================ */
+.verdict{
+  background:
+    linear-gradient(135deg,rgba(0,212,255,.08),rgba(163,230,53,.05)),
+    rgba(14,40,66,.7);
+  border:1px solid rgba(0,212,255,.22);
+  border-radius:var(--r);
+  padding:14px 16px 12px;
+  position:relative;overflow:hidden;
+}
+.verdict::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--cyan),var(--lime));
+}
+.verdict .vt{font-family:var(--display);font-weight:600;font-size:16px;line-height:1.35;color:var(--ink);letter-spacing:-.015em}
+.verdict .vt em{color:var(--lime);font-style:normal;font-weight:700}
+.verdict .vt em.bad{color:var(--rose)}
+.verdict .vs{font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.06em;margin-top:6px;text-transform:uppercase;font-weight:600}
+.verdict .vs b{color:var(--cyan);font-weight:700}
+
+.card{background:rgba(14,40,66,.7);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:var(--r)}
+
+/* ============================================================
+   GOAL
+   ============================================================ */
+.goal{
+  position:relative;
+  border:1px solid rgba(0,212,255,.3);
+  border-radius:var(--r);
+  padding:16px 16px 14px;
+  overflow:hidden;
+  background:
+    radial-gradient(130% 100% at 85% 0%,rgba(0,212,255,.14),transparent 55%),
+    radial-gradient(80% 60% at 0% 100%,rgba(163,230,53,.08),transparent 55%),
+    rgba(8,27,48,.9);
+  box-shadow:0 10px 30px rgba(0,212,255,.08);
+}
+.goal-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.goal-hd .gt{display:flex;align-items:center;gap:7px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan)}
+.goal-hd .gt svg{width:14px;height:14px;stroke:var(--cyan);fill:none;stroke-width:2}
+.goal-tag{font-size:10px;font-weight:700;color:var(--lime);background:rgba(163,230,53,.12);border:1px solid rgba(163,230,53,.28);padding:4px 10px;border-radius:20px;letter-spacing:.04em}
+
+.goal-wt{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.goal-cur{font-family:var(--display);font-size:36px;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--ink)}
+.goal-cur s{font-size:14px;color:var(--ink-3);text-decoration:none;font-weight:500;margin-left:2px}
+.goal-arrow{color:var(--cyan);font-size:18px;font-weight:700}
+.goal-tgt{font-family:var(--display);font-size:18px;color:var(--cyan);font-weight:700;letter-spacing:-.02em}
+.goal-tgt s{font-size:11px;color:var(--ink-3);text-decoration:none;font-weight:500}
+.goal-rem{font-size:10.5px;color:var(--lime);font-weight:700;margin-left:auto;font-family:var(--mono);padding:4px 10px;background:rgba(163,230,53,.12);border:1px solid rgba(163,230,53,.25);border-radius:14px}
+
+.goal-prog{height:8px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;margin-bottom:6px;border:1px solid rgba(255,255,255,.05)}
+.goal-prog i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--cyan),var(--lime));box-shadow:0 0 10px rgba(163,230,53,.6);transition:width 1.4s var(--ease)}
+.goal-prog-l{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9.5px;color:var(--ink-3);margin-bottom:14px;letter-spacing:.04em}
+.goal-prog-l b{color:var(--lime);font-weight:700}
+
+.pace{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.pace .pr{display:flex;align-items:center;gap:9px}
+.pace .pk{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);width:60px;flex:none;font-weight:600}
+.pace .pb{flex:1;height:5px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden;border:1px solid rgba(255,255,255,.04)}
+.pace .pb i{display:block;height:100%;border-radius:99px;transition:width 1.1s var(--ease)}
+.pace .you i{background:linear-gradient(90deg,var(--cyan),var(--lime));box-shadow:0 0 6px rgba(163,230,53,.5)}
+.pace .plan i{background:var(--ink-4)}
+.pace .pv{font-family:var(--mono);font-size:10px;font-weight:700;width:62px;text-align:right;flex:none;color:var(--ink-2)}
+
+.proj{position:relative;border-top:1px solid var(--line);padding-top:12px}
+.proj-l{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:6px;font-family:var(--mono)}
+.proj-svg{width:100%;height:60px;display:block}
+.proj-eta{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px}
+.proj-eta .e1{font-family:var(--mono);font-size:11px;color:var(--ink-2);font-weight:500}
+.proj-eta .e1 b{color:var(--cyan);font-weight:800}
+.proj-eta .e2{font-size:10px;color:var(--lime);font-weight:700;font-family:var(--mono);letter-spacing:.04em}
+.proj-eta .e2.bad{color:var(--rose)}
+
+/* ============================================================
+   MACROS
+   ============================================================ */
+.mac-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.mac{background:rgba(14,40,66,.7);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 11px 9px;position:relative;overflow:hidden}
+.mac::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.mac.f::before{background:linear-gradient(90deg,var(--gold),var(--rose))}
+.mac.c::before{background:linear-gradient(90deg,var(--lime),var(--cyan))}
+.mac-l{font-family:var(--mono);font-size:9px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.mac-v{font-family:var(--display);font-size:22px;font-weight:700;margin-top:4px;line-height:1;letter-spacing:-.03em}
+.mac-v s{font-size:10px;color:var(--ink-3);text-decoration:none;font-weight:500;margin-left:1px}
+.mac-b{height:4px;background:rgba(255,255,255,.06);border-radius:99px;margin-top:8px;overflow:hidden}
+.mac-bf{height:100%;border-radius:99px;transition:width .9s var(--ease);background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.mac.f .mac-bf{background:linear-gradient(90deg,var(--gold),var(--rose))}
+.mac.c .mac-bf{background:linear-gradient(90deg,var(--lime),var(--cyan))}
+.mac-tgt{font-family:var(--mono);font-size:9px;color:var(--ink-4);margin-top:4px;font-weight:500}
+
+/* ============================================================
+   KPI / DỰ BÁO
+   ============================================================ */
+.kpi{padding:14px 16px 12px}
+.kpi-hd{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px;font-family:var(--mono)}
+.kpi-hd svg{width:14px;height:14px;stroke:var(--cyan);fill:none;stroke-width:2}
+.preds{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.pred{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.18);border-radius:var(--r-sm);padding:10px 6px 8px;text-align:center}
+.pred .pd{font-family:var(--mono);font-size:9px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.pred .pw{font-family:var(--display);font-size:18px;font-weight:800;margin-top:4px;letter-spacing:-.03em;color:var(--ink)}
+.pred .pw s{font-size:10px;font-weight:500;color:var(--ink-3);text-decoration:none}
+.pred .px{font-family:var(--mono);font-size:9px;margin-top:3px;color:var(--lime);font-weight:700}
+
+.prob-row{display:flex;align-items:center;gap:14px;border-top:1px solid var(--line);padding-top:12px}
+.prob-don{position:relative;width:68px;height:68px;flex:none}
+.prob-don .dl{position:absolute;inset:0;display:grid;place-content:center;text-align:center;line-height:1}
+.prob-don .dv{font-family:var(--display);font-size:15px;font-weight:800;line-height:1;letter-spacing:-.03em}
+.prob-don .du{font-size:7.5px;color:var(--ink-3);margin-top:2px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.prob-info{flex:1;min-width:0}
+.prob-t{font-size:12px;font-weight:700;letter-spacing:-.005em;color:var(--ink)}
+.prob-s{font-size:10px;color:var(--ink-3);margin-top:4px;line-height:1.5;font-family:var(--mono)}
+.prob-s b{color:var(--cyan);font-weight:700}
+
+.reco-row{display:flex;gap:11px;padding:9px 0;border-top:1px solid rgba(255,255,255,.04);align-items:flex-start}
+.reco-row:first-of-type{border-top:none;padding-top:2px}
+.reco-ic{
+  flex:none;width:30px;height:30px;border-radius:9px;
+  background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.25);
+  display:grid;place-items:center;color:var(--cyan);
+  font-family:var(--display);font-weight:800;font-size:13px;
+}
+.reco-ic.bad{background:rgba(244,63,94,.1);border-color:rgba(244,63,94,.25);color:var(--rose)}
+.reco-ic.ok{background:rgba(163,230,53,.1);border-color:rgba(163,230,53,.25);color:var(--lime)}
+.reco-t{font-size:12px;font-weight:600;line-height:1.3;color:var(--ink)}
+.reco-w{font-size:10px;color:var(--ink-3);margin-top:3px;font-family:var(--mono)}
+
+.culp{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+.culp-l{font-family:var(--mono);font-size:9px;text-transform:uppercase;color:var(--ink-4);letter-spacing:.08em;margin-bottom:8px;font-weight:700}
+.cu{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.cu-n{font-size:10px;width:36%;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink-2);font-weight:500}
+.cu-b{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.06);overflow:hidden}
+.cu-b i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--rose),var(--gold))}
+.cu-v{font-family:var(--mono);font-size:9.5px;font-weight:700;color:var(--gold);width:54px;text-align:right;flex:none}
+
+/* ============================================================
+   CHARTS
+   ============================================================ */
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cbox{background:rgba(14,40,66,.7);border:1px solid var(--line);border-radius:var(--r-sm);padding:11px 12px 10px}
+.cbox-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cbox-l{font-family:var(--mono);font-size:9px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.cbox-b{font-family:var(--mono);font-size:14px;font-weight:800;color:var(--cyan);letter-spacing:-.03em}
+.cbox-b s{font-size:9px;color:var(--ink-3);text-decoration:none;font-weight:500;margin-left:1px}
+.cbox-b.bad{color:var(--rose)}
+.cbox-b.good{color:var(--lime)}
+
+.spark{width:100%;height:36px;display:block;margin-bottom:4px}
+.spark-l{display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;color:var(--ink-4);letter-spacing:.04em}
+
+.donut{position:relative;width:54px;height:54px;margin:0 auto}
+.donut .dl{position:absolute;inset:0;display:grid;place-content:center;text-align:center;line-height:1}
+.donut .dv{font-family:var(--display);font-size:12px;font-weight:800;line-height:1;letter-spacing:-.03em}
+.donut .du{font-size:7px;color:var(--ink-3);margin-top:2px;font-family:var(--mono);text-transform:uppercase;font-weight:700}
+.dleg{display:flex;gap:8px;justify-content:center;margin-top:6px;font-size:8px;font-family:var(--mono)}
+.dleg span{display:flex;align-items:center;gap:3px;color:var(--ink-3)}
+.dleg i{width:7px;height:7px;border-radius:2px}
+
+/* ============================================================
+   PAGE 2
+   ============================================================ */
+.sec-h{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-3);font-weight:700;padding:6px 2px 0}
+
+.p2-card{position:relative;overflow:hidden;margin-bottom:10px}
+.p2-head{padding:14px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;transition:background .15s;gap:14px}
+.p2-head:active{background:rgba(255,255,255,.02)}
+.p2-type{display:flex;align-items:center;gap:7px;font-size:10px;text-transform:uppercase;letter-spacing:.14em;font-weight:700;margin-bottom:5px;color:var(--cyan)}
+.p2-type svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2}
+.p2-type.f{color:var(--gold)}
+.p2-type.c{color:var(--lime)}
+
+.p2-big{font-family:var(--display);font-size:30px;font-weight:800;line-height:1;letter-spacing:-.04em;color:var(--ink)}
+.p2-big s{font-size:13px;color:var(--ink-3);text-decoration:none;font-weight:500;margin-left:2px}
+.p2-sub{font-size:10.5px;color:var(--ink-3);margin-top:5px;font-family:var(--mono);font-weight:500}
+
+.p2-ringbox{text-align:center;flex:none;width:70px}
+.p2-ringp{font-family:var(--mono);font-size:9.5px;font-weight:700;margin-top:5px;letter-spacing:.04em}
+.p2-ringp.ok{color:var(--lime)}
+.p2-ringp.bad{color:var(--rose)}
+.p2-ringp.warn{color:var(--gold)}
+
+.p2-body{display:flex;gap:8px;padding:0 14px 14px;align-items:stretch}
+.p2-left{flex:1;min-width:0;display:flex;flex-direction:column;gap:11px}
+.p2-right{flex:0 0 21%;display:flex;flex-direction:column;gap:6px}
+.p2-stat{flex:1;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.15);border-radius:var(--r-sm);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;padding:7px 3px;min-height:48px}
+.p2-sv{font-family:var(--display);font-size:15px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.p2-sl{font-size:7.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;line-height:1.15;font-family:var(--mono);font-weight:600}
+
+.warn-scroll{max-height:64px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.warn-scroll::-webkit-scrollbar{width:3px}
+.warn-scroll::-webkit-scrollbar-thumb{background:rgba(0,212,255,.3);border-radius:3px}
+.p2-wl{font-family:var(--mono);font-size:8.5px;text-transform:uppercase;color:var(--ink-4);letter-spacing:.08em;margin-bottom:5px;font-weight:700}
+.w{font-size:10.5px;padding:5px 0;border-top:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:8px;color:var(--ink-2)}
+.w:first-of-type{border-top:none}
+.w::before{content:"";width:6px;height:6px;border-radius:50%;flex:none}
+.w.bad{color:var(--rose)} .w.bad::before{background:var(--rose)}
+.w.good{color:var(--lime)} .w.good::before{background:var(--lime)}
+.w.amb{color:var(--gold)} .w.amb::before{background:var(--gold)}
+
+.li-scroll{max-height:200px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.li-scroll::-webkit-scrollbar{width:3px}
+.li-scroll::-webkit-scrollbar-thumb{background:rgba(0,212,255,.3);border-radius:3px}
+.li{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-top:1px solid rgba(255,255,255,.04);cursor:pointer;gap:8px}
+.li:active{background:rgba(0,212,255,.04)}
+.li-n{font-size:11.5px;font-weight:500;color:var(--ink)}
+.li-p{font-size:9px;color:var(--ink-3);margin-top:2px;font-family:var(--mono)}
+.li-c{font-family:var(--display);font-size:12.5px;font-weight:800;white-space:nowrap;letter-spacing:-.02em}
+.li-x{flex:none;width:24px;height:24px;border-radius:50%;background:rgba(244,63,94,.08);border:1px solid rgba(244,63,94,.2);color:var(--rose);display:grid;place-content:center;font-size:12px;cursor:pointer;line-height:1;font-weight:700}
+.li-x:active{background:rgba(244,63,94,.2)}
+.empty{font-size:10.5px;color:var(--ink-4);padding:12px 0;text-align:center;font-family:var(--mono)}
+
+.bd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 14px 14px}
+.fi{display:flex;flex-direction:column;gap:4px;min-width:0}
+.fi label{font-family:var(--mono);font-size:8.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);font-weight:700}
+.fi input,.fi select{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2);border-radius:var(--r-sm);color:var(--ink);font-family:var(--mono);font-size:13px;padding:9px 11px;outline:none;width:100%;-moz-appearance:textfield}
+.fi input::-webkit-outer-spin-button,.fi input::-webkit-inner-spin-button{-webkit-appearance:none}
+.fi input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,212,255,.15)}
+.fi select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2300D4FF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:26px;appearance:none}
+
+.btn-pri{width:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border:none;color:#fff;font-weight:800;font-size:13px;padding:13px;border-radius:var(--r-sm);cursor:pointer;font-family:var(--display);letter-spacing:.02em;box-shadow:0 8px 20px rgba(0,212,255,.25);text-transform:uppercase;transition:transform .2s}
+.btn-pri:active{transform:scale(.98)}
+.btn-ghost{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--ink-2);font-weight:600;font-size:12px;padding:11px;border-radius:var(--r-sm);cursor:pointer;font-family:var(--sans)}
+.btn-danger{background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.3);color:var(--rose);font-weight:700;font-size:12px;padding:11px;border-radius:var(--r-sm);cursor:pointer;font-family:var(--sans)}
+.btn-row{display:flex;gap:8px}
+.btn-row>*{flex:1}
+.reset-link{text-align:center;font-size:10px;color:var(--ink-4);font-family:var(--mono);padding:6px;cursor:pointer;text-decoration:underline}
+
+/* ============================================================
+   PAGE DOTS
+   ============================================================ */
+.dots{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:30;display:flex;gap:5px;background:rgba(8,27,48,.92);backdrop-filter:blur(20px);padding:8px 10px;border-radius:30px;border:1px solid rgba(0,212,255,.25);box-shadow:0 12px 36px rgba(0,0,0,.7),0 0 20px rgba(0,212,255,.15)}
+.dot-i{display:flex;align-items:center;gap:6px;padding:6px 13px;border-radius:22px;font-family:var(--mono);font-size:10px;font-weight:700;color:var(--ink-3);cursor:pointer;border:none;background:none;text-transform:uppercase;letter-spacing:.06em;transition:.3s}
+.dot-i .dd{width:6px;height:6px;border-radius:50%;background:var(--ink-4);transition:.35s var(--ease)}
+.dot-i.on{color:var(--cyan);background:rgba(0,212,255,.12);box-shadow:inset 0 0 0 1px rgba(0,212,255,.3)}
+.dot-i.on .dd{background:var(--cyan);width:14px;border-radius:3px;box-shadow:0 0 8px var(--cyan-glow)}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.mov{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);display:flex;align-items:flex-end;justify-content:center;opacity:0;visibility:hidden;transition:opacity .26s}
+.mov.open{opacity:1;visibility:visible}
+.modal{width:100%;max-width:420px;background:linear-gradient(180deg,var(--n1) 0%,var(--n0) 100%);border-radius:24px 24px 0 0;border-top:1px solid rgba(0,212,255,.25);box-shadow:0 -20px 60px rgba(0,0,0,.7),0 -1px 0 rgba(0,212,255,.15);padding:12px 14px calc(22px + env(safe-area-inset-bottom));max-height:88vh;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .36s var(--ease)}
+.mov.open .modal{transform:translateY(0)}
+.grip{width:44px;height:5px;border-radius:3px;background:var(--ink-4);margin:0 auto 14px;flex:none}
+.m-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex:none}
+.m-t{font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.m-x{font-size:11px;color:var(--ink-2);cursor:pointer;padding:6px 12px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);border-radius:8px;font-family:var(--mono);font-weight:600}
+.mtabs{display:flex;gap:5px;margin-bottom:11px;flex:none}
+.mtab{flex:1;text-align:center;padding:8px 0;border-radius:9px;font-size:10.5px;cursor:pointer;background:rgba(0,212,255,.04);border:1px solid var(--line);color:var(--ink-2);font-family:var(--sans);font-weight:600;transition:.15s}
+.mtab.on{background:var(--cyan);border-color:var(--cyan);color:var(--n0);font-weight:800}
+.srch{display:flex;align-items:center;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.18);border-radius:11px;padding:10px 13px;gap:9px;margin-bottom:9px;flex:none}
+.srch svg{width:14px;height:14px;stroke:var(--cyan);fill:none;stroke-width:2}
+.srch input{background:none;border:none;outline:none;color:var(--ink);font-family:var(--sans);font-size:13px;flex:1;font-weight:500}
+.srch input::placeholder{color:var(--ink-4)}
+.mlist{overflow-y:auto;-webkit-overflow-scrolling:touch;flex:1;min-height:0}
+.mlist::-webkit-scrollbar{width:3px}
+.mlist::-webkit-scrollbar-thumb{background:rgba(0,212,255,.3);border-radius:3px}
+.qi{display:flex;align-items:center;justify-content:space-between;padding:10px 4px;border-top:1px solid rgba(255,255,255,.04);cursor:pointer;gap:8px}
+.qi:first-child{border-top:none}
+.qi:active{background:rgba(0,212,255,.05)}
+.qi-n{font-size:12px;font-weight:600;color:var(--ink)}
+.qi-p{font-size:9px;color:var(--ink-3);margin-top:2px;font-family:var(--mono)}
+.qi-c{font-family:var(--display);font-size:11.5px;font-weight:800;white-space:nowrap;letter-spacing:-.02em;color:var(--cyan)}
+
+.ed-name{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.ed-sub{font-family:var(--mono);font-size:10px;color:var(--ink-3);font-weight:500;margin-top:2px}
+.ed-note{font-family:var(--mono);font-size:9px;color:var(--ink-4);margin:8px 0 12px}
+.ed-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+.qty{display:flex;align-items:center;gap:8px;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.18);border-radius:13px;padding:7px;margin-bottom:12px}
+.qty .qb{width:38px;height:38px;border-radius:10px;background:rgba(0,212,255,.12);border:1px solid rgba(0,212,255,.25);color:var(--cyan);font-size:18px;font-weight:800;cursor:pointer;font-family:var(--display)}
+.qty .qv{flex:1;text-align:center;font-family:var(--display);font-size:16px;font-weight:800;color:var(--ink)}
+.qty .qv s{font-size:10px;color:var(--ink-3);text-decoration:none;font-weight:500;margin-left:2px}
+.ed-total{display:flex;justify-content:space-between;align-items:center;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.25);border-radius:13px;padding:12px 14px;margin-bottom:12px}
+.ed-total .tt{font-size:10px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;font-family:var(--mono);font-weight:700}
+.ed-total .tv{font-family:var(--display);font-size:18px;font-weight:800;color:var(--cyan);letter-spacing:-.02em}
+.ed-total .tm{font-family:var(--mono);font-size:9px;color:var(--ink-3);margin-top:2px}
+
+.ob{position:fixed;inset:0;z-index:300;background:var(--n0);display:none;align-items:center;justify-content:center;overflow-y:auto}
+.ob-card{width:100%;max-width:420px;padding:28px 22px 36px;display:flex;flex-direction:column;gap:12px}
+.ob-k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--cyan);text-transform:uppercase;font-weight:700}
+.ob-t{font-family:var(--display);font-size:32px;font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-bottom:6px;color:var(--ink)}
+.ob-t b{font-family:var(--display);font-weight:700;color:var(--lime);font-style:normal}
+.ob-lbl{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin-top:6px;font-weight:700}
+.ob-grid{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:8px}
+.ob-grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{padding:8px 14px;border-radius:20px;font-size:11px;font-weight:700;background:rgba(0,212,255,.04);border:1px solid var(--line);color:var(--ink-2);cursor:pointer;transition:.15s;font-family:var(--sans);letter-spacing:.02em}
+.chip.sel{background:rgba(0,212,255,.18);border-color:rgba(0,212,255,.5);color:var(--cyan);box-shadow:0 0 12px rgba(0,212,255,.2)}
+.ob-delta{font-family:var(--mono);font-size:11px;color:var(--ink-2);min-height:16px;font-weight:600}
+.ob-delta b{color:var(--lime);font-weight:800}
+
+.toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%) translateY(10px);z-index:320;background:var(--cyan);color:var(--n0);font-size:11.5px;font-weight:800;padding:10px 20px;border-radius:24px;opacity:0;visibility:hidden;transition:.28s var(--ease);box-shadow:0 10px 30px rgba(0,212,255,.5);text-transform:uppercase;letter-spacing:.04em;font-family:var(--display)}
+.toast.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<h2 class="sr-only">FORGE — vuốt ngang đổi trang: Hôm nay / Dữ liệu</h2>
+
+<div class="app">
+  <div class="aurora">
+    <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+  </div>
+  <div class="grid-bg"></div>
+  <div class="grain"></div>
+
+  <div class="pager" id="pager">
+    <section class="page" id="page1"><div class="inner" id="p1"></div></section>
+    <section class="page" id="page2"><div class="inner" id="p2"></div></section>
+  </div>
+</div>
+
+<div class="dots">
+  <button class="dot-i on" data-go="0"><span class="dd"></span>Hôm nay</button>
+  <button class="dot-i" data-go="1"><span class="dd"></span>Dữ liệu</button>
+</div>
+
+<div class="mov" id="foodModal" onclick="if(event.target===this)closeFood()">
+  <div class="modal">
+    <div class="grip"></div>
+    <div class="m-hd"><span class="m-t" id="fmTitle">Thêm món ăn</span><span class="m-x" onclick="closeFood()">Đóng</span></div>
+    <div id="fmListView" style="display:flex;flex-direction:column;min-height:0;flex:1">
+      <div class="mtabs" id="fmMeals"></div>
+      <div class="srch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input id="fSearch" placeholder="Tìm món (gõ không dấu cũng được)…" oninput="renderFoods(this.value)"></div>
+      <div class="mlist" id="fList"></div>
+    </div>
+    <div id="fmEditView" class="mlist" style="display:none"></div>
+  </div>
+</div>
+
+<div class="mov" id="actModal" onclick="if(event.target===this)closeAct()">
+  <div class="modal">
+    <div class="grip"></div>
+    <div class="m-hd"><span class="m-t" id="amTitle">Thêm hoạt động</span><span class="m-x" onclick="closeAct()">Đóng</span></div>
+    <div id="amListView" style="display:flex;flex-direction:column;min-height:0;flex:1">
+      <div class="srch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input id="aSearch" placeholder="Tìm hoạt động…" oninput="renderActs(this.value)"></div>
+      <div class="mlist" id="aList"></div>
+    </div>
+    <div id="amEditView" class="mlist" style="display:none"></div>
+  </div>
+</div>
+
+<div class="ob" id="ob">
+  <div class="ob-card">
+    <div class="ob-k">FORGE · Thiết lập lần đầu</div>
+    <div class="ob-t">Đặt mục tiêu,<br>rồi <b>chinh phục nó.</b></div>
+    <div class="ob-grid">
+      <div class="fi"><label>Tên</label><input id="obName" value="Phúc"></div>
+      <div class="fi"><label>Tuổi</label><input id="obAge" type="number" value="29"></div>
+      <div class="fi"><label>Cao (cm)</label><input id="obH" type="number" value="175"></div>
+    </div>
+    <div class="ob-grid2">
+      <div class="fi"><label>Cân hiện tại (kg)</label><input id="obWs" type="number" step="0.1" placeholder="80.0"></div>
+      <div class="fi"><label>Cân mục tiêu (kg)</label><input id="obWg" type="number" step="0.1" placeholder="75.0" oninput="obDelta()"></div>
+    </div>
+    <div class="ob-lbl">Mức vận động hằng ngày</div>
+    <div class="chips" id="obAct">
+      <span class="chip" data-v="sedentary">Ngồi nhiều</span>
+      <span class="chip sel" data-v="light">Nhẹ</span>
+      <span class="chip" data-v="moderate">Vừa</span>
+      <span class="chip" data-v="active">Cao</span>
+      <span class="chip" data-v="very_active">Rất cao</span>
+    </div>
+    <div class="ob-lbl">Mục tiêu</div>
+    <div class="chips" id="obGoal">
+      <span class="chip sel" data-v="lose_fat">Giảm mỡ</span>
+      <span class="chip" data-v="lose_weight">Giảm cân</span>
+      <span class="chip" data-v="gain_muscle">Tăng cơ</span>
+      <span class="chip" data-v="maintain">Duy trì</span>
+    </div>
+    <div class="ob-lbl">Thời hạn</div>
+    <div class="chips" id="obDl">
+      <span class="chip" data-v="30">30 ngày</span>
+      <span class="chip" data-v="60">60 ngày</span>
+      <span class="chip sel" data-v="90">90 ngày</span>
+      <span class="chip" data-v="180">180 ngày</span>
+    </div>
+    <div class="ob-delta" id="obDeltaTxt"></div>
+    <button class="btn-pri" onclick="obStart()">Bắt đầu hành trình →</button>
+    <button class="btn-ghost" onclick="obDemo()">Xem thử với dữ liệu mẫu 14 ngày</button>
+  </div>
+</div>
+
+<div class="flame-cele" id="flameCele" onclick="closeCele()">
+  <div class="fc-inner">
+    <svg class="fc-flame" viewBox="0 0 24 24"><path d="M12 3c2 3 4 4.5 4 8a4 4 0 01-8 0c0-2 1-3 1-4-2 1.5-3 3.5-3 6a6 6 0 0012 0c0-5-4-7-6-10z"/></svg>
+    <div class="fc-days">12</div>
+    <div class="fc-unit">NGÀY LIÊN TỤC</div>
+    <div class="fc-tier">Vàng Đậm</div>
+    <div class="fc-hint">chạm để đóng</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   FORGE — micro JS demo (sống ngay khi mở file)
+   ============================================================ */
+
+(function(){
+  const $ = s => document.querySelector(s);
+  const $$ = s => document.querySelectorAll(s);
+
+  const today = new Date();
+  const todayDow = ['CN','T2','T3','T4','T5','T6','T7'][today.getDay()];
+
+  const p1 = $('#p1');
+  p1.innerHTML = `
+    <div class="hd">
+      <div class="hd-left">
+        <div class="date">${todayDow} · ${today.toLocaleDateString('vi-VN',{day:'numeric',month:'short'})}</div>
+        <div class="name">Chào <b>Phúc</b></div>
+        <div class="tagline">Đang trên đường tới 75 kg · còn 5.2 kg</div>
+      </div>
+      <div class="hd-right">
+        <div class="streak">
+          <svg class="flame-ic" viewBox="0 0 24 24"><path d="M12 3c2 3 4 4.5 4 8a4 4 0 01-8 0c0-2 1-3 1-4-2 1.5-3 3.5-3 6a6 6 0 0012 0c0-5-4-7-6-10z"/></svg>
+          <span class="v">12</span> NGÀY
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <div class="vt">Bạn đang <em>đúng pace</em> — 7 ngày qua trung bình giảm 0.4 kg/tuần, mục tiêu 12 tuần hoàn toàn khả thi.</div>
+      <div class="vs">Phân tích dữ liệu · <b>14 ngày</b> · độ tin cậy cao</div>
+    </div>
+
+    <div class="card goal">
+      <div class="goal-hd">
+        <div class="gt">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+          MỤC TIÊU
+        </div>
+        <span class="goal-tag">▼ 0.5 kg/tuần</span>
+      </div>
+      <div class="goal-wt">
+        <div class="goal-cur">80.2<s>kg</s></div>
+        <div class="goal-arrow">→</div>
+        <div class="goal-tgt">75.0<s>kg</s></div>
+        <div class="goal-rem">CÒN 5.2 kg</div>
+      </div>
+      <div class="goal-prog"><i style="width:35%"></i></div>
+      <div class="goal-prog-l"><span>BẮT ĐẦU <b>82.0</b></span><span><b>35%</b> hoàn thành</span><span>MỤC TIÊU <b>75.0</b></span></div>
+
+      <div class="pace">
+        <div class="pr">
+          <div class="pk">CỦA BẠN</div>
+          <div class="pb"><div class="you"><i style="width:62%"></i></div></div>
+          <div class="pv" style="color:var(--lime)">−0.4 kg/tuần</div>
+        </div>
+        <div class="pr">
+          <div class="pk">KẾ HOẠCH</div>
+          <div class="pb"><div class="plan"><i style="width:78%"></i></div></div>
+          <div class="pv">−0.5 kg/tuần</div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-l">DỰ BÁO ĐƯỜNG ĐI</div>
+        <svg class="proj-svg" viewBox="0 0 320 60" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="pf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00D4FF" stop-opacity=".4"/><stop offset="1" stop-color="#00D4FF" stop-opacity="0"/></linearGradient>
+          </defs>
+          <path d="M0,15 L40,18 L80,22 L120,28 L160,35 L200,42 L240,50 L280,55 L320,58 L320,60 L0,60 Z" fill="url(#pf)"/>
+          <path d="M0,15 L40,18 L80,22 L120,28 L160,35 L200,42 L240,50 L280,55 L320,58" fill="none" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M160,35 L180,42 L200,42" fill="none" stroke="#A3E635" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3"/>
+          <circle cx="0" cy="15" r="3" fill="#00D4FF"/>
+          <circle cx="160" cy="35" r="3" fill="#A3E635"/>
+          <circle cx="320" cy="58" r="3" fill="#A3E635"/>
+        </svg>
+        <div class="proj-eta">
+          <div class="e1">Dự kiến đạt mục tiêu: <b>~ 12.5 tuần</b> (29.08)</div>
+          <div class="e2">▲ ĐÚNG PACE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mac-row">
+      <div class="mac">
+        <div class="mac-l">PROTEIN</div>
+        <div class="mac-v">128<s>g</s></div>
+        <div class="mac-b"><div class="mac-bf" style="width:73%"></div></div>
+        <div class="mac-tgt">mục tiêu 175g</div>
+      </div>
+      <div class="mac f">
+        <div class="mac-l">FAT</div>
+        <div class="mac-v">62<s>g</s></div>
+        <div class="mac-b"><div class="mac-bf" style="width:88%"></div></div>
+        <div class="mac-tgt">mục tiêu 70g</div>
+      </div>
+      <div class="mac c">
+        <div class="mac-l">CARB</div>
+        <div class="mac-v">210<s>g</s></div>
+        <div class="mac-b"><div class="mac-bf" style="width:65%"></div></div>
+        <div class="mac-tgt">mục tiêu 320g</div>
+      </div>
+    </div>
+
+    <div class="card kpi">
+      <div class="kpi-hd">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-7"/></svg>
+        DỰ BÁO & RỦI RO
+      </div>
+      <div class="preds">
+        <div class="pred">
+          <div class="pd">NGÀY MAI</div>
+          <div class="pw">79.8<s>kg</s></div>
+          <div class="px">▼ −0.4</div>
+        </div>
+        <div class="pred">
+          <div class="pd">TUẦN SAU</div>
+          <div class="pw">77.6<s>kg</s></div>
+          <div class="px">▼ −2.6</div>
+        </div>
+        <div class="pred">
+          <div class="pd">30 NGÀY</div>
+          <div class="pw">75.4<s>kg</s></div>
+          <div class="px">▼ −4.8</div>
+        </div>
+      </div>
+
+      <div class="prob-row">
+        <div class="prob-don">
+          <svg viewBox="0 0 68 68">
+            <circle cx="34" cy="34" r="28" fill="none" stroke="rgba(0,212,255,.1)" stroke-width="8"/>
+            <circle cx="34" cy="34" r="28" fill="none" stroke="url(#pg)" stroke-width="8" stroke-linecap="round" stroke-dasharray="175.93" stroke-dashoffset="40" transform="rotate(-90 34 34)"/>
+            <defs><linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00D4FF"/><stop offset="1" stop-color="#A3E635"/></linearGradient></defs>
+          </svg>
+          <div class="dl"><div class="dv">77%</div><div class="du">đạt mục tiêu</div></div>
+        </div>
+        <div class="prob-info">
+          <div class="prob-t">Khả năng chinh phục mục tiêu 75 kg trong 12 tuần</div>
+          <div class="prob-s">dựa trên <b>14 ngày dữ liệu</b> · độ tin cậy cao</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px">
+        <div class="reco-row">
+          <div class="reco-ic bad">!</div>
+          <div><div class="reco-t">Protein đang thấp (−47g so với mục tiêu)</div><div class="reco-w">Ảnh hưởng: giữ cơ khi giảm mỡ</div></div>
+        </div>
+        <div class="reco-row">
+          <div class="reco-ic">↑</div>
+          <div><div class="reco-t">Tăng ức gà/cá/trứng vào bữa trưa & tối</div><div class="reco-w">mục tiêu +30g protein/ngày</div></div>
+        </div>
+        <div class="reco-row">
+          <div class="reco-ic ok">✓</div>
+          <div><div class="reco-t">Calo đốt trung bình ổn định 7 ngày</div><div class="reco-w">đạt 82% kế hoạch</div></div>
+        </div>
+      </div>
+
+      <div class="culp">
+        <div class="culp-l">NGUYÊN NHÂN CHẬM TIẾN (nếu có)</div>
+        <div class="cu">
+          <div class="cu-n">Thứ 4 – Trà sữa</div>
+          <div class="cu-b"><i style="width:78%"></i></div>
+          <div class="cu-v">+320 kcal</div>
+        </div>
+        <div class="cu">
+          <div class="cu-n">Thứ 6 – Lẩu</div>
+          <div class="cu-b"><i style="width:62%"></i></div>
+          <div class="cu-v">+580 kcal</div>
+        </div>
+        <div class="cu">
+          <div class="cu-n">CN – Bún bò</div>
+          <div class="cu-b"><i style="width:48%"></i></div>
+          <div class="cu-v">+420 kcal</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-row">
+      <div class="cbox">
+        <div class="cbox-hd"><div class="cbox-l">CALO NẠP · 7N</div><div class="cbox-b">2180<s> avg</s></div></div>
+        <svg class="spark" viewBox="0 0 200 36" preserveAspectRatio="none">
+          <defs><linearGradient id="sb1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00D4FF" stop-opacity=".5"/><stop offset="1" stop-color="#00D4FF" stop-opacity="0"/></linearGradient></defs>
+          <path d="M0,8 L33,12 L66,6 L100,15 L133,10 L166,18 L200,14 L200,36 L0,36 Z" fill="url(#sb1)"/>
+          <path d="M0,8 L33,12 L66,6 L100,15 L133,10 L166,18 L200,14" fill="none" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="200" cy="14" r="3" fill="#00D4FF"/>
+        </svg>
+        <div class="spark-l"><span>T2</span><span>T4</span><span>T6</span><span>CN</span></div>
+      </div>
+      <div class="cbox">
+        <div class="cbox-hd"><div class="cbox-l">CALO ĐỐT · 7N</div><div class="cbox-b good">580<s> avg</s></div></div>
+        <svg class="spark" viewBox="0 0 200 36" preserveAspectRatio="none">
+          <defs><linearGradient id="sb2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A3E635" stop-opacity=".5"/><stop offset="1" stop-color="#A3E635" stop-opacity="0"/></linearGradient></defs>
+          <path d="M0,22 L33,18 L66,24 L100,16 L133,20 L166,12 L200,14 L200,36 L0,36 Z" fill="url(#sb2)"/>
+          <path d="M0,22 L33,18 L66,24 L100,16 L133,20 L166,12 L200,14" fill="none" stroke="#A3E635" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="200" cy="14" r="3" fill="#A3E635"/>
+        </svg>
+        <div class="spark-l"><span>T2</span><span>T4</span><span>T6</span><span>CN</span></div>
+      </div>
+    </div>
+
+    <div class="chart-row">
+      <div class="cbox">
+        <div class="cbox-hd"><div class="cbox-l">CÂN NẶNG · 14N</div><div class="cbox-b good">−1.8<s>kg</s></div></div>
+        <svg class="spark" viewBox="0 0 200 36" preserveAspectRatio="none">
+          <path d="M0,4 L20,6 L40,8 L60,7 L80,11 L100,14 L120,16 L140,19 L160,21 L180,24 L200,28" fill="none" stroke="#A3E635" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="0" cy="4" r="3" fill="#A3E635"/>
+          <circle cx="200" cy="28" r="3" fill="#A3E635"/>
+        </svg>
+        <div class="spark-l"><span>−2 tuần</span><span>hôm nay</span></div>
+      </div>
+      <div class="cbox" style="text-align:center">
+        <div class="cbox-hd" style="justify-content:center"><div class="cbox-l">MACRO TỈ LỆ</div></div>
+        <div class="donut">
+          <svg viewBox="0 0 54 54">
+            <circle cx="27" cy="27" r="22" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="6"/>
+            <circle cx="27" cy="27" r="22" fill="none" stroke="#00D4FF" stroke-width="6" stroke-dasharray="138.23" stroke-dashoffset="80" transform="rotate(-90 27 27)"/>
+            <circle cx="27" cy="27" r="22" fill="none" stroke="#FBBF24" stroke-width="6" stroke-dasharray="138.23" stroke-dashoffset="105" transform="rotate(-90 27 27)"/>
+            <circle cx="27" cy="27" r="22" fill="none" stroke="#A3E635" stroke-width="6" stroke-dasharray="138.23" stroke-dashoffset="125" transform="rotate(-90 27 27)"/>
+          </svg>
+          <div class="dl"><div class="dv">100%</div><div class="du">tổng</div></div>
+        </div>
+        <div class="dleg">
+          <span><i style="background:#00D4FF"></i>P 28%</span>
+          <span><i style="background:#FBBF24"></i>F 30%</span>
+          <span><i style="background:#A3E635"></i>C 42%</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="sync-view-anh" style="display:none"></div>
+  `;
+
+  const p2 = $('#p2');
+  p2.innerHTML = `
+    <div class="hd">
+      <div class="hd-left">
+        <div class="date">DỮ LIỆU CHI TIẾT</div>
+        <div class="name">Mọi thứ <b>bạn đã nhập</b></div>
+        <div class="tagline">vuốt trái để về tổng quan</div>
+      </div>
+      <div class="hd-right">
+        <div class="streak">
+          <svg class="flame-ic" viewBox="0 0 24 24"><path d="M12 3c2 3 4 4.5 4 8a4 4 0 01-8 0c0-2 1-3 1-4-2 1.5-3 3.5-3 6a6 6 0 0012 0c0-5-4-7-6-10z"/></svg>
+          <span class="v">12</span> NGÀY
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-h">Hôm nay · Calo nạp & đốt</div>
+
+    <div class="card p2-card" onclick="openFood()">
+      <div class="p2-head">
+        <div style="flex:1;min-width:0">
+          <div class="p2-type">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11a7 7 0 0114 0c0 5-7 10-7 10S5 16 5 11z"/><circle cx="12" cy="11" r="2.4"/></svg>
+            NẠP · HÔM NAY
+          </div>
+          <div class="p2-big">2180<s>kcal</s></div>
+          <div class="p2-sub">4 món · 1520g · 06:30 → 20:45</div>
+        </div>
+        <div class="p2-ringbox">
+          <svg width="58" height="58" viewBox="0 0 58 58">
+            <circle cx="29" cy="29" r="24" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="6"/>
+            <circle cx="29" cy="29" r="24" fill="none" stroke="#00D4FF" stroke-width="6" stroke-linecap="round" stroke-dasharray="150.8" stroke-dashoffset="34" transform="rotate(-90 29 29)"/>
+          </svg>
+          <div class="p2-ringp" style="color:var(--cyan)">77%</div>
+        </div>
+      </div>
+      <div class="p2-body">
+        <div class="p2-left">
+          <div class="warn-scroll">
+            <div class="p2-wl">CẢNH BÁO</div>
+            <div class="w bad">Vượt 380 kcal so với kế hoạch</div>
+            <div class="w amb">Thiếu protein −47g</div>
+          </div>
+          <div>
+            <div class="p2-wl">MÓN ĂN HÔM NAY</div>
+            <div class="li-scroll">
+              <div class="li">
+                <div><div class="li-n">Cơm gà xối mỡ</div><div class="li-p">12:30 · 350g</div></div>
+                <div class="li-c">620 kcal</div>
+                <div class="li-x" onclick="event.stopPropagation()">×</div>
+              </div>
+              <div class="li">
+                <div><div class="li-n">Ức gà áp chảo</div><div class="li-p">18:45 · 200g</div></div>
+                <div class="li-c">330 kcal</div>
+                <div class="li-x" onclick="event.stopPropagation()">×</div>
+              </div>
+              <div class="li">
+                <div><div class="li-n">Cơm trắng</div><div class="li-p">18:45 · 200g</div></div>
+                <div class="li-c">260 kcal</div>
+                <div class="li-x" onclick="event.stopPropagation()">×</div>
+              </div>
+              <div class="li">
+                <div><div class="li-n">Sinh tố bơ</div><div class="li-p">15:20 · 350ml</div></div>
+                <div class="li-c">290 kcal</div>
+                <div class="li-x" onclick="event.stopPropagation()">×</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p2-right">
+          <div class="p2-stat"><div class="p2-sv">P 128</div><div class="p2-sl">protein</div></div>
+          <div class="p2-stat"><div class="p2-sv">F 62</div><div class="p2-sl">fat</div></div>
+          <div class="p2-stat"><div class="p2-sv">C 210</div><div class="p2-sl">carb</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p2-card" onclick="openAct()">
+      <div class="p2-head">
+        <div style="flex:1;min-width:0">
+          <div class="p2-type f">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 4 4.5 4 8a4 4 0 01-8 0c0-2 1-3 1-4-2 1.5-3 3.5-3 6a6 6 0 0012 0c0-5-4-7-6-10z"/></svg>
+            ĐỐT · HÔM NAY
+          </div>
+          <div class="p2-big">680<s>kcal</s></div>
+          <div class="p2-sub">3 hoạt động · 95 phút</div>
+        </div>
+        <div class="p2-ringbox">
+          <svg width="58" height="58" viewBox="0 0 58 58">
+            <circle cx="29" cy="29" r="24" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="6"/>
+            <circle cx="29" cy="29" r="24" fill="none" stroke="#A3E635" stroke-width="6" stroke-linecap="round" stroke-dasharray="150.8" stroke-dashoffset="23" transform="rotate(-90 29 29)"/>
+          </svg>
+          <div class="p2-ringp ok">113%</div>
+        </div>
+      </div>
+      <div class="p2-body">
+        <div class="p2-left">
+          <div>
+            <div class="p2-wl">HOẠT ĐỘNG HÔM NAY</div>
+            <div class="li-scroll">
+              <div class="li">
+                <div><div class="li-n">Tạ 5x5 compound</div><div class="li-p">07:15 · 45 phút</div></div>
+                <div class="li-c">320 kcal</div>
+                <div class="li-x" onclick="event.stopPropagation()">×</div>
+              </div>
+              <div class="li">
+                <div><div class="li-n">Đi bộ nhanh</div><div class="li-p">12:00 · 30 phút</div></div>
+                <div class="li-c">180 kcal</div>
+                <div class="li-x" onclick="event.stopPropagation()">×</div>
+              </div>
+              <div class="li">
+                <div><div class="li-n">Cardio HIIT</div><div class="li-p">19:30 · 20 phút</div></div>
+                <div class="li-c">180 kcal</div>
+                <div class="li-x" onclick="event.stopPropagation()">×</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p2-right">
+          <div class="p2-stat"><div class="p2-sv">95'</div><div class="p2-sl">tổng</div></div>
+          <div class="p2-stat"><div class="p2-sv">+12%</div><div class="p2-sl">vs 7d</div></div>
+          <div class="p2-stat"><div class="p2-sv">680</div><div class="p2-sl">kcal</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-h">Cơ thể</div>
+    <div class="card p2-card">
+      <div class="bd-grid">
+        <div class="fi"><label>Cân nặng (kg)</label><input type="number" step="0.1" value="80.2"></div>
+        <div class="fi"><label>Vòng eo (cm)</label><input type="number" step="0.1" value="86"></div>
+        <div class="fi"><label>Vòng đùi (cm)</label><input type="number" step="0.1" value="58"></div>
+        <div class="fi"><label>Tỉ lệ mỡ (%)</label><input type="number" step="0.1" value="22.4"></div>
+        <div class="fi"><label>Cơ bắp (kg)</label><input type="number" step="0.1" value="58.8"></div>
+        <div class="fi"><label>Nước (L)</label><input type="number" step="0.1" value="2.4"></div>
+      </div>
+      <div style="padding:0 14px 14px">
+        <button class="btn-pri">LƯU SỐ ĐO · HÔM NAY</button>
+      </div>
+    </div>
+
+    <div class="reset-link" onclick="alert('Đã reset dữ liệu demo.')">Reset toàn bộ dữ liệu</div>
+  `;
+
+  const pager = $('#pager');
+  const dots = $$('.dot-i');
+  dots.forEach(d => d.addEventListener('click', ()=>{
+    const i = +d.dataset.go;
+    pager.scrollTo({left: i * pager.clientWidth, behavior:'smooth'});
+  }));
+  pager.addEventListener('scroll', ()=>{
+    const idx = Math.round(pager.scrollLeft / pager.clientWidth);
+    dots.forEach((d,j)=>d.classList.toggle('on', j===idx));
+  });
+
+  $$('.chip').forEach(c => c.addEventListener('click', ()=>{
+    c.parentElement.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));
+    c.classList.add('sel');
+  }));
+
+  let fcTimer = null;
+  window._showCele = function(){
+    const el = $('#flameCele');
+    if (!el) return;
+    el.classList.add('show');
+    clearTimeout(fcTimer);
+    fcTimer = setTimeout(closeCele, 4000);
+  };
+  window.closeCele = function(){
+    const el = $('#flameCele');
+    if (el) el.classList.remove('show');
+  };
+
+  $$('.streak').forEach(s => s.addEventListener('click', ()=>{
+    _showCele();
+    const cur = s.querySelector('.v');
+    if (cur){
+      const n = parseInt(cur.textContent || '0', 10);
+      const el = document.querySelector('#flameCele .fc-days');
+      if (el) el.textContent = String(n);
+    }
+  }));
+
+  let toastTimer = null;
+  window.toast = function(msg){
+    const el = $('#toast');
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>el.classList.remove('show'), 2200);
+  };
+
+  window.openFood = function(){
+    const f = $('#foodModal'); if (f) f.classList.add('open');
+    toast('Mở thêm món ăn');
+  };
+  window.closeFood = function(){ $('#foodModal')?.classList.remove('open'); };
+  window.openAct = function(){
+    const a = $('#actModal'); if (a) a.classList.add('open');
+    toast('Mở thêm hoạt động');
+  };
+  window.closeAct = function(){ $('#actModal')?.classList.remove('open'); };
+  window.obStart = function(){ $('#ob')?.style.setProperty('display','none'); toast('Đã lưu hồ sơ'); };
+  window.obDemo = function(){ $('#ob')?.style.setProperty('display','none'); toast('Đã nạp dữ liệu mẫu 14 ngày'); };
+  window.obDelta = function(){};
+
+  const foods = [
+    {n:'Cơm trắng', p:'100g · 130 kcal', c:130},
+    {n:'Ức gà áp chảo', p:'100g · 165 kcal', c:165},
+    {n:'Cơm gà xối mỡ', p:'1 phần · 620 kcal', c:620},
+    {n:'Trứng luộc', p:'1 quả · 78 kcal', c:78},
+    {n:'Bún bò Huế', p:'1 tô · 480 kcal', c:480},
+    {n:'Phở bò', p:'1 tô · 420 kcal', c:420},
+    {n:'Cá hồi áp chảo', p:'100g · 208 kcal', c:208},
+    {n:'Salad rau trộn', p:'1 dĩa · 95 kcal', c:95},
+    {n:'Bánh mì thịt', p:'1 ổ · 350 kcal', c:350},
+    {n:'Trà sữa trân châu', p:'500ml · 380 kcal', c:380},
+  ];
+  const acts = [
+    {n:'Tạ 5x5 compound', p:'45 phút · 320 kcal', c:320},
+    {n:'Cardio HIIT', p:'20 phút · 180 kcal', c:180},
+    {n:'Đi bộ nhanh', p:'30 phút · 150 kcal', c:150},
+    {n:'Chạy bộ', p:'30 phút · 280 kcal', c:280},
+    {n:'Yoga', p:'45 phút · 180 kcal', c:180},
+    {n:'Đạp xe', p:'30 phút · 220 kcal', c:220},
+    {n:'Bơi', p:'30 phút · 250 kcal', c:250},
+    {n:'Nhảy dây', p:'15 phút · 180 kcal', c:180},
+  ];
+  function renderFoods(q){
+    q = (q||'').toLowerCase();
+    const list = $('#fList'); if (!list) return;
+    list.innerHTML = foods.filter(f=>f.n.toLowerCase().includes(q)||f.p.toLowerCase().includes(q)).slice(0,30).map(f=>`
+      <div class="qi">
+        <div><div class="qi-n">${f.n}</div><div class="qi-p">${f.p}</div></div>
+        <div class="qi-c">${f.c} kcal</div>
+      </div>`).join('');
+  }
+  function renderActs(q){
+    q = (q||'').toLowerCase();
+    const list = $('#aList'); if (!list) return;
+    list.innerHTML = acts.filter(f=>f.n.toLowerCase().includes(q)||f.p.toLowerCase().includes(q)).slice(0,30).map(f=>`
+      <div class="qi">
+        <div><div class="qi-n">${f.n}</div><div class="qi-p">${f.p}</div></div>
+        <div class="qi-c">${f.c} kcal</div>
+      </div>`).join('');
+  }
+  window.renderFoods = renderFoods;
+  window.renderActs = renderActs;
+  renderFoods(); renderActs();
+
+  const fmMeals = $('#fmMeals');
+  if (fmMeals){
+    const tabs = ['Sáng','Trưa','Tối','Snack'];
+    fmMeals.innerHTML = tabs.map((t,i)=>`<div class="mtab ${i===1?'on':''}">${t}</div>`).join('');
+    fmMeals.querySelectorAll('.mtab').forEach(t => t.addEventListener('click', ()=>{
+      fmMeals.querySelectorAll('.mtab').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+    }));
+  }
+})();
+</script>
+
+<!-- Nếu bạn có file JS riêng (Phuc_calo.js hoặc modules trong js/), uncomment bên dưới
+<script src="Phuc_calo.js"></script>
+<script src="js/constants.js"></script>
+<script src="js/db.js"></script>
+<script src="js/food_db.js"></script>
+<script src="js/act_db.js"></script>
+<script src="js/engines/e1_body.js"></script>
+<script src="js/engines/e2_nutrition.js"></script>
+<script src="js/engines/e3_progress.js"></script>
+<script src="js/engines/e4_prediction.js"></script>
+<script src="js/engines/e5_goal.js"></script>
+<script src="js/engines/e6_risk.js"></script>
+<script src="js/engines/e7_reco.js"></script>
+<script src="js/output_builder.js"></script>
+<script src="js/app.js"></script>
+-->
+</body>
+</html>

@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#F4ECFB">
+<title>ÉLYSÉE · Vợ — MERUVA</title>
+<meta name="description" content="ÉLYSÉE — demo ứng dụng theo dõi calo và dinh dưỡng dành cho nữ giới: nạp, tiêu hao và mục tiêu thể chất. Một sản phẩm minh hoạ hệ thống cá nhân của MERUVA.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://meruva.vn/MeruvaService/demo/trackingcaloNu.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meruva.vn/MeruvaService/demo/trackingcaloNu.html">
+<meta property="og:title" content="ÉLYSÉE · Vợ — MERUVA">
+<meta property="og:description" content="Demo theo dõi calo & dinh dưỡng cho nữ giới: nạp, tiêu hao và mục tiêu thể chất.">
+<meta property="og:image" content="https://meruva.vn/logo-mark.png">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ÉLYSÉE · MERUVA">
+<meta name="twitter:description" content="Demo theo dõi calo & dinh dưỡng cho nữ giới.">
+<meta name="twitter:image" content="https://meruva.vn/logo-mark.png">
+<link rel="icon" type="image/png" href="../../logo-mark.png">
+<link rel="apple-touch-icon" href="../../logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   ÉLYSÉE — Trợ lý sức khỏe nữ, sang trọng & cá nhân hoá
+   Triết lý: tiếng Pháp êm ái, hoa violet/lavender, nữ tính
+   ========================================================= */
+
+:root{
+  /* Bảng màu chính — tím pastel cao cấp */
+  --bg-1:#F8F2FC;          /* nền sáng nhất */
+  --bg-2:#FBF6FD;          /* nền phụ */
+  --bg-3:#F0E7F8;          /* nền sâu hơn cho accent */
+
+  --ink:#2A1F3D;           /* chữ chính — tím than */
+  --ink-soft:#5A4E6F;      /* chữ phụ */
+  --ink-mute:#8A7E9D;      /* chữ mờ */
+  --ink-faint:#B5ACC4;     /* chữ rất mờ */
+
+  --violet:#B79CE6;        /* tím lavender chủ đạo */
+  --violet-d:#8B6FCF;      /* tím đậm */
+  --violet-xd:#6B4FA8;     /* tím rất đậm */
+  --violet-bg:rgba(183,156,230,.14);
+  --violet-glow:rgba(183,156,230,.35);
+
+  --rose:#E5A4C7;          /* hồng phấn */
+  --rose-d:#C57BAA;
+  --rose-bg:rgba(229,164,199,.16);
+
+  --peach:#F0C9A8;         /* cam đào — accent */
+  --peach-d:#D9A275;
+
+  --mint:#9FD9C2;          /* xanh bạc hà — sức khỏe */
+  --mint-d:#6FBF9D;
+
+  --gold:#D4B574;          /* vàng champagne — sang trọng */
+  --gold-d:#B89656;
+
+  --card:rgba(255,255,255,.72);
+  --card-solid:#FFFCFE;
+  --line:rgba(139,111,207,.10);
+  --line-2:rgba(139,111,207,.18);
+
+  --shadow-sm:0 4px 18px rgba(107,79,168,.08);
+  --shadow:0 10px 36px rgba(107,79,168,.12);
+  --shadow-lg:0 20px 60px rgba(107,79,168,.18);
+
+  --r:28px;
+  --r-sm:20px;
+  --r-xs:14px;
+
+  --ease:cubic-bezier(.34,1.4,.64,1);
+  --ease-soft:cubic-bezier(.22,1,.36,1);
+
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:
+    radial-gradient(140% 90% at 0% 0%, #F2E2F2 0%, transparent 55%),
+    radial-gradient(120% 80% at 100% 20%, #FBE8EC 0%, transparent 50%),
+    radial-gradient(100% 100% at 50% 100%, #EDE0FA 0%, transparent 60%),
+    linear-gradient(160deg,var(--bg-1),var(--bg-2));
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* hạt ánh sáng (grain) cho cảm giác film */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.35;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+
+/* ánh sáng bay (orbs) */
+.orb{position:fixed;border-radius:50%;filter:blur(80px);opacity:.4;pointer-events:none;z-index:0}
+.orb-1{width:280px;height:280px;background:radial-gradient(circle,var(--violet),transparent 70%);top:-80px;right:-60px;animation:drift1 18s ease-in-out infinite}
+.orb-2{width:220px;height:220px;background:radial-gradient(circle,var(--rose),transparent 70%);bottom:10%;left:-50px;opacity:.3;animation:drift2 22s ease-in-out infinite}
+@keyframes drift1{50%{transform:translate(-30px,40px) scale(1.1)}}
+@keyframes drift2{50%{transform:translate(20px,-30px) scale(1.15)}}
+
+/* ============================================================
+   PAGER — vuốt ngang đổi trang
+   ============================================================ */
+.pager{
+  position:relative;z-index:1;max-width:440px;margin:0 auto;
+  display:flex;width:100%;height:100dvh;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.pager::-webkit-scrollbar{display:none}
+.page{position:relative;flex:0 0 100%;height:100dvh;overflow-y:auto;overflow-x:hidden;scroll-snap-align:start;scrollbar-width:none}
+.page::-webkit-scrollbar{display:none}
+.page-inner{padding:18px 16px 110px}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.top{display:flex;align-items:center;justify-content:space-between;padding:6px 4px 22px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{
+  width:36px;height:36px;border-radius:50%;
+  background:conic-gradient(from 180deg,var(--violet),var(--rose),var(--gold),var(--violet));
+  display:grid;place-items:center;
+  box-shadow:0 4px 14px rgba(183,156,230,.4),inset 0 0 0 2px rgba(255,255,255,.6);
+  position:relative;
+}
+.brand-mark::after{
+  content:"";position:absolute;inset:3px;border-radius:50%;background:var(--card-solid);
+}
+.brand-mark svg{position:relative;z-index:2;color:var(--violet-d);width:16px;height:16px}
+.brand-text{display:flex;flex-direction:column;line-height:1.1}
+.brand-text b{font-family:var(--serif);font-weight:500;font-size:18px;letter-spacing:.06em;color:var(--ink)}
+.brand-text small{font-size:9.5px;color:var(--ink-mute);letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-top:2px}
+
+.greet{text-align:right;line-height:1.3}
+.greet .h{font-family:var(--serif);font-style:italic;font-weight:400;font-size:18px;color:var(--ink)}
+.greet .h b{font-weight:500;color:var(--violet-xd);font-style:normal}
+.greet .d{font-size:10.5px;color:var(--ink-mute);letter-spacing:.04em;margin-top:3px;font-weight:500}
+
+/* ============================================================
+   AFFIRMATION CARD — lời khen mỗi ngày
+   ============================================================ */
+.affirm{
+  position:relative;
+  border-radius:var(--r);
+  padding:22px 22px 20px;
+  margin-bottom:14px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.85) 0%,rgba(248,242,252,.65) 100%);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  backdrop-filter:blur(20px);
+}
+.affirm::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 80% at 100% 0%,rgba(229,164,199,.18),transparent 60%),
+             radial-gradient(80% 60% at 0% 100%,rgba(183,156,230,.16),transparent 60%);
+}
+.affirm-leaf{
+  position:absolute;top:-30px;right:-20px;width:140px;height:140px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.6),transparent 70%);pointer-events:none;
+}
+.affirm-tag{
+  position:relative;display:inline-flex;align-items:center;gap:6px;
+  font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--violet-xd);font-weight:700;margin-bottom:10px;
+}
+.affirm-tag svg{width:11px;height:11px;color:var(--violet-d)}
+.affirm-text{
+  position:relative;font-family:var(--serif);
+  font-weight:400;font-size:21px;line-height:1.4;letter-spacing:-.005em;
+  color:var(--ink);
+  transition:opacity .3s,transform .3s;
+}
+.affirm-text em{font-style:italic;color:var(--violet-xd);font-weight:500}
+.affirm-by{
+  position:relative;display:flex;align-items:center;justify-content:space-between;margin-top:14px;
+  padding-top:12px;border-top:1px dashed var(--line-2);
+}
+.affirm-by .who{font-size:10.5px;color:var(--ink-mute);font-weight:500;letter-spacing:.02em}
+.affirm-by .who b{color:var(--ink-soft);font-weight:600}
+.affirm-by .refresh{
+  width:30px;height:30px;border-radius:50%;border:1px solid var(--line-2);
+  background:rgba(255,255,255,.6);cursor:pointer;
+  display:grid;place-items:center;color:var(--violet-d);
+  transition:transform .4s var(--ease);
+}
+.affirm-by .refresh:active{transform:rotate(180deg) scale(.9)}
+.affirm-by .refresh svg{width:14px;height:14px}
+
+/* ============================================================
+   HERO — gợi ý theo chu kỳ
+   ============================================================ */
+.hero{
+  position:relative;border-radius:var(--r);padding:18px 18px 16px;margin-bottom:14px;
+  background:
+    linear-gradient(135deg,rgba(183,156,230,.18),rgba(229,164,199,.14));
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow:var(--shadow-sm);
+  overflow:hidden;
+}
+.hero-glow{
+  position:absolute;right:-50px;top:-50px;width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.5),transparent 70%);pointer-events:none;
+}
+.eyebrow{
+  display:flex;align-items:center;gap:7px;
+  font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--violet-xd);font-weight:700;margin-bottom:10px;
+}
+.eyebrow .pulse{width:6px;height:6px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 0 var(--rose);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(229,164,199,.5)}50%{box-shadow:0 0 0 6px rgba(229,164,199,0)}}
+.hero h2{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.38;letter-spacing:-.01em;margin-bottom:14px;color:var(--ink)}
+.hero h2 em{font-style:italic;color:var(--rose-d);font-weight:500}
+.hero-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.meta-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11px;font-weight:500;color:var(--ink-soft);
+  padding:5px 10px;border-radius:30px;background:rgba(255,255,255,.6);
+  border:1px solid rgba(255,255,255,.8);
+}
+.meta-chip b{color:var(--violet-xd);font-weight:700}
+.meta-chip .dot{width:5px;height:5px;border-radius:50%;background:var(--violet)}
+
+/* ============================================================
+   RINGS — 3 vòng tròn tiến độ
+   ============================================================ */
+.rings{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.ring-card{
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:var(--r-sm);
+  padding:14px 8px 12px;text-align:center;cursor:pointer;
+  box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(12px);
+  transition:transform .35s var(--ease),box-shadow .3s;
+  position:relative;overflow:hidden;
+}
+.ring-card:active{transform:scale(.96)}
+.ring-card::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(80% 60% at 50% 0%,rgba(255,255,255,.5),transparent 70%);
+}
+.ring-wrap{position:relative;width:78px;height:78px;margin:0 auto 8px}
+.ring-wrap svg{transform:rotate(-90deg)}
+.ring-center{position:absolute;inset:0;display:grid;place-content:center;text-align:center;line-height:1}
+.ring-center .big{font-family:var(--serif);font-weight:500;font-size:19px;letter-spacing:-.02em;color:var(--ink)}
+.ring-center .sub{font-size:8.5px;color:var(--ink-mute);margin-top:2px;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.ring-card .lbl{display:flex;align-items:center;justify-content:center;gap:5px;font-size:12px;font-weight:600;color:var(--ink)}
+.ring-card .lbl svg{width:12px;height:12px}
+.ring-card .unit{font-size:10px;color:var(--ink-mute);margin-top:2px;font-weight:500}
+
+/* ============================================================
+   PANEL chung (chart, body, journal)
+   ============================================================ */
+.panel{
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:var(--r);padding:16px 16px 14px;
+  box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(12px);
+  margin-bottom:12px;
+}
+.panel-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding:0 2px}
+.panel-h .t{font-family:var(--serif);font-weight:500;font-size:16px;color:var(--ink)}
+.panel-h .t em{font-style:italic;color:var(--violet-d);font-weight:400}
+.panel-h .legend{display:flex;gap:11px;flex-wrap:wrap}
+.lg{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--ink-mute);font-weight:600}
+.lg i{width:8px;height:8px;border-radius:3px}
+.chart{width:100%;height:140px;display:block;margin-top:2px}
+.chart-x{display:flex;justify-content:space-between;padding:4px 6px 0;font-size:9px;color:var(--ink-faint);font-weight:600;letter-spacing:.04em}
+
+/* ============================================================
+   CYCLE STRIP — pha chu kỳ
+   ============================================================ */
+.cycle-card{
+  background:linear-gradient(135deg,rgba(229,164,199,.18),rgba(183,156,230,.14));
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:var(--r);padding:18px 18px 14px;margin-bottom:14px;
+  box-shadow:var(--shadow-sm);position:relative;overflow:hidden;
+}
+.cycle-card::after{
+  content:"";position:absolute;bottom:-40px;right:-40px;width:140px;height:140px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.4),transparent 70%);pointer-events:none;
+}
+.cycle-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.cycle-head .label{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--violet-xd);font-weight:700}
+.cycle-head .phase{font-family:var(--serif);font-style:italic;font-size:22px;font-weight:500;color:var(--ink);margin-top:4px;line-height:1.1}
+.cycle-head .phase b{color:var(--rose-d);font-style:italic;font-weight:600}
+.cycle-head .day{text-align:right;line-height:1}
+.cycle-head .day .big{font-family:var(--serif);font-size:32px;font-weight:500;color:var(--violet-xd);letter-spacing:-.02em;line-height:1}
+.cycle-head .day .big s{font-size:14px;color:var(--ink-mute);text-decoration:none;font-weight:400;margin-left:1px}
+.cycle-head .day .lbl{font-size:9.5px;color:var(--ink-mute);letter-spacing:.12em;text-transform:uppercase;margin-top:4px;font-weight:600}
+.cycle-strip{display:flex;gap:5px;margin-top:6px;position:relative;z-index:2}
+.ph{flex:1;text-align:center;padding:8px 2px;border-radius:12px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.6);transition:.3s}
+.ph .pn{font-size:9px;color:var(--ink-mute);letter-spacing:.04em;font-weight:600;text-transform:uppercase}
+.ph .pd{font-size:11px;color:var(--ink-soft);margin-top:3px;font-weight:600}
+.ph.on{background:linear-gradient(135deg,var(--rose),var(--violet));border-color:transparent;box-shadow:0 4px 14px rgba(229,164,199,.4);transform:translateY(-1px)}
+.ph.on .pn{color:#fff;font-weight:700}
+.ph.on .pd{color:#fff;font-weight:700}
+.ph.past{opacity:.5}
+
+/* ============================================================
+   BODY METRICS — cân nặng, vòng eo, hông
+   ============================================================ */
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.metric{
+  background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7);
+  border-radius:18px;padding:11px 8px 9px;text-align:center;
+  transition:transform .3s var(--ease);
+}
+.metric .ic{width:30px;height:30px;border-radius:50%;margin:0 auto 7px;display:grid;place-items:center;background:var(--violet-bg);color:var(--violet-d)}
+.metric .ic svg{width:14px;height:14px}
+.metric .vl{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--ink);letter-spacing:-.02em}
+.metric .vl s{font-size:9px;color:var(--ink-mute);text-decoration:none;font-weight:400;margin-left:1px}
+.metric .lbl{font-size:9px;color:var(--ink-mute);letter-spacing:.04em;text-transform:uppercase;margin-top:3px;font-weight:600}
+.metric .delta{font-size:9px;font-weight:700;margin-top:4px;color:var(--mint-d)}
+.metric .delta.bad{color:var(--rose-d)}
+
+/* ============================================================
+   MOOD — tâm trạng
+   ============================================================ */
+.mood-row{display:flex;justify-content:space-between;margin-top:4px;margin-bottom:10px}
+.mood-pill{
+  flex:1;text-align:center;padding:9px 4px;border-radius:14px;
+  background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7);
+  margin:0 2px;font-size:18px;cursor:pointer;transition:.25s;
+}
+.mood-pill.on{background:linear-gradient(135deg,var(--violet),var(--rose));border-color:transparent;box-shadow:0 4px 12px rgba(183,156,230,.35);transform:translateY(-2px) scale(1.05)}
+.mood-row.with-labels .mood-pill{padding:9px 2px 5px}
+.mood-row.with-labels .ml{font-size:8.5px;color:var(--ink-mute);margin-top:2px;font-weight:600;letter-spacing:.02em}
+.mood-pill.on .ml{color:#fff}
+
+/* ============================================================
+   STREAK — gamification
+   ============================================================ */
+.streak-card{
+  background:linear-gradient(135deg,#2A1F3D 0%,#5A4E6F 50%,#8B6FCF 100%);
+  border-radius:var(--r);padding:18px 18px 16px;margin-bottom:14px;
+  color:#fff;position:relative;overflow:hidden;
+  box-shadow:0 14px 40px rgba(42,31,61,.35);
+}
+.streak-card::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(60% 80% at 100% 0%,rgba(229,164,199,.3),transparent 60%),
+    radial-gradient(60% 60% at 0% 100%,rgba(212,181,116,.2),transparent 60%);
+  pointer-events:none;
+}
+.streak-card::after{
+  content:"";position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);pointer-events:none;
+}
+.streak-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;position:relative;z-index:2}
+.streak-head .left{display:flex;align-items:center;gap:9px}
+.streak-flame{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,#FFB37C,#E5A4C7,#B79CE6);
+  display:grid;place-items:center;
+  box-shadow:0 4px 16px rgba(229,164,199,.5);
+  animation:flameGlow 3s ease-in-out infinite;
+}
+.streak-flame svg{width:18px;height:18px;color:#fff;filter:drop-shadow(0 0 4px rgba(255,255,255,.5))}
+@keyframes flameGlow{50%{box-shadow:0 6px 22px rgba(229,164,199,.8);transform:scale(1.06)}}
+.streak-head .lbl{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.7)}
+.streak-head .big{font-family:var(--serif);font-size:24px;font-weight:500;margin-top:1px;letter-spacing:-.02em}
+.streak-head .big b{font-weight:600;color:#FFD8E8}
+.streak-head .right{text-align:right}
+.streak-tier{font-size:10px;font-weight:600;color:#FFD8E8;background:rgba(255,255,255,.12);padding:4px 10px;border-radius:30px;border:1px solid rgba(255,216,232,.25)}
+.streak-tier b{color:#fff}
+
+.streak-week{display:flex;gap:6px;position:relative;z-index:2;margin-bottom:8px}
+.day-cell{
+  flex:1;height:42px;border-radius:12px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.day-cell .dow{font-size:8.5px;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.day-cell .dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.15);margin-top:4px}
+.day-cell.done{background:linear-gradient(135deg,rgba(229,164,199,.35),rgba(183,156,230,.3));border-color:rgba(255,255,255,.25)}
+.day-cell.done .dot{background:#FFD8E8;box-shadow:0 0 6px #FFD8E8}
+.day-cell.today{border:1.5px solid #FFD8E8;box-shadow:0 0 12px rgba(255,216,232,.4)}
+.day-cell.today .dot{background:#FFD8E8;box-shadow:0 0 8px #FFD8E8}
+.streak-next{font-size:11px;color:rgba(255,255,255,.7);font-weight:500;position:relative;z-index:2}
+.streak-next b{color:#FFD8E8;font-weight:700}
+
+/* ============================================================
+   SECTION T + DETAIL CARDS (page 2)
+   ============================================================ */
+.section-t{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);font-weight:700;margin:6px 4px 14px}
+.detail{display:flex;flex-direction:column;gap:12px}
+.dcard{
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:var(--r);padding:16px 16px 14px;cursor:pointer;
+  box-shadow:var(--shadow-sm);backdrop-filter:blur(12px);
+  transition:transform .35s var(--ease),box-shadow .3s;
+  position:relative;overflow:hidden;
+}
+.dcard:active{transform:scale(.985)}
+.dcard .bar{position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:0 3px 3px 0}
+.dcard.v .bar{background:linear-gradient(var(--violet),var(--violet-d))}
+.dcard.r .bar{background:linear-gradient(var(--rose),var(--rose-d))}
+.dcard.m .bar{background:linear-gradient(var(--mint),var(--mint-d))}
+.dhead{display:flex;align-items:center;gap:11px;margin-bottom:12px}
+.dhead .ic{width:36px;height:36px;border-radius:13px;display:grid;place-items:center;flex:none}
+.dhead .ic.v{background:var(--violet-bg);color:var(--violet-d)}
+.dhead .ic.r{background:var(--rose-bg);color:var(--rose-d)}
+.dhead .ic.m{background:rgba(159,217,194,.16);color:var(--mint-d)}
+.dhead .ic svg{width:18px;height:18px}
+.dhead .meta{flex:1;min-width:0}
+.dhead .meta .nm{font-family:var(--serif);font-weight:500;font-size:15px;color:var(--ink)}
+.dhead .meta .vl{font-size:10.5px;color:var(--ink-mute);margin-top:2px;font-weight:500}
+.tap-hint{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;color:var(--violet-xd);background:var(--violet-bg);padding:4px 9px;border-radius:30px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.tap-hint svg{width:10px;height:10px}
+
+.rows{display:flex;flex-direction:column;gap:7px}
+.row{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;padding:7px 11px;border-radius:13px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.6)}
+.row .nme{color:var(--ink-soft);font-weight:500}
+.row .amt{font-family:var(--serif);font-size:14px;color:var(--ink);font-weight:600}
+.note{
+  margin-top:11px;display:flex;align-items:flex-start;gap:9px;
+  font-size:11.5px;line-height:1.45;color:var(--ink-soft);
+  padding:10px 12px;border-radius:14px;
+  font-style:italic;font-family:var(--serif);font-weight:400;
+}
+.note .heart{color:var(--rose-d);flex:none;font-style:normal;font-size:13px}
+.note.v{background:rgba(183,156,230,.08)}
+.note.r{background:rgba(229,164,199,.10)}
+.note.m{background:rgba(159,217,194,.12)}
+.note b{color:var(--ink);font-weight:600;font-style:normal}
+
+/* ============================================================
+   BOTTOM SHEET — nhập liệu
+   ============================================================ */
+.scrim{position:fixed;inset:0;background:rgba(42,31,61,.36);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .3s;z-index:60}
+.scrim.show{opacity:1;pointer-events:auto}
+.sheet{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  max-width:440px;margin:0 auto;
+  background:linear-gradient(180deg,#FFFCFE 0%,#FBF6FD 100%);
+  border-radius:32px 32px 0 0;
+  box-shadow:0 -20px 60px rgba(107,79,168,.28);
+  transform:translateY(102%);transition:transform .42s var(--ease);
+  padding:10px 16px calc(22px + env(safe-area-inset-bottom));
+  max-height:90vh;overflow-y:auto;
+  border-top:1px solid rgba(255,255,255,.8);
+}
+.sheet.show{transform:translateY(0)}
+.grip{width:44px;height:5px;border-radius:3px;background:var(--line-2);margin:4px auto 14px}
+.sheet-h{font-family:var(--serif);font-size:21px;font-weight:500;margin:0 4px 14px;display:flex;align-items:center;gap:9px;color:var(--ink)}
+.sheet-h svg{width:18px;height:18px;color:var(--violet-d)}
+.tabs{display:flex;gap:6px;background:var(--bg-3);padding:4px;border-radius:16px;margin-bottom:16px}
+.tab{flex:1;text-align:center;padding:9px 4px;border-radius:12px;font-size:12px;font-weight:600;color:var(--ink-mute);border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;transition:.25s;font-family:var(--sans)}
+.tab.on{background:#fff;color:var(--violet-xd);box-shadow:0 3px 10px rgba(108,74,158,.12)}
+.tab svg{width:12px;height:12px}
+.pane{display:none}.pane.on{display:block}
+
+.field{margin-bottom:13px}
+.field label{display:block;font-size:11px;color:var(--ink-mute);margin:0 4px 6px;letter-spacing:.02em;font-weight:600}
+.inputs{display:flex;gap:8px}
+.inp{width:100%;font-family:var(--sans);font-size:13.5px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px 13px;outline:none;transition:.2s}
+.inp:focus{border-color:var(--violet);box-shadow:0 0 0 4px var(--violet-bg)}
+.inp.num{flex:0 0 96px;text-align:center;font-family:var(--serif);font-size:15px;font-weight:500}
+.inp.date{font-family:var(--serif)}
+.add{flex:0 0 48px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--violet),var(--rose-d));color:#fff;font-size:22px;cursor:pointer;display:grid;place-items:center;transition:transform .3s var(--ease);box-shadow:0 4px 12px rgba(183,156,230,.4)}
+.add:active{transform:scale(.9)}
+.list{display:flex;flex-direction:column;gap:7px;margin-bottom:6px}
+.litem{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px 13px;font-size:13px}
+.litem .l-n{color:var(--ink-soft);font-weight:500}
+.litem .r-side{display:flex;align-items:center;gap:10px}
+.litem .l-c{font-family:var(--serif);font-size:14px;color:var(--ink);font-weight:600}
+.del{border:none;background:none;color:var(--ink-faint);cursor:pointer;padding:2px;line-height:0;transition:.2s}
+.del:active{color:var(--rose-d);transform:scale(1.2)}
+.empty{text-align:center;color:var(--ink-faint);font-size:12px;padding:14px;font-style:italic;font-family:var(--serif)}
+.sum{display:flex;align-items:baseline;justify-content:space-between;margin:14px 4px 4px;padding-top:13px;border-top:1px solid var(--line)}
+.sum .sl{font-size:11.5px;color:var(--ink-mute);font-weight:600;letter-spacing:.04em}
+.sum .sv{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--violet-xd)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.save{
+  width:100%;border:none;border-radius:18px;padding:15px;margin-top:16px;
+  font-family:var(--sans);font-size:14px;font-weight:700;color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,var(--violet),var(--rose-d));
+  box-shadow:0 8px 22px rgba(183,156,230,.4);
+  transition:transform .3s var(--ease);letter-spacing:.04em;
+}
+.save:active{transform:scale(.97)}
+
+/* ============================================================
+   PAGE DOTS — điều hướng
+   ============================================================ */
+.dots{
+  position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:30;
+  display:flex;gap:6px;align-items:center;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(16px);
+  padding:8px 10px;border-radius:30px;box-shadow:var(--shadow-lg);
+  border:1px solid rgba(255,255,255,.9);
+}
+.dot-item{display:flex;align-items:center;gap:7px;padding:6px 13px;border-radius:22px;font-size:11px;color:var(--ink-mute);cursor:pointer;font-weight:600;border:none;background:none;transition:.3s;font-family:var(--sans)}
+.dot-item .d{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);transition:.35s var(--ease)}
+.dot-item.on{color:var(--violet-xd);background:var(--violet-bg)}
+.dot-item.on .d{background:var(--violet-d);width:16px;border-radius:4px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="pager" id="pager">
+
+  <!-- ====================================================
+       PAGE 1 — Tổng quan
+       ==================================================== -->
+  <section class="page" id="page1"><div class="page-inner">
+
+    <div class="top">
+      <div class="brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l2.5 6.5L21 9l-5.5 4.5L17 21l-5-3.5L7 21l1.5-7.5L3 9l6.5-.5z"/>
+          </svg>
+        </div>
+        <div class="brand-text"><b>Élysée</b><small>Bien-être</small></div>
+      </div>
+      <div class="greet">
+        <div class="h">Bonjour, <b>Anh</b></div>
+        <div class="d" id="today">—</div>
+      </div>
+    </div>
+
+    <!-- Affirmation -->
+    <div class="affirm">
+      <div class="affirm-leaf"></div>
+      <div class="affirm-tag">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.7 4.5L18 8l-4 3.5 1.5 5L12 14l-3.5 2.5 1.5-5L6 8l4.3-1.5z"/></svg>
+        Lời nhắn hôm nay
+      </div>
+      <div class="affirm-text" id="affirmText">Hôm nay bạn đã <em>đủ tốt</em> rồi — cơ thể đang cảm ơn bạn vì đã chăm mỗi ngày.</div>
+      <div class="affirm-by">
+        <div class="who">Dành riêng cho <b>Anh</b> · <span id="affirmDate">17.06</span></div>
+        <button class="refresh" aria-label="Đổi lời nhắn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero gợi ý theo chu kỳ -->
+    <div class="hero">
+      <div class="hero-glow"></div>
+      <div class="eyebrow"><span class="pulse"></span>Hôm nay cơ thể bạn</div>
+      <h2 id="heroH2">Bạn đang ở <em>pha hoàng thể</em> — giữ nước nhẹ là bình thường, chưa phải tăng mỡ.</h2>
+      <div class="hero-meta">
+        <span class="meta-chip"><span class="dot"></span>Cơ thể: <b>Giữ nước nhẹ</b></span>
+        <span class="meta-chip">Tâm trạng: <b>Êm đềm</b></span>
+      </div>
+    </div>
+
+    <!-- Streak -->
+    <div class="streak-card">
+      <div class="streak-head">
+        <div class="left">
+          <div class="streak-flame">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c2 3 4 4.5 4 8a4 4 0 01-8 0c0-2 1-3 1-4-2 1.5-3 3.5-3 6a6 6 0 0012 0c0-5-4-7-6-10z"/></svg>
+          </div>
+          <div>
+            <div class="lbl">Streak</div>
+            <div class="big"><b id="streakDays">5</b> ngày liên tục</div>
+          </div>
+        </div>
+        <div class="right">
+          <span class="streak-tier">Cấp <b id="streakTier">Hồng</b></span>
+        </div>
+      </div>
+      <div class="streak-week" id="streakWeek"></div>
+      <div class="streak-next">Còn <b id="streakNext">2</b> ngày nữa để lên hạng <b id="streakNextTier">Tím Lavender</b> ✦</div>
+    </div>
+
+    <!-- Rings -->
+    <div class="rings">
+      <div class="ring-card" data-open="intake">
+        <div class="ring-wrap">
+          <svg width="78" height="78" viewBox="0 0 78 78">
+            <circle cx="39" cy="39" r="32" fill="none" stroke="rgba(183,156,230,.15)" stroke-width="8"/>
+            <circle id="ring-intake" cx="39" cy="39" r="32" fill="none" stroke="url(#gv)" stroke-width="8" stroke-linecap="round"/>
+            <defs><linearGradient id="gv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B79CE6"/><stop offset="1" stop-color="#8B6FCF"/></linearGradient></defs>
+          </svg>
+          <div class="ring-center"><div class="big" id="c-intake">0</div><div class="sub">kcal</div></div>
+        </div>
+        <div class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="#8B6FCF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11a7 7 0 0114 0c0 5-7 10-7 10S5 16 5 11z"/><circle cx="12" cy="11" r="2.4"/></svg>Nạp</div>
+        <div class="unit" id="u-intake">/ 1800</div>
+      </div>
+      <div class="ring-card" data-open="burn">
+        <div class="ring-wrap">
+          <svg width="78" height="78" viewBox="0 0 78 78">
+            <circle cx="39" cy="39" r="32" fill="none" stroke="rgba(159,217,194,.18)" stroke-width="8"/>
+            <circle id="ring-burn" cx="39" cy="39" r="32" fill="none" stroke="url(#gm)" stroke-width="8" stroke-linecap="round"/>
+            <defs><linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9FD9C2"/><stop offset="1" stop-color="#6FBF9D"/></linearGradient></defs>
+          </svg>
+          <div class="ring-center"><div class="big" id="c-burn">0</div><div class="sub">kcal</div></div>
+        </div>
+        <div class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="#6FBF9D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 4 4.5 4 8a4 4 0 01-8 0c0-2 1-3 1-4-2 1.5-3 3.5-3 6a6 6 0 0012 0c0-5-4-7-6-10z"/></svg>Đốt</div>
+        <div class="unit" id="u-burn">/ 500</div>
+      </div>
+      <div class="ring-card" data-open="cycle">
+        <div class="ring-wrap">
+          <svg width="78" height="78" viewBox="0 0 78 78">
+            <circle cx="39" cy="39" r="32" fill="none" stroke="rgba(229,164,199,.18)" stroke-width="8"/>
+            <circle id="ring-cycle" cx="39" cy="39" r="32" fill="none" stroke="url(#gr)" stroke-width="8" stroke-linecap="round"/>
+            <defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E5A4C7"/><stop offset="1" stop-color="#C57BAA"/></linearGradient></defs>
+          </svg>
+          <div class="ring-center"><div class="big" id="c-cycle">0</div><div class="sub" id="c-cycle-sub">ngày</div></div>
+        </div>
+        <div class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="#C57BAA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>Chu kỳ</div>
+        <div class="unit" id="u-cycle">vòng 28</div>
+      </div>
+    </div>
+
+    <!-- Body metrics -->
+    <div class="panel">
+      <div class="panel-h"><span class="t">Số đo <em>hôm nay</em></span></div>
+      <div class="metric-grid">
+        <div class="metric">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 100 8 4 4 0 000-8z"/><path d="M5 21c0-3 3-6 7-6s7 3 7 6"/></svg></div>
+          <div class="vl" id="m-weight">58.5<s>kg</s></div>
+          <div class="lbl">Cân nặng</div>
+          <div class="delta" id="d-weight">−0.3 tuần này</div>
+        </div>
+        <div class="metric">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/></svg></div>
+          <div class="vl" id="m-waist">72<s>cm</s></div>
+          <div class="lbl">Vòng eo</div>
+          <div class="delta" id="d-waist">−1 cm tuần này</div>
+        </div>
+        <div class="metric">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20c0-4 3-7 6-7s6 3 6 7"/><circle cx="12" cy="8" r="4"/></svg></div>
+          <div class="vl" id="m-hip">96<s>cm</s></div>
+          <div class="lbl">Vòng hông</div>
+          <div class="delta" id="d-hip">Không đổi</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cycle card -->
+    <div class="cycle-card">
+      <div class="cycle-head">
+        <div>
+          <div class="label">Chu kỳ kinh nguyệt</div>
+          <div class="phase" id="phaseName">Pha <b>hoàng thể</b></div>
+        </div>
+        <div class="day">
+          <div class="big" id="cycleDay">14<s>/28</s></div>
+          <div class="lbl">Ngày thứ</div>
+        </div>
+      </div>
+      <div class="cycle-strip" id="cycle-strip"></div>
+    </div>
+
+    <!-- Mood -->
+    <div class="panel">
+      <div class="panel-h"><span class="t">Tâm trạng <em>hôm nay</em></span></div>
+      <div class="mood-row with-labels" id="mood-row">
+        <div class="mood-pill on" data-mood="1">🌸<div class="ml">Bình yên</div></div>
+        <div class="mood-pill" data-mood="2">🌷<div class="ml">Vui</div></div>
+        <div class="mood-pill" data-mood="3">🌿<div class="ml">Mệt</div></div>
+        <div class="mood-pill" data-mood="4">🌧<div class="ml">Buồn</div></div>
+        <div class="mood-pill" data-mood="5">⚡<div class="ml">Căng</div></div>
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="panel">
+      <div class="panel-h">
+        <span class="t">Nhịp <em>7 ngày</em></span>
+        <div class="legend">
+          <span class="lg"><i style="background:#B79CE6"></i>Nạp</span>
+          <span class="lg"><i style="background:#9FD9C2"></i>Đốt</span>
+          <span class="lg"><i style="background:#E5A4C7"></i>Chu kỳ</span>
+        </div>
+      </div>
+      <svg class="chart" id="chart" viewBox="0 0 400 140" preserveAspectRatio="none"></svg>
+      <div class="chart-x" id="chart-x"></div>
+    </div>
+
+  </div></section>
+
+  <!-- ====================================================
+       PAGE 2 — Chi tiết
+       ==================================================== -->
+  <section class="page" id="page2"><div class="page-inner">
+
+    <div class="top">
+      <div class="brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l2.5 6.5L21 9l-5.5 4.5L17 21l-5-3.5L7 21l1.5-7.5L3 9l6.5-.5z"/>
+          </svg>
+        </div>
+        <div class="brand-text"><b>Élysée</b><small>Bien-être</small></div>
+      </div>
+      <div class="greet">
+        <div class="h" style="font-style:normal;font-size:15px;color:var(--ink);font-weight:600">Chi tiết</div>
+        <div class="d">vuốt về tổng quan</div>
+      </div>
+    </div>
+
+    <div class="section-t">Thông số đã nhập · cần chú ý</div>
+    <div class="detail">
+      <div class="dcard v" data-open="intake"><span class="bar"></span>
+        <div class="dhead">
+          <div class="ic v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11a7 7 0 0114 0c0 5-7 10-7 10S5 16 5 11z"/><circle cx="12" cy="11" r="2.4"/></svg></div>
+          <div class="meta"><div class="nm">Calo nạp</div><div class="vl" id="m-intake">—</div></div>
+          <span class="tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4v16h16v-7"/><path d="M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4z"/></svg>Sửa</span>
+        </div>
+        <div class="rows" id="rows-intake"></div>
+        <div class="note v"><span class="heart">♥</span><span id="note-intake">Bạn đang chăm mình rất đều — <b>tiếp tục nhé</b>.</span></div>
+      </div>
+
+      <div class="dcard m" data-open="burn"><span class="bar"></span>
+        <div class="dhead">
+          <div class="ic m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 4 4.5 4 8a4 4 0 01-8 0c0-2 1-3 1-4-2 1.5-3 3.5-3 6a6 6 0 0012 0c0-5-4-7-6-10z"/></svg></div>
+          <div class="meta"><div class="nm">Calo đốt</div><div class="vl" id="m-burn">—</div></div>
+          <span class="tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4v16h16v-7"/><path d="M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4z"/></svg>Sửa</span>
+        </div>
+        <div class="rows" id="rows-burn"></div>
+        <div class="note m"><span class="heart">♥</span><span id="note-burn">Mỗi vận động nhỏ đều <b>đáng yêu lắm</b> — cơ thể bạn cảm ơn.</span></div>
+      </div>
+
+      <div class="dcard r" data-open="cycle"><span class="bar"></span>
+        <div class="dhead">
+          <div class="ic r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg></div>
+          <div class="meta"><div class="nm">Chu kỳ kinh nguyệt</div><div class="vl" id="m-cycle">—</div></div>
+          <span class="tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4v16h16v-7"/><path d="M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4z"/></svg>Sửa</span>
+        </div>
+        <div class="cycle-strip" id="cycle-strip-2"></div>
+        <div class="note r"><span class="heart">♥</span><span id="note-cycle">Bạn đang ở <b>pha hoàng thể</b> — hãy nghỉ ngơi và uống đủ nước.</span></div>
+      </div>
+    </div>
+
+    <!-- Sync view: dữ liệu của Phúc (ẩn nếu chưa nhập) -->
+    <div id="sync-view-phuc" style="display:none;margin-top:18px;background:var(--card);border:1px solid rgba(255,255,255,.8);border-radius:var(--r);padding:15px 16px 12px;box-shadow:var(--shadow-sm);backdrop-filter:blur(12px)"></div>
+  </div></section>
+
+</div>
+
+<!-- ====================================================
+     PAGE DOTS
+     ==================================================== -->
+<div class="dots">
+  <button class="dot-item on" data-go="0"><span class="d"></span>Tổng quan</button>
+  <button class="dot-item" data-go="1"><span class="d"></span>Chi tiết</button>
+</div>
+
+<!-- ====================================================
+     BOTTOM SHEET (nhập liệu)
+     ==================================================== -->
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet">
+  <div class="grip"></div>
+  <div class="sheet-h">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+    Nhập thông tin
+  </div>
+  <div class="tabs">
+    <button class="tab" data-tab="intake"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11a7 7 0 0114 0c0 5-7 10-7 10S5 16 5 11z"/></svg>Nạp</button>
+    <button class="tab" data-tab="burn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 4 4.5 4 8a4 4 0 01-8 0c0-2 1-3 1-4-2 1.5-3 3.5-3 6a6 6 0 0012 0c0-5-4-7-6-10z"/></svg>Đốt</button>
+    <button class="tab" data-tab="cycle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>Chu kỳ</button>
+    <button class="tab" data-tab="profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>Hồ sơ</button>
+  </div>
+
+  <div class="pane" data-pane="intake">
+    <div class="field"><label>Thêm món ăn <span style="font-size:10px;color:var(--ink-mute);font-weight:500;font-family:var(--serif)">(kcal = per đơn vị)</span></label>
+      <div class="inputs"><input class="inp" id="in-intake-name" placeholder="Gõ để tìm: Phở, Trà sữa…" autocomplete="off"><input class="inp num" id="in-intake-cal" type="number" inputmode="numeric" placeholder="kcal/1 đơn vị" title="Nhập kcal CHO MỖI đơn vị, không phải tổng"><button class="add" id="add-intake">+</button></div>
+      <div id="food-search-results" style="margin-top:6px;max-height:180px;overflow-y:auto"></div>
+      <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+        <span style="font-size:11px;color:var(--ink-mute);white-space:nowrap;font-weight:600">× Số lượng</span>
+        <input class="inp num" id="in-intake-qty" type="number" inputmode="decimal" value="1" min="0.5" step="0.5" style="width:80px;flex:0 0 80px">
+        <span id="intake-qty-hint" style="font-size:11px;color:var(--violet-xd);font-family:var(--serif);font-weight:600"></span>
+      </div></div>
+    <div class="list" id="list-intake"></div>
+    <div class="sum"><span class="sl">Tổng nạp hôm nay</span><span class="sv" id="sum-intake">0 kcal</span></div>
+  </div>
+
+  <div class="pane" data-pane="burn">
+    <div class="field"><label>Thêm hoạt động</label>
+      <div class="inputs"><input class="inp" id="in-burn-name" placeholder="Gõ để tìm: Yoga, Chạy bộ…" autocomplete="off"><input class="inp num" id="in-burn-cal" type="number" inputmode="numeric" placeholder="kcal"><button class="add" id="add-burn">+</button></div>
+      <div id="act-search-results" style="margin-top:6px;max-height:180px;overflow-y:auto"></div>
+      <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+        <span style="font-size:11px;color:var(--ink-mute);white-space:nowrap;font-weight:600">Số phút</span>
+        <input class="inp num" id="in-burn-mins" type="number" inputmode="numeric" value="30" style="width:80px;flex:0 0 80px">
+      </div></div>
+    <div class="list" id="list-burn"></div>
+    <div class="sum"><span class="sl">Tổng đốt hôm nay</span><span class="sv" id="sum-burn">0 kcal</span></div>
+  </div>
+
+  <div class="pane" data-pane="cycle">
+    <div class="field"><label>Ngày bắt đầu kỳ gần nhất</label><input class="inp date" id="in-cycle-start" type="date"></div>
+    <div class="grid2">
+      <div class="field"><label>Độ dài chu kỳ (ngày)</label><input class="inp num" style="width:100%" id="in-cycle-len" type="number" inputmode="numeric" value="28"></div>
+      <div class="field"><label>Số ngày hành kinh</label><input class="inp num" style="width:100%" id="in-cycle-period" type="number" inputmode="numeric" value="5"></div>
+    </div>
+    <div style="font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);font-weight:700;margin:14px 0 10px">Cơ thể sáng nay</div>
+    <div class="field"><label>Cân nặng (kg)</label>
+      <input class="inp num" style="width:100%" id="in-body-weight" type="number" inputmode="decimal" placeholder="58.5"></div>
+    <div class="grid2">
+      <div class="field"><label>Vòng eo (cm)</label>
+        <input class="inp num" style="width:100%" id="in-body-waist" type="number" inputmode="decimal" placeholder="72"></div>
+      <div class="field"><label>Vòng hông (cm)</label>
+        <input class="inp num" style="width:100%" id="in-body-hip" type="number" inputmode="decimal" placeholder="96"></div>
+    </div>
+    <div style="font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);font-weight:700;margin:14px 0 10px">Cảm giác hôm nay</div>
+    <div class="grid2">
+      <div class="field"><label>Năng lượng · <span id="lbl-feel-energy">5</span>/10</label>
+        <input type="range" id="in-feel-energy" min="1" max="10" value="5" style="width:100%;cursor:pointer;accent-color:#8B6FCF"></div>
+      <div class="field"><label>Tâm trạng · <span id="lbl-feel-mood">5</span>/10</label>
+        <input type="range" id="in-feel-mood" min="1" max="10" value="5" style="width:100%;cursor:pointer;accent-color:#C57BAA"></div>
+    </div>
+    <div class="field"><label>Thèm ăn · <span id="lbl-feel-craving">5</span>/10</label>
+      <input type="range" id="in-feel-craving" min="1" max="10" value="5" style="width:100%;cursor:pointer;accent-color:#6FBF9D"></div>
+    <button class="save" id="save-cycle">Lưu chu kỳ & cơ thể</button>
+  </div>
+
+  <div class="pane" data-pane="profile">
+    <div class="field"><label>Tên</label>
+      <input class="inp" id="in-p-name" placeholder="Tên bạn"></div>
+    <div class="grid2">
+      <div class="field"><label>Tuổi</label>
+        <input class="inp num" style="width:100%" id="in-p-age" type="number" inputmode="numeric" placeholder="25"></div>
+      <div class="field"><label>Chiều cao (cm)</label>
+        <input class="inp num" style="width:100%" id="in-p-height" type="number" inputmode="numeric" placeholder="160"></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label>Cân hiện tại (kg)</label>
+        <input class="inp num" style="width:100%" id="in-p-weight" type="number" inputmode="decimal" placeholder="58"></div>
+      <div class="field"><label>Cân mục tiêu (kg)</label>
+        <input class="inp num" style="width:100%" id="in-p-weightGoal" type="number" inputmode="decimal" placeholder="54"></div>
+    </div>
+    <div class="field"><label>Mức vận động nền</label>
+      <select class="inp" id="in-p-actLevel" style="cursor:pointer">
+        <option value="sedentary">Ít vận động (văn phòng)</option>
+        <option value="light">Nhẹ (1–2 buổi/tuần)</option>
+        <option value="moderate">Vừa (3–4 buổi/tuần)</option>
+        <option value="active">Nhiều (5–6 buổi/tuần)</option>
+        <option value="very_active">Rất nhiều (mỗi ngày)</option>
+      </select></div>
+    <div class="field"><label>Mục tiêu</label>
+      <select class="inp" id="in-p-goal" style="cursor:pointer">
+        <option value="lose_fat">Giảm mỡ (−500 kcal/ngày)</option>
+        <option value="lose_weight">Giảm cân (−600 kcal/ngày)</option>
+        <option value="tone">Săn chắc cơ thể (−200 kcal/ngày)</option>
+        <option value="maintain">Giữ dáng (cân bằng)</option>
+        <option value="gain_muscle">Tăng cơ (+300 kcal/ngày)</option>
+      </select></div>
+    <div class="field"><label>Thời hạn đạt mục tiêu (tuần)</label>
+      <input class="inp num" style="width:100%" id="in-p-deadline" type="number" inputmode="numeric" placeholder="12"></div>
+    <button class="save" id="save-profile">Lưu hồ sơ</button>
+    <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--line)">
+      <div style="font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);font-weight:700;margin-bottom:10px">Đồng bộ với Phúc</div>
+      <div style="display:flex;gap:8px">
+        <button onclick="exportSync()" style="flex:1;padding:11px 8px;border-radius:14px;border:1.5px solid var(--line-2);background:#fff;color:var(--ink-soft);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans)">⬆ Xuất dữ liệu</button>
+        <button onclick="importSync()" style="flex:1;padding:11px 8px;border-radius:14px;border:1.5px solid var(--line-2);background:#fff;color:var(--ink-soft);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans)">⬇ Nhận từ Phúc</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="save" id="save-sheet">Xong</button>
+</div>
+
+<!-- <script src="Anh_calo.js"></script>  (logic chính — uncomment khi có file) -->
+<script>
+/* ============================================================
+   ÉLYSÉE — micro JS để mẫu trông sống động ngay khi mở file
+   (Giữ nguyên Anh_calo.js cho logic chính; đoạn dưới chỉ là
+   demo UX cho dữ liệu chưa có).
+   ============================================================ */
+
+(function(){
+  const $ = s => document.querySelector(s);
+  const $$ = s => document.querySelectorAll(s);
+
+  // Lời nhắn mỗi ngày — xoay theo ngày + ngẫu nhiên
+  const affirmations = [
+    'Hôm nay bạn đã <em>đủ tốt</em> rồi — cơ thể đang cảm ơn bạn vì đã chăm mỗi ngày.',
+    'Sự <em>kiên trì</em> âm thầm này đang tạo nên điều kỳ diệu — bạn không cô đơn.',
+    'Mỗi bước nhỏ hôm nay là <em>một lời yêu thương</em> gửi đến cơ thể bạn.',
+    'Bạn xứng đáng được <em>nghỉ ngơi</em> và yêu chiều bản thân nhiều hơn.',
+    'Cơ thể bạn đang <em>thay đổi</em> theo từng nhịp — hãy tin vào hành trình này.',
+    'Hôm nay, bạn chọn <em>dịu dàng</em> với mình. Đó đã là đủ.',
+    'Ánh sáng rồi sẽ đến — <em>hãy nhẹ nhàng</em> với bản thân lúc này.',
+    'Bạn <em>mạnh mẽ hơn</em> bạn nghĩ — nhưng cũng được phép mềm yếu.'
+  ];
+
+  function pickAffirm(){
+    const d = new Date();
+    const seed = d.getDate() + d.getMonth()*31;
+    return affirmations[seed % affirmations.length];
+  }
+  function setAffirm(html){ $('#affirmText').innerHTML = html; }
+  setAffirm(pickAffirm());
+  const affDate = new Date();
+  const dateStr = (affDate.getDate()<10?'0':'') + affDate.getDate() + '.' + (affDate.getMonth()+1<10?'0':'') + (affDate.getMonth()+1);
+  const adEl = $('#affirmDate'); if (adEl) adEl.textContent = dateStr;
+
+  document.querySelector('.refresh')?.addEventListener('click', ()=>{
+    const cur = $('#affirmText').innerHTML;
+    let next; do { next = pickAffirm(); } while(next === cur);
+    const el = $('#affirmText');
+    el.style.opacity='0'; el.style.transform='translateY(4px)';
+    setTimeout(()=>{
+      el.innerHTML = next;
+      el.style.opacity='1'; el.style.transform='translateY(0)';
+    }, 200);
+  });
+
+  // Streak week render
+  const days = ['T2','T3','T4','T5','T6','T7','CN'];
+  const today = new Date().getDay(); // 0=CN
+  const weekEl = $('#streakWeek');
+  if (weekEl){
+    const doneDays = [0,1,2,3,4]; // 5 ngày đã qua
+    days.forEach((d,i)=>{
+      const cell = document.createElement('div');
+      cell.className = 'day-cell';
+      if (doneDays.includes(i)) cell.classList.add('done');
+      const dowIdx = (i + 1) % 7; // T2..CN
+      if (dowIdx === ((today+6)%7)) cell.classList.add('today');
+      cell.innerHTML = `<div class="dow">${d}</div><div class="dot"></div>`;
+      weekEl.appendChild(cell);
+    });
+    $('#streakDays').textContent = '5';
+    $('#streakNext').textContent = '2';
+    $('#streakNextTier').textContent = 'Tím Lavender';
+    $('#streakTier').textContent = 'Hồng';
+  }
+
+  // Cycle strip
+  const phases = [
+    {n:'Kinh', d:'1-5'}, {n:'Nang', d:'6-13'}, {n:'Rụng', d:'14-16'}, {n:'Hoàng thể', d:'17-28'}
+  ];
+  const stripEl = $('#cycle-strip');
+  const stripEl2 = $('#cycle-strip-2');
+  const renderCycle = (target) => {
+    if (!target) return;
+    target.innerHTML = '';
+    phases.forEach((p,i)=>{
+      const ph = document.createElement('div');
+      ph.className = 'ph';
+      if (i===3){ ph.classList.add('on'); }
+      else if (i<3){ ph.classList.add('past'); }
+      ph.innerHTML = `<div class="pn">${p.n}</div><div class="pd">${p.d}</div>`;
+      target.appendChild(ph);
+    });
+  };
+  renderCycle(stripEl); if (stripEl2) renderCycle(stripEl2);
+
+  // Mood picker
+  $$('#mood-row .mood-pill').forEach(p=>{
+    p.addEventListener('click', ()=>{
+      $$('#mood-row .mood-pill').forEach(x=>x.classList.remove('on'));
+      p.classList.add('on');
+    });
+  });
+
+  // Date greeting
+  const todayStr = new Date().toLocaleDateString('vi-VN', {weekday:'long', day:'numeric', month:'long'});
+  $('#today').textContent = todayStr;
+
+  // Demo rings (nếu JS chính chưa ghi đè)
+  setTimeout(()=>{
+    const cIntake = $('#c-intake'); if (cIntake && cIntake.textContent === '0') cIntake.textContent='1240';
+    const cBurn = $('#c-burn'); if (cBurn && cBurn.textContent === '0') cBurn.textContent='385';
+    const cCycle = $('#c-cycle'); if (cCycle && cCycle.textContent === '0') cCycle.textContent='17';
+    if ($('#c-cycle-sub')) $('#c-cycle-sub').textContent='ngày';
+
+    const r1 = $('#ring-intake'); if (r1 && !r1.style.strokeDasharray) {
+      r1.style.strokeDasharray = `${2*Math.PI*32}`;
+      r1.style.strokeDashoffset = `${2*Math.PI*32 * (1 - 0.69)}`;
+    }
+    const r2 = $('#ring-burn'); if (r2 && !r2.style.strokeDasharray) {
+      r2.style.strokeDasharray = `${2*Math.PI*32}`;
+      r2.style.strokeDashoffset = `${2*Math.PI*32 * (1 - 0.77)}`;
+    }
+    const r3 = $('#ring-cycle'); if (r3 && !r3.style.strokeDasharray) {
+      r3.style.strokeDasharray = `${2*Math.PI*32}`;
+      r3.style.strokeDashoffset = `${2*Math.PI*32 * (1 - 0.61)}`;
+    }
+  }, 100);
+
+  // Demo chart (SVG)
+  setTimeout(()=>{
+    const svg = $('#chart');
+    if (!svg || svg.innerHTML) return;
+    const W=400, H=140, padX=10, padY=14;
+    const intake  = [1480,1620,1380,1550,1480,1340,1240];
+    const burn    = [320, 410, 280, 380, 460, 510, 385];
+    const cycle   = [0,   0,   0,   0,   0,   0,   1800];
+
+    const mkPath = (arr) => {
+      const max = Math.max(...intake) * 1.1;
+      return arr.map((v,i)=>{
+        const x = padX + i*(W-2*padX)/(arr.length-1);
+        const y = H - padY - (v/max)*(H-2*padY);
+        return (i===0?'M':'L') + x.toFixed(1)+','+y.toFixed(1);
+      }).join(' ');
+    };
+
+    const defs = `
+      <defs>
+        <linearGradient id="fa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B79CE6" stop-opacity=".4"/><stop offset="1" stop-color="#B79CE6" stop-opacity="0"/></linearGradient>
+        <linearGradient id="fb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD9C2" stop-opacity=".4"/><stop offset="1" stop-color="#9FD9C2" stop-opacity="0"/></linearGradient>
+        <linearGradient id="fc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E5A4C7" stop-opacity=".4"/><stop offset="1" stop-color="#E5A4C7" stop-opacity="0"/></linearGradient>
+      </defs>`;
+    const area = (d) => d + ` L${W-padX},${H-padY} L${padX},${H-padY} Z`;
+    svg.innerHTML = defs +
+      `<path d="${area(mkPath(intake))}" fill="url(#fa)"/>` +
+      `<path d="${area(mkPath(burn))}" fill="url(#fb)"/>` +
+      `<path d="${mkPath(intake)}" fill="none" stroke="#8B6FCF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>` +
+      `<path d="${mkPath(burn)}" fill="none" stroke="#6FBF9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>` +
+      `<path d="${mkPath(cycle)}" fill="none" stroke="#C57BAA" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 3"/>`;
+
+    const xEl = $('#chart-x'); if (xEl){
+      const dow = ['T2','T3','T4','T5','T6','T7','CN'];
+      xEl.innerHTML = dow.map(d=>`<span>${d}</span>`).join('');
+    }
+  }, 150);
+
+  // Demo rows (dashboard) + danh sách trong sheet nhập liệu
+  setTimeout(()=>{
+    // Dữ liệu mẫu — khớp với vòng tròn (nạp 1240 · đốt 385)
+    const intakeItems = [
+      ['Phở bò', 420], ['Cà phê sữa đá', 180], ['Salad ức gà', 320],
+      ['Sữa chua Hy Lạp', 150], ['Snack trái cây', 120], ['Hạt điều', 50]
+    ];
+    const burnItems = [
+      ['Yoga 45 phút', 180], ['Đi bộ 30 phút', 105], ['Nhảy dây 15 phút', 100]
+    ];
+    const sum = arr => arr.reduce((t,[,c])=>t+c, 0);
+
+    const delSvg = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>';
+
+    const ri = $('#rows-intake'); if (ri && !ri.innerHTML){
+      ri.innerHTML = intakeItems.map(([n,c])=>
+        `<div class="row"><span class="nme">${n}</span><span class="amt">${c} kcal</span></div>`).join('');
+    }
+    const rb = $('#rows-burn'); if (rb && !rb.innerHTML){
+      rb.innerHTML = burnItems.map(([n,c])=>
+        `<div class="row"><span class="nme">${n}</span><span class="amt">${c} kcal</span></div>`).join('');
+    }
+
+    // Danh sách trong sheet "Nạp" / "Đốt" — để trang nhập liệu cũng có dữ liệu
+    const li = $('#list-intake'); if (li && !li.innerHTML){
+      li.innerHTML = intakeItems.map(([n,c])=>
+        `<div class="litem"><span class="l-n">${n}</span><span class="r-side"><span class="l-c">${c} kcal</span><button class="del" aria-label="Xóa">${delSvg}</button></span></div>`).join('');
+    }
+    const lb = $('#list-burn'); if (lb && !lb.innerHTML){
+      lb.innerHTML = burnItems.map(([n,c])=>
+        `<div class="litem"><span class="l-n">${n}</span><span class="r-side"><span class="l-c">${c} kcal</span><button class="del" aria-label="Xóa">${delSvg}</button></span></div>`).join('');
+    }
+    const si = $('#sum-intake'); if (si) si.textContent = sum(intakeItems) + ' kcal';
+    const sb = $('#sum-burn');   if (sb) sb.textContent = sum(burnItems) + ' kcal';
+
+    // Đồng bộ với bạn đời (Phúc) — dữ liệu mẫu
+    const sv = $('#sync-view-phuc');
+    if (sv && !sv.innerHTML){
+      sv.style.display = 'block';
+      sv.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <div style="font-size:13px;font-weight:600;color:var(--ink)">Phúc · hôm nay</div>
+          <span style="font-size:11px;color:var(--ink-mute);font-weight:600">đã đồng bộ · 19.06</span>
+        </div>
+        <div style="display:flex;gap:10px">
+          <div style="flex:1;text-align:center"><div style="font-family:var(--serif);font-size:20px;font-weight:600;color:var(--ink)">2.150</div><div style="font-size:10px;color:var(--ink-mute);letter-spacing:.04em">NẠP (kcal)</div></div>
+          <div style="flex:1;text-align:center"><div style="font-family:var(--serif);font-size:20px;font-weight:600;color:var(--ink)">540</div><div style="font-size:10px;color:var(--ink-mute);letter-spacing:.04em">ĐỐT (kcal)</div></div>
+          <div style="flex:1;text-align:center"><div style="font-family:var(--serif);font-size:20px;font-weight:600;color:var(--ink)">14</div><div style="font-size:10px;color:var(--ink-mute);letter-spacing:.04em">STREAK</div></div>
+        </div>`;
+    }
+  }, 200);
+
+  // Pager swipe + dots
+  const pager = $('#pager');
+  const dots = $$('.dot-item');
+  dots.forEach(d => d.addEventListener('click', ()=>{
+    const i = +d.dataset.go;
+    pager.scrollTo({left: i * pager.clientWidth, behavior:'smooth'});
+  }));
+  pager.addEventListener('scroll', ()=>{
+    const idx = Math.round(pager.scrollLeft / pager.clientWidth);
+    dots.forEach((d,j)=>d.classList.toggle('on', j===idx));
+  });
+
+  // Sheet open/close
+  const sheet = $('#sheet'), scrim = $('#scrim');
+  const openSheet = (tab) => {
+    sheet.classList.add('show'); scrim.classList.add('show');
+    if (tab){
+      $$('.tab').forEach(t=>t.classList.toggle('on', t.dataset.tab===tab));
+      $$('.pane').forEach(p=>p.classList.toggle('on', p.dataset.pane===tab));
+    }
+  };
+  const closeSheet = ()=>{ sheet.classList.remove('show'); scrim.classList.remove('show'); };
+  scrim.addEventListener('click', closeSheet);
+  $$('.tab').forEach(t => t.addEventListener('click', ()=>{
+    $$('.tab').forEach(x=>x.classList.remove('on')); t.classList.add('on');
+    $$('.pane').forEach(p=>p.classList.remove('on'));
+    const pane = document.querySelector(`.pane[data-pane="${t.dataset.tab}"]`);
+    if (pane) pane.classList.add('on');
+  }));
+  $$('[data-open]').forEach(el => el.addEventListener('click', ()=> openSheet(el.dataset.open)));
+  $('#save-sheet')?.addEventListener('click', closeSheet);
+
+  // Range labels
+  ['energy','mood','craving'].forEach(k=>{
+    const r = $('#in-feel-'+k); if (!r) return;
+    const lbl = $('#lbl-feel-'+k);
+    r.addEventListener('input', ()=> lbl.textContent = r.value);
+  });
+
+  document.addEventListener('keydown', e => { if (e.key==='Escape') closeSheet(); });
+
+  window.exportSync = window.exportSync || function(){ alert('Đã xuất dữ liệu demo.'); };
+  window.importSync = window.importSync || function(){ alert('Đã nhận dữ liệu từ Phúc (demo).'); };
+})();
+</script>
+</body>
+</html>
