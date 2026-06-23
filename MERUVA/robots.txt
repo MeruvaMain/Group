@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /design/
-
-Sitemap: https://meruva.vn/sitemap.xml
