@@ -1,0 +1,2361 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MERUVA Stay — Studio cho thuê · Summit Living · 654A Quang Trung, Gò Vấp</title>
+<meta name="description" content="MERUVA Stay — 9 studio khép kín mặt tiền Quang Trung, Gò Vấp. 17m² · 21m² · 24m². Tiện nghi đầy đủ. Ưu đãi đặt trước.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://meruva.vn/MeruvaStay/MeruvaStay.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meruva.vn/MeruvaStay/MeruvaStay.html">
+<meta property="og:title" content="MERUVA Stay — Studio cho thuê · Gò Vấp">
+<meta property="og:description" content="9 studio khép kín mặt tiền Quang Trung, Gò Vấp. 17m² · 21m² · 24m². Tiện nghi đầy đủ.">
+<meta property="og:image" content="https://meruva.vn/og/og-stay.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MERUVA Stay — Studio cho thuê · Gò Vấp">
+<meta name="twitter:description" content="9 studio khép kín mặt tiền Quang Trung, Gò Vấp. Tiện nghi đầy đủ.">
+<meta name="twitter:image" content="https://meruva.vn/og/og-stay.png">
+<link rel="alternate" hreflang="vi" href="https://meruva.vn/MeruvaStay/MeruvaStay.html">
+<link rel="alternate" hreflang="en" href="https://meruva.vn/MeruvaStay/MeruvaStay.html">
+<link rel="alternate" hreflang="x-default" href="https://meruva.vn/MeruvaStay/MeruvaStay.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+<link rel="icon" type="image/png" href="../logo-mark.png">
+<link rel="apple-touch-icon" href="../logo-mark.png">
+<link rel="stylesheet" href="../meruva-shared.css?v=6">
+
+<style>
+/* --- FIX: page-loader không bao giờ block scroll/click --- */
+#page-loader { pointer-events:none; }
+
+/* --- STAY ACCENT -------------------------- */
+:root {
+  --stay: #3D9E8C;
+  --stay-light: #60C0AC;
+  --stay-dark: #2A6E60;
+  --stay-glow: rgba(61,158,140,0.12);
+  --stay-glow2: rgba(61,158,140,0.25);
+  --stay-line: rgba(61,158,140,0.3);
+}
+
+/* --- HERO --------------------------------- */
+.stay-hero {
+  min-height:100vh;
+  display:flex;align-items:flex-end;
+  padding:0 3rem 6rem;
+  position:relative;overflow:hidden;
+}
+.stay-hero-bg {
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#020c0a 0%,#0a0a0a 60%);
+}
+.stay-hero-radial {
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(61,158,140,.18),transparent);
+}
+.stay-hero-grid-line {
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);
+  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);
+}
+.particles {
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;
+}
+.particle {
+  position:absolute;width:2px;height:2px;
+  background:var(--stay);border-radius:50%;
+  opacity:0;animation:particleFloat var(--dur,8s) var(--delay,0s) linear infinite;
+}
+@keyframes particleFloat {
+  0%{opacity:0;transform:translateY(100vh) scale(0)}
+  10%{opacity:.5}
+  90%{opacity:.2}
+  100%{opacity:0;transform:translateY(-20vh) scale(1) translateX(var(--drift,20px))}
+}
+.stay-hero-inner {
+  position:relative;z-index:2;
+  max-width:1400px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;
+}
+.stay-eyebrow {
+  font-size:.65rem;letter-spacing:.45em;text-transform:uppercase;
+  color:var(--stay);
+  display:flex;align-items:center;gap:.7rem;margin-bottom:2rem;
+  font-weight:500;
+}
+.stay-hero-title {
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(4rem,8vw,7.5rem);
+  line-height:.9;letter-spacing:-.02em;color:var(--cream);
+}
+.stay-hero-title em {
+  font-style:italic;font-weight:600;
+  color:var(--stay);display:block;
+}
+.stay-hero-right {align-self:flex-end}
+.stay-hero-desc {
+  font-size:1.1rem;color:var(--silver);line-height:1.8;
+  max-width:420px;margin-bottom:2.5rem;
+}
+.stay-coming-note {
+  font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,.22);margin-bottom:2rem;
+}
+
+/* --- PRICE BADGE ------------------------- */
+.stay-price-badge {
+  border:1px solid var(--stay);padding:1.8rem 2.2rem;
+  margin-bottom:2.5rem;position:relative;overflow:hidden;
+}
+.stay-price-badge::before {
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(61,158,140,.07),transparent);
+  pointer-events:none;
+}
+.stay-price-badge-label {
+  font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--stay);margin-bottom:1.4rem;font-weight:600;
+}
+.stay-price-grid {
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(61,158,140,.15);
+  border:1px solid rgba(61,158,140,.2);margin-bottom:1.2rem;
+}
+.stay-price-cell {
+  background:rgba(8,14,12,.85);padding:1rem 1.2rem;text-align:center;
+}
+.stay-price-cell.featured {
+  background:rgba(61,158,140,.1);
+}
+.stay-price-size {
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--silver-soft);margin-bottom:.4rem;
+}
+.stay-price-cell.featured .stay-price-size { color:var(--stay); }
+.stay-price-val {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.45rem;color:var(--cream);font-weight:600;line-height:1;
+}
+.stay-price-cell.featured .stay-price-val { color:var(--stay); }
+.stay-price-mo {
+  font-size:.62rem;color:var(--silver-soft);margin-top:.25rem;
+}
+.stay-early-bird {
+  font-size:.8rem;color:var(--gold);
+  display:flex;align-items:center;gap:.5rem;
+}
+.btn-stay {
+  display:inline-flex;align-items:center;gap:.8rem;
+  padding:1.1rem 2.4rem;background:var(--stay);border-color:var(--stay);
+  color:var(--black);text-decoration:none;
+  font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;font-weight:700;
+  transition:all .4s;border:1px solid var(--stay);
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%);
+  cursor:pointer;font-family:'Inter',sans-serif;
+}
+.btn-stay:hover {
+  background:transparent;color:var(--stay);transform:translateX(4px);
+}
+
+/* --- INFO STRIP --------------------------- */
+.stay-info-strip {
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:var(--black-2);
+  border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+}
+.stay-info-cell {
+  padding:2rem 2.5rem;border-right:1px solid var(--line-soft);
+  display:flex;flex-direction:column;gap:.4rem;
+}
+.stay-info-cell:last-child {border-right:none}
+.stay-ic-label {
+  font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--silver-soft);
+}
+.stay-ic-val {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;color:var(--cream);font-weight:500;
+}
+.stay-ic-sub { font-size:.75rem;color:var(--silver-soft);margin-top:.2rem; }
+
+/* --- SECTIONS ----------------------------- */
+.stay-section {
+  padding:5rem 3rem;
+  position:relative;z-index:1;
+}
+.stay-section-dark { background:var(--black); }
+.stay-section-mid { background:var(--black-2); }
+.stay-section .container { max-width:1400px;margin:0 auto; }
+.stay-section-label {
+  font-size:.65rem;letter-spacing:.45em;text-transform:uppercase;
+  color:var(--stay);font-weight:500;
+  display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem;
+}
+.stay-section-label::before { content:"?";font-size:.55rem; }
+.stay-section-title {
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.2rem,4vw,4rem);
+  line-height:1;letter-spacing:-.01em;color:var(--cream);
+  margin-bottom:2.5rem;
+}
+.stay-section-title em { font-style:italic;font-weight:500;color:var(--stay); }
+.stay-section-hint {
+  color:var(--silver-soft);font-size:.8rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  margin-top:.4rem;margin-bottom:3rem;
+}
+
+/* --- FLOOR EXPLORER ----------------------- */
+.stay-floor-explorer {
+  display:grid;grid-template-columns:1fr 170px;
+  gap:0;margin-top:3.5rem;align-items:start;
+}
+.stay-fse-stack { position:relative;height:460px;max-width:500px; }
+.sfl {
+  position:absolute;top:0;left:0;width:80%;
+  cursor:pointer;
+  transition:transform .65s cubic-bezier(.22,1,.36,1),
+             opacity .5s,filter .5s;
+}
+.sfl[data-floor="4"] { transform:translate(0px,0px);z-index:4; }
+.sfl[data-floor="3"] { transform:translate(24px,88px);z-index:3; }
+.sfl[data-floor="2"] { transform:translate(48px,176px);z-index:2; }
+.sfl[data-floor="1"] { transform:translate(72px,264px);z-index:1; }
+.sfl[data-floor="4"].sfl-active { transform:translate(0px,-18px);z-index:10; }
+.sfl[data-floor="3"].sfl-active { transform:translate(24px,70px);z-index:10; }
+.sfl[data-floor="2"].sfl-active { transform:translate(48px,158px);z-index:10; }
+.sfl[data-floor="1"].sfl-active { transform:translate(72px,246px);z-index:10; }
+.sfl.sfl-dim { opacity:.18;filter:saturate(.2); }
+.sfl-inner {
+  border:1px solid rgba(200,220,230,.12);
+  background:rgba(8,14,12,.7);
+  transition:border-color .5s,box-shadow .5s;
+  overflow:hidden;
+}
+.sfl-active .sfl-inner {
+  border-color:rgba(61,158,140,.7);
+  box-shadow:0 0 40px rgba(61,158,140,.22),0 16px 60px rgba(0,0,0,.7);
+}
+.stay-fse-nav {
+  height:460px;display:flex;flex-direction:column;
+  justify-content:space-between;padding:22px 0 4px;
+}
+.sfn-item {
+  display:flex;align-items:center;gap:.9rem;
+  cursor:pointer;padding:.25rem 0;
+  transition:all .3s;opacity:.3;
+}
+.sfn-item:hover { opacity:.65; }
+.sfn-item.sfn-active { opacity:1; }
+.sfn-line {
+  width:32px;height:1px;background:var(--gold);
+  transition:width .4s,background .35s;flex-shrink:0;
+}
+.sfn-item.sfn-active .sfn-line { width:52px;background:var(--stay); }
+.sfn-label {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:600;color:var(--gold);
+  transition:color .35s,transform .35s;white-space:nowrap;
+}
+.sfn-item.sfn-active .sfn-label { color:var(--stay);transform:translateX(4px); }
+.stay-floor-panel { margin-top:2.5rem;min-height:100px; }
+.sfp-inner {
+  display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .45s .12s,transform .45s .12s cubic-bezier(.22,1,.36,1);
+  pointer-events:none;
+}
+.sfp-inner.sfp-vis { opacity:1;transform:translateY(0);pointer-events:auto; }
+.sfp-tag {
+  font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--stay);border:1px solid rgba(61,158,140,.45);
+  padding:.65rem 1.1rem;white-space:nowrap;flex-shrink:0;
+}
+.sfp-title {
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:1.5rem;color:var(--cream);margin-bottom:.3rem;
+}
+.sfp-sub { font-size:.78rem;color:var(--silver-soft);margin-bottom:1.4rem;letter-spacing:.08em; }
+.sfp-rooms {
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);
+}
+.sfp-room {
+  background:var(--black);padding:1.1rem 1.4rem;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  transition:background .3s;
+}
+.sfp-room:hover { background:var(--black-3); }
+.sfp-room-n { font-size:.82rem;color:var(--cream);font-weight:500; }
+.sfp-room-d { font-size:.72rem;color:var(--silver-soft); }
+
+/* --- ROOM TYPE CARDS ---------------------- */
+.stay-types-grid {
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;margin-top:2.5rem;
+}
+.stay-type-card {
+  padding:3rem;background:var(--black-2);border:1px solid var(--line-soft);
+  position:relative;overflow:hidden;transition:border-color .4s;
+}
+.stay-type-card:hover { border-color:rgba(61,158,140,.35); }
+.stay-type-name {
+  font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--stay);font-weight:600;margin-bottom:.8rem;
+}
+.stay-type-size {
+  font-family:'Cormorant Garamond',serif;
+  font-size:4rem;font-weight:300;color:var(--cream);line-height:1;margin-bottom:2rem;
+}
+.stay-type-list {
+  list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem;
+}
+.stay-type-list li {
+  font-size:.9rem;color:var(--silver);
+  display:flex;align-items:center;gap:.8rem;
+}
+.stay-type-list li::before { content:"—";color:var(--stay);font-size:.7rem;flex-shrink:0; }
+.stay-type-avail {
+  font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--silver-soft);margin-bottom:1.5rem;
+}
+.stay-type-footer {
+  padding-top:1.5rem;border-top:1px solid var(--line-soft);
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+}
+.stay-type-price-label {
+  font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--silver-soft);margin-bottom:.3rem;
+}
+.stay-type-price-val {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;color:var(--stay);font-weight:600;
+}
+.stay-type-btn {
+  font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--stay);
+  border:1px solid var(--stay);padding:.6rem 1.2rem;
+  cursor:pointer;transition:all .3s;white-space:nowrap;background:transparent;
+  font-family:'Inter',sans-serif;
+}
+.stay-type-btn:hover { background:var(--stay);color:var(--black); }
+.stay-type-badge {
+  position:absolute;top:1.2rem;right:1.2rem;
+  font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--stay);border:1px solid rgba(61,158,140,.5);padding:.3rem .7rem;
+}
+
+/* --- AMENITIES GRID ----------------------- */
+.stay-amenities-grid {
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:1px;margin-top:2.5rem;background:var(--line-soft);
+}
+.stay-amenity {
+  background:var(--black);padding:2.6rem 1.5rem 2.2rem;
+  display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center;
+  transition:background .35s,box-shadow .35s;
+  position:relative;overflow:hidden;
+}
+.stay-amenity::after {
+  content:"";position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--stay);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s cubic-bezier(.22,1,.36,1);
+}
+.stay-amenity:hover { background:rgba(61,158,140,.05); }
+.stay-amenity:hover::after { transform:scaleX(1); }
+.stay-amenity-icon {
+  width:44px;height:44px;color:var(--stay);
+  opacity:.7;transition:opacity .3s,transform .3s;
+}
+.stay-amenity:hover .stay-amenity-icon { opacity:1;transform:translateY(-2px); }
+.stay-amenity-name {
+  font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--silver);line-height:1.5;font-weight:500;
+}
+
+/* --- LOCATION ----------------------------- */
+.stay-location-grid {
+  display:grid;grid-template-columns:1fr 1.5fr;gap:4rem;
+  margin-top:2.5rem;align-items:start;
+}
+.stay-location-points { display:flex;flex-direction:column;gap:1.8rem; }
+.stay-location-point { display:flex;gap:1.2rem;align-items:flex-start; }
+.stay-location-dot {
+  width:6px;height:6px;border-radius:50%;background:var(--stay);
+  flex-shrink:0;margin-top:.5rem;
+}
+.stay-loc-title { font-size:.88rem;color:var(--cream);font-weight:500;margin-bottom:.25rem; }
+.stay-loc-desc { font-size:.78rem;color:var(--silver-soft); }
+.stay-map-box {
+  height:300px;border:1px solid var(--line-soft);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  gap:1rem;color:var(--silver-soft);
+  background:var(--black-2);position:relative;overflow:hidden;
+}
+.stay-map-box::before {
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(61,158,140,.06),transparent);
+}
+
+/* --- PROCESS STEPS ------------------------ */
+.stay-steps-wrap {
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:2rem;margin-top:3rem;position:relative;
+}
+.stay-steps-wrap::before {
+  content:"";position:absolute;top:27px;
+  left:calc(10% + 1rem);right:calc(10% + 1rem);
+  height:1px;background:var(--line-soft);z-index:0;
+}
+.stay-step {
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:.9rem;position:relative;z-index:1;
+}
+.stay-step-num {
+  width:56px;height:56px;border:1px solid var(--stay);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;
+  color:var(--stay);background:var(--black);
+}
+.stay-step-title {
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream);font-weight:600;
+}
+.stay-step-note { font-size:.75rem;color:var(--silver-soft);line-height:1.6; }
+
+/* --- BOOKING FORM ------------------------- */
+.stay-form-grid { display:grid;grid-template-columns:1fr 1fr;gap:0 2.5rem; }
+.cf-row { margin-bottom:2rem; }
+.cf-row label {
+  display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--silver-soft);margin-bottom:.7rem;
+}
+.cf-row input,.cf-row textarea {
+  width:100%;background:transparent;
+  border:none;border-bottom:1px solid var(--line-soft);
+  color:var(--cream);font-family:'Inter',sans-serif;font-size:1rem;
+  padding:.7rem 0;outline:none;transition:border-color .3s;
+}
+.cf-row input:focus,.cf-row textarea:focus { border-bottom-color:var(--stay); }
+.cf-row input:invalid:not(:placeholder-shown) { border-bottom-color:rgba(220,60,60,.5); }
+.cf-row textarea { resize:none;min-height:80px; }
+.stay-select {
+  width:100%;background:transparent;border:none;
+  border-bottom:1px solid var(--line-soft);
+  color:var(--cream);font-family:'Inter',sans-serif;font-size:1rem;
+  padding:.7rem 0;outline:none;transition:border-color .3s;cursor:pointer;
+  -webkit-appearance:none;appearance:none;
+}
+.stay-select:focus { border-bottom-color:var(--stay); }
+.stay-select option { background:var(--black-2);color:var(--cream); }
+.btn-submit-stay {
+  display:inline-flex;align-items:center;gap:.8rem;
+  padding:1.2rem 2.8rem;background:transparent;
+  border:1px solid var(--stay);color:var(--stay);
+  font-family:'Inter',sans-serif;font-size:.7rem;
+  letter-spacing:.3em;text-transform:uppercase;font-weight:600;
+  cursor:pointer;transition:all .4s;
+}
+.btn-submit-stay:hover:not(:disabled) { background:var(--stay);color:var(--black); }
+.btn-submit-stay:disabled { opacity:.5;cursor:not-allowed; }
+
+/* Thank-you state */
+.stay-form-thanks {
+  display:none;flex-direction:column;align-items:flex-start;
+  gap:1.5rem;padding:3rem;border:1px solid var(--stay-line);
+  background:rgba(61,158,140,.04);max-width:700px;
+}
+.stay-form-thanks.visible { display:flex; }
+.stay-form-thanks-icon {
+  width:52px;height:52px;border:1px solid var(--stay);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:var(--stay);
+}
+.stay-form-thanks-title {
+  font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;
+  color:var(--cream);line-height:1.2;
+}
+.stay-form-thanks-title em { font-style:italic;color:var(--stay); }
+.stay-form-thanks-sub { font-size:.85rem;color:var(--silver);line-height:1.7; }
+.stay-form-thanks-note {
+  font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--stay);opacity:.7;
+}
+
+/* --- FAQ ---------------------------------- */
+.stay-faq-list { margin-top:2rem; }
+.stay-faq-item { border-bottom:1px solid var(--line-soft); }
+.stay-faq-item:first-child { border-top:1px solid var(--line-soft); }
+.stay-faq-q {
+  padding:1.5rem 0;display:flex;align-items:center;
+  justify-content:space-between;
+  cursor:pointer;font-size:.95rem;color:var(--cream);font-weight:500;gap:1rem;
+  transition:color .3s;
+}
+.stay-faq-q:hover { color:var(--stay); }
+.stay-faq-toggle {
+  flex-shrink:0;width:24px;height:24px;border:1px solid var(--line-soft);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--stay);font-size:1.1rem;font-weight:300;
+  transition:transform .35s,border-color .3s;
+}
+.stay-faq-item.open .stay-faq-toggle { transform:rotate(45deg);border-color:var(--stay); }
+.stay-faq-a {
+  font-size:.9rem;color:var(--silver);line-height:1.85;
+  max-height:0;overflow:hidden;
+  transition:max-height .45s cubic-bezier(.22,1,.36,1),padding .45s;
+}
+.stay-faq-item.open .stay-faq-a { max-height:200px;padding-bottom:1.5rem; }
+
+/* --- FOOTER ------------------------------- */
+.stay-footer {
+  padding:3rem;
+  border-top:1px solid rgba(255,255,255,.06);
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(192,192,200,.3);
+}
+.stay-footer a {
+  color:var(--stay);text-decoration:none;
+  transition:color .3s;
+}
+.stay-footer a:hover { color:var(--stay-light); }
+
+/* --- RESPONSIVE --------------------------- */
+@media(max-width:1024px) {
+  .stay-hero-inner { grid-template-columns:1fr;gap:3rem; }
+  .stay-hero { padding:0 2rem 4rem;align-items:flex-end; }
+  .stay-info-strip { grid-template-columns:repeat(2,1fr); }
+  .stay-info-cell { border-bottom:1px solid var(--line-soft); }
+  .stay-floor-explorer { grid-template-columns:1fr; }
+  .stay-fse-stack { height:400px;max-width:100%; }
+  .stay-fse-nav {
+    flex-direction:row;height:auto;gap:1.5rem;
+    padding:1.5rem 0 0;justify-content:flex-start;flex-wrap:wrap;
+  }
+  .sfp-inner { grid-template-columns:1fr;gap:1.2rem; }
+  .stay-types-grid { grid-template-columns:repeat(2,1fr); }
+  .stay-location-grid { grid-template-columns:1fr; }
+  .stay-steps-wrap { grid-template-columns:repeat(5,1fr);gap:1rem; }
+}
+@media(max-width:768px) {
+  #navBurger { display:flex !important; }
+
+  /* -- Hero ------------------------------- */
+  .stay-hero { padding:6rem 1.4rem 3.5rem; }
+  .stay-hero-h1 { font-size:clamp(2.4rem,9vw,3.2rem); }
+  .stay-hero-desc { font-size:.92rem; }
+  /* Hero price table compact */
+  .stay-hero-price-table { padding:1.2rem 1.4rem 1rem; }
+  .stay-hero-price-col { padding:.6rem 1rem; }
+  .stay-hero-price-val { font-size:1.7rem; }
+
+  /* -- Info strip ------------------------ */
+  .stay-section { padding:3.5rem 1.4rem; }
+  .stay-info-strip { grid-template-columns:1fr 1fr; }
+  .stay-info-cell { padding:1.5rem 1.2rem; }
+  .stay-info-val { font-size:1.3rem; }
+
+  /* -- Floor plan ------------------------ */
+  .stay-floor-explorer { grid-template-columns:1fr; }
+  .stay-fse-stack { height:280px;max-width:100%; }
+  .sfl[data-floor="4"] { transform:translate(0px,0px)!important; }
+  .sfl[data-floor="3"] { transform:translate(14px,60px)!important; }
+  .sfl[data-floor="2"] { transform:translate(28px,120px)!important; }
+  .sfl[data-floor="1"] { transform:translate(42px,180px)!important; }
+  .sfl[data-floor="4"].sfl-active { transform:translate(0px,-12px)!important; }
+  .sfl[data-floor="3"].sfl-active { transform:translate(14px,48px)!important; }
+  .sfl[data-floor="2"].sfl-active { transform:translate(28px,108px)!important; }
+  .sfl[data-floor="1"].sfl-active { transform:translate(42px,168px)!important; }
+  .stay-fse-nav {
+    flex-direction:row;height:auto;gap:.8rem;
+    padding:1.2rem 0 0;flex-wrap:wrap;
+  }
+  .sfn-line { width:18px; }
+  .sfn-item.sfn-active .sfn-line { width:28px; }
+  .sfn-label { font-size:1.05rem; }
+
+  /* -- Studio type cards ----------------- */
+  .stay-types-grid { grid-template-columns:1fr; gap:1px; }
+  .stay-type-card { padding:2rem 1.4rem; }
+  .stay-type-size { font-size:3rem; margin-bottom:1.5rem; }
+  .stay-type-list { gap:.6rem; margin-bottom:1.5rem; }
+  .stay-type-list li { font-size:.85rem; }
+  /* FIX: footer stack vertically ? button full-width, clears calc fab */
+  .stay-type-footer {
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.9rem;
+  }
+  .stay-type-btn {
+    width:100%;text-align:center;
+    display:block;padding:.8rem;
+  }
+
+  /* -- Amenities ------------------------- */
+  .stay-amenities-grid { grid-template-columns:repeat(2,1fr); gap:1px; }
+  .stay-amenity { padding:1.6rem .8rem 1.4rem; }
+  .stay-amenity-name { font-size:.62rem; letter-spacing:.18em; }
+
+  /* -- Process steps — grid 2-col (num | content) -- */
+  .stay-steps-wrap { grid-template-columns:1fr;gap:0; }
+  .stay-steps-wrap::before { display:none; }
+  .stay-step {
+    display:grid;
+    grid-template-columns:3rem 1fr;
+    grid-template-rows:auto auto;
+    align-items:start;
+    gap:.1rem 1.1rem;
+    text-align:left;
+    padding:1.4rem 0;
+    border-bottom:1px solid var(--line-soft);
+    flex-direction:unset;
+  }
+  .stay-step:last-child { border-bottom:none; }
+  /* Number spans both rows on col 1 */
+  .stay-step-num {
+    grid-column:1; grid-row:1 / 3;
+    width:auto;height:auto;border:none;background:transparent;
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.2rem;font-weight:300;line-height:1;
+    color:var(--stay);padding:0;
+    display:flex;align-items:flex-start;justify-content:flex-start;
+  }
+  .stay-step-title {
+    grid-column:2; grid-row:1;
+    font-size:.8rem;text-align:left;letter-spacing:.18em;margin-bottom:0;
+    min-width:0;
+  }
+  .stay-step-note {
+    grid-column:2; grid-row:2;
+    font-size:.75rem;text-align:left;
+    min-width:0;word-break:break-word;
+  }
+
+  /* -- Location -------------------------- */
+  .stay-location-grid { grid-template-columns:1fr; gap:2rem; }
+
+  /* -- Booking form ---------------------- */
+  .stay-form-grid { grid-template-columns:1fr; }
+  /* Add bottom padding to clear calc fab */
+  .stay-section:last-of-type { padding-bottom:6rem; }
+
+  /* -- Footer ---------------------------- */
+  .stay-footer { flex-direction:column;gap:1rem;text-align:center; }
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LodgingBusiness","name":"MERUVA Stay","description":"9 studio khép kín mặt tiền Quang Trung, Gò Vấp. 17m² · 21m² · 24m². Tiện nghi đầy đủ.","url":"https://meruva.vn/MeruvaStay/MeruvaStay.html","address":{"@type":"PostalAddress","streetAddress":"654A Quang Trung","addressLocality":"Gò Vấp, Ho Chi Minh City","addressCountry":"VN"},"parentOrganization":{"@type":"Organization","name":"MERUVA","url":"https://meruva.vn"},"priceRange":"$$"}
+</script>
+</head>
+<body class="subpage">
+
+<!-- --- CURSOR --- -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- --- GRAIN OVERLAY --- -->
+<svg id="grain-overlay" aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.3;mix-blend-mode:overlay;width:100vw;height:100vh" xmlns="http://www.w3.org/2000/svg">
+  <filter id="grain-noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.045 0"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#grain-noise)"/>
+</svg>
+
+<!-- --- PAGE LOADER --- -->
+<div id="page-loader">
+  <div class="pl-logo-wrap">
+    <div class="pl-wm">MERUVA</div>
+    <div class="pl-tag">Stay</div>
+  </div>
+  <div class="pl-sweep"></div>
+</div>
+
+<!-- --- LANG OVERLAY --- -->
+<div id="lang-overlay"></div>
+
+<!-- --- FLOATING BACK --- -->
+<div id="floating-back">
+  <a href="../index.html" data-i18n="sp_back">Quay lại</a>
+</div>
+
+<!-- --- NAV --- -->
+<nav id="nav">
+  <a href="../index.html" class="logo-wrap">
+    <img class="logo-mark" src="../logo-mark.png" style="mix-blend-mode:screen" alt="MERUVA">
+    <div class="logo-text">MERUVA</div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero-section">Stay</a></li>
+    <li><a href="#stay-floor-section">Sơ đồ tầng</a></li>
+    <li><a href="#stay-rooms-section">Loại phòng</a></li>
+    <li><a href="#stay-form" class="nav-cta" data-i18n="stay_cta">Đặt giữ chỗ</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="vi" onclick="setLang('vi')">VI</button>
+      <span class="lang-sep"></span>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <span class="lang-sep"></span>
+      <button class="lang-btn" data-lang="ja" onclick="setLang('ja')">JA</button>
+    </div>
+    <div class="nav-burger" id="navBurger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- --------------------------------------
+     HERO
+-------------------------------------- -->
+<section class="stay-hero" id="hero-section">
+  <div class="stay-hero-bg"></div>
+  <div class="stay-hero-radial"></div>
+  <div class="stay-hero-grid-line"></div>
+
+  <!-- Gold top-right glow -->
+  <div style="position:absolute;top:-300px;right:-200px;width:800px;height:800px;background:radial-gradient(circle,rgba(61,158,140,.07),transparent 60%);pointer-events:none;z-index:0"></div>
+  <!-- Particles -->
+  <div class="particles" id="particles"></div>
+
+  <div class="stay-hero-inner">
+    <!-- LEFT: Title -->
+    <div>
+      <div class="stay-eyebrow reveal">
+        <svg width="8" height="8" viewBox="0 0 8 8"><polygon points="4,0 8,8 0,8" fill="currentColor"/></svg>
+        <span data-i18n="stay_eyebrow">Summit Living · 654A Quang Trung, Gò Vấp</span>
+      </div>
+      <h1 class="stay-hero-title reveal" style="transition-delay:.1s">
+        <em data-i18n="stay_title_em">Sống tốt.</em>
+        <span data-i18n="stay_title2">Từ đỉnh cao.</span>
+      </h1>
+      <p class="stay-coming-note reveal" style="transition-delay:.18s" data-i18n="stay_coming">
+        Dự kiến hoàn thiện · Tháng 09 / 2026
+      </p>
+    </div>
+
+    <!-- RIGHT: Desc + Price + CTA -->
+    <div class="stay-hero-right reveal" style="transition-delay:.15s">
+      <p class="stay-hero-desc" data-i18n="stay_desc">
+        Studio khép kín mặt tiền Quang Trung, Gò Vấp. Thiết kế tinh gọn, đầy đủ tiện nghi, an ninh tốt. 3 loại diện tích phù hợp mọi nhu cầu.
+      </p>
+
+      <div class="stay-price-badge">
+        <div class="stay-price-badge-label" data-i18n="stay_price_badge">🏠 Bảng giá · 3 loại phòng</div>
+        <div class="stay-price-grid">
+          <div class="stay-price-cell">
+            <div class="stay-price-size">17m²</div>
+            <div class="stay-price-val">6tr</div>
+            <div class="stay-price-mo" data-i18n="stay_per_month">/tháng</div>
+          </div>
+          <div class="stay-price-cell featured">
+            <div class="stay-price-size">21m²</div>
+            <div class="stay-price-val">7tr</div>
+            <div class="stay-price-mo" data-i18n="stay_per_month">/tháng</div>
+          </div>
+          <div class="stay-price-cell">
+            <div class="stay-price-size">24m²</div>
+            <div class="stay-price-val">8tr</div>
+            <div class="stay-price-mo" data-i18n="stay_per_month">/tháng</div>
+          </div>
+        </div>
+        <div class="stay-early-bird" data-i18n="stay_early_bird">
+          <span>✦</span> Đặt giữ chỗ trước tháng 09/2026 — nhận ưu đãi đặc biệt
+        </div>
+      </div>
+
+      <button class="btn-stay"
+        onclick="document.getElementById('stay-form').scrollIntoView({behavior:'smooth'})"
+        data-i18n="stay_cta">
+        Đặt giữ chỗ ngay →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------
+     QUICK INFO STRIP
+-------------------------------------- -->
+<div class="stay-info-strip">
+  <div class="stay-info-cell reveal">
+    <div class="stay-ic-label" data-i18n="stay_loc_label">Vị trí</div>
+    <div class="stay-ic-val" data-i18n="stay_loc_val">654A Quang Trung</div>
+    <div class="stay-ic-sub" data-i18n="stay_loc_sub">Phường 11 · Gò Vấp · TP.HCM</div>
+  </div>
+  <div class="stay-info-cell reveal" style="transition-delay:.07s">
+    <div class="stay-ic-label" data-i18n="stay_type_label">Loại phòng</div>
+    <div class="stay-ic-val" data-i18n="stay_type_val">Studio khép kín</div>
+    <div class="stay-ic-sub" data-i18n="stay_type_sub">1 phòng ngủ · bếp · WC riêng</div>
+  </div>
+  <div class="stay-info-cell reveal" style="transition-delay:.14s">
+    <div class="stay-ic-label" data-i18n="stay_area_label">Diện tích</div>
+    <div class="stay-ic-val" data-i18n="stay_area_val">17 · 21 · 24m²</div>
+    <div class="stay-ic-sub" data-i18n="stay_area_sub">3 loại · 9 căn tổng cộng</div>
+  </div>
+  <div class="stay-info-cell reveal" style="transition-delay:.21s">
+    <div class="stay-ic-label" data-i18n="stay_rent_label">Giá thuê</div>
+    <div class="stay-ic-val" style="color:var(--stay)" data-i18n="stay_rent_val">Từ 6.000.000₫</div>
+    <div class="stay-ic-sub" data-i18n="stay_rent_sub">/tháng · 3 mức giá</div>
+  </div>
+</div>
+
+<!-- --------------------------------------
+     FLOOR EXPLORER
+-------------------------------------- -->
+<section class="stay-section stay-section-mid" id="stay-floor-section">
+  <div class="container">
+    <div class="stay-section-label reveal" data-i18n="stay_floor_label">Cấu trúc toà nhà</div>
+    <h2 class="stay-section-title reveal" style="transition-delay:.08s">
+      <span data-i18n="stay_floor_t1">9 studio.</span><br>
+      <em data-i18n="stay_floor_t2">3 tầng.</em>
+    </h2>
+    <p class="stay-section-hint reveal" style="transition-delay:.13s" data-i18n="stay_floor_hint">
+      ↓ Nhấn vào sơ đồ để khám phá từng tầng
+    </p>
+
+    <div class="stay-floor-explorer reveal" style="transition-delay:.18s">
+      <div class="stay-fse-stack" id="stayFseStack"></div>
+      <div class="stay-fse-nav" id="stayFseNav"></div>
+    </div>
+
+    <div class="stay-floor-panel" id="stayFloorPanel">
+      <div class="sfp-inner" id="stayFloorPanelInner">
+        <div class="sfp-tag" id="sfpTag"></div>
+        <div class="sfp-body">
+          <div class="sfp-title" id="sfpTitle"></div>
+          <div class="sfp-sub" id="sfpSub"></div>
+          <div class="sfp-rooms" id="sfpRooms"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------
+     ROOM TYPES
+-------------------------------------- -->
+<section class="stay-section stay-section-dark" id="stay-rooms-section">
+  <div class="container">
+    <div class="stay-section-label reveal" data-i18n="stay_types_label">Loại studio</div>
+    <h2 class="stay-section-title reveal" style="transition-delay:.08s">
+      <span data-i18n="stay_types_t1">Chọn không gian</span><br>
+      <em data-i18n="stay_types_t2">phù hợp bạn.</em>
+    </h2>
+
+    <div class="stay-types-grid">
+      <!-- Type A: 17m² -->
+      <div class="stay-type-card reveal" style="transition-delay:.08s">
+        <div class="stay-type-name" data-i18n="roomA_name">Phòng A</div>
+        <div class="stay-type-size">17m²</div>
+        <ul class="stay-type-list">
+          <li data-i18n="roomA_li1">Phòng ngủ + bếp mini + WC riêng</li>
+          <li data-i18n="roomA_li2">Bố cục tinh gọn, tối ưu công năng</li>
+          <li data-i18n="roomA_li3">Phù hợp 1 người · sinh viên · đi làm</li>
+          <li data-i18n="roomA_li4">Cửa sổ lấy sáng tự nhiên</li>
+        </ul>
+        <div class="stay-type-avail" data-i18n="roomA_avail">3 căn · Lầu 1 / 2 / 3</div>
+        <div class="stay-type-footer">
+          <div>
+            <div class="stay-type-price-label" data-i18n="stay_rent_card">Giá thuê</div>
+            <div class="stay-type-price-val">6.000.000?<span style="font-size:.85rem;font-weight:400;color:var(--silver-soft)" data-i18n="stay_per_month">/tháng</span></div>
+          </div>
+          <button class="stay-type-btn"
+            onclick="document.getElementById('stay-form').scrollIntoView({behavior:'smooth'})"
+            data-i18n="stay_book_now">Đặt ngay</button>
+        </div>
+      </div>
+
+      <!-- Type B: 21m² — Popular -->
+      <div class="stay-type-card reveal" style="transition-delay:.15s;border-color:rgba(61,158,140,.45)">
+        <div class="stay-type-badge" data-i18n="stay_popular">Phổ biến</div>
+        <div class="stay-type-name" data-i18n="roomB_name">Phòng B</div>
+        <div class="stay-type-size" style="color:var(--stay)">21m²</div>
+        <ul class="stay-type-list">
+          <li data-i18n="roomB_li1">Phòng ngủ + bếp + WC riêng</li>
+          <li data-i18n="roomB_li2">Diện tích hợp lý, đầy đủ công năng</li>
+          <li data-i18n="roomB_li3">Phù hợp 1–2 người</li>
+          <li data-i18n="roomB_li4">Bàn làm việc · tủ quần áo đầy đủ</li>
+        </ul>
+        <div class="stay-type-avail" data-i18n="roomB_avail">3 căn · Lầu 1 / 2 / 3</div>
+        <div class="stay-type-footer">
+          <div>
+            <div class="stay-type-price-label" data-i18n="stay_rent_card">Giá thuê</div>
+            <div class="stay-type-price-val" style="color:var(--stay)">7.000.000?<span style="font-size:.85rem;font-weight:400;color:var(--silver-soft)" data-i18n="stay_per_month">/tháng</span></div>
+          </div>
+          <button class="stay-type-btn"
+            style="background:var(--stay);color:var(--black);border-color:var(--stay)"
+            onclick="document.getElementById('stay-form').scrollIntoView({behavior:'smooth'})"
+            data-i18n="stay_book_now">Đặt ngay</button>
+        </div>
+      </div>
+
+      <!-- Type C: 24m² -->
+      <div class="stay-type-card reveal" style="transition-delay:.22s">
+        <div class="stay-type-name" data-i18n="roomC_name">Phòng C</div>
+        <div class="stay-type-size">24m²</div>
+        <ul class="stay-type-list">
+          <li data-i18n="roomC_li1">Phòng ngủ rộng + bếp + WC riêng</li>
+          <li data-i18n="roomC_li2">Không gian thoáng đãng nhất</li>
+          <li data-i18n="roomC_li3">Phù hợp couple · 1–2 người</li>
+          <li data-i18n="roomC_li4">Góc làm việc riêng · tủ lớn hơn</li>
+        </ul>
+        <div class="stay-type-avail" data-i18n="roomC_avail">3 căn · Lầu 1 / 2 / 3</div>
+        <div class="stay-type-footer">
+          <div>
+            <div class="stay-type-price-label" data-i18n="stay_rent_card">Giá thuê</div>
+            <div class="stay-type-price-val">8.000.000?<span style="font-size:.85rem;font-weight:400;color:var(--silver-soft)" data-i18n="stay_per_month">/tháng</span></div>
+          </div>
+          <button class="stay-type-btn"
+            onclick="document.getElementById('stay-form').scrollIntoView({behavior:'smooth'})"
+            data-i18n="stay_book_now">Đặt ngay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------
+     AMENITIES
+-------------------------------------- -->
+<section class="stay-section stay-section-mid">
+  <div class="container">
+    <div class="stay-section-label reveal" data-i18n="stay_amenities_label">Tiện ích</div>
+    <h2 class="stay-section-title reveal" style="transition-delay:.08s">
+      <span data-i18n="stay_amenities_t1">Đầy đủ.</span><br>
+      <em data-i18n="stay_amenities_t2">Không thiếu gì.</em>
+    </h2>
+    <div class="stay-amenities-grid reveal" style="transition-delay:.15s">
+
+      <!-- Máy lạnh -->
+      <div class="stay-amenity">
+        <svg class="stay-amenity-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="10" width="32" height="14" rx="3"/>
+          <line x1="6" y1="17" x2="38" y2="17"/>
+          <circle cx="32" cy="13.5" r="1.5" fill="currentColor" stroke="none"/>
+          <line x1="14" y1="24" x2="14" y2="34"/>
+          <line x1="22" y1="24" x2="22" y2="38"/>
+          <line x1="30" y1="24" x2="30" y2="34"/>
+          <line x1="10" y1="34" x2="18" y2="34"/>
+          <line x1="26" y1="34" x2="34" y2="34"/>
+        </svg>
+        <div class="stay-amenity-name" data-i18n="amenity1">Máy lạnh</div>
+      </div>
+
+      <!-- Nóng lạnh -->
+      <div class="stay-amenity">
+        <svg class="stay-amenity-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 6 C22 6 14 16 14 24 a8 8 0 0 0 16 0 C30 16 22 6 22 6z"/>
+          <path d="M22 28 C22 28 18 24 18 24" opacity=".5"/>
+          <path d="M16 10 C14 8 12 10 14 12" stroke-width="1"/>
+          <path d="M28 10 C30 8 32 10 30 12" stroke-width="1"/>
+        </svg>
+        <div class="stay-amenity-name" data-i18n="amenity2">Nóng lạnh</div>
+      </div>
+
+      <!-- Bếp điện từ -->
+      <div class="stay-amenity">
+        <svg class="stay-amenity-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="12" width="32" height="22" rx="3"/>
+          <circle cx="15" cy="22" r="4"/>
+          <circle cx="29" cy="22" r="4"/>
+          <circle cx="15" cy="22" r="1.5" fill="currentColor" stroke="none" opacity=".5"/>
+          <circle cx="29" cy="22" r="1.5" fill="currentColor" stroke="none" opacity=".5"/>
+          <line x1="6" y1="29" x2="38" y2="29"/>
+          <line x1="20" y1="8" x2="20" y2="12"/>
+          <line x1="24" y1="8" x2="24" y2="12"/>
+        </svg>
+        <div class="stay-amenity-name" data-i18n="amenity3">Bếp điện từ</div>
+      </div>
+
+      <!-- Tủ lạnh -->
+      <div class="stay-amenity">
+        <svg class="stay-amenity-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="10" y="6" width="24" height="34" rx="2"/>
+          <line x1="10" y1="18" x2="34" y2="18"/>
+          <line x1="28" y1="10" x2="28" y2="15"/>
+          <line x1="28" y1="22" x2="28" y2="29"/>
+        </svg>
+        <div class="stay-amenity-name" data-i18n="amenity4">Tủ lạnh</div>
+      </div>
+
+      <!-- Giường · Nệm -->
+      <div class="stay-amenity">
+        <svg class="stay-amenity-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 30 V18 a4 4 0 0 1 4-4 h24 a4 4 0 0 1 4 4 v12"/>
+          <line x1="6" y1="30" x2="38" y2="30"/>
+          <line x1="6" y1="34" x2="6" y2="38"/>
+          <line x1="38" y1="34" x2="38" y2="38"/>
+          <rect x="10" y="20" width="10" height="8" rx="2"/>
+          <rect x="24" y="20" width="10" height="8" rx="2"/>
+          <line x1="6" y1="26" x2="38" y2="26"/>
+        </svg>
+        <div class="stay-amenity-name" data-i18n="amenity5">Giường · Nệm</div>
+      </div>
+
+      <!-- Tủ quần áo -->
+      <div class="stay-amenity">
+        <svg class="stay-amenity-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="8" y="6" width="28" height="34" rx="2"/>
+          <line x1="22" y1="6" x2="22" y2="40"/>
+          <path d="M16 20 C16 18 18 17 19 18 C20 19 20 21 18 21" />
+          <path d="M28 20 C28 18 26 17 25 18 C24 19 24 21 26 21"/>
+          <line x1="8" y1="11" x2="36" y2="11"/>
+        </svg>
+        <div class="stay-amenity-name" data-i18n="amenity6">Tủ quần áo</div>
+      </div>
+
+      <!-- Bàn làm việc -->
+      <div class="stay-amenity">
+        <svg class="stay-amenity-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="16" width="32" height="5" rx="1"/>
+          <line x1="10" y1="21" x2="10" y2="36"/>
+          <line x1="34" y1="21" x2="34" y2="36"/>
+          <line x1="10" y1="29" x2="34" y2="29"/>
+        </svg>
+        <div class="stay-amenity-name" data-i18n="amenity7">Bàn làm việc</div>
+      </div>
+
+      <!-- Wifi -->
+      <div class="stay-amenity">
+        <svg class="stay-amenity-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 18 C10 12 16 8 22 8 C28 8 34 12 38 18"/>
+          <path d="M10 23 C13 18 17 15 22 15 C27 15 31 18 34 23"/>
+          <path d="M14 28 C16 24 19 22 22 22 C25 22 28 24 30 28"/>
+          <circle cx="22" cy="34" r="2.5" fill="currentColor" stroke="none" opacity=".8"/>
+        </svg>
+        <div class="stay-amenity-name" data-i18n="amenity8">Wifi tốc độ cao</div>
+      </div>
+
+      <!-- Camera an ninh -->
+      <div class="stay-amenity">
+        <svg class="stay-amenity-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 16 h20 l4-4 v20 l-4-4 H8 z"/>
+          <circle cx="18" cy="22" r="3"/>
+          <line x1="36" y1="14" x2="40" y2="12"/>
+          <line x1="36" y1="22" x2="40" y2="22"/>
+          <line x1="36" y1="30" x2="40" y2="32"/>
+          <line x1="8" y1="32" x2="28" y2="32"/>
+        </svg>
+        <div class="stay-amenity-name" data-i18n="amenity9">Camera an ninh</div>
+      </div>
+
+      <!-- Chỗ để xe -->
+      <div class="stay-amenity">
+        <svg class="stay-amenity-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 28 C8 28 10 22 12 20 C14 18 32 18 34 20 C36 22 38 28 38 28"/>
+          <line x1="6" y1="28" x2="38" y2="28"/>
+          <line x1="6" y1="28" x2="6" y2="34"/>
+          <line x1="38" y1="28" x2="38" y2="34"/>
+          <circle cx="14" cy="34" r="4"/>
+          <circle cx="30" cy="34" r="4"/>
+          <line x1="18" y1="34" x2="26" y2="34"/>
+          <path d="M14 22 h4 l2-4 h8 l2 4 h4"/>
+          <path d="M10 14 C10 14 22 8 34 14" stroke-width="1" opacity=".5"/>
+        </svg>
+        <div class="stay-amenity-name" data-i18n="amenity10">Chỗ để xe</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------
+     LOCATION
+-------------------------------------- -->
+<section class="stay-section stay-section-dark">
+  <div class="container">
+    <div class="stay-section-label reveal" data-i18n="stay_loc_sec_label">Vị trí</div>
+    <h2 class="stay-section-title reveal" style="transition-delay:.08s">
+      <span data-i18n="stay_loc_t1">Mặt tiền lớn.</span><br>
+      <em data-i18n="stay_loc_t2">Tiện di chuyển.</em>
+    </h2>
+    <div class="stay-location-grid reveal" style="transition-delay:.15s">
+      <div class="stay-location-points">
+        <div class="stay-location-point">
+          <div class="stay-location-dot"></div>
+          <div>
+            <div class="stay-loc-title" data-i18n="loc1_title">Mặt tiền đường Quang Trung</div>
+            <div class="stay-loc-desc" data-i18n="loc1_desc">654A, P.11, Gò Vấp — đường lớn, dễ tìm, tiện di chuyển</div>
+          </div>
+        </div>
+        <div class="stay-location-point">
+          <div class="stay-location-dot"></div>
+          <div>
+            <div class="stay-loc-title" data-i18n="loc2_title">Tiện ăn uống & mua sắm</div>
+            <div class="stay-loc-desc" data-i18n="loc2_desc">Gần chợ Gò Vấp, siêu thị, quán ăn đa dạng xung quanh</div>
+          </div>
+        </div>
+        <div class="stay-location-point">
+          <div class="stay-location-dot"></div>
+          <div>
+            <div class="stay-loc-title" data-i18n="loc3_title">Kết nối trung tâm dễ dàng</div>
+            <div class="stay-loc-desc" data-i18n="loc3_desc">Cách Q.1 khoảng 20–25 phút · kết nối Q.12, Bình Thạnh, Tân Bình</div>
+          </div>
+        </div>
+        <div class="stay-location-point">
+          <div class="stay-location-dot"></div>
+          <div>
+            <div class="stay-loc-title" data-i18n="loc4_title">Gần khu giáo dục & y tế</div>
+            <div class="stay-loc-desc" data-i18n="loc4_desc">Phù hợp sinh viên, người đi làm khu vực Gò Vấp – Bình Thạnh</div>
+          </div>
+        </div>
+        <div class="stay-location-point">
+          <div class="stay-location-dot"></div>
+          <div>
+            <div class="stay-loc-title" data-i18n="loc5_title">An ninh khu dân cu</div>
+            <div class="stay-loc-desc" data-i18n="loc5_desc">Khu dân cư đông đúc, camera toà nhà, khoá cửa riêng từng phòng</div>
+          </div>
+        </div>
+      </div>
+      <div class="stay-map-box">
+        <!-- SVG pin icon -->
+        <svg width="52" height="60" viewBox="0 0 52 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.55">
+          <path d="M26 4C16.06 4 8 12.06 8 22C8 35 26 56 26 56C26 56 44 35 44 22C44 12.06 35.94 4 26 4Z"
+            fill="rgba(61,158,140,.12)" stroke="#3D9E8C" stroke-width="1.5" stroke-linejoin="round"/>
+          <circle cx="26" cy="22" r="7" stroke="#3D9E8C" stroke-width="1.5" fill="rgba(61,158,140,.2)"/>
+          <circle cx="26" cy="22" r="2.5" fill="#3D9E8C"/>
+          <!-- pulse ring -->
+          <circle cx="26" cy="22" r="11" stroke="#3D9E8C" stroke-width=".6" opacity=".3"/>
+        </svg>
+        <div style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cream)">654A Quang Trung</div>
+        <div style="font-size:.62rem;letter-spacing:.14em;color:var(--silver-soft)">Phường 11 · Gò Vấp · TP.HCM</div>
+        <div style="margin-top:.6rem;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--stay);border:1px solid rgba(61,158,140,.3);padding:.35rem .9rem" data-i18n="map_note">Google Maps · Sẽ cập nhật</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------
+     PROCESS STEPS
+-------------------------------------- -->
+<section class="stay-section stay-section-mid">
+  <div class="container">
+    <div class="stay-section-label reveal" data-i18n="stay_process_label">Quy trình</div>
+    <h2 class="stay-section-title reveal" style="transition-delay:.08s">
+      <span data-i18n="stay_process_t1">5 bước</span><br>
+      <em data-i18n="stay_process_t2">nhận phòng.</em>
+    </h2>
+    <div class="stay-steps-wrap reveal" style="transition-delay:.15s">
+      <div class="stay-step">
+        <div class="stay-step-num">01</div>
+        <div class="stay-step-title" data-i18n="step1_t">Điền form</div>
+        <div class="stay-step-note" data-i18n="step1_n">Điền thông tin đặt giữ chỗ bên dưới</div>
+      </div>
+      <div class="stay-step">
+        <div class="stay-step-num">02</div>
+        <div class="stay-step-title" data-i18n="step2_t">Tư vấn</div>
+        <div class="stay-step-note" data-i18n="step2_n">MERUVA liên hệ trong vòng 24h làm việc</div>
+      </div>
+      <div class="stay-step">
+        <div class="stay-step-num">03</div>
+        <div class="stay-step-title" data-i18n="step3_t">Đặt cọc</div>
+        <div class="stay-step-note" data-i18n="step3_n">Cọc 1 tháng tiền thuê để giữ chỗ</div>
+      </div>
+      <div class="stay-step">
+        <div class="stay-step-num">04</div>
+        <div class="stay-step-title" data-i18n="step4_t">Ký hợp đồng</div>
+        <div class="stay-step-note" data-i18n="step4_n">Ký khi hoàn thiện · Tháng 09/2026</div>
+      </div>
+      <div class="stay-step">
+        <div class="stay-step-num">05</div>
+        <div class="stay-step-title" data-i18n="step5_t">Nhận phòng</div>
+        <div class="stay-step-note" data-i18n="step5_n">Bắt đầu cuộc sống tại MERUVA Stay</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------
+     BOOKING FORM
+-------------------------------------- -->
+<section class="stay-section stay-section-dark" id="stay-form">
+  <div class="container">
+    <div class="stay-section-label reveal" data-i18n="stay_form_label">Đặt giữ chỗ</div>
+    <h2 class="stay-section-title reveal" style="transition-delay:.08s;margin-bottom:3rem">
+      <span data-i18n="stay_form_t1">Điền thông tin.</span><br>
+      <em data-i18n="stay_form_t2">MERUVA liên hệ trong 24h.</em>
+    </h2>
+
+    <!-- -- Thank-you state (ẩn cho đến khi gửi thành công) -- -->
+    <div class="stay-form-thanks reveal" id="formThanks" style="transition-delay:.1s">
+      <div class="stay-form-thanks-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <div class="stay-form-thanks-title">Đăng ký<br><em>đã gửi thành công.</em></div>
+      <div class="stay-form-thanks-sub">
+        MERUVA đã nhận được thông tin của bạn và sẽ liên hệ trong vòng 24h làm việc.
+        Cảm ơn bạn đã quan tâm đến MERUVA Stay ☕
+      </div>
+      <div class="stay-form-thanks-note">MERUVA Stay · 654A Quang Trung, Gò Vấp</div>
+    </div>
+
+    <!-- -- Form thật -- -->
+    <form id="stayBookingForm"
+      action="https://api.web3forms.com/submit"
+      method="POST"
+      style="max-width:700px"
+      class="reveal"
+      novalidate>
+
+      <!-- ⚠️ THAY "YOUR_ACCESS_KEY" bằng key từ web3forms.com (nhận về meruva.main@gmail.com) -->
+      <input type="hidden" name="access_key" value="6eb5e2b6-2ba4-4578-abb7-e551a4b993e5">
+
+      <!-- Cấu hình email nhận -->
+      <input type="hidden" name="subject" value="[MERUVA Stay] Đăng ký giữ chỗ mới 🏠">
+      <input type="hidden" name="from_name" value="MERUVA Stay — Booking">
+      <input type="hidden" name="replyto" value="meruva.main@gmail.com">
+      <input type="hidden" name="redirect" value="false">
+
+      <!-- Honeypot chống spam -->
+      <input type="checkbox" name="botcheck" style="display:none">
+
+      <div class="stay-form-grid">
+        <div class="cf-row">
+          <label data-i18n="sf_name">Họ và tên</label>
+          <input type="text" name="name" required
+            data-i18n-placeholder="sf_name_ph" placeholder="Nguyễn Văn A">
+        </div>
+        <div class="cf-row">
+          <label data-i18n="sf_phone">Số điện thoại / Zalo</label>
+          <input type="tel" name="phone" required
+            data-i18n-placeholder="sf_phone_ph" placeholder="0912 345 678">
+        </div>
+        <div class="cf-row">
+          <label data-i18n="sf_email">Email</label>
+          <input type="email" name="email"
+            placeholder="ten@email.com">
+        </div>
+        <div class="cf-row">
+          <label data-i18n="sf_room">Loại studio quan tâm</label>
+          <select name="room_type" class="stay-select">
+            <option value="" data-i18n="sf_room_default">— Chọn loại phòng —</option>
+            <option data-i18n="sf_room_opt1">Phòng A · 17m² · 6.000.000?/tháng</option>
+            <option data-i18n="sf_room_opt2">Phòng B · 21m² · 7.000.000?/tháng</option>
+            <option data-i18n="sf_room_opt3">Phòng C · 24m² · 8.000.000?/tháng</option>
+            <option data-i18n="sf_room_opt4">Chưa quyết định · cần tư vấn thêm</option>
+          </select>
+        </div>
+        <div class="cf-row">
+          <label data-i18n="sf_people">Số người ở</label>
+          <select name="occupants" class="stay-select">
+            <option value="" data-i18n="sf_people_default">— Chọn —</option>
+            <option data-i18n="sf_people_1">1 người</option>
+            <option data-i18n="sf_people_2">2 người</option>
+          </select>
+        </div>
+        <div class="cf-row">
+          <label data-i18n="sf_movein">Thời gian muốn nhận phòng</label>
+          <select name="move_in" class="stay-select">
+            <option value="" data-i18n="sf_movein_default">— Chọn —</option>
+            <option data-i18n="sf_movein_1">Tháng 09/2026 (sớm nhất)</option>
+            <option data-i18n="sf_movein_2">Tháng 10/2026</option>
+            <option data-i18n="sf_movein_3">Tháng 11/2026 trở đi</option>
+          </select>
+        </div>
+      </div>
+      <div class="cf-row">
+        <label data-i18n="sf_note">Ghi chú thêm</label>
+        <textarea name="note" rows="3"
+          data-i18n-placeholder="sf_note_ph"
+          placeholder="Yêu cầu đặc biệt, câu hỏi thêm..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit-stay" id="formSubmitBtn" data-i18n="sf_send">
+        Gửi đăng ký →
+      </button>
+
+    </form>
+  </div>
+</section>
+
+<!-- --------------------------------------
+     FAQ
+-------------------------------------- -->
+<section class="stay-section stay-section-mid">
+  <div class="container">
+    <div class="stay-section-label reveal" data-i18n="stay_faq_label">Câu hỏi thường gặp</div>
+    <h2 class="stay-section-title reveal" style="transition-delay:.08s;margin-bottom:2rem">
+      <span data-i18n="stay_faq_t1">Hỏi &amp;</span> <em data-i18n="stay_faq_t2">Đáp.</em>
+    </h2>
+    <div class="stay-faq-list reveal" style="transition-delay:.15s">
+      <div class="stay-faq-item">
+        <div class="stay-faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq1_q">Cọc bao nhiêu để giữ chỗ?</span>
+          <div class="stay-faq-toggle">+</div>
+        </div>
+        <div class="stay-faq-a" data-i18n="faq1_a">
+          Cọc 1 tháng tiền thuê để giữ chỗ (6.000.000₫ · 7.000.000₫ · hoặc 8.000.000₫ tùy loại phòng). Khoản cọc được tính vào tháng đầu tiên khi nhận phòng. Hoàn cọc 100% nếu hủy trước ngày nhận phòng 30 ngày.
+        </div>
+      </div>
+      <div class="stay-faq-item">
+        <div class="stay-faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq2_q">Nếu công trình trễ tiến độ thì sao?</span>
+          <div class="stay-faq-toggle">+</div>
+        </div>
+        <div class="stay-faq-a" data-i18n="faq2_a">
+          MERUVA sẽ thông báo sớm nếu có thay đổi tiến độ. Khách đặt giữ chỗ có quyền hoàn cọc toàn bộ 100% hoặc tiếp tục chờ — không phát sinh bất kỳ chi phí nào.
+        </div>
+      </div>
+      <div class="stay-faq-item">
+        <div class="stay-faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq3_q">Có nuôi thú cưng được không?</span>
+          <div class="stay-faq-toggle">+</div>
+        </div>
+        <div class="stay-faq-a" data-i18n="faq3_a">
+          Hiện tại MERUVA Stay chưa hỗ trợ nuôi thú cưng trong giai đoạn đầu. Chính sách có thể được cập nhật sau khi toà nhà đi vào hoạt động và lấy ý kiến cư dân.
+        </div>
+      </div>
+      <div class="stay-faq-item">
+        <div class="stay-faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq4_q">Có ký hợp đồng dài hạn được không?</span>
+          <div class="stay-faq-toggle">+</div>
+        </div>
+        <div class="stay-faq-a" data-i18n="faq4_a">
+          Hợp đồng tối thiểu 3 tháng. Hợp đồng 6 tháng giảm thêm 3%, hợp đồng 1 năm giảm thêm 5% so với giá ưu đãi. Liên hệ MERUVA để được tư vấn phương án phù hợp nhất.
+        </div>
+      </div>
+      <div class="stay-faq-item">
+        <div class="stay-faq-q" onclick="toggleFaq(this)">
+          <span data-i18n="faq5_q">Thanh toán theo tháng, quý hay năm?</span>
+          <div class="stay-faq-toggle">+</div>
+        </div>
+        <div class="stay-faq-a" data-i18n="faq5_a">
+          Hỗ trợ cả 3 hình thức. Thanh toán theo tháng (bình thường), theo quý giảm thêm 3%, theo năm giảm thêm 5% — áp dụng trên mức giá ưu đãi đặt trước.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- --------------------------------------
+     FOOTER
+-------------------------------------- -->
+<div class="stay-footer">
+  <span>MERUVA Stay · 654A Quang Trung, Gò Vấp</span>
+  <a href="../index.html" data-i18n="sp_back">← Quay lại hệ sinh thái</a>
+  <span>meruva.vn</span>
+</div>
+
+<!-- -------------------- SCRIPTS -------------------- -->
+<!-- Fallback: nếu shared scripts không load được (file:// mode), xoá loader sau 2.5s -->
+<script>
+(function(){
+  var FALLBACK_MS = 2500;
+  function removeFallbackLoader() {
+    var l = document.getElementById('page-loader');
+    if (l && !l.classList.contains('out')) {
+      l.classList.add('out');
+      setTimeout(function(){ if(l.parentNode) l.remove(); }, 750);
+    }
+    // Ensure scroll is always enabled
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  }
+  setTimeout(removeFallbackLoader, FALLBACK_MS);
+  // Also fire when shared.js finishes (via DOMContentLoaded backup)
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(removeFallbackLoader, 2000);
+  });
+})();
+</script>
+<script src="../meruva_lang.js?v=6"></script>
+<script src="../meruva-shared.js?v=2"></script>
+<script>
+/* -- PARTICLES (teal color for Stay) -- */
+(function initStayParticles() {
+  const c = document.getElementById('particles');
+  if (!c) return;
+  for (let i = 0; i < 24; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const x = Math.random() * 100;
+    const dur = 7 + Math.random() * 10;
+    const delay = Math.random() * 12;
+    const drift = (Math.random() - .5) * 100;
+    p.style.cssText = `left:${x}%;--dur:${dur}s;--delay:-${delay}s;--drift:${drift}px`;
+    c.appendChild(p);
+  }
+})();
+
+/* -- FAQ ACCORDION -- */
+function toggleFaq(el) {
+  const item = el.closest('.stay-faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.stay-faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* -- FLOOR EXPLORER -- */
+var floorExplorerInited = false;
+
+function makeFloorPlanSVG(floor) {
+  const c = 'rgba(61,158,140,';
+  const w = 'rgba(200,220,230,';
+
+  if (floor === 1) {
+    return `<svg viewBox="0 0 480 105" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+      <rect x="8" y="8" width="464" height="89" fill="${c}.03)" stroke="${c}.28)" stroke-width="1"/>
+      <line x1="174" y1="97" x2="254" y2="97" stroke="${c}.9)" stroke-width="2.5"/>
+      <path d="M174,97 L170,87 M254,97 L258,87" fill="none" stroke="${c}.5)" stroke-width="1"/>
+      ${[0,1,2,3,4,5].map(i=>{const x=12+i*62;return `<rect x="${x}" y="14" width="58" height="56" fill="${c}.04)" stroke="${c}.18)" stroke-width=".7"/><text x="${x+29}" y="47" fill="${c}.45)" font-size="12" text-anchor="middle" font-family="monospace" font-weight="bold">${i+1}</text>`;}).join('')}
+      <line x1="384" y1="8" x2="384" y2="97" stroke="${c}.2)" stroke-width=".8"/>
+      <rect x="387" y="14" width="77" height="56" fill="${c}.07)" stroke="${c}.22)" stroke-width=".7"/>
+      ${[23,32,41,50,59].map(y=>`<line x1="388" y1="${y}" x2="463" y2="${y}" stroke="${c}.13)" stroke-width=".5"/>`).join('')}
+      <text x="426" y="78" fill="${c}.3)" font-size="5.5" text-anchor="middle" font-family="monospace">CẦU THANG</text>
+      <text x="200" y="80" fill="${w}.05)" font-size="24" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic">Parking</text>
+      <text x="16" y="101" fill="${w}.22)" font-size="5.5" letter-spacing="2" font-family="monospace">TẦNG TRỆT · 654A QUANG TRUNG · GÒ VẤP</text>
+      <path d="M8,8 L8,19 M8,8 L19,8" fill="none" stroke="${c}.55)" stroke-width="1.2"/>
+      <path d="M472,8 L472,19 M472,8 L461,8" fill="none" stroke="${c}.55)" stroke-width="1.2"/>
+      <path d="M8,97 L8,86 M8,97 L19,97" fill="none" stroke="${c}.55)" stroke-width="1.2"/>
+      <path d="M472,97 L472,86 M472,97 L461,97" fill="none" stroke="${c}.55)" stroke-width="1.2"/>
+    </svg>`;
+  }
+
+  const p = {2:'1', 3:'2', 4:'3'}[floor];
+  return `<svg viewBox="0 0 480 105" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+    <rect x="8" y="8" width="464" height="89" fill="${c}.03)" stroke="${c}.28)" stroke-width="1"/>
+    <line x1="152" y1="8" x2="152" y2="97" stroke="${c}.22)" stroke-width=".8"/>
+    <line x1="196" y1="8" x2="196" y2="97" stroke="${c}.36)" stroke-width="1.3"/>
+    <line x1="286" y1="8" x2="286" y2="97" stroke="${c}.28)" stroke-width="1"/>
+    <line x1="346" y1="8" x2="346" y2="97" stroke="${c}.28)" stroke-width="1"/>
+    <line x1="390" y1="8" x2="390" y2="97" stroke="${c}.22)" stroke-width=".8"/>
+    <rect x="12" y="11" width="62" height="50" fill="${c}.05)" stroke="${c}.14)" stroke-width=".6"/>
+    <line x1="12" y1="28" x2="74" y2="28" stroke="${c}.09)" stroke-width=".4"/>
+    <line x1="12" y1="34" x2="74" y2="34" stroke="${c}.09)" stroke-width=".4"/>
+    <rect x="154" y="11" width="40" height="30" fill="${c}.06)" stroke="${c}.16)" stroke-width=".6"/>
+    <ellipse cx="160" cy="20" rx="4" ry="5.5" fill="${c}.07)" stroke="${c}.2)" stroke-width=".4"/>
+    <rect x="154" y="47" width="15" height="13" fill="${c}.06)" stroke="${c}.18)" stroke-width=".5"/>
+    <ellipse cx="174" cy="71" rx="7" ry="10" fill="${c}.05)" stroke="${c}.2)" stroke-width=".5"/>
+    <text x="173" y="88" fill="${c}.28)" font-size="5" text-anchor="middle" font-family="monospace">WC</text>
+    <line x1="86" y1="97" x2="86" y2="79" stroke="${c}.46)" stroke-width="1.3"/>
+    <path d="M86,97 A18,18 0 0,1 104,79" fill="none" stroke="${c}.32)" stroke-width=".9"/>
+    <text x="100" y="54" fill="${w}.40)" font-size="12" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600">${p}01</text>
+    <text x="100" y="66" fill="${c}.44)" font-size="6" text-anchor="middle" font-family="monospace">21m²</text>
+    <rect x="199" y="11" width="48" height="36" fill="${c}.05)" stroke="${c}.14)" stroke-width=".6"/>
+    <line x1="199" y1="26" x2="247" y2="26" stroke="${c}.09)" stroke-width=".4"/>
+    <rect x="248" y="60" width="36" height="37" fill="${c}.06)" stroke="${c}.17)" stroke-width=".6"/>
+    <ellipse cx="259" cy="88" rx="6" ry="8" fill="${c}.05)" stroke="${c}.2)" stroke-width=".5"/>
+    <text x="266" y="72" fill="${c}.28)" font-size="5" text-anchor="middle" font-family="monospace">WC</text>
+    <line x1="199" y1="97" x2="199" y2="65" stroke="${c}.46)" stroke-width="1.3"/>
+    <path d="M199,97 A32,32 0 0,1 231,65" fill="none" stroke="${c}.32)" stroke-width=".9"/>
+    <text x="228" y="48" fill="${w}.40)" font-size="12" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600">${p}02</text>
+    <text x="228" y="60" fill="${c}.44)" font-size="6" text-anchor="middle" font-family="monospace">17m²</text>
+    ${[17,25,33,41,49,57,65,73,81,89].map(y=>`<line x1="287" y1="${y}" x2="345" y2="${y}" stroke="${c}.13)" stroke-width=".5"/>`).join('')}
+    <text x="316" y="55" fill="${c}.27)" font-size="5" text-anchor="middle" font-family="monospace">CẦU THANG</text>
+    <rect x="348" y="11" width="40" height="30" fill="${c}.06)" stroke="${c}.16)" stroke-width=".6"/>
+    <ellipse cx="354" cy="20" rx="4" ry="5.5" fill="${c}.07)" stroke="${c}.2)" stroke-width=".4"/>
+    <rect x="348" y="48" width="15" height="13" fill="${c}.06)" stroke="${c}.18)" stroke-width=".5"/>
+    <ellipse cx="368" cy="71" rx="7" ry="10" fill="${c}.05)" stroke="${c}.2)" stroke-width=".5"/>
+    <text x="368" y="88" fill="${c}.28)" font-size="5" text-anchor="middle" font-family="monospace">WC</text>
+    <rect x="394" y="11" width="72" height="50" fill="${c}.05)" stroke="${c}.14)" stroke-width=".6"/>
+    <line x1="394" y1="28" x2="466" y2="28" stroke="${c}.09)" stroke-width=".4"/>
+    <line x1="394" y1="34" x2="466" y2="34" stroke="${c}.09)" stroke-width=".4"/>
+    <line x1="466" y1="97" x2="466" y2="77" stroke="${c}.46)" stroke-width="1.3"/>
+    <path d="M466,97 A20,20 0 0,0 446,77" fill="none" stroke="${c}.32)" stroke-width=".9"/>
+    <text x="424" y="68" fill="${w}.40)" font-size="12" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600">${p}03</text>
+    <text x="424" y="80" fill="${c}.44)" font-size="6" text-anchor="middle" font-family="monospace">24m²</text>
+    <text x="16" y="101" fill="${w}.22)" font-size="5.5" letter-spacing="2" font-family="monospace">654A QUANG TRUNG · GÒ VẤP</text>
+    <path d="M8,8 L8,19 M8,8 L19,8" fill="none" stroke="${c}.55)" stroke-width="1.2"/>
+    <path d="M472,8 L472,19 M472,8 L461,8" fill="none" stroke="${c}.55)" stroke-width="1.2"/>
+    <path d="M8,97 L8,86 M8,97 L19,97" fill="none" stroke="${c}.55)" stroke-width="1.2"/>
+    <path d="M472,97 L472,86 M472,97 L461,97" fill="none" stroke="${c}.55)" stroke-width="1.2"/>
+  </svg>`;
+}
+
+function initFloorExplorer() {
+  if (floorExplorerInited) return;
+  floorExplorerInited = true;
+  const stack = document.getElementById('stayFseStack');
+  const nav   = document.getElementById('stayFseNav');
+  const L = window.MERUVA_LANG[window.currentLang || 'vi'] || window.MERUVA_LANG.vi;
+  const floorData = L.floorData;
+  if (!stack || !nav || !floorData) return;
+
+  [4,3,2,1].forEach(num => {
+    const fl = document.createElement('div');
+    fl.className = 'sfl';
+    fl.dataset.floor = num;
+    fl.innerHTML = `<div class="sfl-inner">${makeFloorPlanSVG(num)}</div>`;
+    fl.addEventListener('click', () => selectFloor(num));
+    stack.appendChild(fl);
+  });
+
+  [4,3,2,1].forEach(num => {
+    const d = floorData[num];
+    const ni = document.createElement('div');
+    ni.className = 'sfn-item';
+    ni.dataset.navFloor = num;
+    ni.innerHTML = `<div class="sfn-line"></div><div class="sfn-label">${d.label}</div>`;
+    ni.addEventListener('click', () => selectFloor(num));
+    nav.appendChild(ni);
+  });
+
+  setTimeout(() => selectFloor(4), 80);
+}
+
+function selectFloor(num) {
+  document.querySelectorAll('#stayFseStack .sfl').forEach(fl => {
+    const fn = parseInt(fl.dataset.floor);
+    fl.classList.remove('sfl-active','sfl-dim');
+    if (fn === num) fl.classList.add('sfl-active');
+    else fl.classList.add('sfl-dim');
+  });
+  document.querySelectorAll('#stayFseNav .sfn-item').forEach(ni => {
+    ni.classList.toggle('sfn-active', parseInt(ni.dataset.navFloor) === num);
+  });
+
+  const L = window.MERUVA_LANG[window.currentLang || 'vi'] || window.MERUVA_LANG.vi;
+  const d = L.floorData[num];
+  if (!d) return;
+
+  document.getElementById('sfpTag').textContent   = d.tag;
+  document.getElementById('sfpTitle').textContent = d.label;
+  document.getElementById('sfpSub').textContent   = d.desc;
+  document.getElementById('sfpRooms').innerHTML   = d.rooms.map(r =>
+    `<div class="sfp-room"><div class="sfp-room-n">${r.n}</div><div class="sfp-room-d">${r.d}</div></div>`
+  ).join('');
+
+  const inner = document.getElementById('stayFloorPanelInner');
+  inner.classList.remove('sfp-vis');
+  void inner.offsetWidth;
+  requestAnimationFrame(() => inner.classList.add('sfp-vis'));
+}
+
+/* -- INIT FLOOR EXPLORER via IntersectionObserver -- */
+(function() {
+  const section = document.getElementById('stay-floor-section');
+  if (!section) return;
+  const io = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      initFloorExplorer();
+      io.disconnect();
+    }
+  }, { threshold: 0.15 });
+  io.observe(section);
+})();
+
+/* -- LANG UPDATE for Stay-specific content -- */
+const _origSetLang = window.setLang;
+window.setLang = function(lang) {
+  _origSetLang(lang);
+  document.documentElement.lang = lang;
+  // Refresh floor explorer nav labels on language change
+  const L = window.MERUVA_LANG[lang] || window.MERUVA_LANG.vi;
+  if (floorExplorerInited && L.floorData) {
+    document.querySelectorAll('#stayFseNav .sfn-item').forEach(ni => {
+      const num = parseInt(ni.dataset.navFloor);
+      const d = L.floorData[num];
+      if (d) ni.querySelector('.sfn-label').textContent = d.label;
+    });
+    // Re-select active floor
+    const active = document.querySelector('#stayFseNav .sfn-active');
+    if (active) selectFloor(parseInt(active.dataset.navFloor));
+  }
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.documentElement.lang = window.currentLang || 'vi';
+});
+
+/* -- FORM SUBMIT — Web3Forms -- */
+(function() {
+  var form = document.getElementById('stayBookingForm');
+  var btn  = document.getElementById('formSubmitBtn');
+  var thanks = document.getElementById('formThanks');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Basic validation
+    var name = form.querySelector('[name="name"]');
+    var phone = form.querySelector('[name="phone"]');
+    if (!name.value.trim() || !phone.value.trim()) {
+      name.focus();
+      return;
+    }
+
+    // Check access key
+    var keyInput = form.querySelector('[name="access_key"]');
+    if (!keyInput || keyInput.value === 'YOUR_ACCESS_KEY') {
+      alert('⚠️ Chưa cài key Web3Forms.\nVào web3forms.com → nhập meruva.main@gmail.com → lấy key → dán vào code.');
+      return;
+    }
+
+    // Sending state
+    btn.disabled = true;
+    var origText = btn.innerHTML;
+    btn.innerHTML = '<span style="opacity:.6;letter-spacing:.25em;font-size:.65rem">ĐANG GỬI...</span>';
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: new FormData(form)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.success) {
+        // Ẩn form, hiện cảm ơn
+        form.style.transition = 'opacity .4s';
+        form.style.opacity = '0';
+        setTimeout(function() {
+          form.style.display = 'none';
+          thanks.classList.add('visible', 'in');
+        }, 400);
+      } else {
+        alert('Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp qua Zalo.');
+        btn.disabled = false;
+        btn.innerHTML = origText;
+      }
+    })
+    .catch(function() {
+      alert('Không gửi được. Kiểm tra kết nối và thử lại.');
+      btn.disabled = false;
+      btn.innerHTML = origText;
+    });
+  });
+})();
+</script>
+
+<!-- --------------------------------------------
+     FLOATING PRICE CALCULATOR
+-------------------------------------------- -->
+<style>
+/* --- FAB --- */
+#calc-fab {
+  position:fixed;right:1.3rem;top:55%;
+  transform:translateY(-50%);
+  z-index:700;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--stay);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 24px rgba(61,158,140,.4);
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,top 2s cubic-bezier(.22,1,.36,1);
+}
+#calc-fab:hover {
+  transform:translateY(-50%) scale(1.1);
+  box-shadow:0 6px 32px rgba(61,158,140,.6);
+}
+#calc-fab svg { color:#0A0A0A;pointer-events:none; }
+#calc-fab-tip {
+  position:absolute;bottom:-32px;left:50%;transform:translateX(-50%);
+  white-space:nowrap;
+  background:rgba(8,8,8,.92);border:1px solid rgba(61,158,140,.35);
+  color:var(--stay);font-size:.52rem;letter-spacing:.18em;
+  text-transform:uppercase;padding:.3rem .8rem;font-family:'Inter',sans-serif;
+  pointer-events:none;opacity:0;
+  transition:opacity .22s;
+}
+#calc-fab:hover #calc-fab-tip { opacity:1; }
+
+/* --- BACKDROP --- */
+#calc-backdrop {
+  position:fixed;inset:0;z-index:840;
+  background:rgba(0,0,0,.6);backdrop-filter:blur(3px);
+  opacity:0;pointer-events:none;transition:opacity .35s;
+}
+#calc-backdrop.open { opacity:1;pointer-events:all; }
+
+/* --- PANEL --- */
+#calc-panel {
+  position:fixed;z-index:850;
+  top:0;right:0;width:440px;height:100vh;
+  display:flex;flex-direction:column;
+  overflow:hidden; /* giữ flex children trong panel */
+  background:#0D0D0D;
+  border-left:1px solid rgba(212,164,55,.14);
+  transform:translateX(100%);
+  transition:transform .42s cubic-bezier(.22,1,.36,1);
+  will-change:transform;
+}
+#calc-panel.open { transform:translateX(0); }
+
+/* --- PANEL HEADER --- */
+#calc-ph {
+  flex-shrink:0;padding:1.1rem 1.4rem;
+  background:#0A0A0A;
+  border-bottom:1px solid rgba(212,164,55,.1);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.cph-brand {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-weight:600;letter-spacing:.07em;color:var(--cream);
+}
+.cph-sub {
+  font-size:.54rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--stay);margin-top:.15rem;
+}
+#calc-close {
+  width:30px;height:30px;border:1px solid rgba(212,164,55,.2);
+  background:transparent;color:var(--silver-soft);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;transition:all .25s;flex-shrink:0;
+}
+#calc-close:hover { border-color:var(--gold);color:var(--gold); }
+
+/* --- PANEL BODY --- */
+#calc-pb {
+  flex:1;min-height:0; /* fix flexbox scroll — không có dòng này sẽ không cuộn được */
+  overflow-y:auto;overflow-x:hidden;
+  padding:1rem;display:flex;flex-direction:column;gap:8px;
+}
+#calc-pb::-webkit-scrollbar { width:3px; }
+#calc-pb::-webkit-scrollbar-thumb { background:rgba(212,164,55,.2);border-radius:2px; }
+
+/* --- PANEL FOOTER --- */
+#calc-pf {
+  flex-shrink:0;padding:.9rem 1rem;
+  background:#0A0A0A;border-top:1px solid rgba(212,164,55,.12);
+}
+#calc-confirm {
+  width:100%;padding:.95rem;background:var(--stay);border:none;
+  color:#0A0A0A;font-family:'Inter',sans-serif;
+  font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;
+  font-weight:700;cursor:pointer;transition:background .3s;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 100%,0 100%);
+}
+#calc-confirm:hover { background:var(--stay-light); }
+#calc-confirm.c-hide { display:none; }
+
+/* --- CONTROLS --- */
+.cc-block {
+  background:#141414;border:1px solid rgba(212,164,55,.1);
+  border-radius:7px;padding:12px;
+}
+.cc-title {
+  font-size:.56rem;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:10px;
+  display:flex;align-items:center;gap:.45rem;
+}
+.cc-title::before { content:"?";font-size:.48rem; }
+.cc-grid { display:grid;grid-template-columns:1fr 1fr;gap:8px; }
+.cc-grp { display:flex;flex-direction:column;gap:4px; }
+.cc-grp label {
+  font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--silver-soft);
+}
+.cc-sel {
+  padding:7px 9px;border:1px solid rgba(212,164,55,.14);
+  border-radius:5px;font-size:.75rem;font-family:'Inter',sans-serif;
+  background:#1C1C1C;color:var(--cream);cursor:pointer;
+  transition:border-color .2s;outline:none;width:100%;
+}
+.cc-sel:focus { border-color:var(--gold); }
+.cc-sel option { background:#1C1C1C; }
+.cc-tog {
+  display:flex;border:1px solid rgba(212,164,55,.14);
+  border-radius:5px;overflow:hidden;
+}
+.cc-tbtn {
+  flex:1;padding:7px 4px;border:none;background:#1C1C1C;
+  font-size:.62rem;font-family:'Inter',sans-serif;cursor:pointer;
+  color:var(--silver-soft);transition:all .2s;letter-spacing:.04em;
+}
+.cc-tbtn.on { background:var(--gold);color:#0A0A0A;font-weight:700; }
+.c-hide { display:none!important; }
+
+/* --- BILL OUTPUT --- */
+#c-bill {
+  border-radius:7px;overflow:hidden;
+  border:1px solid rgba(212,164,55,.1);
+  transition:opacity .2s;
+  flex-shrink:0;
+}
+#c-bill.fading { opacity:0; }
+.cb-head {
+  background:#0A0A0A;
+  border-bottom:2px solid var(--cx,#D4A437);
+  padding:12px 14px;
+}
+.cb-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:.95rem;font-weight:700;letter-spacing:.06em;color:var(--cream);
+}
+.cb-sub { font-size:.58rem;color:var(--silver-soft);font-style:italic;margin-top:2px; }
+.cb-meta { display:flex;gap:10px;flex-wrap:wrap;margin-top:8px; }
+.cm-l { font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--silver-soft); }
+.cm-v { font-size:.72rem;color:var(--cream); }
+.cm-v.ac { color:var(--cx,#D4A437); }
+.cb-sec {
+  padding:10px 14px;border-bottom:1px solid rgba(212,164,55,.07);
+  background:#141414;
+}
+.cb-sec:last-child { border-bottom:none; }
+.cb-lbl {
+  font-size:.52rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--silver-soft);margin-bottom:7px;
+}
+.cb-row { display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:.75rem; }
+.cb-row .l { color:var(--cream);opacity:.7; }
+.cb-row .a { font-weight:500;color:var(--cream); }
+.cb-row .a.grn { color:#3FB950; }
+.cb-row .a.ac { color:var(--cx,#D4A437); }
+.cb-row.disc .l::before { content:'— ';color:#3FB950; }
+.cb-tot {
+  display:flex;justify-content:space-between;align-items:center;
+  padding:7px 0 0;margin-top:4px;border-top:1px solid rgba(212,164,55,.09);
+}
+.cb-tot .l { font-size:.8rem;font-weight:700;color:var(--cream); }
+.cb-tot .a { font-size:1.05rem;font-weight:700;color:var(--cream); }
+.cb-tot.ac .a { color:var(--cx,#D4A437); }
+.cb-acbox {
+  background:rgba(212,164,55,.06);border:1px solid rgba(212,164,55,.18);
+  border-radius:5px;padding:9px 11px;margin-top:7px;
+}
+.cb-acrow { display:flex;justify-content:space-between;font-size:.68rem;color:var(--silver-soft);margin-bottom:4px; }
+.cb-acrow:last-child { font-size:.75rem;font-weight:700;color:var(--cx,#D4A437);margin-bottom:0; }
+.cb-ygrid { display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:7px; }
+.cb-ycard { background:#1A1A1A;border:1px solid rgba(212,164,55,.09);border-radius:5px;padding:8px; }
+.cb-ycard.hl { background:rgba(212,164,55,.06);border-color:rgba(212,164,55,.22); }
+.cb-yt { font-size:.52rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--silver-soft);margin-bottom:4px; }
+.cb-ycard.hl .cb-yt { color:var(--cx,#D4A437); }
+.cb-yp { font-size:.8rem;font-weight:700;color:var(--cream);margin-bottom:2px; }
+.cb-yn { font-size:.6rem;color:var(--silver-soft);line-height:1.4; }
+.cb-yd { font-size:.6rem;font-weight:600;margin-top:3px; }
+.cb-yd.ok { color:#3FB950; }
+.cb-yd.up { color:#F0883E; }
+.cb-ben-item { padding:5px 0;border-bottom:1px solid rgba(212,164,55,.07); }
+.cb-ben-item:last-child { border-bottom:none; }
+.cb-ben-m { display:flex;align-items:flex-start;gap:5px; }
+.cb-ben-m::before { content:'?';color:var(--cx,#D4A437);font-size:.65rem;flex-shrink:0; }
+.cb-ben-t { font-size:.72rem;font-weight:600;color:var(--cream); }
+.cb-ben-v { margin-left:14px;font-size:.67rem;font-weight:700;color:#3FB950;margin-top:2px; }
+.cb-ben-s { margin-left:14px;font-size:.6rem;color:var(--silver-soft); }
+.cb-chkbox {
+  background:rgba(63,185,80,.04);border:1px solid rgba(63,185,80,.14);
+  border-radius:5px;padding:7px 9px;margin-top:7px;display:flex;flex-direction:column;gap:4px;
+}
+.cb-chk { display:flex;align-items:center;gap:5px;font-size:.68rem;color:var(--cream);opacity:.7; }
+.cb-chk::before { content:'?';color:#3FB950;font-weight:700;flex-shrink:0; }
+.cb-chk.bold { font-weight:700;opacity:1; }
+.cb-badge {
+  display:inline-block;font-size:.52rem;font-weight:700;padding:1px 5px;
+  border-radius:3px;letter-spacing:.05em;margin-left:4px;vertical-align:middle;
+  background:rgba(212,164,55,.1);color:var(--gold);border:1px solid rgba(212,164,55,.22);
+}
+.cb-foot {
+  padding:9px 13px;background:#1A1A1A;
+  font-size:.58rem;color:var(--silver-soft);line-height:1.8;
+  border-top:1px solid rgba(212,164,55,.07);
+}
+
+/* --- SCHOLAR TL --- */
+.cb-tl { display:flex;flex-direction:column; }
+.cb-tl-item { display:flex;gap:9px;padding:7px 0;border-bottom:1px solid rgba(212,164,55,.07); }
+.cb-tl-item:last-child { border-bottom:none; }
+.cb-tl-l { display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0; }
+.cb-tl-dot { width:7px;height:7px;border-radius:50%;background:var(--cx,#D4A437); }
+.cb-tl-line { width:1px;flex:1;background:rgba(212,164,55,.1);min-height:12px; }
+.cb-tl-item:last-child .cb-tl-line { display:none; }
+.cb-tl-title { font-size:.72rem;font-weight:700;color:var(--cream);margin-bottom:3px;display:flex;align-items:center;gap:5px;flex-wrap:wrap; }
+.cb-tl-tag { font-size:.52rem;font-weight:700;padding:1px 4px;border-radius:2px;background:rgba(59,130,246,.12);color:#3B82F6;border:1px solid rgba(59,130,246,.22); }
+.cb-tl-desc { font-size:.63rem;color:var(--silver-soft);line-height:1.5; }
+.cb-tl-chk { font-size:.6rem;color:var(--cream);display:flex;gap:4px;margin-top:3px;opacity:.7; }
+.cb-tl-chk::before { content:'?';color:var(--cx,#D4A437);flex-shrink:0; }
+
+/* --- CERT --- */
+.cb-cert { background:rgba(212,164,55,.06);border:1px solid rgba(212,164,55,.18);border-radius:7px;padding:11px 13px;margin-top:7px; }
+.cb-cert-h { display:flex;align-items:center;gap:7px;margin-bottom:9px; }
+.cb-cert-title { font-size:.78rem;font-weight:700;color:var(--gold); }
+.cb-cert-sub { font-size:.58rem;color:var(--silver-soft); }
+.cb-cert-item { font-size:.62rem;color:var(--cream);display:flex;gap:5px;align-items:flex-start;margin-top:4px;opacity:.8; }
+.cb-cert-item::before { content:'?';color:var(--gold);font-size:.55rem;flex-shrink:0;margin-top:1px; }
+
+/* --- RESPONSIVE --- */
+@media(max-width:768px) {
+  #calc-panel {
+    width:100%;top:auto;bottom:0;right:0;
+    height:92dvh;border-left:none;
+    border-top:1px solid rgba(212,164,55,.18);
+    border-radius:14px 14px 0 0;
+    transform:translateY(100%);
+  }
+  #calc-panel.open { transform:translateY(0); }
+  #calc-fab {
+    top:auto;bottom:1.8rem;
+    transform:none;
+    transition:transform .35s,box-shadow .35s;
+  }
+  #calc-fab:hover { transform:scale(1.1); }
+  #calc-fab-tip {
+    bottom:-28px;left:50%;transform:translateX(-50%);
+    opacity:0.8;font-size:.5rem;padding:.25rem .65rem;
+  }
+  #calc-fab:hover #calc-fab-tip { opacity:1; }
+  .cb-ygrid { grid-template-columns:1fr; }
+  .cc-grid { grid-template-columns:1fr; }
+}
+@media(min-width:769px) and (max-width:1200px) {
+  #calc-panel { width:400px; }
+}
+</style>
+
+<!-- FAB -->
+<button id="calc-fab" onclick="toggleCalc()" aria-label="Tính giá phòng">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="2" width="16" height="20" rx="2"/>
+    <line x1="8" y1="6" x2="16" y2="6"/>
+    <line x1="8" y1="10" x2="10" y2="10"/>
+    <line x1="14" y1="10" x2="16" y2="10"/>
+    <line x1="8" y1="14" x2="10" y2="14"/>
+    <line x1="14" y1="14" x2="16" y2="14"/>
+    <line x1="8" y1="18" x2="10" y2="18"/>
+    <line x1="14" y1="18" x2="16" y2="18"/>
+  </svg>
+  <div id="calc-fab-tip">Tính giá</div>
+</button>
+
+<!-- Backdrop -->
+<div id="calc-backdrop" onclick="closeCalc()"></div>
+
+<!-- Panel -->
+<div id="calc-panel">
+  <!-- Header -->
+  <div id="calc-ph">
+    <div>
+      <div class="cph-brand">? MERUVA Stay</div>
+      <div class="cph-sub">Bảng tính giá · Tham khảo</div>
+    </div>
+    <button id="calc-close" onclick="closeCalc()">?</button>
+  </div>
+
+  <!-- Body -->
+  <div id="calc-pb">
+
+    <!-- Controls -->
+    <div class="cc-block">
+      <div class="cc-title">Thông tin cần tính</div>
+      <div class="cc-grid">
+
+        <div class="cc-grp">
+          <label>Loại & diện tích</label>
+          <select id="c-sRoom" class="cc-sel" onchange="calcOnRoomChange()">
+            <optgroup label="Phòng Stay">
+              <option value="17">Phòng 17m² — 6tr/tháng</option>
+              <option value="21">Phòng 21m² — 7tr/tháng</option>
+              <option value="24">Phòng 24m² — 8tr/tháng</option>
+            </optgroup>
+            <optgroup label="Mặt bằng">
+              <option value="mb">Mặt bằng 26m² + sân — 20tr/tháng</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="cc-grp" id="c-cgCust">
+          <label>Nhóm khách</label>
+          <select id="c-sCust" class="cc-sel" onchange="calcOnCustChange()">
+            <option value="worker">Người đi làm</option>
+            <option value="student">Sinh viên — Scholar</option>
+          </select>
+        </div>
+
+        <div class="cc-grp" id="c-cgTier">
+          <label>Thẻ thành viên</label>
+          <select id="c-sTier" class="cc-sel" onchange="calcRender()">
+            <option value="none">Không có thẻ</option>
+            <option value="summit">Summit — 500k/nam</option>
+            <option value="gold">Gold — 1.5tr/nam</option>
+            <option value="peak">Peak — 2tr/nam</option>
+          </select>
+        </div>
+
+        <div class="cc-grp" id="c-cgTerm">
+          <label>Thời hạn HĐ</label>
+          <select id="c-sTerm" class="cc-sel" onchange="calcRender()">
+            <option value="m">Từng tháng</option>
+            <option value="3">3 tháng</option>
+            <option value="6">6 tháng (-3%)</option>
+            <option value="12" selected>12 tháng (-5%)</option>
+          </select>
+        </div>
+
+        <div class="cc-grp" id="c-cgTiming" style="grid-column:1/-1">
+          <label>Thời điểm đăng ký</label>
+          <div class="cc-tog">
+            <button class="cc-tbtn on" id="c-bBefore" onclick="calcSetT('before')">Trước 1/9 12h</button>
+            <button class="cc-tbtn" id="c-bAfter" onclick="calcSetT('after')">Sau 1/9 12h</button>
+          </div>
+        </div>
+
+        <div class="cc-grp c-hide" id="c-cgScholarLevel" style="grid-column:1/-1">
+          <label>Mức Scholar</label>
+          <select id="c-sScholarLevel" class="cc-sel" onchange="calcRender()">
+            <option value="base">Scholar — 1 tiêu chí (-500k/tháng)</option>
+            <option value="plus">Scholar+ — Học + XH (-700k/tháng)</option>
+            <option value="elite">Scholar Elite — Cả 3 + Community (-1tr/tháng)</option>
+          </select>
+        </div>
+
+        <div class="cc-grp c-hide" id="c-cgMBTerm">
+          <label>Thời hạn HĐ</label>
+          <select id="c-mbTerm" class="cc-sel" onchange="calcRender()">
+            <option value="6">6 tháng (-5%)</option>
+            <option value="12" selected>12 tháng (-10%)</option>
+          </select>
+        </div>
+        <div class="cc-grp c-hide" id="c-cgMBType">
+          <label>Loại tenant</label>
+          <select id="c-mbType" class="cc-sel" onchange="calcRender()">
+            <option value="normal">Thông thường</option>
+            <option value="partner">Partner MERUVA (-3%)</option>
+          </select>
+        </div>
+        <div class="cc-grp c-hide" id="c-cgMBDeposit">
+          <label>Số tháng cọc</label>
+          <select id="c-mbDeposit" class="cc-sel" onchange="calcRender()">
+            <option value="2">2 tháng — không giảm</option>
+            <option value="3">3 tháng — giảm thêm 2%</option>
+            <option value="4">4 tháng — giảm thêm 4%</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bill output -->
+    <div id="c-bill"></div>
+
+  </div><!-- /calc-pb -->
+
+  <!-- Footer -->
+  <div id="calc-pf">
+    <button id="calc-confirm" onclick="confirmCalcSelection()">
+      Chốt phòng này — điền vào form →
+    </button>
+  </div>
+</div>
+
+<script>
+/* -- PRICE CALCULATOR PANEL -- */
+(function(){
+  var cT='before'; // calcTiming
+
+  /* Format VND (millions) */
+  function v(n){
+    return new Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND',maximumFractionDigits:0}).format(Math.round(n*1e6));
+  }
+
+  /* Set accent color on panel */
+  function setTheme(mode){
+    var p=document.getElementById('calc-panel');
+    if(mode==='blue'){
+      p.style.setProperty('--cx','#3B82F6');
+      p.style.setProperty('--cx-dim','rgba(59,130,246,.1)');
+      p.style.setProperty('--cx-border','rgba(59,130,246,.25)');
+      document.getElementById('calc-confirm').style.background='#3B82F6';
+    } else {
+      p.style.setProperty('--cx','#D4A437');
+      p.style.setProperty('--cx-dim','rgba(212,164,55,.1)');
+      p.style.setProperty('--cx-border','rgba(212,164,55,.25)');
+      document.getElementById('calc-confirm').style.background='var(--stay)';
+    }
+  }
+
+  /* Open / close */
+  window.toggleCalc=function(){
+    var p=document.getElementById('calc-panel');
+    if(p.classList.contains('open')) closeCalc();
+    else openCalc();
+  };
+  window.openCalc=function(){
+    document.getElementById('calc-panel').classList.add('open');
+    document.getElementById('calc-backdrop').classList.add('open');
+    document.body.style.overflow='hidden';
+    calcRender();
+  };
+  window.closeCalc=function(){
+    document.getElementById('calc-panel').classList.remove('open');
+    document.getElementById('calc-backdrop').classList.remove('open');
+    document.body.style.overflow='';
+  };
+
+  /* Timing toggle */
+  window.calcSetT=function(t){
+    cT=t;
+    document.getElementById('c-bBefore').classList.toggle('on',t==='before');
+    document.getElementById('c-bAfter').classList.toggle('on',t==='after');
+    calcRender();
+  };
+
+  /* Room change */
+  window.calcOnRoomChange=function(){
+    var mb=document.getElementById('c-sRoom').value==='mb';
+    ['c-cgCust','c-cgTier','c-cgTerm','c-cgTiming'].forEach(function(id){
+      document.getElementById(id).classList.toggle('c-hide',mb);
+    });
+    ['c-cgMBTerm','c-cgMBType','c-cgMBDeposit'].forEach(function(id){
+      document.getElementById(id).classList.toggle('c-hide',!mb);
+    });
+    document.getElementById('calc-confirm').classList.toggle('c-hide',mb);
+    if(!mb){
+      document.getElementById('c-sCust').value='worker';
+      calcOnCustChange();
+    } else {
+      document.getElementById('c-cgScholarLevel').classList.add('c-hide');
+      setTheme('gold');
+      calcRender();
+    }
+  };
+
+  /* Customer change */
+  window.calcOnCustChange=function(){
+    var sv=document.getElementById('c-sCust').value==='student';
+    setTheme(sv?'blue':'gold');
+    document.getElementById('c-cgTier').classList.toggle('c-hide',sv);
+    document.getElementById('c-cgScholarLevel').classList.toggle('c-hide',!sv);
+    var sel=document.getElementById('c-sTerm');
+    if(sv){
+      sel.innerHTML='<option value="12" selected>12 tháng (-5%) — Bắt buộc</option>';
+    } else {
+      var cur=sel.value||'12';
+      sel.innerHTML='<option value="m">Từng tháng</option><option value="3">3 tháng</option><option value="6">6 tháng (-3%)</option><option value="12"'+(cur==='12'?' selected':'')+'>12 tháng (-5%)</option>';
+    }
+    calcRender();
+  };
+
+  /* Main render (with fade) */
+  window.calcRender=function(){
+    var b=document.getElementById('c-bill');
+    b.classList.add('fading');
+    setTimeout(function(){
+      _doRender();
+      requestAnimationFrame(function(){requestAnimationFrame(function(){b.classList.remove('fading');});});
+    },180);
+  };
+
+  function _doRender(){
+    var rv=document.getElementById('c-sRoom').value;
+    if(rv==='mb'){renderMB();return;}
+    document.getElementById('c-sCust').value==='student'?renderStudent(rv):renderWorker(rv);
+  }
+
+  /* Data */
+  var ROOMS={17:{base:6,label:'Phòng 17m²'},21:{base:7,label:'Phòng 21m²'},24:{base:8,label:'Phòng 24m²'}};
+  var TIERS={
+    none:{name:'Không thẻ',fee:0,d1:0,d2:0,ben:null},
+    summit:{name:'Summit',fee:.5,d1:0,d2:0,ben:{
+      items:[{t:'1 chai sữa hạt / tháng',v:'Tiết kiệm 420,000đ / năm'},{t:'Giảm 5% dịch vụ MERUVA',s:'Toàn bộ dịch vụ & đối tác'}],
+      checks:[{t:'Hủy linh hoạt — báo trước 30 ngày',b:false},{t:'Không mất cọc khi hủy hợp lệ',b:true}]
+    }},
+    gold:{name:'Gold',fee:1.5,d1:.5,d2:0,ben:{
+      items:[{t:'2 chai sữa hạt / tháng',v:'Tiết kiệm 840,000đ / năm'},{t:'Giảm 7% dịch vụ',s:'MERUVA & đối tác'},{t:'Giảm 500k tiền thuê / tháng (năm 1)',v:'Tiết kiệm 6,000,000đ'},{t:'1 buổi tư vấn 1:1 với Bin',s:'Xây hệ thống cá nhân'},{t:'20 lần cập nhật hệ thống miễn phí',s:'Sau hết → 100k/lần'}],
+      checks:[{t:'Hủy linh hoạt — báo trước 30 ngày',b:false},{t:'Không mất cọc khi hủy hợp lệ',b:true}]
+    }},
+    peak:{name:'Peak',fee:2,d1:1,d2:.5,ben:{
+      items:[{t:'3 chai sữa hạt / tháng',v:'Tiết kiệm 1,260,000đ / năm'},{t:'Giảm 10% dịch vụ',s:'MERUVA & đối tác'},{t:'Giảm 1tr tiền thuê / tháng (năm 1)',v:'Tiết kiệm 12,000,000đ'},{t:'Giảm 500k / tháng (năm 2+)',v:'Tiết kiệm 6,000,000đ / năm'},{t:'10 buổi tư vấn 1:1 với Bin',s:'Giữ mãi'},{t:'50 lần cập nhật hệ thống miễn phí',s:'Sau hết → 100k/lần'},{t:'Ưu tiên Summit Wall & sự kiện độc quyền',s:'Peak member được ưu tiên trước'}],
+      checks:[{t:'Hủy linh hoạt — báo trước 30 ngày',b:false},{t:'Không mất cọc khi hủy hợp lệ',b:true}]
+    }}
+  };
+  var TERMS={m:{l:'Từng tháng',p:0},'3':{l:'3 tháng',p:0},'6':{l:'6 tháng (-3%)',p:.03},'12':{l:'12 tháng (-5%)',p:.05}};
+
+  /* Ben HTML */
+  function makeBen(tier){
+    if(!tier.ben)return'';
+    var h='<div>';
+    tier.ben.items.forEach(function(it){
+      h+='<div class="cb-ben-item"><div class="cb-ben-m"><span class="cb-ben-t">'+it.t+'</span></div>';
+      if(it.v)h+='<div class="cb-ben-v">'+it.v+'</div>';
+      if(it.s)h+='<div class="cb-ben-s">'+it.s+'</div>';
+      h+='</div>';
+    });
+    h+='</div><div class="cb-chkbox">';
+    tier.ben.checks.forEach(function(c){h+='<div class="cb-chk'+(c.b?' bold':'')+'">'+(c.t)+'</div>';});
+    return h+'</div>';
+  }
+
+  /* Year grid */
+  function makeYears(y1,m,fee,y2,m2,d1,d2){
+    var d=y2-y1;
+    return'<div class="cb-ygrid">'+
+      '<div class="cb-ycard hl"><div class="cb-yt">Năm 1</div><div class="cb-yp">'+v(y1)+'</div><div class="cb-yn">'+v(m)+'/tháng'+(fee?'':'')+' </div><div class="cb-yd ok">'+d1+'</div></div>'+
+      '<div class="cb-ycard"><div class="cb-yt">Năm 2</div><div class="cb-yp">'+v(y2)+'</div><div class="cb-yn">'+v(m2)+'/tháng</div><div class="cb-yd '+(d>0?'up':'ok')+'">'+d2+'</div><div class="cb-yd '+(d>0?'up':'ok')+'">'+(d>0?'↑ +'+v(d):d<0?'↓ -'+v(-d):'= Giữ nguyên')+'</div></div>'+
+      '<div class="cb-ycard"><div class="cb-yt">Năm 3+</div><div class="cb-yp">'+v(y2)+'</div><div class="cb-yn">'+v(m2)+'/tháng</div><div class="cb-yd ok">Ổn định</div></div>'+
+    '</div>';
+  }
+
+  /* Render Worker */
+  function renderWorker(rid){
+    var room=ROOMS[rid],tier=TIERS[document.getElementById('c-sTier').value],term=TERMS[document.getElementById('c-sTerm').value];
+    var iB=cT==='before',base=room.base,p=term.p,fee=tier.fee;
+    var m=(base-tier.d1)*(1-p),m2=(base-tier.d2)*(1-p);
+    var y1=m*12+fee,y2=m2*12+fee;
+    var notes=['Điện nước tính riêng','Cọc hoàn đủ khi hết HĐ đúng hạn'];
+    if(!fee)notes.push('Không thẻ + hủy < 3 tháng → mất cọc');
+    document.getElementById('c-bill').innerHTML=
+      '<div class="cb-head"><div class="cb-title">✦ MERUVA STAY <span class="cb-badge">NGƯỜI ĐI LÀM</span></div>'+
+      '<div class="cb-sub">From the summit, we serve. — Báo giá tư vấn</div>'+
+      '<div class="cb-meta"><div><div class="cm-l">Phòng</div><div class="cm-v">'+room.label+'</div></div><div><div class="cm-l">Thẻ</div><div class="cm-v ac">'+tier.name+'</div></div><div><div class="cm-l">HĐ</div><div class="cm-v">'+term.l+'</div></div><div><div class="cm-l">Thời điểm</div><div class="cm-v">'+(iB?'Trước 01/9':'Sau 01/9')+'</div></div></div></div>'+
+
+      '<div class="cb-sec"><div class="cb-lbl">Giá thuê / tháng</div>'+
+      '<div class="cb-row"><span class="l">Giá niêm yết</span><span class="a">'+v(base)+'</span></div>'+
+      (tier.d1>0?'<div class="cb-row disc"><span class="l">Giảm thẻ '+tier.name+'</span><span class="a grn">'+v(tier.d1)+'</span></div>':'')+
+      (p>0?'<div class="cb-row disc"><span class="l">Giảm HĐ '+term.l+'</span><span class="a grn">'+v((base-tier.d1)*p)+'</span></div>':'')+
+      '<div class="cb-tot"><span class="l">Giá thực / tháng</span><span class="a">'+v(m)+'</span></div></div>'+
+
+      '<div class="cb-sec"><div class="cb-lbl">'+(iB?'Đặt cọc trước 01/9/2026 12h':'Thanh toán khi ký HĐ')+'</div>'+
+      '<div class="cb-row"><span class="l">Cọc (1 tháng)</span><span class="a">'+v(m)+'</span></div>'+
+      (!iB?'<div class="cb-row"><span class="l">Tháng 1 (thanh toán ngay)</span><span class="a">'+v(m)+'</span></div>':'')+
+      (fee>0?'<div class="cb-row"><span class="l">Phí thẻ thành viên</span><span class="a" style="opacity:.6">'+v(fee)+'</span></div>':'')+
+      '<div class="cb-tot ac"><span class="l">Tổng '+(iB?'cọc trước 01/9':'khi ký')+'</span><span class="a">'+v(iB?(m+fee):(m*2+fee))+'</span></div></div>'+
+
+      '<div class="cb-sec"><div class="cb-lbl">Tổng năm đầu</div>'+
+      '<div class="cb-row"><span class="l">12 tháng × '+v(m)+'</span><span class="a">'+v(m*12)+'</span></div>'+
+      (fee>0?'<div class="cb-row"><span class="l">Phí thẻ</span><span class="a" style="opacity:.6">'+v(fee)+'</span></div>':'')+
+      '<div class="cb-tot"><span class="l">Tổng năm đầu</span><span class="a">'+v(y1)+'</span></div>'+
+      (fee>0?'<div class="cb-acbox"><div class="cb-acrow"><span>Không thẻ, từng tháng:</span><span>'+v(base*12)+'</span></div><div class="cb-acrow"><span>Có thẻ — bạn trả:</span><span>'+v(y1)+'</span></div><div class="cb-acrow"><span>→ Tiết kiệm</span><span>'+v(base*12-y1)+' 🎉</span></div></div>':'')+
+      '</div>'+
+
+      '<div class="cb-sec"><div class="cb-lbl">Chi phí theo từng năm</div>'+makeYears(y1,m,fee,y2,m2,tier.d1>0?'Discount: -'+v(tier.d1)+'/tháng':'Không discount',tier.d2>0?'Còn: -'+v(tier.d2)+'/tháng':'Không còn discount')+'</div>'+
+      (tier.ben?'<div class="cb-sec"><div class="cb-lbl">Quyền lợi thẻ</div>'+makeBen(tier)+'</div>':'')+
+      '<div class="cb-foot">'+notes.map(function(n){return'• '+n;}).join('<br>')+'</div>';
+  }
+
+  /* Render Student */
+  function renderStudent(rid){
+    var room=ROOMS[rid],iB=cT==='before',base=room.base;
+    var lv=document.getElementById('c-sScholarLevel').value;
+    var LVLS={base:{n:'Scholar',d:.5,c:'GPA ≥ 3.2 hoặc hoạt động XH hoặc dự án thực tế'},plus:{n:'Scholar+',d:.7,c:'Học tập + đóng góp XH đều đặn'},elite:{n:'Scholar Elite',d:1,c:'Cả 3 nhóm + Community MERUVA'}};
+    var sl=LVLS[lv];
+    var m=(base-sl.d)*.95,m2=base*.95,y1=m*12,baseline=base*12,saved=baseline-y1+1.5;
+    document.getElementById('c-bill').innerHTML=
+      '<div class="cb-head"><div class="cb-title">? MERUVA STAY <span class="cb-badge" style="background:rgba(59,130,246,.12);color:#3B82F6;border-color:rgba(59,130,246,.25)">SCHOLAR</span></div>'+
+      '<div class="cb-sub">Dành cho sinh viên có thành tích xuất sắc</div>'+
+      '<div class="cb-meta"><div><div class="cm-l">Phòng</div><div class="cm-v">'+room.label+'</div></div><div><div class="cm-l">Thẻ</div><div class="cm-v ac">Gold — FREE</div></div><div><div class="cm-l">Mức</div><div class="cm-v ac">'+sl.n+'</div></div></div></div>'+
+
+      '<div class="cb-sec"><div class="cb-lbl">Tổng ưu đãi — '+sl.n+'</div>'+
+      '<div class="cb-acbox"><div class="cb-acrow"><span>Thẻ Gold</span><span style="color:#3FB950">MIỄN PHÍ — 1,500,000đ</span></div><div class="cb-acrow"><span>Giảm Stay '+sl.n+'</span><span>-'+v(sl.d)+'/tháng</span></div><div class="cb-acrow"><span>Giảm HĐ 12 tháng</span><span>-5%</span></div><div class="cb-acrow"><span>→ Tiết kiệm năm đầu</span><span>'+v(saved)+' 🎉</span></div></div></div>'+
+
+      '<div class="cb-sec"><div class="cb-lbl">Giá thuê / tháng</div>'+
+      '<div class="cb-row"><span class="l">Giá niêm yết</span><span class="a">'+v(base)+'</span></div>'+
+      '<div class="cb-row disc"><span class="l">Giảm thẻ Gold (Scholar FREE)</span><span class="a grn">'+v(.5)+'</span></div>'+
+      (sl.d>.5?'<div class="cb-row disc"><span class="l">Giảm Scholar bonus</span><span class="a grn">'+v(sl.d-.5)+'</span></div>':'')+
+      '<div class="cb-row disc"><span class="l">Giảm HĐ 12 tháng (-5%)</span><span class="a grn">'+v((base-sl.d)*.05)+'</span></div>'+
+      '<div class="cb-tot"><span class="l">Giá thực / tháng</span><span class="a">'+v(m)+'</span></div></div>'+
+
+      '<div class="cb-sec"><div class="cb-lbl">'+(iB?'Đặt cọc trước 01/9':'Thanh toán khi ký')+'</div>'+
+      '<div class="cb-row"><span class="l">Cọc (1 tháng)</span><span class="a">'+v(m)+'</span></div>'+
+      (!iB?'<div class="cb-row"><span class="l">Tháng 1</span><span class="a">'+v(m)+'</span></div>':'')+
+      '<div class="cb-row"><span class="l">Phí thẻ Gold</span><span class="a" style="color:#3FB950">MIỄN PHÍ</span></div>'+
+      '<div class="cb-tot ac"><span class="l">Tổng '+(iB?'cọc':'khi ký')+'</span><span class="a">'+v(iB?m:m*2)+'</span></div></div>'+
+
+      '<div class="cb-sec"><div class="cb-lbl">Chi phí theo nam</div>'+
+      '<div class="cb-ygrid">'+
+      '<div class="cb-ycard hl"><div class="cb-yt">Năm 1</div><div class="cb-yp">'+v(y1)+'</div><div class="cb-yn">'+v(m)+'/tháng + Gold FREE</div><div class="cb-yd ok">-'+v(sl.d)+'/tháng</div></div>'+
+      '<div class="cb-ycard hl"><div class="cb-yt">Năm 2</div><div class="cb-yp">'+v(y1)+'</div><div class="cb-yn">Nếu đủ điều kiện</div><div class="cb-yd ok">Giữ nguyên</div></div>'+
+      '<div class="cb-ycard"><div class="cb-yt">Sau ĐH</div><div class="cb-yp" style="font-size:.8rem;color:var(--cx,#D4A437)">Alumni 🎓</div><div class="cb-yn">Nhận Certificate</div></div>'+
+      '</div></div>'+
+
+      '<div class="cb-sec"><div class="cb-lbl">Scholar Journey</div><div class="cb-tl">'+
+      '<div class="cb-tl-item"><div class="cb-tl-l"><div class="cb-tl-dot"></div><div class="cb-tl-line"></div></div><div><div class="cb-tl-title">Xét duyệt đầu vào <span class="cb-tl-tag">Bắt buộc</span></div><div class="cb-tl-desc">Nộp bằng chứng + phỏng vấn trực tiếp với Bin. Tối đa 2–3 suất/đợt.</div><div class="cb-tl-chk">'+sl.c+'</div></div></div>'+
+      '<div class="cb-tl-item"><div class="cb-tl-l"><div class="cb-tl-dot"></div><div class="cb-tl-line"></div></div><div><div class="cb-tl-title">Năm 1 — Xây nền <span class="cb-tl-tag">'+sl.n+'</span></div><div class="cb-tl-desc">Hưởng đầy đủ ưu đãi. Duy trì đóng góp để gia hạn.</div><div class="cb-tl-chk">Review giữa kỳ sau 6 tháng</div></div></div>'+
+      '<div class="cb-tl-item"><div class="cb-tl-l"><div class="cb-tl-dot"></div><div class="cb-tl-line"></div></div><div><div class="cb-tl-title">Gia hạn năm 2 <span class="cb-tl-tag">Nếu đủ ĐK</span></div><div class="cb-tl-desc">Đủ điều kiện → giữ nguyên. Không đạt → về giá thường, không bị đuổi phòng.</div></div></div>'+
+      '<div class="cb-tl-item"><div class="cb-tl-l"><div class="cb-tl-dot"></div></div><div><div class="cb-tl-title">Tốt nghiệp ĐH <span class="cb-tl-tag">Graduation</span></div><div class="cb-tl-desc">Nhận MERUVA Scholar Certificate và Alumni benefits trọn đời.</div></div></div>'+
+      '</div></div>'+
+
+      '<div class="cb-sec"><div class="cb-lbl">Khi tốt nghiệp 🎓</div>'+
+      '<div class="cb-cert"><div class="cb-cert-h"><div style="font-size:18px">🎓</div><div><div class="cb-cert-title">MERUVA Scholar Certificate</div><div class="cb-cert-sub">Ký tên Bin · Chứng nhận hoàn thành Scholar Program</div></div></div>'+
+      '<div class="cb-cert-item">Featured vĩnh viễn trên Summit Wall</div>'+
+      '<div class="cb-cert-item">Recommendation Letter từ Bin</div>'+
+      '<div class="cb-cert-item">Alumni discount — giữ 5% dịch vụ mãi</div>'+
+      '<div class="cb-cert-item">Ưu tiên thuê lại khi có nhu cầu</div></div></div>'+
+
+      '<div class="cb-foot">• Điện nước tính riêng<br>• Scholar discount tối đa 2 năm — review 6 tháng/lần<br>• Điều kiện: '+sl.c+'</div>';
+  }
+
+  /* Render MB */
+  function renderMB(){
+    var tM=parseInt(document.getElementById('c-mbTerm').value);
+    var isPt=document.getElementById('c-mbType').value==='partner';
+    var dep=parseInt(document.getElementById('c-mbDeposit').value);
+    var base=20,tP=tM===6?.05:.10,pP=isPt?.03:0,dP=dep===3?.02:dep===4?.04:0;
+    var aft=base*(1-tP),aft2=aft*(1-pP),mo=aft2*(1-dP);
+    var tD=base*tP,pD=aft*pP,dD=aft2*dP,saved=base*tM-mo*tM;
+    document.getElementById('c-bill').innerHTML=
+      '<div class="cb-head"><div class="cb-title">✦ Mặt Bằng Tầng Trệt <span class="cb-badge">THƯƠNG MẠI</span></div>'+
+      '<div class="cb-sub">654A Quang Trung, Gò Vấp — 26m² + sân, mặt tiền</div>'+
+      '<div class="cb-meta"><div><div class="cm-l">Diện tích</div><div class="cm-v">26m² + sân</div></div><div><div class="cm-l">HĐ</div><div class="cm-v">'+tM+' tháng</div></div><div><div class="cm-l">Loại</div><div class="cm-v ac">'+(isPt?'Partner':'Thường')+'</div></div><div><div class="cm-l">Cọc</div><div class="cm-v">'+dep+' tháng</div></div></div></div>'+
+      '<div class="cb-sec"><div class="cb-lbl">Giá thuê / tháng</div>'+
+      '<div class="cb-row"><span class="l">Giá niêm yết</span><span class="a">'+v(base)+'</span></div>'+
+      '<div class="cb-row disc"><span class="l">Giảm HĐ '+tM+'th ('+(tP*100)+'%)</span><span class="a grn">'+v(tD)+'</span></div>'+
+      (isPt?'<div class="cb-row disc"><span class="l">Giảm Partner (3%)</span><span class="a grn">'+v(pD)+'</span></div>':'')+
+      (dP>0?'<div class="cb-row disc"><span class="l">Giảm cọc '+dep+' tháng ('+(dP*100)+'%)</span><span class="a grn">'+v(dD)+'</span></div>':'')+
+      '<div class="cb-tot"><span class="l">Giá thực / tháng</span><span class="a">'+v(mo)+'</span></div></div>'+
+      '<div class="cb-sec"><div class="cb-lbl">Chi trả khi ký</div>'+
+      '<div class="cb-row"><span class="l">Cọc ('+dep+' tháng)</span><span class="a">'+v(mo*dep)+'</span></div>'+
+      '<div class="cb-row"><span class="l">Tháng 1</span><span class="a">'+v(mo)+'</span></div>'+
+      '<div class="cb-tot ac"><span class="l">Tổng khi ký</span><span class="a">'+v(mo*(dep+1))+'</span></div></div>'+
+      '<div class="cb-sec"><div class="cb-lbl">Tổng HĐ '+tM+' tháng</div>'+
+      '<div class="cb-row"><span class="l">'+tM+' tháng × '+v(mo)+'</span><span class="a">'+v(mo*tM)+'</span></div>'+
+      '<div class="cb-tot"><span class="l">Tiết kiệm so niêm yết</span><span class="a" style="color:#3FB950">'+v(saved)+' 🎉</span></div></div>'+
+      '<div class="cb-foot">• Tối thiểu 6 tháng<br>• Tenant phù hợp: Cafe · Healthy food · Beauty<br>• Không nhận: cầm đồ, game, nhậu<br>• MERUVA có thể lấy lại để mở Cafe sau 2027</div>';
+  }
+
+  /* Confirm ? auto-fill form */
+  window.confirmCalcSelection=function(){
+    var rv=document.getElementById('c-sRoom').value;
+    if(rv==='mb')return;
+
+    // Fill room type
+    var rs=document.querySelector('#stayBookingForm [name="room_type"]');
+    if(rs){var map={'17':1,'21':2,'24':3};rs.selectedIndex=map[rv]||0;}
+
+    // Fill move-in time
+    var ms=document.querySelector('#stayBookingForm [name="move_in"]');
+    if(ms){ms.selectedIndex=cT==='before'?1:2;}
+
+    // Close panel
+    closeCalc();
+
+    // Scroll to form + flash
+    setTimeout(function(){
+      var f=document.getElementById('stay-form');
+      if(f){
+        f.scrollIntoView({behavior:'smooth',block:'start'});
+        f.style.transition='box-shadow .4s';
+        f.style.boxShadow='0 0 0 2px rgba(61,158,140,.4)';
+        setTimeout(function(){f.style.boxShadow='';},1800);
+      }
+    },350);
+  };
+
+  /* Init */
+  calcRender();
+})();
+
+/* -- FAB: theo cuộn trang chậm 2 giây (desktop) -- */
+(function() {
+  var fab = document.getElementById('calc-fab');
+  if (!fab) return;
+
+  function updateFabPos() {
+    if (window.innerWidth <= 768) {
+      fab.style.top = '';
+      return;
+    }
+    var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    var progress = Math.min(1, window.scrollY / maxScroll);
+    /* di chuyển từ 55% → 45% khi cuộn từ đầu đến cuối trang */
+    fab.style.top = (55 - progress * 10) + '%';
+  }
+
+  updateFabPos();
+  window.addEventListener('scroll', updateFabPos, { passive: true });
+  window.addEventListener('resize', updateFabPos, { passive: true });
+})();
+</script>
+</body>
+</html>
