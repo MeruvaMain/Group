@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trợ lý bán hàng — Demo quick-capture · MERUVA</title>
+<meta name="description" content="Trợ lý bán hàng — demo công cụ quick-capture ghi nhanh đơn hàng và khách hàng tiềm năng. Một sản phẩm minh hoạ hệ thống cá nhân do MERUVA Service thiết kế.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://meruva.vn/MeruvaService/demo/quick-capture-demo-V1.html">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FAF7F4;--ivory:#F2EDE7;--surface:#FFFFFF;
+  --border:rgba(155,115,95,.12);--border-s:rgba(155,115,95,.24);
+  --rose:#C47A8A;--rose-bg:#FAF0F2;--rose-bd:rgba(196,122,138,.28);
+  --amber:#C4906A;--amber-bg:#FBF3EC;--amber-bd:rgba(196,144,106,.28);
+  --sage:#7A9E8B;--sage-bg:#EEF5F1;--sage-bd:rgba(122,158,139,.28);
+  --ink:#2A1F1B;--ink2:#5A4840;--muted:#8A7870;--hint:#C0B0A8;
+  --nav-h:68px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;background:#DDD6CE;}
+body{display:flex;justify-content:center;align-items:flex-start;padding:20px 0 40px;font-family:'DM Sans',sans-serif;}
+
+.phone{width:100%;max-width:390px;min-height:100vh;background:var(--cream);position:relative;display:flex;flex-direction:column;overflow:hidden;}
+
+/* grain */
+.phone::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");pointer-events:none;z-index:300;}
+
+/* HEADER */
+.header{padding:18px 20px 14px;flex-shrink:0;}
+.header-greeting{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--hint);letter-spacing:.06em;font-style:italic;margin-bottom:2px;}
+.header-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--ink);line-height:1.1;}
+.header-date{font-size:11px;color:var(--hint);font-weight:300;margin-top:4px;letter-spacing:.04em;}
+
+/* CONTENT */
+.content{flex:1;overflow-y:auto;padding-bottom:calc(var(--nav-h) + 80px);-webkit-overflow-scrolling:touch;}
+.screen{display:none;}.screen.active{display:block;}
+
+/* SUMMARY PILLS */
+.summary-pills{display:flex;gap:8px;padding:0 16px 20px;overflow-x:auto;}
+.summary-pills::-webkit-scrollbar{display:none;}
+.pill{display:flex;align-items:center;gap:6px;padding:7px 14px;background:var(--surface);border:.5px solid var(--border);border-radius:999px;white-space:nowrap;flex-shrink:0;}
+.pill-num{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--ink);}
+.pill-lbl{font-size:11px;color:var(--muted);}
+.pill.urgent{border-color:var(--rose-bd);background:var(--rose-bg);}
+.pill.urgent .pill-num{color:#903550;}
+.pill.urgent .pill-lbl{color:#B06070;}
+.pill.wait{border-color:var(--amber-bd);background:var(--amber-bg);}
+.pill.wait .pill-num{color:#8A5A30;}
+.pill.wait .pill-lbl{color:#A07050;}
+
+/* SECTION */
+.sec-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--hint);padding:0 18px 10px;}
+
+/* TASK CARD */
+.task-card{margin:0 14px 10px;background:var(--surface);border:.5px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .15s;animation:fadeUp .4s ease both;}
+.task-card:active{transform:scale(.98);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.task-card:nth-child(1){animation-delay:.04s}
+.task-card:nth-child(2){animation-delay:.09s}
+.task-card:nth-child(3){animation-delay:.14s}
+.task-card:nth-child(4){animation-delay:.19s}
+.task-card:nth-child(5){animation-delay:.24s}
+
+.task-accent{height:3px;}
+.task-body{padding:13px 15px 14px;}
+.task-company-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.task-company{font-size:12px;font-weight:500;color:var(--muted);}
+.task-deadline{font-size:11px;color:var(--hint);}
+.task-deadline.overdue{color:var(--rose);font-weight:500;}
+.task-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:var(--ink);line-height:1.3;margin-bottom:11px;}
+.task-footer{display:flex;align-items:center;justify-content:space-between;}
+.task-type{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 10px;border-radius:999px;border:.5px solid;}
+.type-mine{background:var(--rose-bg);color:#903550;border-color:var(--rose-bd);}
+.type-theirs{background:var(--amber-bg);color:#8A5A30;border-color:var(--amber-bd);}
+.type-done{background:var(--sage-bg);color:#3A7060;border-color:var(--sage-bd);}
+.task-done-btn{width:28px;height:28px;border-radius:50%;border:.5px solid var(--border-s);background:transparent;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;color:var(--hint);-webkit-appearance:none;}
+.task-done-btn:active{background:var(--sage-bg);}
+
+/* CUSTOMER LIST */
+.customer-item{margin:0 14px 10px;background:var(--surface);border:.5px solid var(--border);border-radius:16px;padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:12px;animation:fadeUp .4s ease both;}
+.customer-item:active{transform:scale(.98);}
+.cust-avatar{width:40px;height:40px;border-radius:50%;background:var(--ivory);border:.5px solid var(--border-s);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--ink2);flex-shrink:0;}
+.cust-info{flex:1;min-width:0;}
+.cust-company{font-weight:500;font-size:15px;color:var(--ink);margin-bottom:2px;}
+.cust-meta{font-size:11px;color:var(--hint);}
+.cust-right{text-align:right;flex-shrink:0;}
+.cust-pending{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;}
+.pending-rose{color:var(--rose);}
+.pending-sage{color:var(--sage);}
+.cust-pending-lbl{font-size:9px;color:var(--hint);text-transform:uppercase;letter-spacing:.06em;}
+
+/* CUSTOMER DETAIL */
+.detail-header{padding:16px 16px 0;}
+.detail-back{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);margin-bottom:14px;cursor:pointer;background:none;border:none;-webkit-appearance:none;font-family:'DM Sans',sans-serif;}
+.detail-company{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.detail-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+.detail-badge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:999px;border:.5px solid var(--border-s);background:var(--ivory);color:var(--muted);}
+
+/* COMMITMENT BOXES */
+.commitment-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px 20px;}
+.commitment-box{background:var(--surface);border:.5px solid var(--border);border-radius:14px;padding:12px 13px;}
+.commitment-box.mine{border-top:3px solid var(--rose);}
+.commitment-box.theirs{border-top:3px solid var(--amber);}
+.commitment-title{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;}
+.commitment-title.mine{color:var(--rose);}
+.commitment-title.theirs{color:var(--amber);}
+.commitment-task{font-size:12px;color:var(--ink);margin-bottom:4px;line-height:1.4;}
+.commitment-date{font-size:11px;color:var(--hint);}
+.commitment-date.overdue{color:var(--rose);font-weight:500;}
+
+/* ACTIVITY TIMELINE */
+.timeline{padding:0 14px 20px;}
+.timeline-item{display:flex;gap:12px;margin-bottom:0;}
+.timeline-left{display:flex;flex-direction:column;align-items:center;width:24px;flex-shrink:0;}
+.timeline-dot{width:10px;height:10px;border-radius:50%;background:var(--ivory);border:1.5px solid var(--border-s);flex-shrink:0;margin-top:4px;}
+.timeline-dot.recent{background:var(--rose);border-color:var(--rose);}
+.timeline-line{width:1.5px;flex:1;background:var(--border);margin-top:4px;}
+.timeline-right{flex:1;padding-bottom:20px;}
+.timeline-date{font-size:11px;color:var(--hint);margin-bottom:5px;letter-spacing:.03em;}
+.timeline-note{font-size:13px;color:var(--ink2);line-height:1.5;margin-bottom:8px;}
+.timeline-tasks{display:flex;flex-direction:column;gap:5px;}
+.timeline-task{display:flex;align-items:flex-start;gap:6px;font-size:12px;padding:7px 10px;border-radius:10px;}
+.tt-mine{background:var(--rose-bg);color:#903550;}
+.tt-theirs{background:var(--amber-bg);color:#8A5A30;}
+.tt-done{background:var(--sage-bg);color:#3A7060;text-decoration:line-through;opacity:.7;}
+.tt-icon{font-size:11px;margin-top:1px;flex-shrink:0;}
+
+/* NAV */
+.bottom-nav{height:var(--nav-h);background:rgba(250,247,244,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:.5px solid var(--border);display:flex;flex-shrink:0;position:sticky;bottom:0;z-index:50;}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;border:none;background:none;padding-bottom:4px;-webkit-appearance:none;}
+.nav-lbl{font-size:10px;letter-spacing:.04em;font-weight:500;color:var(--hint);transition:color .2s;}
+.nav-item.active .nav-lbl{color:var(--rose);}
+
+/* FAB */
+.fab{position:absolute;bottom:calc(var(--nav-h) + 14px);right:16px;width:54px;height:54px;border-radius:50%;background:var(--ink);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:60;transition:transform .15s;}
+.fab:active{transform:scale(.93);}
+.fab-label{position:absolute;right:64px;top:50%;transform:translateY(-50%);background:var(--ink);color:#FAF7F4;font-size:12px;font-weight:500;padding:6px 12px;border-radius:999px;white-space:nowrap;font-family:'DM Sans',sans-serif;}
+
+/* OVERLAY */
+.overlay{position:absolute;inset:0;background:rgba(42,31,27,.5);z-index:80;opacity:0;pointer-events:none;transition:opacity .3s;}
+.overlay.show{opacity:1;pointer-events:all;}
+
+/* CAPTURE SHEET */
+.capture-sheet{position:absolute;bottom:0;left:0;right:0;background:var(--cream);border-radius:24px 24px 0 0;z-index:90;transform:translateY(100%);transition:transform .4s cubic-bezier(.32,.72,0,1);max-height:94%;}
+.capture-sheet.open{transform:translateY(0);}
+.sheet-handle{width:36px;height:4px;background:var(--hint);border-radius:2px;margin:12px auto 0;}
+.sheet-header{padding:16px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:.5px solid var(--border);}
+.sheet-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--ink);}
+.sheet-close{width:30px;height:30px;border-radius:50%;background:var(--ivory);border:none;cursor:pointer;font-size:15px;color:var(--muted);display:flex;align-items:center;justify-content:center;-webkit-appearance:none;}
+
+/* CAPTURE STEPS */
+.capture-body{padding:20px 20px 36px;overflow-y:auto;}
+.step{display:none;animation:stepIn .3s ease;}.step.active{display:block;}
+@keyframes stepIn{from{opacity:0;transform:translateX(14px);}to{opacity:1;transform:translateX(0);}}
+
+.step-indicator{display:flex;gap:6px;margin-bottom:20px;}
+.step-dot{height:3px;flex:1;border-radius:2px;background:var(--border-s);transition:background .3s;}
+.step-dot.done{background:var(--rose);}
+
+.step-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);margin-bottom:8px;}
+.step-question{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--ink);line-height:1.3;margin-bottom:18px;}
+
+.form-textarea{width:100%;padding:13px 14px;background:var(--surface);border:.5px solid var(--border-s);border-radius:14px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);resize:none;outline:none;line-height:1.6;transition:border-color .15s;min-height:90px;-webkit-appearance:none;}
+.form-textarea:focus{border-color:var(--rose-bd);}
+.form-input{width:100%;padding:12px 14px;background:var(--surface);border:.5px solid var(--border-s);border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);outline:none;-webkit-appearance:none;transition:border-color .15s;}
+.form-input:focus{border-color:var(--rose-bd);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.form-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--hint);margin-bottom:6px;display:block;}
+.form-select{width:100%;padding:12px 32px 12px 14px;background:var(--surface);border:.5px solid var(--border-s);border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);-webkit-appearance:none;appearance:none;outline:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23BEB0A8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;}
+
+.step-hint{font-size:12px;color:var(--hint);margin-top:10px;line-height:1.6;font-style:italic;}
+
+.btn-row{display:flex;gap:10px;margin-top:20px;}
+.btn-primary{flex:1;padding:14px;background:var(--ink);color:#FAF7F4;border:none;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;-webkit-appearance:none;transition:background .15s;}
+.btn-primary:active{background:#3A2820;}
+.btn-skip{padding:14px 16px;background:transparent;color:var(--hint);border:.5px solid var(--border-s);border-radius:14px;font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;-webkit-appearance:none;}
+
+/* SUCCESS */
+.success-screen{text-align:center;padding:30px 20px;}
+.success-icon{width:64px;height:64px;border-radius:50%;background:var(--sage-bg);border:.5px solid var(--sage-bd);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:26px;animation:popIn .4s cubic-bezier(.34,1.56,.64,1);}
+@keyframes popIn{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
+.success-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.success-sub{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:24px;}
+.created-tasks{text-align:left;background:var(--surface);border:.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px;}
+.created-task-row{padding:12px 14px;border-bottom:.5px solid var(--border);display:flex;align-items:flex-start;gap:10px;}
+.created-task-row:last-child{border-bottom:none;}
+.ct-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.ct-text{font-size:13px;color:var(--ink2);line-height:1.4;}
+.ct-date{font-size:11px;color:var(--hint);margin-top:2px;}
+</style>
+</head>
+<body>
+<h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Trợ lý bán hàng — Demo công cụ quick-capture của MERUVA Service</h1>
+<div class="phone">
+
+  <!-- HEADER -->
+  <div class="header" id="main-header">
+    <div class="header-greeting" id="header-greeting">Chào buổi sáng</div>
+    <div class="header-title" id="header-title">Hôm nay cần làm gì?</div>
+    <div class="header-date" id="today-date"></div>
+  </div>
+
+  <div class="content" id="main-content">
+
+    <!-- HÔM NAY -->
+    <div class="screen active" id="screen-today">
+      <div class="summary-pills" id="summary-pills"></div>
+      <div id="tasks-mine-section"></div>
+      <div id="tasks-theirs-section"></div>
+    </div>
+
+    <!-- KHÁCH HÀNG -->
+    <div class="screen" id="screen-customers">
+      <div style="padding:0 14px 8px;" id="customer-list"></div>
+    </div>
+
+    <!-- DETAIL (sub-screen) -->
+    <div class="screen" id="screen-detail">
+      <div class="detail-header">
+        <button class="detail-back" onclick="goBack()">← Quay lại</button>
+        <div class="detail-company" id="detail-company-name"></div>
+        <div class="detail-badges" id="detail-badges"></div>
+      </div>
+      <div class="commitment-row" id="detail-commitments"></div>
+      <div class="sec-label" style="padding-top:0">Nhật ký hoạt động</div>
+      <div class="timeline" id="detail-timeline"></div>
+    </div>
+
+  </div>
+
+  <!-- FAB -->
+  <button class="fab" id="fab-btn" onclick="openCapture()" aria-label="Ghi lại cuộc gặp">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M14 2.5a2.121 2.121 0 013 3L6.5 16 2 17.5 3.5 13 14 2.5z" stroke="#FAF7F4" stroke-width="1.6" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- NAV -->
+  <div class="bottom-nav">
+    <button class="nav-item active" id="nav-today" onclick="goTo('today')">
+      <div style="width:24px;height:24px;display:flex;align-items:center;justify-content:center;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="2" y="4" width="16" height="13" rx="2.5" stroke="#C0B0A8" stroke-width="1.4"/>
+          <path d="M6 2v4M14 2v4M2 8h16" stroke="#C0B0A8" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="7" cy="13" r="1" fill="#C0B0A8"/>
+          <circle cx="10" cy="13" r="1" fill="#C0B0A8"/>
+        </svg>
+      </div>
+      <span class="nav-lbl">Hôm nay</span>
+    </button>
+    <button class="nav-item" id="nav-customers" onclick="goTo('customers')">
+      <div style="width:24px;height:24px;display:flex;align-items:center;justify-content:center;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="7" r="3" stroke="#C0B0A8" stroke-width="1.4"/>
+          <path d="M4 17c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#C0B0A8" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="nav-lbl">Khách hàng</span>
+    </button>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="closeCapture()"></div>
+
+  <!-- CAPTURE SHEET -->
+  <div class="capture-sheet" id="capture-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-header">
+      <span class="sheet-title" id="capture-title">Ghi lại cuộc gặp</span>
+      <button class="sheet-close" onclick="closeCapture()">✕</button>
+    </div>
+    <div class="capture-body" id="capture-body">
+
+      <!-- STEP DOTS -->
+      <div class="step-indicator" id="step-dots">
+        <div class="step-dot" id="dot-0"></div>
+        <div class="step-dot" id="dot-1"></div>
+        <div class="step-dot" id="dot-2"></div>
+      </div>
+
+      <!-- STEP 0: Chọn khách -->
+      <div class="step active" id="step-0">
+        <div class="step-label">Bước 1 / 3</div>
+        <div class="step-question">Vừa gặp khách nào?</div>
+        <label class="form-label">Chọn hoặc nhập tên công ty</label>
+        <select class="form-select" id="capture-customer">
+          <option value="">— Chọn khách hàng —</option>
+          <option value="1">Suzuki Manufacturing</option>
+          <option value="2">Toyota Tsusho IPN</option>
+          <option value="3">Hanoi Textile Co.</option>
+          <option value="4">Khác (nhập mới)</option>
+        </select>
+        <div id="new-customer-wrap" style="display:none;margin-top:10px">
+          <input class="form-input" id="new-customer-name" type="text" placeholder="Tên công ty mới...">
+        </div>
+        <p class="step-hint">Nếu là khách mới, hệ thống sẽ tự tạo hồ sơ.</p>
+        <div class="btn-row">
+          <button class="btn-primary" onclick="nextStep(1)">Tiếp theo →</button>
+        </div>
+      </div>
+
+      <!-- STEP 1: Chuyện gì xảy ra -->
+      <div class="step" id="step-1">
+        <div class="step-label">Bước 2 / 3</div>
+        <div class="step-question">Vừa xảy ra chuyện gì?</div>
+        <textarea class="form-textarea" id="capture-note" placeholder="VD: Gặp trực tiếp tại văn phòng. Tanaka-san hỏi về vị trí gần cảng, muốn diện tích 5.000m². Thái độ quan tâm, nhưng cần xin ý kiến HQ Nhật trước..."></textarea>
+        <p class="step-hint">Ghi những gì chị thấy quan trọng — tâm lý khách, nội dung chính, tín hiệu mua.</p>
+        <div class="btn-row">
+          <button class="btn-skip" onclick="nextStep(2)">Bỏ qua</button>
+          <button class="btn-primary" onclick="nextStep(2)">Tiếp theo →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Cam kết -->
+      <div class="step" id="step-2">
+        <div class="step-label">Bước 3 / 3</div>
+        <div class="step-question">Ai nợ ai việc gì?</div>
+
+        <div style="background:var(--rose-bg);border:.5px solid var(--rose-bd);border-radius:14px;padding:13px 14px;margin-bottom:12px;">
+          <div style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--rose);margin-bottom:10px;">Chị phải làm</div>
+          <input class="form-input" id="my-task" type="text" placeholder="VD: Gửi bản đề xuất 3 vị trí KCN Long Hậu">
+          <div class="form-row">
+            <div>
+              <label class="form-label" style="margin-top:10px">Deadline</label>
+              <input class="form-input" id="my-deadline" type="date">
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--amber-bg);border:.5px solid var(--amber-bd);border-radius:14px;padding:13px 14px;">
+          <div style="font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">Khách hứa làm</div>
+          <input class="form-input" id="their-task" type="text" placeholder="VD: Xin ý kiến HQ Nhật về ngân sách">
+          <div class="form-row">
+            <div>
+              <label class="form-label" style="margin-top:10px">Hứa xong trước</label>
+              <input class="form-input" id="their-deadline" type="date">
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-skip" onclick="nextStep(3)">Bỏ qua</button>
+          <button class="btn-primary" onclick="saveCapture()">Lưu lại ✓</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="step" id="step-success">
+        <div class="success-screen">
+          <div class="success-icon">✓</div>
+          <div class="success-title">Đã ghi xong</div>
+          <div class="success-sub">Hệ thống đã tạo các đầu việc<br>và sẽ nhắc chị đúng deadline.</div>
+          <div class="created-tasks" id="created-tasks-list"></div>
+          <button class="btn-primary" onclick="closeCapture()">Về trang chính</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── DỮ LIỆU MẪU ──────────────────────────────────────
+const TODAY_STR = "2026-06-01";
+const TODAY = new Date(TODAY_STR);
+
+const customers = [
+  { id:1, company:"Suzuki Manufacturing", country:"🇯🇵 Nhật Bản", stage:"Đàm phán", initials:"SM" },
+  { id:2, company:"Toyota Tsusho IPN",    country:"🇯🇵 Nhật Bản", stage:"Khảo sát", initials:"TT" },
+  { id:3, company:"Hanoi Textile Co.",    country:"🌐 Khác",       stage:"Ký MOU",   initials:"HT" },
+];
+
+let tasks = [
+  { id:1, cid:1, company:"Suzuki Manufacturing", text:"Gửi bản đề xuất 3 vị trí KCN Long Hậu", deadline:"2026-06-01", type:"mine",   done:false },
+  { id:2, cid:2, company:"Toyota Tsusho IPN",    text:"Xác nhận lịch tham quan thực địa thứ 4", deadline:"2026-06-01", type:"mine",   done:false },
+  { id:3, cid:3, company:"Hanoi Textile Co.",    text:"Chờ phản hồi điều khoản MOU từ khách",   deadline:"2026-05-30", type:"theirs", done:false },
+  { id:4, cid:1, company:"Suzuki Manufacturing", text:"Gửi bản đồ vị trí KCN chi tiết",         deadline:"2026-06-03", type:"mine",   done:false },
+  { id:5, cid:2, company:"Toyota Tsusho IPN",    text:"Chuẩn bị tài liệu giới thiệu dây chuyền sản xuất", deadline:"2026-06-04", type:"mine", done:false },
+];
+
+const activities = {
+  1: [
+    { date:"2026-05-30", note:"Gặp trực tiếp tại văn phòng. Tanaka-san hỏi về vị trí gần cảng, muốn diện tích 5.000m². Thái độ quan tâm rõ rệt.", myTask:"Gửi bản đề xuất 3 vị trí KCN Long Hậu", myDl:"2026-06-01", theirTask:"Xin ý kiến HQ Nhật về ngân sách", theirDl:"2026-06-05", myDone:false, theirDone:false },
+    { date:"2026-05-22", note:"Cuộc gọi giới thiệu ban đầu. Khách đang khảo sát thị trường, chưa quyết định quốc gia.", myTask:"Gửi brochure KCN tổng hợp", myDl:"2026-05-24", theirTask:"", theirDl:"", myDone:true, theirDone:true },
+  ],
+  2: [
+    { date:"2026-05-29", note:"Dẫn khách tham quan KCN Long Hậu lần đầu. Ấn tượng với cơ sở hạ tầng, hỏi nhiều về thủ tục giấy phép.", myTask:"Xác nhận lịch tham quan thực địa thứ 4", myDl:"2026-06-01", theirTask:"Chuẩn bị danh sách câu hỏi về thủ tục", theirDl:"2026-06-03", myDone:false, theirDone:false },
+  ],
+  3: [
+    { date:"2026-05-25", note:"Đàm phán điều khoản MOU. Khách muốn thêm điều khoản về gia hạn hợp đồng. Đã thống nhất gần xong.", myTask:"Soạn thảo MOU bản chỉnh sửa", myDl:"2026-05-27", theirTask:"Phản hồi điều khoản MOU từ ban giám đốc", theirDl:"2026-05-30", myDone:true, theirDone:false },
+  ],
+};
+
+let currentStep = 0;
+let prevScreen = "today";
+let nextId = 100;
+
+// ── RENDER HÔM NAY ────────────────────────────────────
+function renderToday() {
+  const mine   = tasks.filter(t => !t.done && t.type === "mine");
+  const theirs = tasks.filter(t => !t.done && t.type === "theirs");
+  const overdueTheirs = theirs.filter(t => new Date(t.deadline) < TODAY);
+
+  document.getElementById("summary-pills").innerHTML = `
+    <div class="pill urgent">
+      <span class="pill-num">${mine.length}</span>
+      <span class="pill-lbl">Chị phải làm</span>
+    </div>
+    <div class="pill wait">
+      <span class="pill-num">${theirs.length}</span>
+      <span class="pill-lbl">Đang chờ khách</span>
+    </div>
+    <div class="pill${overdueTheirs.length ? " urgent" : ""}">
+      <span class="pill-num">${overdueTheirs.length}</span>
+      <span class="pill-lbl">Khách trễ hẹn</span>
+    </div>`;
+
+  // mine tasks
+  let mineHtml = mine.length ? mine.map((t,i) => taskCard(t,i)).join("") : `<div style="padding:8px 18px 0;font-size:12px;color:var(--hint);font-style:italic">Không còn việc gì — tuyệt vời!</div>`;
+  document.getElementById("tasks-mine-section").innerHTML = `<div class="sec-label">Việc của chị hôm nay</div>${mineHtml}`;
+
+  // theirs tasks
+  let theirsHtml = theirs.length ? theirs.map((t,i) => taskCard(t,i)).join("") : `<div style="padding:8px 18px;font-size:12px;color:var(--hint);font-style:italic">Không có cam kết nào đang chờ.</div>`;
+  document.getElementById("tasks-theirs-section").innerHTML = `<div class="sec-label" style="padding-top:8px">Đang chờ phản hồi từ khách</div>${theirsHtml}`;
+}
+
+function taskCard(t, i) {
+  const dl = new Date(t.deadline);
+  const isOverdue = dl < TODAY;
+  const dlLabel = isOverdue
+    ? `Trễ ${Math.floor((TODAY - dl)/(1000*60*60*24))} ngày`
+    : t.deadline === TODAY_STR ? "Hôm nay" : formatDate(t.deadline);
+  const typeLabel = t.type === "mine" ? "Việc của chị" : "Chờ khách";
+  const typeClass = t.type === "mine" ? "type-mine" : "type-theirs";
+  const accentColor = t.type === "mine" ? "var(--rose)" : "var(--amber)";
+
+  return `<div class="task-card" onclick="openCustomerDetail(${t.cid})" style="animation-delay:${i * 0.06}s">
+    <div class="task-accent" style="background:${accentColor}"></div>
+    <div class="task-body">
+      <div class="task-company-row">
+        <span class="task-company">${t.company}</span>
+        <span class="task-deadline${isOverdue ? " overdue" : ""}">${dlLabel}</span>
+      </div>
+      <div class="task-text">${t.text}</div>
+      <div class="task-footer">
+        <span class="task-type ${typeClass}">${typeLabel}</span>
+        <button class="task-done-btn" onclick="markDone(event,${t.id})">✓</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function markDone(e, id) {
+  e.stopPropagation();
+  const t = tasks.find(x => x.id === id);
+  if (t) t.done = true;
+  renderToday();
+}
+
+// ── RENDER KHÁCH HÀNG ─────────────────────────────────
+function renderCustomers() {
+  document.getElementById("customer-list").innerHTML = customers.map((c,i) => {
+    const myOpen    = tasks.filter(t => !t.done && t.cid === c.id && t.type === "mine").length;
+    const theirOpen = tasks.filter(t => !t.done && t.cid === c.id && t.type === "theirs").length;
+    const lastAct   = activities[c.id]?.[0]?.date || "";
+    return `<div class="customer-item" onclick="openCustomerDetail(${c.id})" style="animation-delay:${i * 0.07}s">
+      <div class="cust-avatar">${c.initials}</div>
+      <div class="cust-info">
+        <div class="cust-company">${c.company}</div>
+        <div class="cust-meta">${c.stage} · ${c.country}${lastAct ? " · gặp " + formatDate(lastAct) : ""}</div>
+      </div>
+      <div class="cust-right">
+        <div class="cust-pending ${myOpen > 0 ? "pending-rose" : "pending-sage"}">${myOpen + theirOpen}</div>
+        <div class="cust-pending-lbl">việc mở</div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+// ── DETAIL KHÁCH ──────────────────────────────────────
+function openCustomerDetail(cid) {
+  const c = customers.find(x => x.id === cid);
+  if (!c) return;
+  prevScreen = document.querySelector(".screen.active")?.id?.replace("screen-","") || "today";
+
+  document.getElementById("detail-company-name").textContent = c.company;
+  document.getElementById("detail-badges").innerHTML = `
+    <span class="detail-badge">${c.stage}</span>
+    <span class="detail-badge">${c.country}</span>`;
+
+  // Commitments — latest activity
+  const acts = activities[cid] || [];
+  const latest = acts[0];
+  let commitHtml = "";
+  if (latest) {
+    const myOd  = latest.myDl  && new Date(latest.myDl) < TODAY && !latest.myDone;
+    const thrOd = latest.theirDl && new Date(latest.theirDl) < TODAY && !latest.theirDone;
+    commitHtml = `
+      <div class="commitment-box mine">
+        <div class="commitment-title mine">Chị còn nợ</div>
+        ${latest.myTask
+          ? `<div class="commitment-task ${latest.myDone ? "type-done" : ""}">${latest.myTask}</div>
+             <div class="commitment-date${myOd ? " overdue" : ""}">${latest.myDone ? "✓ Đã xong" : (myOd ? "Trễ " + Math.floor((TODAY - new Date(latest.myDl))/(1000*60*60*24)) + " ngày" : "Hạn: " + formatDate(latest.myDl))}</div>`
+          : `<div class="commitment-task" style="color:var(--hint)">Không có</div>`}
+      </div>
+      <div class="commitment-box theirs">
+        <div class="commitment-title theirs">Khách còn nợ</div>
+        ${latest.theirTask
+          ? `<div class="commitment-task">${latest.theirTask}</div>
+             <div class="commitment-date${thrOd ? " overdue" : ""}">${latest.theirDone ? "✓ Đã xong" : (thrOd ? "Trễ " + Math.floor((TODAY - new Date(latest.theirDl))/(1000*60*60*24)) + " ngày" : "Hứa: " + formatDate(latest.theirDl))}</div>`
+          : `<div class="commitment-task" style="color:var(--hint)">Không có</div>`}
+      </div>`;
+  }
+  document.getElementById("detail-commitments").innerHTML = commitHtml || `<div style="padding:0 14px;font-size:13px;color:var(--hint)">Chưa có cam kết nào được ghi.</div>`;
+
+  // Timeline
+  const timelineHtml = acts.map((a, i) => {
+    const isFirst = i === 0;
+    const myTasks = [];
+    const thrTasks = [];
+    if (a.myTask) myTasks.push(`<div class="timeline-task tt-${a.myDone ? "done" : "mine"}"><span class="tt-icon">→</span><span>Chị: ${a.myTask}${a.myDl ? " · " + formatDate(a.myDl) : ""}</span></div>`);
+    if (a.theirTask) thrTasks.push(`<div class="timeline-task tt-${a.theirDone ? "done" : "theirs"}"><span class="tt-icon">←</span><span>Khách: ${a.theirTask}${a.theirDl ? " · " + formatDate(a.theirDl) : ""}</span></div>`);
+    return `<div class="timeline-item">
+      <div class="timeline-left">
+        <div class="timeline-dot${isFirst ? " recent" : ""}"></div>
+        ${i < acts.length - 1 ? '<div class="timeline-line"></div>' : ""}
+      </div>
+      <div class="timeline-right">
+        <div class="timeline-date">${formatDate(a.date)}</div>
+        <div class="timeline-note">${a.note}</div>
+        <div class="timeline-tasks">${[...myTasks, ...thrTasks].join("")}</div>
+      </div>
+    </div>`;
+  }).join("");
+
+  document.getElementById("detail-timeline").innerHTML = timelineHtml || `<div style="font-size:13px;color:var(--hint);padding:0 0 20px">Chưa có lịch sử tương tác.</div>`;
+
+  goTo("detail");
+}
+
+function goBack() {
+  goTo(prevScreen);
+}
+
+// ── CAPTURE FLOW ──────────────────────────────────────
+function openCapture() {
+  currentStep = 0;
+  showStep(0);
+  document.getElementById("capture-note").value = "";
+  document.getElementById("my-task").value = "";
+  document.getElementById("their-task").value = "";
+  const tomorrow = new Date(TODAY); tomorrow.setDate(tomorrow.getDate() + 2);
+  document.getElementById("my-deadline").value   = tomorrow.toISOString().split("T")[0];
+  document.getElementById("their-deadline").value = tomorrow.toISOString().split("T")[0];
+
+  document.getElementById("overlay").classList.add("show");
+  document.getElementById("capture-sheet").classList.add("open");
+}
+
+function closeCapture() {
+  document.getElementById("overlay").classList.remove("show");
+  document.getElementById("capture-sheet").classList.remove("open");
+}
+
+function showStep(n) {
+  document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
+  document.getElementById("step-" + (n >= 3 ? "success" : n)).classList.add("active");
+  [0,1,2].forEach(i => {
+    document.getElementById("dot-"+i)?.classList.toggle("done", i <= n);
+  });
+  currentStep = n;
+}
+
+function nextStep(n) { showStep(n); }
+
+document.getElementById("capture-customer").addEventListener("change", function() {
+  document.getElementById("new-customer-wrap").style.display = this.value === "4" ? "block" : "none";
+});
+
+function saveCapture() {
+  const custSelect = document.getElementById("capture-customer");
+  const custVal    = custSelect.value;
+  let   company    = "Khách hàng mới";
+  let   cid        = null;
+
+  if (custVal && custVal !== "4") {
+    const c = customers.find(x => x.id == custVal);
+    if (c) { company = c.company; cid = c.id; }
+  } else if (custVal === "4") {
+    company = document.getElementById("new-customer-name").value.trim() || "Khách hàng mới";
+    cid = nextId++;
+    customers.push({ id: cid, company, country: "🌐 Khác", stage: "Tiềm năng", initials: company.slice(0,2).toUpperCase() });
+    activities[cid] = [];
+  }
+
+  const note       = document.getElementById("capture-note").value.trim();
+  const myTask     = document.getElementById("my-task").value.trim();
+  const myDl       = document.getElementById("my-deadline").value;
+  const theirTask  = document.getElementById("their-task").value.trim();
+  const theirDl    = document.getElementById("their-deadline").value;
+
+  // Add to activity log
+  const actEntry = { date: TODAY_STR, note: note || "Đã gặp khách.", myTask, myDl, theirTask, theirDl, myDone: false, theirDone: false };
+  if (cid && activities[cid]) activities[cid].unshift(actEntry);
+
+  // Create tasks
+  const created = [];
+  if (myTask) {
+    const t = { id: nextId++, cid, company, text: myTask, deadline: myDl, type: "mine", done: false };
+    tasks.push(t); created.push(t);
+  }
+  if (theirTask) {
+    const t = { id: nextId++, cid, company, text: theirTask, deadline: theirDl, type: "theirs", done: false };
+    tasks.push(t); created.push(t);
+  }
+
+  // Show success
+  document.getElementById("created-tasks-list").innerHTML = created.length
+    ? created.map(t => `
+        <div class="created-task-row">
+          <div class="ct-dot" style="background:${t.type === "mine" ? "var(--rose)" : "var(--amber)"}"></div>
+          <div>
+            <div class="ct-text">${t.text}</div>
+            <div class="ct-date">${t.type === "mine" ? "Chị làm" : "Khách làm"} · ${formatDate(t.deadline)}</div>
+          </div>
+        </div>`).join("")
+    : `<div style="padding:14px 16px;font-size:13px;color:var(--hint)">Không có việc nào được thêm.</div>`;
+
+  renderToday();
+  renderCustomers();
+  showStep(3);
+}
+
+// ── NAV ───────────────────────────────────────────────
+const TITLES = { today:"Hôm nay cần làm gì?", customers:"Khách hàng", detail:"Chi tiết" };
+const GREET  = { today:"Chào buổi sáng", customers:"Danh sách", detail:"" };
+
+function goTo(s) {
+  document.querySelectorAll(".screen").forEach(x => x.classList.remove("active"));
+  document.querySelectorAll(".nav-item").forEach(x => x.classList.remove("active"));
+  document.getElementById("screen-" + s).classList.add("active");
+  const navEl = document.getElementById("nav-" + s);
+  if (navEl) navEl.classList.add("active");
+  document.getElementById("header-title").textContent   = TITLES[s] || "";
+  document.getElementById("header-greeting").textContent = GREET[s] !== undefined ? GREET[s] : "";
+  document.getElementById("fab-btn").style.display = s === "detail" ? "none" : "flex";
+}
+
+// ── UTILS ─────────────────────────────────────────────
+function formatDate(str) {
+  if (!str) return "";
+  const d = new Date(str);
+  const days = ["CN","T2","T3","T4","T5","T6","T7"];
+  return `${days[d.getDay()]} ${d.getDate()}/${d.getMonth()+1}`;
+}
+
+// ── INIT ──────────────────────────────────────────────
+(function(){
+  const d = TODAY;
+  const days = ["Chủ nhật","Thứ hai","Thứ ba","Thứ tư","Thứ năm","Thứ sáu","Thứ bảy"];
+  const thang = ["tháng 1","tháng 2","tháng 3","tháng 4","tháng 5","tháng 6","tháng 7","tháng 8","tháng 9","tháng 10","tháng 11","tháng 12"];
+  document.getElementById("today-date").textContent = `${days[d.getDay()]}, ${d.getDate()} ${thang[d.getMonth()]} ${d.getFullYear()}`;
+  renderToday();
+  renderCustomers();
+})();
+</script>
+</body>
+</html>
