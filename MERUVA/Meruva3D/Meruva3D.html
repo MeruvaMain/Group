@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MERUVA 3D & Design — Thiết kế thương hiệu · 3D Visualization · In 3D theo yêu cầu</title>
+<meta name="description" content="MERUVA 3D & Design — dịch vụ thiết kế thương hiệu, 3D visualization, UI/UX, marketing design kèm in 3D theo yêu cầu. PLA, PETG, resin. Giao 3–5 ngày.">
+<meta property="og:title" content="MERUVA 3D & Design — Thiết kế & In 3D theo yêu cầu">
+<meta property="og:description" content="Từ ý tưởng đến vật thể thật — Branding, 3D, UI/UX, Marketing và in 3D theo yêu cầu.">
+<meta property="og:image" content="https://meruva.vn/og/og-3d.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meruva.vn/Meruva3D/Meruva3D.html">
+<meta property="og:locale" content="vi_VN">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://meruva.vn/Meruva3D/Meruva3D.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MERUVA 3D & Design — Thiết kế & In 3D theo yêu cầu">
+<meta name="twitter:description" content="Branding, 3D, UI/UX, Marketing và in 3D theo yêu cầu.">
+<meta name="twitter:image" content="https://meruva.vn/og/og-3d.png">
+<link rel="alternate" hreflang="vi" href="https://meruva.vn/Meruva3D/Meruva3D.html">
+<link rel="alternate" hreflang="x-default" href="https://meruva.vn/Meruva3D/Meruva3D.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+<link rel="icon" type="image/png" href="../logo-mark.png">
+<link rel="apple-touch-icon" href="../logo-mark.png">
+<link rel="stylesheet" href="../meruva-shared.css?v=6">
+<style>
+/* ═══════════════════════════════════════════
+   MERUVA 3D & DESIGN — Page Styles
+═══════════════════════════════════════════ */
+
+/* ── HERO ─────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 9rem 3rem 5rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--black);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(212,164,55,.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(59,123,196,.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-bg-word {
+  position: absolute;
+  right: -1rem;
+  bottom: -2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(7rem, 14vw, 17rem);
+  letter-spacing: .12em;
+  color: rgba(212,164,55,.035);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+.hero-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 5rem;
+  align-items: center;
+}
+.hero-content { max-width: 740px; }
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: .65rem;
+  letter-spacing: .45em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 2.2rem;
+}
+.hero-eyebrow span:first-child {
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2.8rem, 6.5vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  color: var(--cream);
+  margin-bottom: 1.8rem;
+}
+.hero-title em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold);
+}
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--silver);
+  line-height: 1.85;
+  max-width: 560px;
+  margin-bottom: 3rem;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: rgba(192,192,200,.35);
+  text-decoration: none;
+}
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(212,164,55,.4), transparent);
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: .4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(.7); }
+}
+
+/* ── HERO VISUAL ─────────────────────────── */
+.hero-visual {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  flex-shrink: 0;
+}
+.hv-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  border-radius: 50%;
+  border: 1px solid;
+  transform-origin: center;
+}
+.hv-r1 {
+  width: 360px; height: 360px;
+  border-color: rgba(212,164,55,.06);
+  transform: translate(-50%,-50%) rotate(0deg);
+  animation: hvSpin1 60s linear infinite;
+}
+.hv-r2 {
+  width: 260px; height: 260px;
+  border-color: rgba(212,164,55,.1);
+  transform: translate(-50%,-50%) rotate(45deg);
+  animation: hvSpin1 35s linear infinite reverse;
+}
+.hv-r3 {
+  width: 160px; height: 160px;
+  border-color: rgba(212,164,55,.2);
+  transform: translate(-50%,-50%) rotate(0deg);
+  animation: hvSpin1 20s linear infinite;
+}
+.hv-dot {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 60px; height: 60px;
+  background: radial-gradient(circle at center, rgba(212,164,55,.35) 0%, rgba(212,164,55,.08) 50%, transparent 70%);
+  border-radius: 50%;
+}
+.hv-diamond {
+  position: absolute;
+  width: 12px; height: 12px;
+  background: var(--gold);
+  transform-origin: center;
+  opacity: .7;
+}
+.hv-d1 { top: 50%; left: 0; transform: translate(-50%,-50%) rotate(45deg); }
+.hv-d2 { top: 0; left: 50%; transform: translate(-50%,-50%) rotate(45deg); }
+.hv-d3 { bottom: 0; left: 50%; transform: translate(-50%,50%) rotate(45deg); }
+.hv-label {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: .5em;
+  color: rgba(212,164,55,.5);
+  white-space: nowrap;
+  padding-right: .5em;
+}
+@keyframes hvSpin1 {
+  from { transform: translate(-50%,-50%) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg); }
+}
+
+/* ── SERVICES ─────────────────────────────── */
+.services { padding: 8rem 3rem; background: var(--black); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 4rem;
+}
+.svc-card {
+  background: var(--black);
+  padding: 3.5rem 3rem;
+  position: relative;
+  overflow: hidden;
+  transition: background .5s ease;
+}
+.svc-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gold-glow);
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+.svc-card:hover::before { opacity: 1; }
+.svc-card:hover { background: var(--black-2); }
+.svc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(212,164,55,.1);
+  margin-bottom: 2rem;
+  transition: color .5s;
+}
+.svc-card:hover .svc-num { color: rgba(212,164,55,.2); }
+.svc-icon {
+  width: 44px;
+  height: 44px;
+  color: var(--gold);
+  margin-bottom: 1.8rem;
+  opacity: .8;
+  transition: opacity .3s, transform .4s;
+}
+.svc-card:hover .svc-icon { opacity: 1; transform: scale(1.08); }
+.svc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 1.7rem;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: .8rem;
+  letter-spacing: -.01em;
+}
+.svc-tagline {
+  font-size: .7rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+.svc-desc {
+  font-size: .92rem;
+  color: var(--silver-soft);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  max-width: 400px;
+}
+.svc-list {
+  list-style: none;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+.svc-list li {
+  font-size: .8rem;
+  color: var(--silver);
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+}
+.svc-list li::before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.svc-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .4rem;
+  padding: .6rem 1.2rem;
+  border: 1px solid var(--line);
+  font-size: .7rem;
+  letter-spacing: .1em;
+  color: var(--silver-soft);
+  transition: border-color .3s, color .3s;
+}
+.svc-price strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0;
+}
+.svc-card:hover .svc-price { border-color: rgba(212,164,55,.35); color: var(--silver); }
+.svc-priority {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: .55rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: rgba(212,164,55,.5);
+  border: 1px solid rgba(212,164,55,.2);
+  padding: .3rem .65rem;
+}
+
+/* ── 3D PRINT SECTION ─────────────────────── */
+.print3d { padding: 8rem 3rem; background: var(--black-2); }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+.product-card {
+  padding: 2rem;
+  border: 1px solid var(--line);
+  background: var(--black);
+  transition: all .4s cubic-bezier(.22,1,.36,1);
+  position: relative;
+  overflow: hidden;
+}
+.product-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(212,164,55,.04);
+  opacity: 0;
+  transition: opacity .4s;
+}
+.product-card:hover::before { opacity: 1; }
+.product-card:hover { border-color: var(--gold); transform: translateY(-8px); }
+.product-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: .5rem;
+}
+.product-note {
+  font-size: .8rem;
+  color: var(--silver-soft);
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+.product-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.print-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 3.5rem;
+  border: 1px solid var(--line-soft);
+}
+.pf-step {
+  padding: 1.8rem 1.6rem;
+  border-right: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+.pf-step:last-child { border-right: none; }
+.pf-step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: rgba(212,164,55,.4);
+  line-height: 1;
+}
+.pf-step-title { font-size: .78rem; color: var(--cream); font-weight: 600; letter-spacing: .05em; }
+.pf-step-desc { font-size: .72rem; color: var(--silver-soft); line-height: 1.6; }
+
+/* ── PORTFOLIO ────────────────────────────── */
+.portfolio { padding: 8rem 3rem; background: var(--black); }
+.pf-filters {
+  display: flex;
+  gap: 0;
+  margin-top: 3.5rem;
+  margin-bottom: 3rem;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  width: fit-content;
+  flex-wrap: wrap;
+}
+.pf-filter-btn {
+  padding: .7rem 1.6rem;
+  background: transparent;
+  border: none;
+  color: var(--silver-soft);
+  font-family: 'Inter', sans-serif;
+  font-size: .62rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s;
+  border-right: 1px solid var(--line);
+  position: relative;
+}
+.pf-filter-btn:last-child { border-right: none; }
+.pf-filter-btn:hover { color: var(--gold); background: var(--gold-glow); }
+.pf-filter-btn.active { color: var(--gold); background: var(--gold-glow); }
+.pf-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+}
+.pf-item {
+  background: var(--black);
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity .4s, transform .4s;
+}
+.pf-item.hidden { display: none; }
+.pf-visual {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .6s cubic-bezier(.22,1,.36,1);
+}
+.pf-item:hover .pf-visual { transform: scale(1.04); }
+.pf-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0px, transparent 1px, transparent 36px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0px, transparent 1px, transparent 36px);
+}
+.pf-visual-num {
+  position: absolute;
+  bottom: -1rem;
+  right: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 6rem;
+  line-height: 1;
+  color: rgba(255,255,255,.06);
+  pointer-events: none;
+  user-select: none;
+}
+.pf-visual-label {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.2rem;
+  font-size: .6rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+}
+.pf-v-brand-1 { background: radial-gradient(ellipse 80% 60% at 30% 40%, rgba(212,164,55,.3) 0%, transparent 60%), linear-gradient(135deg, #120e00, #1e1800, #0e0800); }
+.pf-v-brand-2 { background: radial-gradient(ellipse 60% 80% at 70% 60%, rgba(212,164,55,.25) 0%, transparent 55%), linear-gradient(135deg, #0e0a00, #1a1400, #0a0600); }
+.pf-v-brand-3 { background: radial-gradient(ellipse 70% 50% at 50% 30%, rgba(240,200,96,.2) 0%, transparent 60%), linear-gradient(135deg, #140f00, #241a00, #0e0900); }
+.pf-v-3d-1 { background: radial-gradient(ellipse 70% 60% at 60% 40%, rgba(94,160,232,.25) 0%, transparent 60%), linear-gradient(135deg, #04060e, #080e1c, #050810); }
+.pf-v-3d-2 { background: radial-gradient(ellipse 60% 70% at 40% 60%, rgba(130,90,200,.2) 0%, transparent 55%), linear-gradient(135deg, #060410, #0c0818, #080510); }
+.pf-v-ui-1 { background: radial-gradient(ellipse 80% 60% at 35% 45%, rgba(59,123,196,.3) 0%, transparent 60%), linear-gradient(135deg, #040812, #080f26, #040a16); }
+.pf-v-ui-2 { background: radial-gradient(ellipse 60% 80% at 65% 55%, rgba(59,123,196,.25) 0%, transparent 55%), linear-gradient(135deg, #040610, #060c22, #040810); }
+.pf-v-mkt-1 { background: radial-gradient(ellipse 70% 60% at 45% 40%, rgba(220,100,60,.25) 0%, transparent 55%), linear-gradient(135deg, #120400, #200800, #0e0400); }
+.pf-v-mkt-2 { background: radial-gradient(ellipse 60% 70% at 55% 60%, rgba(180,60,60,.2) 0%, transparent 50%), linear-gradient(135deg, #0e0404, #1c0606, #0a0404); }
+.pf-info {
+  padding: 1.5rem;
+  border-top: 1px solid var(--line-soft);
+  transition: border-color .3s;
+}
+.pf-item:hover .pf-info { border-top-color: var(--line); }
+.pf-cat {
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .5rem;
+}
+.pf-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: .3rem;
+}
+.pf-sub {
+  font-size: .75rem;
+  color: var(--silver-soft);
+  line-height: 1.5;
+}
+.pf-more-wrap {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* ── WHY ME ───────────────────────────────── */
+.whyme { padding: 8rem 3rem; background: var(--black-2); }
+.whyme-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+.wm-card {
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--line-soft);
+  position: relative;
+  transition: border-color .4s, background .4s;
+}
+.wm-card:hover {
+  border-color: var(--line);
+  background: var(--black);
+}
+.wm-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 3rem;
+  color: rgba(212,164,55,.12);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+.wm-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: var(--cream);
+  margin-bottom: .8rem;
+  line-height: 1.3;
+}
+.wm-desc {
+  font-size: .82rem;
+  color: var(--silver-soft);
+  line-height: 1.7;
+}
+
+/* ── TOOLS/SKILLS ─────────────────────────── */
+.tools { padding: 5rem 3rem 7rem; background: var(--black-2); border-top: 1px solid var(--line-soft); }
+.tools-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+.tool-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .6rem 1.2rem;
+  border: 1px solid var(--line-soft);
+  font-size: .7rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--silver);
+  transition: all .3s;
+  font-weight: 500;
+}
+.tool-chip:hover {
+  border-color: var(--line);
+  color: var(--cream);
+  background: var(--gold-glow);
+}
+.tool-chip-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tc-primary .tool-chip-dot { background: var(--gold); }
+.tc-secondary .tool-chip-dot { background: var(--blue-light); }
+.tc-tertiary .tool-chip-dot { background: var(--silver-soft); }
+
+/* ── CONTACT ──────────────────────────────── */
+.contact { padding: 8rem 3rem; background: var(--black); }
+.contact-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
+  align-items: start;
+}
+.contact-left { padding-top: .5rem; }
+.contact-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1rem;
+  color: rgba(212,164,55,.6);
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+.contact-info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.contact-info-list li {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+.ci-label {
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.ci-value {
+  font-size: .95rem;
+  color: var(--silver);
+}
+.ci-value a {
+  color: var(--silver);
+  text-decoration: none;
+  transition: color .3s;
+}
+.ci-value a:hover { color: var(--gold); }
+
+/* ── SECTION HEADER ────────────────────────── */
+.section-header { max-width: 1400px; margin: 0 auto; }
+.section-sub {
+  font-size: .95rem;
+  color: var(--silver-soft);
+  line-height: 1.8;
+  margin-top: .8rem;
+  max-width: 560px;
+}
+
+/* ── DIVIDER LINE ─────────────────────────── */
+.gold-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: .25;
+  margin: 0;
+}
+
+/* ── RESPONSIVE ────────────────────────────── */
+@media (max-width: 1200px) {
+  .hero-visual { width: 280px; height: 280px; }
+  .hv-r1 { width: 280px; height: 280px; }
+  .hv-r2 { width: 200px; height: 200px; }
+  .hv-r3 { width: 120px; height: 120px; }
+  .pf-grid { grid-template-columns: repeat(3, 1fr); }
+  .whyme-grid { grid-template-columns: repeat(2, 1fr); }
+  .print-flow { grid-template-columns: repeat(2, 1fr); }
+  .pf-step:nth-child(2) { border-right: none; }
+  .pf-step:nth-child(-n+2) { border-bottom: 1px solid var(--line-soft); }
+}
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .services-grid { grid-template-columns: 1fr; }
+  .pf-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .pf-filters { width: 100%; }
+  .pf-filter-btn { flex: 1; text-align: center; }
+}
+@media (max-width: 600px) {
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .hero-title { font-size: clamp(2.5rem, 9vw, 3.5rem); }
+  .services { padding: 5rem 1.5rem; }
+  .svc-card { padding: 2.5rem 1.8rem; }
+  .print3d { padding: 5rem 1.5rem; }
+  .products-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .print-flow { grid-template-columns: 1fr; }
+  .pf-step { border-right: none; border-bottom: 1px solid var(--line-soft); }
+  .pf-step:last-child { border-bottom: none; }
+  .portfolio { padding: 5rem 1.5rem; }
+  .pf-grid { grid-template-columns: 1fr; }
+  .whyme { padding: 5rem 1.5rem; }
+  .whyme-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .tools { padding: 4rem 1.5rem; }
+  .contact { padding: 5rem 1.5rem; }
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","serviceType":"Thiết kế & In 3D","name":"MERUVA 3D & Design","description":"Thiết kế thương hiệu, 3D visualization, UI/UX, marketing design kèm in 3D theo yêu cầu (PLA, PETG, resin).","url":"https://meruva.vn/Meruva3D/Meruva3D.html","provider":{"@type":"Organization","name":"MERUVA","url":"https://meruva.vn"},"areaServed":{"@type":"Country","name":"Vietnam"}}
+</script>
+</head>
+<body class="subpage">
+
+<!-- ── Custom Cursor ── -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ── Page Loader ── -->
+<div id="page-loader">
+  <div class="pl-logo-wrap">
+    <div class="pl-wm">MERUVA</div>
+    <div class="pl-tag">3D & Design Studio</div>
+  </div>
+  <div class="pl-sweep"></div>
+</div>
+
+<!-- ── Lang overlay ── -->
+<div id="lang-overlay"></div>
+<div id="floating-back"><a href="../index.html" data-i18n="sp_back">Quay lại</a></div>
+
+<!-- ── Nav ── -->
+<nav id="nav">
+  <a href="../index.html" class="logo-wrap">
+    <img class="logo-mark" src="../logo-mark.png" alt="MERUVA" style="mix-blend-mode:screen">
+    <div class="logo-text">MERUVA</div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services" data-i18n="d3_nav_services">Thiết kế</a></li>
+    <li><a href="#print3d" data-i18n="d3_nav_print">In 3D</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#about" data-i18n="d3_nav_about">Về tôi</a></li>
+    <li><a href="#contact" class="nav-cta" data-i18n="d3_nav_contact">Liên hệ</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="vi" onclick="setLang('vi')">VI</button>
+      <span class="lang-sep"></span>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <span class="lang-sep"></span>
+      <button class="lang-btn" data-lang="ja" onclick="setLang('ja')">JA</button>
+    </div>
+    <div class="nav-burger" id="navBurger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg-word">3D·DESIGN</div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal">
+        <span></span>
+        <span data-i18n="d3_hero_eyebrow">MERUVA 3D & Design Studio · 02</span>
+      </div>
+      <h1 class="hero-title reveal" style="transition-delay:.1s" data-i18n="d3_hero_title">
+        Thiết kế thương hiệu,<br>
+        <em>3D Visualization</em><br>
+        &amp; In 3D theo yêu cầu
+      </h1>
+      <p class="hero-desc reveal" style="transition-delay:.2s" data-i18n="d3_hero_desc">
+        Từ ý tưởng đến vật thể thật — xây dựng hình ảnh chuyên nghiệp cho doanh nghiệp,
+        rồi hiện thực hóa thiết kế thành sản phẩm in 3D trong 3–5 ngày.
+        Một nơi duy nhất, trọn vòng đời sáng tạo.
+      </p>
+      <div class="hero-actions reveal" style="transition-delay:.3s">
+        <a href="#services" class="btn-gold"><span data-i18n="d3_hero_btn1">Xem dịch vụ</span> <span class="arr">→</span></a>
+        <a href="#print3d" class="btn-ghost"><span data-i18n="d3_hero_btn2">Đặt in 3D</span> <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="hero-visual reveal" style="transition-delay:.15s">
+      <div class="hv-ring hv-r1"></div>
+      <div class="hv-ring hv-r2"></div>
+      <div class="hv-ring hv-r3"></div>
+      <div class="hv-diamond hv-d1"></div>
+      <div class="hv-diamond hv-d2"></div>
+      <div class="hv-diamond hv-d3"></div>
+      <div class="hv-dot"></div>
+      <div class="hv-label">3D</div>
+    </div>
+  </div>
+  <a href="#services" class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </a>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════════════════════════════════════
+     SERVICES — DESIGN
+══════════════════════════════════════ -->
+<section class="services" id="services">
+  <div class="container section-header">
+    <div class="section-label reveal" data-i18n="d3_svc_label">Dịch vụ thiết kế</div>
+    <h2 class="section-title reveal" style="transition-delay:.08s" data-i18n="d3_svc_title">
+      Những gì tôi <em>làm tốt nhất</em>
+    </h2>
+    <p class="section-sub reveal" style="transition-delay:.15s" data-i18n="d3_svc_sub">
+      Bốn mảng dịch vụ thiết kế cốt lõi — từ nhận diện thương hiệu đến hình ảnh 3D và truyền thông marketing. Cần in thành vật thể thật? Cuộn xuống mục In 3D.
+    </p>
+  </div>
+
+  <div class="container" style="max-width:1400px;margin:0 auto">
+    <div class="services-grid">
+
+      <!-- 01 · Branding -->
+      <div class="svc-card reveal">
+        <div class="svc-priority" data-i18n="d3_s1_pri">Ưu tiên #1</div>
+        <div class="svc-num">01</div>
+        <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M22 4L40 14V30L22 40L4 30V14L22 4Z"/>
+          <path d="M22 12L32 18V26L22 32L12 26V18L22 12Z" opacity=".4"/>
+          <circle cx="22" cy="22" r="3" fill="currentColor" opacity=".6"/>
+        </svg>
+        <div class="svc-name" data-i18n="d3_s1_name">Thiết kế Nhận Diện<br>Thương Hiệu</div>
+        <div class="svc-tagline">Branding · Identity Design</div>
+        <p class="svc-desc" data-i18n="d3_s1_desc">
+          Xây dựng hệ thống nhận diện thương hiệu chuyên nghiệp và nhất quán — từ logo đến toàn bộ bộ nhận diện cho doanh nghiệp mới, nhà hàng, spa, startup và shop online.
+        </p>
+        <ul class="svc-list">
+          <li data-i18n="d3_s1_l1">Thiết kế logo &amp; brand mark</li>
+          <li data-i18n="d3_s1_l2">Bộ nhận diện thương hiệu đầy đủ</li>
+          <li data-i18n="d3_s1_l3">Name card · Hồ sơ năng lực</li>
+          <li data-i18n="d3_s1_l4">Catalogue · Social media kit</li>
+          <li data-i18n="d3_s1_l5">Brand guideline &amp; brand book</li>
+        </ul>
+        <div class="svc-price">
+          <strong data-i18n="d3_s1_price">3 – 30 triệu</strong>
+          <span data-i18n="d3_s1_unit">/ dự án tùy quy mô</span>
+        </div>
+      </div>
+
+      <!-- 02 · 3D Product -->
+      <div class="svc-card reveal" style="transition-delay:.08s">
+        <div class="svc-priority" data-i18n="d3_s2_pri">Ưu tiên #2</div>
+        <div class="svc-num">02</div>
+        <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M22 5L38 14V30L22 39L6 30V14L22 5Z"/>
+          <path d="M22 5V22M22 22L38 14M22 22L6 14" opacity=".5"/>
+          <path d="M22 22V39" opacity=".3"/>
+        </svg>
+        <div class="svc-name" data-i18n="d3_s2_name">3D Product<br>Visualization</div>
+        <div class="svc-tagline">3D Rendering · Blender · CGI</div>
+        <p class="svc-desc" data-i18n="d3_s2_desc">
+          Tạo hình ảnh 3D sản phẩm chất lượng cao phục vụ quảng cáo, e-commerce và catalog. Chuyên mảng mỹ phẩm, nội thất, thực phẩm và máy móc công nghiệp.
+        </p>
+        <ul class="svc-list">
+          <li data-i18n="d3_s2_l1">Render sản phẩm 3D high-fidelity</li>
+          <li data-i18n="d3_s2_l2">Hình quảng cáo sản phẩm cho ads</li>
+          <li data-i18n="d3_s2_l3">Animation sản phẩm &amp; turntable</li>
+          <li data-i18n="d3_s2_l4">3D mockup bao bì &amp; packaging</li>
+          <li data-i18n="d3_s2_l5">Scene setup cho e-commerce</li>
+        </ul>
+        <div class="svc-price">
+          <strong data-i18n="d3_s2_price">500K – 5 triệu</strong>
+          <span data-i18n="d3_s2_unit">/ sản phẩm</span>
+        </div>
+      </div>
+
+      <!-- 03 · UI/UX -->
+      <div class="svc-card reveal" style="transition-delay:.15s">
+        <div class="svc-num">03</div>
+        <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+          <rect x="4" y="8" width="36" height="24" rx="2"/>
+          <path d="M15 38H29M22 32V38" />
+          <path d="M8 13H36M8 18H26M8 23H20" opacity=".4"/>
+        </svg>
+        <div class="svc-name" data-i18n="d3_s3_name">Website &amp; App<br>UI Design</div>
+        <div class="svc-tagline">Figma · UI/UX · Interaction Design</div>
+        <p class="svc-desc" data-i18n="d3_s3_desc">
+          Thiết kế giao diện website và ứng dụng chuyên nghiệp, tập trung vào trải nghiệm người dùng. Phục vụ startup, công ty phần mềm và doanh nghiệp cần website mới.
+        </p>
+        <ul class="svc-list">
+          <li data-i18n="d3_s3_l1">Landing page &amp; corporate website</li>
+          <li data-i18n="d3_s3_l2">Mobile app UI (iOS &amp; Android)</li>
+          <li data-i18n="d3_s3_l3">Dashboard &amp; admin panel UI</li>
+          <li data-i18n="d3_s3_l4">Prototype &amp; interactive mockup</li>
+          <li data-i18n="d3_s3_l5">Design system &amp; component library</li>
+        </ul>
+        <div class="svc-price">
+          <strong data-i18n="d3_s3_price">5 – 50 triệu</strong>
+          <span data-i18n="d3_s3_unit">/ dự án</span>
+        </div>
+      </div>
+
+      <!-- 04 · Marketing -->
+      <div class="svc-card reveal" style="transition-delay:.22s">
+        <div class="svc-num">04</div>
+        <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+          <circle cx="22" cy="22" r="16"/>
+          <circle cx="22" cy="22" r="9" opacity=".55"/>
+          <circle cx="22" cy="22" r="3" fill="currentColor" opacity=".8"/>
+          <path d="M33 11L37 7M37 7H32M37 7V12" />
+        </svg>
+        <div class="svc-name" data-i18n="d3_s4_name">Marketing &amp;<br>Advertising Design</div>
+        <div class="svc-tagline">Visual Design · Content · Ads</div>
+        <p class="svc-desc" data-i18n="d3_s4_desc">
+          Thiết kế hình ảnh quảng cáo và truyền thông marketing — từ banner digital đến ấn phẩm in ấn. Bán theo từng thiết kế hoặc gói tháng cho doanh nghiệp.
+        </p>
+        <ul class="svc-list">
+          <li data-i18n="d3_s4_l1">Facebook / Instagram Ads visual</li>
+          <li data-i18n="d3_s4_l2">Banner web &amp; digital out-of-home</li>
+          <li data-i18n="d3_s4_l3">Poster · Brochure · Flyer</li>
+          <li data-i18n="d3_s4_l4">Event visual &amp; backdrop</li>
+          <li data-i18n="d3_s4_l5">Gói thiết kế tháng (retainer)</li>
+        </ul>
+        <div class="svc-price">
+          <strong data-i18n="d3_s4_price">200K – 2 triệu</strong>
+          <span data-i18n="d3_s4_unit">/ thiết kế</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════════════════════════════════════
+     3D PRINTING
+══════════════════════════════════════ -->
+<section class="print3d" id="print3d">
+  <div class="container section-header">
+    <div class="section-label reveal" data-i18n="d3_print_label">In 3D theo yêu cầu</div>
+    <h2 class="section-title reveal" style="transition-delay:.08s" id="printTitle" data-i18n="d3_print_title">
+      Thiết kế. <em>In thật.</em>
+    </h2>
+    <p class="section-sub reveal" style="transition-delay:.15s" id="printDesc">
+      MERUVA 3D biến file của bạn thành vật thể thực tế. PLA, PETG, resin cao cấp. Từ quà tặng cá nhân đến sản phẩm sự kiện doanh nghiệp — giao trong 3–5 ngày.
+    </p>
+  </div>
+
+  <div class="container" style="max-width:1400px;margin:0 auto">
+    <div class="products-grid" id="products-grid"></div>
+
+    <div class="print-flow reveal">
+      <div class="pf-step">
+        <div class="pf-step-num">01</div>
+        <div class="pf-step-title" data-i18n="d3_pf1_t">Gửi yêu cầu</div>
+        <div class="pf-step-desc" data-i18n="d3_pf1_d">Có file STL càng tốt — chưa có, đội thiết kế dựng giúp bạn.</div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-step-num">02</div>
+        <div class="pf-step-title" data-i18n="d3_pf2_t">Báo giá trong 24h</div>
+        <div class="pf-step-desc" data-i18n="d3_pf2_d">Chốt vật liệu, màu sắc, kích thước và số lượng.</div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-step-num">03</div>
+        <div class="pf-step-title" data-i18n="d3_pf3_t">In &amp; hoàn thiện</div>
+        <div class="pf-step-desc" data-i18n="d3_pf3_d">PLA · PETG · Resin. Xử lý bề mặt, sơn phủ theo yêu cầu.</div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-step-num">04</div>
+        <div class="pf-step-title" data-i18n="d3_pf4_t">Giao trong 3–5 ngày</div>
+        <div class="pf-step-desc" data-i18n="d3_pf4_d">Giao tận nơi TP.HCM hoặc gửi toàn quốc.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem">
+      <a href="#contact" class="btn-gold" onclick="presetPrintService()"><span data-i18n="d3_print_btn">Đặt in ngay</span> <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════════════════════════════════════
+     PORTFOLIO
+══════════════════════════════════════ -->
+<section class="portfolio" id="portfolio">
+  <div class="container section-header">
+    <div class="section-label reveal">Portfolio</div>
+    <h2 class="section-title reveal" style="transition-delay:.08s" data-i18n="d3_pf_title">
+      Một số <em>công trình tiêu biểu</em>
+    </h2>
+    <p class="section-sub reveal" style="transition-delay:.15s" data-i18n="d3_pf_sub">
+      Tổng hợp dự án trải dài nhiều lĩnh vực — doanh nghiệp, F&amp;B, e-commerce, startup và giáo dục.
+    </p>
+  </div>
+
+  <div class="container" style="max-width:1400px;margin:0 auto">
+    <div class="pf-filters reveal" style="transition-delay:.2s">
+      <button class="pf-filter-btn active" data-cat="all" data-i18n="d3_flt_all">Tất cả</button>
+      <button class="pf-filter-btn" data-cat="branding">Branding</button>
+      <button class="pf-filter-btn" data-cat="3d">3D</button>
+      <button class="pf-filter-btn" data-cat="uiux">UI/UX</button>
+      <button class="pf-filter-btn" data-cat="marketing">Marketing</button>
+    </div>
+
+    <div class="pf-grid reveal" style="transition-delay:.25s">
+
+      <div class="pf-item" data-cat="branding">
+        <div class="pf-visual pf-v-brand-1">
+          <div class="pf-visual-num">01</div>
+          <div class="pf-visual-label">Branding</div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-cat" data-i18n="d3_i1_cat">Branding · Identity</div>
+          <div class="pf-title" data-i18n="d3_i1_title">Nhà hàng The Garden</div>
+          <div class="pf-sub" data-i18n="d3_i1_sub">Logo · Brand book · Menu · Name card</div>
+        </div>
+      </div>
+
+      <div class="pf-item" data-cat="branding">
+        <div class="pf-visual pf-v-brand-2">
+          <div class="pf-visual-num">02</div>
+          <div class="pf-visual-label">Branding</div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-cat" data-i18n="d3_i2_cat">Branding · Startup</div>
+          <div class="pf-title" data-i18n="d3_i2_title">FinTech Startup Identity</div>
+          <div class="pf-sub" data-i18n="d3_i2_sub">Logo · Brand guide · Pitch deck · Social kit</div>
+        </div>
+      </div>
+
+      <div class="pf-item" data-cat="branding">
+        <div class="pf-visual pf-v-brand-3">
+          <div class="pf-visual-num">03</div>
+          <div class="pf-visual-label">Branding</div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-cat" data-i18n="d3_i3_cat">Branding · Spa &amp; Wellness</div>
+          <div class="pf-title" data-i18n="d3_i3_title">Spa Lumière Rebrand</div>
+          <div class="pf-sub" data-i18n="d3_i3_sub">Logo · Packaging · Stationery · Signage</div>
+        </div>
+      </div>
+
+      <div class="pf-item" data-cat="3d">
+        <div class="pf-visual pf-v-3d-1">
+          <div class="pf-visual-num">04</div>
+          <div class="pf-visual-label">3D Render</div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-cat" data-i18n="d3_i4_cat">3D · Mỹ phẩm</div>
+          <div class="pf-title" data-i18n="d3_i4_title">Cosmetic Product CGI</div>
+          <div class="pf-sub" data-i18n="d3_i4_sub">Hero shot · 360° render · E-commerce asset</div>
+        </div>
+      </div>
+
+      <div class="pf-item" data-cat="3d">
+        <div class="pf-visual pf-v-3d-2">
+          <div class="pf-visual-num">05</div>
+          <div class="pf-visual-label">3D Render</div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-cat" data-i18n="d3_i5_cat">3D · Nội thất</div>
+          <div class="pf-title" data-i18n="d3_i5_title">Luxury Furniture Visualization</div>
+          <div class="pf-sub" data-i18n="d3_i5_sub">Product animation · Catalog renders</div>
+        </div>
+      </div>
+
+      <div class="pf-item" data-cat="uiux">
+        <div class="pf-visual pf-v-ui-1">
+          <div class="pf-visual-num">06</div>
+          <div class="pf-visual-label">UI / UX</div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-cat" data-i18n="d3_i6_cat">UI/UX · Mobile App</div>
+          <div class="pf-title" data-i18n="d3_i6_title">EdTech Learning Platform</div>
+          <div class="pf-sub" data-i18n="d3_i6_sub">iOS App UI · Onboarding · Dashboard</div>
+        </div>
+      </div>
+
+      <div class="pf-item" data-cat="uiux">
+        <div class="pf-visual pf-v-ui-2">
+          <div class="pf-visual-num">07</div>
+          <div class="pf-visual-label">UI / UX</div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-cat" data-i18n="d3_i7_cat">UI/UX · SaaS Dashboard</div>
+          <div class="pf-title" data-i18n="d3_i7_title">B2B Analytics Dashboard</div>
+          <div class="pf-sub" data-i18n="d3_i7_sub">Web app UI · Design system · Prototype</div>
+        </div>
+      </div>
+
+      <div class="pf-item" data-cat="marketing">
+        <div class="pf-visual pf-v-mkt-1">
+          <div class="pf-visual-num">08</div>
+          <div class="pf-visual-label">Marketing</div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-cat" data-i18n="d3_i8_cat">Marketing · F&amp;B</div>
+          <div class="pf-title" data-i18n="d3_i8_title">Coffee Brand Social Kit</div>
+          <div class="pf-sub" data-i18n="d3_i8_sub">Instagram templates · Ads creative · Story set</div>
+        </div>
+      </div>
+
+      <div class="pf-item" data-cat="marketing">
+        <div class="pf-visual pf-v-mkt-2">
+          <div class="pf-visual-num">09</div>
+          <div class="pf-visual-label">Marketing</div>
+        </div>
+        <div class="pf-info">
+          <div class="pf-cat" data-i18n="d3_i9_cat">Marketing · Event</div>
+          <div class="pf-title" data-i18n="d3_i9_title">Cultural Festival Campaign</div>
+          <div class="pf-sub" data-i18n="d3_i9_sub">Key visual · Poster · Banner · Backdrop</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pf-more-wrap reveal">
+      <a href="#contact" class="btn-ghost"><span data-i18n="d3_pf_more">Xem thêm dự án</span> <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════════════════════════════════════
+     WHY ME
+══════════════════════════════════════ -->
+<section class="whyme" id="about">
+  <div class="container section-header">
+    <div class="section-label reveal" data-i18n="d3_wm_label">Tại sao chọn tôi</div>
+    <h2 class="section-title reveal" style="transition-delay:.08s" data-i18n="d3_wm_title">
+      Cam kết chất lượng,<br><em>tận tâm phục vụ</em>
+    </h2>
+    <p class="section-sub reveal" style="transition-delay:.15s" data-i18n="d3_wm_sub">
+      Không hứa hẹn suông. Không làm cho có. Mỗi dự án là một cam kết chất lượng thực sự.
+    </p>
+  </div>
+
+  <div class="container" style="max-width:1400px;margin:0 auto">
+    <div class="whyme-grid">
+
+      <div class="wm-card reveal">
+        <div class="wm-num">5+</div>
+        <div class="wm-title" data-i18n="d3_w1_t">Năm kinh nghiệm Freelance</div>
+        <p class="wm-desc" data-i18n="d3_w1_d">Làm việc với nhiều loại hình doanh nghiệp: từ startup đến tập đoàn, từ F&amp;B đến công nghệ và giáo dục.</p>
+      </div>
+
+      <div class="wm-card reveal" style="transition-delay:.08s">
+        <div class="wm-num">EN</div>
+        <div class="wm-title" data-i18n="d3_w2_t">Thành thạo tiếng Anh</div>
+        <p class="wm-desc" data-i18n="d3_w2_d">Làm việc với khách hàng quốc tế, đọc tài liệu kỹ thuật, hiểu xu hướng thiết kế toàn cầu và truyền đạt rõ ràng.</p>
+      </div>
+
+      <div class="wm-card reveal" style="transition-delay:.15s">
+        <div class="wm-num">360°</div>
+        <div class="wm-title" data-i18n="d3_w3_t">Từ concept đến vật thể thật</div>
+        <p class="wm-desc" data-i18n="d3_w3_d">Tư vấn ý tưởng, nghiên cứu brand, thiết kế, in 3D và bàn giao hoàn chỉnh — không cần tự xử lý nhiều bên.</p>
+      </div>
+
+      <div class="wm-card reveal" style="transition-delay:.22s">
+        <div class="wm-num">∞</div>
+        <div class="wm-title" data-i18n="d3_w4_t">Đa lĩnh vực &amp; đa nền tảng</div>
+        <p class="wm-desc" data-i18n="d3_w4_d">Kinh nghiệm doanh nghiệp, giáo dục, game, marketing. Thiết kế cho cả print, digital, 3D và interactive.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Tools ── -->
+<section class="tools">
+  <div class="container" style="max-width:1400px;margin:0 auto">
+    <div class="section-label reveal" style="font-size:.6rem" data-i18n="d3_tools_label">Công cụ &amp; kỹ năng</div>
+    <div class="tools-row">
+      <div class="tool-chip tc-primary reveal"><span class="tool-chip-dot"></span>Figma</div>
+      <div class="tool-chip tc-primary reveal" style="transition-delay:.04s"><span class="tool-chip-dot"></span>Blender</div>
+      <div class="tool-chip tc-primary reveal" style="transition-delay:.08s"><span class="tool-chip-dot"></span>Adobe Illustrator</div>
+      <div class="tool-chip tc-primary reveal" style="transition-delay:.12s"><span class="tool-chip-dot"></span>Adobe Photoshop</div>
+      <div class="tool-chip tc-primary reveal" style="transition-delay:.16s"><span class="tool-chip-dot"></span>Adobe InDesign</div>
+      <div class="tool-chip tc-secondary reveal" style="transition-delay:.20s"><span class="tool-chip-dot"></span>Adobe XD</div>
+      <div class="tool-chip tc-secondary reveal" style="transition-delay:.24s"><span class="tool-chip-dot"></span>After Effects</div>
+      <div class="tool-chip tc-secondary reveal" style="transition-delay:.28s"><span class="tool-chip-dot"></span>Premiere Pro</div>
+      <div class="tool-chip tc-secondary reveal" style="transition-delay:.32s"><span class="tool-chip-dot"></span>Substance Painter</div>
+      <div class="tool-chip tc-tertiary reveal" style="transition-delay:.36s"><span class="tool-chip-dot"></span>FDM &amp; Resin Printing</div>
+      <div class="tool-chip tc-tertiary reveal" style="transition-delay:.40s"><span class="tool-chip-dot"></span>Pixel Art</div>
+      <div class="tool-chip tc-tertiary reveal" style="transition-delay:.44s"><span class="tool-chip-dot"></span>Game Asset Design</div>
+      <div class="tool-chip tc-tertiary reveal" style="transition-delay:.48s"><span class="tool-chip-dot"></span>VFX</div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════════════════════════════════════
+     CONTACT
+══════════════════════════════════════ -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="section-label reveal" data-i18n="d3_c_label">Liên hệ</div>
+      <h2 class="section-title reveal" style="transition-delay:.08s;max-width:380px" data-i18n="d3_c_title">
+        Bắt đầu<br><em>dự án của bạn</em>
+      </h2>
+      <p class="contact-tagline reveal" style="transition-delay:.16s" data-i18n="d3_c_tagline">
+        "Mỗi thương hiệu đều xứng đáng<br>
+        có một diện mạo chuyên nghiệp."
+      </p>
+      <ul class="contact-info-list reveal" style="transition-delay:.22s">
+        <li>
+          <span class="ci-label">Email</span>
+          <span class="ci-value"><a href="mailto:meruva.main@gmail.com">meruva.main@gmail.com</a></span>
+        </li>
+        <li>
+          <span class="ci-label" data-i18n="d3_ci2_label">Phản hồi trong</span>
+          <span class="ci-value" data-i18n="d3_ci2_val">24 giờ làm việc</span>
+        </li>
+        <li>
+          <span class="ci-label" data-i18n="d3_ci3_label">In 3D giao trong</span>
+          <span class="ci-value" data-i18n="d3_ci3_val">3–5 ngày · TP.HCM &amp; toàn quốc</span>
+        </li>
+        <li>
+          <span class="ci-label" data-i18n="d3_ci4_label">Làm việc với</span>
+          <span class="ci-value" data-i18n="d3_ci4_val">Khách Việt Nam &amp; Quốc tế</span>
+        </li>
+      </ul>
+    </div>
+    <div class="contact-right reveal" style="transition-delay:.12s">
+      <form id="contactForm" novalidate>
+        <input type="hidden" name="access_key" value="6eb5e2b6-2ba4-4578-abb7-e551a4b993e5">
+        <input type="hidden" name="subject" value="[MERUVA 3D & Design] Yêu cầu mới ✦">
+        <input type="hidden" name="from_name" value="MERUVA 3D & Design Studio">
+        <input type="hidden" name="replyto" value="meruva.main@gmail.com">
+        <input type="hidden" name="redirect" value="false">
+        <input type="checkbox" name="botcheck" style="display:none">
+
+        <div class="cf-row">
+          <label data-i18n="d3_f_name">Họ và tên *</label>
+          <input type="text" name="name" placeholder="Nguyễn Văn A" data-i18n-placeholder="d3_f_name_ph" required>
+        </div>
+        <div class="cf-row">
+          <label data-i18n="d3_f_contact">Email / Số điện thoại *</label>
+          <input type="text" name="contact" placeholder="email@company.com hoặc 0912 345 678" data-i18n-placeholder="d3_f_contact_ph" required>
+        </div>
+        <div class="cf-row">
+          <label data-i18n="d3_f_service">Dịch vụ quan tâm</label>
+          <select name="service" id="serviceSelect">
+            <option value="" data-i18n="d3_f_opt0">— Chọn dịch vụ —</option>
+            <option data-i18n="d3_f_opt1">Thiết kế nhận diện thương hiệu</option>
+            <option data-i18n="d3_f_opt2">3D Product Visualization</option>
+            <option data-i18n="d3_f_opt3">Website / App UI Design</option>
+            <option data-i18n="d3_f_opt4">Marketing &amp; Advertising Design</option>
+            <option value="print-file" data-i18n="d3_f_opt5">In 3D theo file (PLA / PETG) · Từ 150.000₫</option>
+            <option data-i18n="d3_f_opt6">In resin cao cấp · Từ 250.000₫</option>
+            <option data-i18n="d3_f_opt7">Móc khóa / quà tặng custom · Từ 80.000₫</option>
+            <option data-i18n="d3_f_opt8">Figure &amp; mô hình · Từ 300.000₫</option>
+            <option data-i18n="d3_f_opt9">Vật phẩm sự kiện / corporate gift · Từ 120.000₫</option>
+            <option data-i18n="d3_f_opt10">Gói tháng (Monthly retainer)</option>
+            <option data-i18n="d3_f_opt11">Tư vấn &amp; báo giá</option>
+          </select>
+        </div>
+        <div class="cf-row">
+          <label data-i18n="d3_f_msg">Mô tả yêu cầu</label>
+          <textarea name="message" rows="4" placeholder="Mô tả nhu cầu, ngành hàng, kích thước / số lượng (nếu in 3D), timeline và ngân sách dự kiến..." data-i18n-placeholder="d3_f_msg_ph"></textarea>
+        </div>
+        <button type="submit" id="contactBtn" class="btn-submit"><span data-i18n="d3_f_submit">Gửi yêu cầu</span> <span>→</span></button>
+        <p id="contactThanks" style="display:none;color:var(--gold);font-size:.9rem;margin-top:1.2rem;letter-spacing:.05em" data-i18n="d3_f_thanks">
+          ✦ &nbsp;Cảm ơn bạn! MERUVA sẽ phản hồi trong 24 giờ.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-logo">
+    <a href="../index.html" class="logo-wrap" style="text-decoration:none">
+      <img src="../logo-mark.png" alt="MERUVA" style="width:32px;height:32px;object-fit:contain;mix-blend-mode:screen">
+      <div class="logo-text" style="font-size:1rem">MERUVA</div>
+    </a>
+    <div class="footer-tagline" data-i18n="d3_footer_tagline">Từ đỉnh cao — chúng tôi phục vụ.</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#services" data-i18n="d3_nav_services">Thiết kế</a></li>
+    <li><a href="#print3d" data-i18n="d3_nav_print">In 3D</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact" data-i18n="d3_nav_contact">Liên hệ</a></li>
+    <li><a href="../index.html" data-i18n="d3_footer_eco">Hệ sinh thái</a></li>
+  </ul>
+  <div class="footer-copy" data-i18n="d3_footer_copy">© 2026 MERUVA 3D &amp; Design Studio</div>
+</footer>
+
+<!-- ── Scripts ── -->
+<script src="../meruva_lang.js?v=6"></script>
+<script src="Meruva3D_lang.js?v=1"></script>
+<script src="../meruva-shared.js?v=2"></script>
+<script>
+/* ── Merge khóa riêng của trang 3D vào MERUVA_LANG để applyLang dịch
+   qua data-i18n. Chạy ở parse-time, trước khi initShared gọi applyLang. ── */
+(function() {
+  var M3 = window.MERUVA3D_LANG || {};
+  ['vi', 'en', 'ja'].forEach(function(lg) {
+    if (window.MERUVA_LANG && window.MERUVA_LANG[lg] && M3[lg]) {
+      Object.assign(window.MERUVA_LANG[lg], M3[lg]);
+    }
+  });
+})();
+
+/* ── 3D Print products — render từ lang data ── */
+function renderPrintProducts() {
+  var lang = window.currentLang || 'vi';
+  var L = window.MERUVA_LANG[lang] || window.MERUVA_LANG.vi;
+  var data = L.ecosystem.find(function(e) { return e.id === 'print3d'; });
+  if (!data) return;
+  var grid = document.getElementById('products-grid');
+  grid.innerHTML = '';
+  data.products.forEach(function(product) {
+    var card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = '<div class="product-name">' + product.name + '</div>' +
+                     '<div class="product-note">' + product.note + '</div>' +
+                     '<div class="product-price">' + product.price + '</div>';
+    grid.appendChild(card);
+  });
+  document.getElementById('printDesc').textContent = data.heroDesc;
+}
+document.addEventListener('DOMContentLoaded', function() {
+  /* Hook applyLang để re-render khi đổi ngôn ngữ. Đăng ký trong DOMContentLoaded
+     để tránh bị function-hoisting của meruva-shared.js ghi đè lại, và vì setLang
+     trì hoãn applyLang 180ms nên không hook setLang. */
+  var origApplyLang = window.applyLang;
+  window.applyLang = function(lang) {
+    origApplyLang.call(this, lang);
+    renderPrintProducts();
+  };
+  renderPrintProducts();
+});
+
+/* Pre-chọn dịch vụ in 3D khi bấm "Đặt in ngay" — khớp theo value (ổn định
+   qua mọi ngôn ngữ), không phụ thuộc text hiển thị. */
+function presetPrintService() {
+  var sel = document.getElementById('serviceSelect');
+  sel.value = 'print-file';
+}
+
+/* ── Portfolio Filter ── */
+(function() {
+  var filterBtns = document.querySelectorAll('.pf-filter-btn');
+  var items = document.querySelectorAll('.pf-item');
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var cat = btn.dataset.cat;
+      filterBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      items.forEach(function(item) {
+        if (cat === 'all' || item.dataset.cat === cat) item.classList.remove('hidden');
+        else item.classList.add('hidden');
+      });
+    });
+  });
+})();
+
+/* ── Contact Form (Web3Forms) ── */
+(function() {
+  var form   = document.getElementById('contactForm');
+  var btn    = document.getElementById('contactBtn');
+  var thanks = document.getElementById('contactThanks');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name    = form.querySelector('[name="name"]');
+    var contact = form.querySelector('[name="contact"]');
+    if (!name.value.trim() || !contact.value.trim()) { name.focus(); return; }
+    btn.disabled = true;
+    btn.innerHTML = '<span style="opacity:.6;letter-spacing:.2em;font-size:.65rem">ĐANG GỬI...</span>';
+    fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d.success) { form.style.display = 'none'; thanks.style.display = 'block'; }
+        else {
+          alert('Có lỗi xảy ra. Vui lòng thử lại.');
+          btn.disabled = false;
+          btn.innerHTML = 'Gửi yêu cầu →';
+        }
+      })
+      .catch(function() {
+        alert('Không gửi được. Vui lòng kiểm tra kết nối.');
+        btn.disabled = false;
+        btn.innerHTML = 'Gửi yêu cầu →';
+      });
+  });
+})();
+</script>
+</body>
+</html>

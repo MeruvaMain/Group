@@ -1,0 +1,51 @@
+{
+  "outDir": ".",
+  "outBase": "Main_news",
+  "baseUrl": "https://meruva.vn/MeruvaNews/",
+  "ogImage": "https://meruva.vn/og/og-news.png",
+  "languages": ["vi", "en", "ja"],
+  "i18n": {
+    "vi": {
+      "ogLocale": "vi_VN",
+      "pageTitle": "Báo · MERUVA News — Nhật ký hệ sinh thái phục vụ",
+      "metaDesc": "MERUVA News — tin tức & nhật ký hằng tuần của hệ sinh thái MERUVA: cà phê, bánh, studio cho thuê, tư vấn hệ thống cá nhân, thiết kế & in 3D. Chuyện hậu trường, sản phẩm mới và tinh thần phục vụ.",
+      "ogDesc": "Tin tức & nhật ký hằng tuần của hệ sinh thái MERUVA — cà phê, bánh, studio, tư vấn, thiết kế.",
+      "kicker": "MERUVA News · Báo",
+      "titleHtml": "Nhật ký <em>hệ sinh thái</em>",
+      "introHtml": "Mỗi tuần, một lát cắt từ bên trong MERUVA — chuyện hậu trường của cà phê, bánh, studio, tư vấn và thiết kế. Nơi tinh thần <em>\"From the summit, we serve\"</em> được kể bằng những câu chuyện thật.",
+      "backLabel": "← Hệ sinh thái",
+      "footerHtml": "© 2026 MERUVA · From the summit, we serve. · <a href=\"../index.html\">Quay lại Hệ sinh thái</a>",
+      "closeLabel": "Đóng bài đọc",
+      "blogName": "MERUVA News",
+      "blogDesc": "Tin tức & nhật ký hằng tuần của hệ sinh thái MERUVA."
+    },
+    "en": {
+      "ogLocale": "en_US",
+      "pageTitle": "Journal · MERUVA News — Diary of a service ecosystem",
+      "metaDesc": "MERUVA News — weekly news & journal of the MERUVA ecosystem: coffee, bakery, studio rentals, personal-systems consulting, design & 3D printing. Behind-the-scenes stories, new products and the spirit of service.",
+      "ogDesc": "Weekly news & journal of the MERUVA ecosystem — coffee, bakery, studios, consulting, design.",
+      "kicker": "MERUVA News · Journal",
+      "titleHtml": "Ecosystem <em>journal</em>",
+      "introHtml": "Each week, a slice from inside MERUVA — the behind-the-scenes of coffee, bakery, studios, consulting and design. Where the spirit of <em>\"From the summit, we serve\"</em> is told through real stories.",
+      "backLabel": "← Ecosystem",
+      "footerHtml": "© 2026 MERUVA · From the summit, we serve. · <a href=\"../index.html\">Back to the ecosystem</a>",
+      "closeLabel": "Close article",
+      "blogName": "MERUVA News",
+      "blogDesc": "Weekly news & journal of the MERUVA ecosystem."
+    },
+    "ja": {
+      "ogLocale": "ja_JP",
+      "pageTitle": "ジャーナル · MERUVA News — おもてなしのエコシステム日記",
+      "metaDesc": "MERUVA News — MERUVAエコシステムの週刊ニュース＆日記：コーヒー、ベーカリー、スタジオ賃貸、パーソナルシステム・コンサルティング、デザイン＆3Dプリント。舞台裏のストーリー、新商品、そしておもてなしの精神。",
+      "ogDesc": "MERUVAエコシステムの週刊ニュース＆日記 — コーヒー、ベーカリー、スタジオ、コンサルティング、デザイン。",
+      "kicker": "MERUVA News · ジャーナル",
+      "titleHtml": "エコシステム<em>日記</em>",
+      "introHtml": "毎週、MERUVAの内側からひとつの断面を。コーヒー、ベーカリー、スタジオ、コンサルティング、デザインの舞台裏。<em>\"From the summit, we serve\"</em> の精神を、実際のストーリーで綴ります。",
+      "backLabel": "← エコシステム",
+      "footerHtml": "© 2026 MERUVA · From the summit, we serve. · <a href=\"../index.html\">エコシステムへ戻る</a>",
+      "closeLabel": "記事を閉じる",
+      "blogName": "MERUVA News",
+      "blogDesc": "MERUVAエコシステムの週刊ニュース＆日記。"
+    }
+  }
+}

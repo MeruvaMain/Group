@@ -1,0 +1,3 @@
+# Ép tên miền chính: chuyển hướng subdomain Netlify -> meruva.vn (tránh duplicate content cho SEO)
+https://meruva.netlify.app/*   https://meruva.vn/:splat   301!
+http://meruva.netlify.app/*    https://meruva.vn/:splat   301!
