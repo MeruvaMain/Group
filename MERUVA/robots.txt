@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /design/
+Disallow: /MeruvaNews/_template.html
+
+Sitemap: https://meruva.vn/sitemap.xml

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kế hoạch cưới — demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F2EC; --ink:#2E1D29; --ink-soft:#71606B; --line:#E5D9CD;
+    --wine:#9E2B3A; --wine-soft:#C26B71; --gold:#B0863A;
+    --sage:#5F8A6B; --amber:#C2862B; --danger:#B33A2E;
+    --card:#FFFDFA; --r:14px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Be Vietnam Pro",sans-serif;line-height:1.5;
+    -webkit-font-smoothing:antialiased;padding-bottom:48px}
+  .wrap{max-width:540px;margin:0 auto;padding:20px 16px}
+  h1{font-family:"Lora",serif;font-weight:600;font-size:22px;margin:0;letter-spacing:.2px}
+  .sub{color:var(--ink-soft);font-size:13px;margin-top:2px}
+  .display{font-family:"Lora",serif}
+
+  .steps{display:flex;gap:6px;margin:18px 0 22px;font-size:13px}
+  .steps div{flex:1;text-align:center;padding:9px 4px;border-radius:10px;
+    background:#0000;color:var(--ink-soft);border:1px solid var(--line);cursor:pointer;transition:.2s}
+  .steps div.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .steps div.done{color:var(--wine);border-color:var(--wine-soft)}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    padding:18px;margin-bottom:14px;position:relative}
+  .card.frame{padding:22px 18px}
+  .card.frame::before{content:"";position:absolute;inset:6px;border:1px solid var(--gold);
+    border-radius:9px;opacity:.35;pointer-events:none}
+
+  label{display:block;font-size:13px;color:var(--ink-soft);margin:14px 0 5px}
+  label:first-of-type{margin-top:0}
+  .row{display:flex;gap:10px}
+  .row>div{flex:1}
+  input,select{width:100%;font:inherit;font-size:15px;color:var(--ink);
+    background:var(--paper);border:1px solid var(--line);border-radius:10px;
+    padding:11px 12px;outline:none;transition:.15s}
+  input:focus,select:focus{border-color:var(--wine);background:#fff}
+  .suffix{position:relative}
+  .suffix span{position:absolute;right:12px;top:50%;transform:translateY(-50%);
+    font-size:12px;color:var(--ink-soft);pointer-events:none}
+  .suffix input{padding-right:46px}
+
+  .seg{display:flex;gap:6px}
+  .seg button{flex:1;padding:11px 6px;font:inherit;font-size:14px;cursor:pointer;
+    background:var(--paper);border:1px solid var(--line);border-radius:10px;color:var(--ink-soft)}
+  .seg button.on{background:var(--wine);border-color:var(--wine);color:#fff;font-weight:600}
+
+  .btn{display:block;width:100%;padding:14px;margin-top:18px;font:inherit;font-weight:600;
+    font-size:15px;cursor:pointer;border:none;border-radius:12px;background:var(--ink);color:var(--paper)}
+  .btn.wine{background:var(--wine)}
+  .btn.ghost{background:#0000;border:1px solid var(--line);color:var(--ink)}
+
+  .eyebrow{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:600}
+
+  .hero{text-align:center;padding:8px 0 4px}
+  .hero .big{font-family:"Lora",serif;font-size:42px;font-weight:600;color:var(--wine);line-height:1.05;margin:6px 0}
+  .hero .note{color:var(--ink-soft);font-size:14px;max-width:340px;margin:0 auto}
+
+  .meter{margin:20px 0 6px}
+  .meter .track{height:8px;border-radius:6px;background:linear-gradient(90deg,
+    var(--danger) 0%,var(--amber) 45%,var(--sage) 80%);position:relative}
+  .meter .pin{position:absolute;top:-5px;width:3px;height:18px;border-radius:2px;
+    background:var(--ink);transform:translateX(-50%);transition:left .5s}
+  .meter .scale{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-soft);margin-top:7px}
+  .verdict{text-align:center;margin-top:14px}
+  .verdict .score{font-family:"Lora",serif;font-size:30px;font-weight:600}
+  .verdict .tag{display:inline-block;font-size:13px;font-weight:600;padding:3px 12px;border-radius:20px;margin-top:2px}
+  .action{margin-top:16px;padding:13px 14px;border-radius:11px;font-size:13.5px;
+    background:var(--paper);border:1px solid var(--line)}
+  .action b{color:var(--wine)}
+
+  .stat{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .stat:last-child{border:0}
+  .stat .v{font-weight:600}
+
+  .alloc h3,.prog h3{font-family:"Lora",serif;font-weight:600;font-size:16px;margin:0 0 4px}
+  .arow{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--line)}
+  .arow:last-child{border:0}
+  .arow .nm{flex:1;font-size:13.5px}
+  .arow .badge{font-size:10px;padding:1px 7px;border-radius:10px;margin-left:6px;font-weight:600;vertical-align:middle}
+  .badge.sug{background:#f0e9df;color:var(--gold)}
+  .badge.edit{background:#f3e0e2;color:var(--wine)}
+  .arow.over .nm{color:var(--danger);font-weight:600}
+  .arow input{width:74px;padding:7px 8px;font-size:13px;text-align:right}
+  .arow .pc{width:58px}
+  .totbar{display:flex;justify-content:space-between;font-weight:600;font-size:14px;padding-top:12px;margin-top:4px}
+
+  .pbar{height:9px;border-radius:6px;background:var(--line);overflow:hidden;margin:5px 0 2px}
+  .pbar i{display:block;height:100%;border-radius:6px;background:var(--sage);transition:width .4s}
+  .pbar i.over{background:var(--danger)}
+  .plbl{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft)}
+  .ring-wrap{display:flex;align-items:center;gap:16px}
+  .ring{flex:none}
+  .ring text{font-family:"Lora",serif}
+
+  .dual{display:flex;gap:10px;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+  .dual .d{flex:1;text-align:center}
+  .dual .d .n{font-family:"Lora",serif;font-size:23px;font-weight:600}
+  .dual .d .l{font-size:11px;color:var(--ink-soft);line-height:1.3;margin-top:2px}
+  .chip{font-size:12px;font-weight:600;padding:6px 12px;border-radius:20px;color:#fff;white-space:nowrap}
+
+  .msum{display:flex;gap:8px;text-align:center}
+  .msum>div{flex:1}
+  .msum .ml{font-size:11px;color:var(--ink-soft)}
+  .msum .mv{font-family:"Lora",serif;font-size:19px;font-weight:600;margin-top:3px}
+
+  .task{border:1px solid var(--line);border-radius:11px;padding:10px 11px;margin-bottom:8px;background:var(--paper)}
+  .task .t1{display:flex;gap:8px;align-items:center}
+  .task .t1 input{flex:1;font-size:13.5px;padding:7px 9px;background:#fff}
+  .task .rm{flex:none;width:30px;height:30px;border:none;background:#0000;color:var(--ink-soft);font-size:19px;cursor:pointer;border-radius:8px;line-height:1}
+  .task .rm:hover{color:var(--danger);background:#f3e0e2}
+  .task .t2{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .task .t2 input,.task .t2 select{font-size:12.5px;padding:6px 7px}
+  .task .t2 .dt{flex:1 1 132px}
+  .task .t2 .pl,.task .t2 .ac{flex:1 1 64px;text-align:right}
+  .task .t2 .st{flex:1 1 96px}
+  .task.over{border-color:var(--danger)}
+  .addbtn{width:100%;padding:11px;margin-top:4px;border:1px dashed var(--wine-soft);background:#0000;
+    color:var(--wine);border-radius:11px;font:inherit;font-weight:600;cursor:pointer}
+  .addbtn:hover{background:#fbf3f0}
+
+  .overlay{position:fixed;inset:0;background:rgba(247,242,236,.94);display:flex;
+    flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:50;
+    font-family:"Lora",serif;color:var(--ink);font-size:16px}
+  .spinner{width:40px;height:40px;border:3px solid var(--line);border-top-color:var(--wine);
+    border-radius:50%;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .foot{text-align:center;font-size:11.5px;color:var(--ink-soft);margin-top:24px;line-height:1.7}
+  .reset{cursor:pointer;text-decoration:underline}
+  .topt{border:1px solid var(--line);border-radius:12px;padding:13px 14px;margin-top:8px;cursor:pointer;
+    background:var(--paper);transition:.15s;display:block;width:100%;text-align:left;font:inherit;color:var(--ink)}
+  .topt:hover{border-color:var(--wine-soft)}
+  .topt.on{border-color:var(--wine);background:#fff;box-shadow:0 0 0 1px var(--wine)}
+  .topt .tt{font-family:"Lora",serif;font-weight:600;font-size:15px}
+  .topt .tg{font-size:10px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.6px;margin-left:8px}
+  .topt .br{font-size:12px;color:var(--ink-soft);margin-top:3px}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<div id="loading" class="overlay hidden">
+  <div class="spinner"></div>
+  <div>Đang tạo trang tiến độ…</div>
+</div>
+
+<div class="wrap">
+  <div>
+    <h1>Kế hoạch cưới của bạn</h1>
+    <div class="sub">Nhập một lần — biết ngay khả thi tới đâu.</div>
+  </div>
+
+  <div class="steps" id="steps"></div>
+
+  <!-- INFO -->
+  <section id="step0">
+    <div class="card frame">
+      <div class="eyebrow">Tài chính · mỗi tháng</div>
+      <div class="row" style="margin-top:10px">
+        <div><label>Thu nhập của bạn</label>
+          <div class="suffix"><input id="incA" inputmode="numeric"><span>triệu</span></div></div>
+        <div><label>Của người ấy</label>
+          <div class="suffix"><input id="incB" inputmode="numeric"><span>triệu</span></div></div>
+      </div>
+      <label>Thu nhập phụ khác (nếu có)</label>
+      <div class="suffix"><input id="incE" inputmode="numeric"><span>triệu</span></div>
+      <div class="row" style="margin-top:4px">
+        <div><label>Tiết kiệm hiện có</label>
+          <div class="suffix"><input id="save" inputmode="numeric"><span>triệu</span></div></div>
+        <div><label>Hỗ trợ gia đình</label>
+          <div class="suffix"><input id="fam" inputmode="numeric"><span>triệu</span></div></div>
+      </div>
+    </div>
+
+    <div class="card frame">
+      <div class="eyebrow">Khách mời · để tính tiền mừng</div>
+      <label>Đồng nghiệp / bạn xã giao</label>
+      <div class="suffix"><input id="gSocial" inputmode="numeric"><span>khách</span></div>
+      <label>Bạn thân / cấp trên</label>
+      <div class="suffix"><input id="gClose" inputmode="numeric"><span>khách</span></div>
+      <label>Họ hàng / người thân</label>
+      <div class="suffix"><input id="gFam" inputmode="numeric"><span>khách</span></div>
+      <label>Tỷ lệ khách đến dự kiến</label>
+      <div class="suffix"><input id="attend" inputmode="numeric" placeholder="85"><span>%</span></div>
+      <div class="sub" style="margin-top:5px">Thực tế thường 80–90% khách mời tới. Hạ xuống để tiền mừng về mức trung bình thực nhận.</div>
+    </div>
+
+    <div class="card frame">
+      <div class="eyebrow">Quy mô đám cưới</div>
+      <label>Nơi tổ chức</label>
+      <div class="seg" id="segCity">
+        <button data-v="hcm" class="on">TP.HCM</button>
+        <button data-v="tinh">Tỉnh</button>
+      </div>
+      <label>Ngày cưới dự kiến</label>
+      <input id="date" type="date">
+      <label>Tổng chi phí dự kiến cả đám cưới (tùy chọn)</label>
+      <div class="suffix"><input id="budgetTarget" inputmode="numeric" placeholder="Để trống = tự tính"><span>triệu</span></div>
+      <div class="sub" style="margin-top:5px">Nhập tổng bạn định chi (vd 1000 = 1 tỷ) để xem có khả thi với tài chính trên không. Bỏ trống thì hệ thống tự tính theo số bàn.</div>
+    </div>
+
+    <div class="card frame">
+      <div class="eyebrow">Chọn kiểu phân bổ ngân sách</div>
+      <div class="sub" style="margin-bottom:2px">Chạm để chọn — hệ thống gợi ý cách chia %, rồi sang Kế hoạch. Bạn vẫn chỉnh lại được sau.</div>
+      <div id="tierOpts"></div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section id="step1" class="hidden">
+    <div class="card frame">
+      <div class="hero">
+        <div class="eyebrow">Tổng dự trù</div>
+        <div class="big" id="hBudget">—</div>
+        <div class="note" id="hNote">—</div>
+      </div>
+      <div class="meter">
+        <div class="track"><div class="pin" id="pin" style="left:50%"></div></div>
+        <div class="scale"><span>Rủi ro cao</span><span>Cần lưu ý</span><span>Khả thi</span></div>
+      </div>
+      <div class="verdict">
+        <div class="score" id="vScore">—</div>
+        <div class="tag" id="vTag">—</div>
+      </div>
+      <div class="action" id="vAction">—</div>
+    </div>
+
+    <div class="card">
+      <div class="stat"><span>Tiền mừng dự kiến</span><span class="v" id="rGift">—</span></div>
+      <div class="stat"><span>Bạn thực sự cần lo</span><span class="v" id="rNet">—</span></div>
+      <div class="stat"><span>Đã có sẵn (tiết kiệm + hỗ trợ)</span><span class="v" id="rHave">—</span></div>
+      <div class="stat"><span>Cần để dành mỗi tháng</span><span class="v" id="rMonth">—</span></div>
+    </div>
+
+    <div class="card alloc">
+      <h3>Phân bổ ngân sách</h3>
+      <div class="sub" style="margin-bottom:8px">Sửa <b>%</b> hoặc <b>tiền</b> — ô kia tự đổi. Tổng giữ cố định, các mục khác tự co lại.</div>
+      <div id="allocRows"></div>
+      <div class="totbar"><span>Tổng</span><span><span id="allocCur">—</span> <span class="sub">/ gợi ý <span id="allocBudget">—</span></span></span></div>
+    </div>
+
+    <button class="btn wine" onclick="lock()">Chốt % → tạo Tiến độ</button>
+    <button class="btn ghost" onclick="go('info')">← Sửa thông tin</button>
+  </section>
+
+  <!-- PROGRESS -->
+  <section id="step2" class="hidden">
+    <div class="card frame prog">
+      <div class="ring-wrap">
+        <div class="ring">
+          <svg width="92" height="92" viewBox="0 0 92 92">
+            <circle cx="46" cy="46" r="40" fill="none" stroke="var(--line)" stroke-width="8"/>
+            <circle id="ringFill" cx="46" cy="46" r="40" fill="none" stroke="var(--wine)"
+              stroke-width="8" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251"
+              transform="rotate(-90 46 46)" style="transition:stroke-dashoffset .5s"/>
+            <text id="ringTxt" x="46" y="52" text-anchor="middle" font-size="20" fill="var(--ink)">0%</text>
+          </svg>
+        </div>
+        <div>
+          <div class="eyebrow">Còn lại</div>
+          <div class="display" id="countdown" style="font-size:24px;font-weight:600">—</div>
+          <div class="sub" id="cdDate">—</div>
+        </div>
+      </div>
+      <div class="dual">
+        <div class="d"><div class="n" id="planPc">0%</div><div class="l">Theo lịch<br>nên xong</div></div>
+        <div class="d"><div class="n" id="curPc">0%</div><div class="l">Thực tế<br>đã xong</div></div>
+        <div class="chip" id="schedChip">—</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="msum">
+        <div><div class="ml">Dự tính</div><div class="mv" id="mPlan">—</div></div>
+        <div><div class="ml">Thực tế đã chi</div><div class="mv" id="mActual">—</div></div>
+        <div><div class="ml" id="mDiffL">Chênh lệch</div><div class="mv" id="mDiff">—</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow" id="liveTag" style="color:var(--sage)">Khả thi · cập nhật theo thực tế</div>
+      <div style="margin:8px 0 14px">
+        <div class="plbl"><span>Tiền đã để dành</span><span id="saveTxt">—</span></div>
+        <div class="pbar"><i id="saveBar" style="width:0%"></i></div>
+        <input id="savedSoFar" inputmode="numeric" style="width:120px;margin-top:6px;padding:7px 9px;font-size:13px"
+          oninput="renderProgress()"> <span class="sub">triệu đã để dành</span>
+      </div>
+      <div>
+        <div class="plbl"><span>Đã chi thực tế</span><span id="spentTxt">—</span></div>
+        <div class="pbar"><i id="spentBar" style="width:0%"></i></div>
+      </div>
+    </div>
+
+    <div class="card prog">
+      <h3>Tiến độ từng hạng mục</h3>
+      <div class="sub" style="margin-bottom:8px">Mỗi mục: ngày dự tính · dự trù · đã chi · trạng thái. Thêm/bớt thoải mái (vd chụp hình tách nhiều buổi).</div>
+      <div id="progRows"></div>
+      <button class="addbtn" onclick="addTask()">+ Thêm mục theo dõi</button>
+    </div>
+
+    <button class="btn ghost" onclick="go('plan')">← Sửa phân bổ</button>
+  </section>
+
+  <div class="foot">
+    Demo · Số tham chiếu lấy từ bảng bạn cấp, chưa verify độc lập. Ngưỡng rủi ro là đề xuất.<br>
+    <span class="reset" onclick="resetAll()">Làm lại từ đầu</span>
+  </div>
+</div>
+
+<script>
+/* ===== Bảng tham chiếu (triệu) — từ tài liệu bạn cấp ===== */
+const BAN  = {hcm:{thap:4.4,kha:7.0,cao:14.0}, tinh:{thap:2.7,kha:4.25,cao:7.5}};
+const GIFT = {hcm:{social:0.75,close:1.5,family:3.0}, tinh:{social:0.4,close:0.75,family:2.0}};
+const CATS = [
+  {k:'damngo',n:'Dạm ngõ',p:1},
+  {k:'anhoi',n:'Ăn hỏi (tráp + lễ)',p:6},
+  {k:'tieconhagai',n:'Tiệc nhà gái (vu quy)',p:24},
+  {k:'tieconhatrai',n:'Tiệc nhà trai (tân hôn)',p:24},
+  {k:'nhan',n:'Nhẫn + trang sức',p:12},
+  {k:'chup',n:'Chụp ảnh + media',p:7},
+  {k:'tp',n:'Trang phục + làm đẹp',p:6},
+  {k:'tt',n:'Trang trí (gia tiên + sảnh)',p:6},
+  {k:'dichvu',n:'Dịch vụ (MC, quay, ban nhạc)',p:4},
+  {k:'dichuyen',n:'Di chuyển + in ấn + quà',p:2},
+  {k:'baohy',n:'Báo hỷ / lại mặt (tùy chọn)',p:2},
+  {k:'duphong',n:'Dự phòng',p:6},
+];
+const OFFSET={damngo:5,anhoi:3,tieconhagai:3,tieconhatrai:3,nhan:2,chup:3,tp:2,tt:1,dichvu:3,dichuyen:1,baohy:-1,duphong:0};
+// % phân bổ gợi ý theo phân khúc (tổng mỗi cái = 100, tiệc = nhà gái + nhà trai)
+const PROFILE={
+  thap:{damngo:1,anhoi:5,tieconhagai:20,tieconhatrai:20,nhan:15,chup:7,tp:7,tt:5,dichvu:4,dichuyen:3,baohy:3,duphong:10},
+  kha: {damngo:1,anhoi:6,tieconhagai:23,tieconhatrai:22,nhan:12,chup:7,tp:6,tt:8,dichvu:4,dichuyen:2,baohy:1,duphong:8},
+  cao: {damngo:1,anhoi:5,tieconhagai:25,tieconhatrai:25,nhan:12,chup:6,tp:4,tt:12,dichvu:3,dichuyen:1,baohy:1,duphong:5},
+};
+const TIER_META={thap:['Tiết kiệm','Tối ưu cost'],kha:['Phổ biến','Cân bằng'],cao:['Cao cấp','Chất lượng']};
+const LBL={info:'Thông tin',plan:'Kế hoạch',prog:'Tiến độ'};
+const IDX={info:0,plan:1,prog:2};
+const LS='cuoiDemo';
+
+const S={city:'hcm',tier:'kha',alloc:[],budget:0,gift:0,have:0,stillNeed:0,
+  needMonth:0,burden:0,score:0,netCost:0,income:0,runway:0,tasks:[],
+  edited:{},active:'info',created:false};
+
+/* ===== utils ===== */
+const $=id=>document.getElementById(id);
+const num=id=>{let v=parseFloat($(id).value);return isNaN(v)?0:v;};
+function fmt(tr){
+  if(tr>=1000){let t=tr/1000;return (Math.round(t*10)/10).toLocaleString('vi-VN')+' tỷ';}
+  return Math.round(tr).toLocaleString('vi-VN')+' tr';
+}
+function fmtFull(tr){
+  if(tr>=1000){let t=tr/1000;return (Math.round(t*100)/100).toLocaleString('vi-VN')+' tỷ';}
+  return Math.round(tr).toLocaleString('vi-VN')+' triệu';
+}
+function monthsUntil(s){if(!s)return 0;const now=new Date();const d=new Date(s);
+  return (d.getFullYear()-now.getFullYear())*12+(d.getMonth()-now.getMonth());}
+function minusMonths(d,m){const x=new Date(d);x.setMonth(x.getMonth()-m);return x;}
+function escapeHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+function opt(v,l,cur){return '<option value="'+v+'"'+(v===cur?' selected':'')+'>'+l+'</option>';}
+
+/* ===== persistence ===== */
+function saveState(){
+  try{
+    const inputs={};
+    ['incA','incB','incE','save','fam','gSocial','gClose','gFam','attend','date','budgetTarget','savedSoFar']
+      .forEach(id=>{if($(id))inputs[id]=$(id).value;});
+    localStorage.setItem(LS,JSON.stringify({S,inputs}));
+  }catch(e){}
+}
+function loadState(){
+  try{
+    const raw=localStorage.getItem(LS);if(!raw)return false;
+    const d=JSON.parse(raw);if(!d||!d.S)return false;
+    Object.assign(S,d.S);
+    if(d.inputs)for(const k in d.inputs){if($(k))$(k).value=d.inputs[k];}
+    setSeg('segCity',S.city,'city');renderTierOpts();
+    if(S.created && S.tasks && S.tasks.length){
+      renderResultDisplay();renderAlloc();setCountdown();
+      renderProgressRows();renderProgress();go('prog');return true;
+    }
+    if(S.budget>0){renderResultDisplay();renderAlloc();go('plan');return true;}
+    go('info');return true;
+  }catch(e){return false;}
+}
+function resetAll(){try{localStorage.removeItem(LS);}catch(e){}location.reload();}
+
+/* ===== stepper / nav ===== */
+function renderSteps(){
+  const order=S.created?['prog','info','plan']:['info','plan'];
+  const box=$('steps');box.innerHTML='';
+  order.forEach(k=>{
+    const d=document.createElement('div');d.textContent=LBL[k];
+    d.className=(k===S.active)?'on':(S.created?'done':'');
+    d.onclick=()=>go(k);box.appendChild(d);
+  });
+}
+function go(k){
+  if(k==='prog'&&!S.created)return;
+  S.active=k;
+  [0,1,2].forEach(i=>$('step'+i).classList.toggle('hidden',i!==IDX[k]));
+  renderSteps();window.scrollTo(0,0);
+}
+
+/* ===== segmented controls ===== */
+function bindSeg(id,key){$(id).querySelectorAll('button').forEach(b=>b.onclick=()=>setSeg(id,b.dataset.v,key));}
+function setSeg(id,v,key){
+  $(id).querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.v===v));
+  if(key)S[key]=v;
+}
+function renderTierOpts(){
+  const box=$('tierOpts');if(!box)return;box.innerHTML='';
+  ['thap','kha','cao'].forEach(v=>{
+    const p=PROFILE[v],tiec=p.tieconhagai+p.tieconhatrai;
+    const b=document.createElement('button');
+    b.className='topt'+(v===S.tier?' on':'');
+    b.innerHTML='<span class="tt">'+TIER_META[v][0]+'<span class="tg">'+TIER_META[v][1]+'</span></span>'+
+      '<div class="br">Tiệc '+tiec+'% · Nhẫn '+p.nhan+'% · Trang trí '+p.tt+'% · Dự phòng '+p.duphong+'%</div>';
+    b.onclick=()=>pickTier(v);
+    box.appendChild(b);
+  });
+}
+function pickTier(v){S.tier=v;renderTierOpts();calcAndShow();}
+
+/* ===== engine ===== */
+function scoreFromBurden(b){
+  const bands=[[0,.25,100,95],[.25,.40,95,80],[.40,.60,80,60],[.60,.85,60,40],[.85,1.5,40,5]];
+  if(b>=1.5)return 5;
+  for(const[lo,hi,s1,s2]of bands)if(b<=hi){const t=(b-lo)/(hi-lo);return Math.round(s1+(s2-s1)*t);}
+  return 50;
+}
+function bandColor(s){return s>=80?'var(--sage)':s>=60?'var(--amber)':'var(--danger)';}
+function verdictText(s){return s>=95?'Rất khả thi':s>=80?'Khả thi':s>=60?'Cần lưu ý':s>=40?'Rủi ro cao':'Khó hoàn thành';}
+function compute(){
+  const guests=num('gSocial')+num('gClose')+num('gFam');
+  const ban=Math.ceil(guests/10)||0;
+  const tiec=ban*BAN[S.city][S.tier];
+  const prof=PROFILE[S.tier];
+  const tiecPct=(prof.tieconhagai+prof.tieconhatrai)/100; // 0.40 / 0.45 / 0.50
+  const manual=num('budgetTarget');
+  S.budget=manual>0?manual:tiec/tiecPct;
+  const att=num('attend');const attRate=att>0?Math.min(100,att)/100:0.85;
+  S.gift=(num('gSocial')*GIFT[S.city].social+num('gClose')*GIFT[S.city].close+num('gFam')*GIFT[S.city].family)*attRate;
+  S.have=num('save')+num('fam');
+  S.netCost=S.budget-S.gift;
+  S.stillNeed=Math.max(0,S.netCost-S.have);
+  S.runway=Math.max(1,monthsUntil($('date').value));
+  S.needMonth=S.stillNeed/S.runway;
+  S.income=num('incA')+num('incB')+num('incE');
+  S.burden=S.income>0?S.needMonth/S.income:99;
+  S.score=S.stillNeed<=0?100:scoreFromBurden(S.burden);
+}
+function actionText(){
+  if(S.stillNeed<=0) return 'Tiền mừng + tiết kiệm đã đủ. Bạn quá thoải mái cho đám cưới này.';
+  const m=fmt(S.needMonth), pc=Math.round(S.burden*100);
+  if(S.burden<=.40) return 'Để dành <b>'+m+'/tháng</b> trong '+S.runway+' tháng là ổn ('+pc+'% thu nhập).';
+  if(S.burden<=.60) return 'Cần để dành <b>'+m+'/tháng</b> ('+pc+'% thu nhập). Cân nhắc bớt vài khoản cho nhẹ tay.';
+  if(S.burden<=.85) return 'Phải để dành <b>'+m+'/tháng</b> ('+pc+'% thu nhập) — khá nặng. Nên hạ 1 phân khúc hoặc lùi ngày.';
+  const target=S.income*0.40; const need=target>0?Math.ceil(S.stillNeed/target):99;
+  const push=Math.max(1,need-S.runway);
+  return 'Để dành hết cũng khó kịp ('+pc+'% thu nhập/tháng). Lùi thêm <b>~'+push+' tháng</b> hoặc hạ phân khúc để về vùng an toàn.';
+}
+
+function renderResultDisplay(){
+  $('hBudget').textContent=fmtFull(S.budget);
+  const giftPc=S.budget>0?Math.round(S.gift/S.budget*100):0;
+  $('hNote').innerHTML='Tiền mừng gánh ~<b>'+giftPc+'%</b>. Bạn thực sự cần lo khoảng <b>'+fmtFull(Math.max(0,S.netCost))+'</b>.';
+  $('vScore').textContent=S.score; $('vScore').style.color=bandColor(S.score);
+  const tag=$('vTag');tag.textContent=verdictText(S.score);
+  tag.style.background=bandColor(S.score);tag.style.color='#fff';
+  $('pin').style.left=S.score+'%';
+  $('vAction').innerHTML=actionText();
+  $('rGift').textContent=fmt(S.gift);
+  $('rNet').textContent=fmt(Math.max(0,S.netCost));
+  $('rHave').textContent=fmt(S.have);
+  $('rMonth').textContent=S.stillNeed<=0?'0':fmt(S.needMonth)+'/tháng';
+}
+function calcAndShow(){
+  if(num('incA')+num('incB')<=0){alert('Nhập thu nhập trước nhé.');return;}
+  if(num('gSocial')+num('gClose')+num('gFam')<=0){alert('Nhập số khách mời nhé.');return;}
+  compute();
+  S.alloc=CATS.map(c=>{const p=PROFILE[S.tier][c.k]??c.p;return {k:c.k,n:c.n,p,p0:p};}); S.edited={};
+  renderResultDisplay(); renderAlloc(); go('plan'); saveState();
+}
+
+/* ===== allocation: %<->đ, tổng cố định ===== */
+function renderAlloc(){
+  const box=$('allocRows');box.innerHTML='';
+  S.alloc.forEach((c,i)=>{
+    const amt=S.budget*c.p/100;
+    const p0=(c.p0!=null?c.p0:c.p);
+    const edited=!!S.edited[c.k];
+    const over=edited && c.p>p0*1.5+1e-9;   // cao hơn 50% so với gợi ý gốc
+    const badge=edited?'<span class="badge edit">Đã chỉnh</span>':'<span class="badge sug">Gợi ý</span>';
+    const d=document.createElement('div');d.className='arow'+(over?' over':'');
+    d.innerHTML='<span class="nm">'+c.n+badge+'</span>'+
+      '<input class="pc" inputmode="numeric" value="'+Math.round(c.p*10)/10+'" onchange="setPct('+i+',this.value)"><span class="sub">%</span>'+
+      '<input inputmode="numeric" value="'+Math.round(amt)+'" onchange="setAmt('+i+',this.value)"><span class="sub">tr</span>';
+    box.appendChild(d);
+  });
+  const sumP=S.alloc.reduce((s,c)=>s+c.p,0);
+  const overTot=sumP>100.01;
+  $('allocCur').textContent=fmt(S.budget*sumP/100);
+  $('allocCur').style.color=overTot?'var(--danger)':'var(--ink)';
+  $('allocBudget').textContent=fmt(S.budget);
+  saveState();
+}
+function rebalance(i,newP){
+  newP=Math.max(0,Math.min(100,newP));
+  S.alloc[i].p=newP; S.edited[S.alloc[i].k]=true;
+  // mục đã chỉnh = khoá; mục gợi ý gánh phần dư theo trọng số gợi ý gốc
+  const editedSum=S.alloc.filter(c=>S.edited[c.k]).reduce((s,c)=>s+c.p,0);
+  const unedited=S.alloc.filter(c=>!S.edited[c.k]);
+  const remaining=100-editedSum;
+  if(unedited.length>0){
+    const w=unedited.reduce((s,c)=>s+(c.p0!=null?c.p0:c.p),0);
+    unedited.forEach(c=>{const p0=(c.p0!=null?c.p0:c.p);
+      c.p = remaining<=0 ? 0 : (w>0 ? p0/w*remaining : remaining/unedited.length);});
+  }
+  // tất cả đã chỉnh -> không tự cân, để tổng tự do (sẽ so với gợi ý ở dòng Tổng)
+  renderAlloc();
+}
+function setPct(i,v){let p=parseFloat(v);if(isNaN(p))return renderAlloc();rebalance(i,p);}
+function setAmt(i,v){let a=parseFloat(v);if(isNaN(a)||S.budget<=0)return renderAlloc();rebalance(i,a/S.budget*100);}
+
+/* ===== lock -> loading -> progress ===== */
+function setCountdown(){
+  const wed=new Date($('date').value);
+  $('cdDate').textContent=isNaN(wed)?'':'Ngày cưới: '+wed.toLocaleDateString('vi-VN');
+  $('countdown').textContent=S.runway+' tháng';
+}
+function buildTasks(){
+  const wed=new Date($('date').value);
+  S.tasks=S.alloc.map(c=>{
+    const dt=isNaN(wed)?'':minusMonths(wed,OFFSET[c.k]??1).toISOString().slice(0,10);
+    return {id:'t'+c.k,name:c.n,date:dt,plan:Math.round(S.budget*c.p/100),actual:0,status:'chua'};
+  });
+  $('savedSoFar').value=0; setCountdown();
+}
+function lock(){
+  buildTasks();
+  $('loading').classList.remove('hidden');
+  setTimeout(()=>{
+    $('loading').classList.add('hidden');
+    S.created=true;
+    renderProgressRows(); renderProgress(); go('prog'); saveState();
+  },1700);
+}
+
+let _uid=0;const uid=()=>'tx'+(++_uid)+Date.now();
+function renderProgressRows(){
+  const box=$('progRows');box.innerHTML='';
+  S.tasks.forEach(t=>{
+    const el=document.createElement('div');el.className='task';el.id='task_'+t.id;
+    el.innerHTML=
+      '<div class="t1"><input value="'+escapeHtml(t.name)+'" placeholder="Tên hạng mục" onchange="upd(\''+t.id+'\',\'name\',this.value)">'+
+        '<button class="rm" title="Xoá" onclick="removeTask(\''+t.id+'\')">×</button></div>'+
+      '<div class="t2">'+
+        '<input class="dt" type="date" value="'+t.date+'" onchange="upd(\''+t.id+'\',\'date\',this.value)">'+
+        '<input class="pl" inputmode="numeric" value="'+t.plan+'" title="Dự trù (triệu)" placeholder="Dự trù" onchange="upd(\''+t.id+'\',\'plan\',this.value)">'+
+        '<input class="ac" inputmode="numeric" value="'+t.actual+'" title="Đã chi (triệu)" placeholder="Đã chi" onchange="upd(\''+t.id+'\',\'actual\',this.value)">'+
+        '<select class="st" onchange="upd(\''+t.id+'\',\'status\',this.value)">'+
+          opt('chua','Chưa đặt',t.status)+opt('coc','Đã cọc',t.status)+opt('xong','Xong',t.status)+
+        '</select>'+
+      '</div>';
+    box.appendChild(el);
+  });
+}
+function upd(id,f,v){const t=S.tasks.find(x=>x.id===id);if(!t)return;
+  t[f]=(f==='plan'||f==='actual')?(parseFloat(v)||0):v;renderProgress();}
+function removeTask(id){S.tasks=S.tasks.filter(x=>x.id!==id);renderProgressRows();renderProgress();}
+function addTask(){S.tasks.push({id:uid(),name:'',date:'',plan:0,actual:0,status:'chua'});renderProgressRows();renderProgress();}
+
+function renderProgress(){
+  const today=new Date();today.setHours(0,0,0,0);
+  let totPlan=0,planDone=0,curDone=0,projected=0,spent=0;
+  S.tasks.forEach(t=>{
+    totPlan+=t.plan;
+    if(t.date && new Date(t.date)<=today) planDone+=t.plan;
+    curDone+=t.plan*(t.status==='xong'?1:t.status==='coc'?0.5:0);
+    projected+=Math.max(t.plan,t.actual);spent+=t.actual;
+    const row=$('task_'+t.id);if(row)row.classList.toggle('over',t.actual>t.plan+0.001);
+  });
+  const planPc=totPlan?Math.round(planDone/totPlan*100):0;
+  const curPc=totPlan?Math.round(curDone/totPlan*100):0;
+  $('planPc').textContent=planPc+'%';$('curPc').textContent=curPc+'%';
+  const chip=$('schedChip'),gap=planPc-curPc;
+  if(gap<=0){chip.textContent='Đúng / vượt lịch';chip.style.background='var(--sage)';}
+  else{chip.textContent='Chậm '+gap+'%';chip.style.background=gap<20?'var(--amber)':'var(--danger)';}
+
+  $('ringFill').style.strokeDashoffset=251-(251*curPc/100);
+  $('ringTxt').textContent=curPc+'%';
+
+  // tiền: dự tính / thực tế / chênh lệch
+  $('mPlan').textContent=fmt(totPlan);
+  $('mActual').textContent=fmt(spent);
+  const diff=spent-totPlan;
+  if(diff>0.001){$('mDiff').textContent='+'+fmt(diff);$('mDiff').style.color='var(--danger)';$('mDiffL').textContent='Vượt dự tính';}
+  else{$('mDiff').textContent=fmt(Math.abs(diff));$('mDiff').style.color='var(--sage)';$('mDiffL').textContent='Còn dưới dự tính';}
+
+  // vòng lặp ngược
+  const net2=projected-S.gift, need2=Math.max(0,net2-S.have);
+  const burden2=S.income>0?(need2/S.runway)/S.income:99;
+  const score2=need2<=0?100:scoreFromBurden(burden2);
+  const lt=$('liveTag');lt.textContent=verdictText(score2)+' · '+score2+' điểm';lt.style.color=bandColor(score2);
+
+  const saved=num('savedSoFar'),needTotal=Math.max(S.stillNeed,need2,0.001);
+  $('saveBar').style.width=Math.min(100,saved/needTotal*100)+'%';
+  $('saveTxt').textContent=fmt(saved)+' / '+fmt(needTotal);
+  const spbar=$('spentBar');spbar.style.width=Math.min(100,S.budget>0?spent/S.budget*100:0)+'%';
+  spbar.classList.toggle('over',spent>S.budget+0.001);
+  $('spentTxt').textContent=fmt(spent)+' / '+fmt(S.budget);
+  saveState();
+}
+
+/* ===== init ===== */
+bindSeg('segCity','city');
+if(!loadState()){
+  $('incA').value=15;$('incB').value=12;$('incE').value=0;
+  $('save').value=80;$('fam').value=50;
+  $('gSocial').value=120;$('gClose').value=60;$('gFam').value=40;$('attend').value=85;
+  const dd=new Date();dd.setMonth(dd.getMonth()+10);$('date').value=dd.toISOString().slice(0,10);
+  $('budgetTarget').value='';
+  setSeg('segCity','hcm','city');
+  go('info');
+}
+renderTierOpts();
+renderSteps();
+</script>
+</body>
+</html>
