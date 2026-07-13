@@ -1,0 +1,24 @@
+# ======================================================================
+#  MERUVA — Headers cho Netlify (meruva.vn deploy trên Netlify nên
+#  .htaccess KHÔNG có tác dụng — file đó chỉ dành cho hosting Apache/cPanel)
+# ======================================================================
+
+# Bảo mật nhẹ — áp cho mọi trang
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Ảnh OG (share Facebook/Zalo) — cache 1 năm
+/og/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Favicon các cỡ — cache 1 năm
+/favicon*
+  Cache-Control: public, max-age=31536000, immutable
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=31536000, immutable
+
+# Logo (đổi logo thì đổi tên file để bust cache)
+/logo-*
+  Cache-Control: public, max-age=31536000, immutable
