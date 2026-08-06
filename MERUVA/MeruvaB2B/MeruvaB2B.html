@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F2F0EE">
+<!-- Google Analytics 4 — async, không chặn render -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTTBTTNR0R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FTTBTTNR0R');
+</script>
+<title>MERUVA B2B · Đối tác liên kết</title>
+<meta name="description" content="MERUVA B2B – Mạng lưới đối tác liên kết. Cùng xây hệ sinh thái phục vụ con người.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://meruva.vn/MeruvaB2B/MeruvaB2B.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meruva.vn/MeruvaB2B/MeruvaB2B.html">
+<meta property="og:title" content="MERUVA B2B · Đối tác liên kết">
+<meta property="og:description" content="Mạng lưới đối tác liên kết — cùng xây hệ sinh thái phục vụ con người.">
+<meta property="og:image" content="https://meruva.vn/og/og-b2b.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MERUVA B2B · Đối tác liên kết">
+<meta name="twitter:description" content="Mạng lưới đối tác liên kết — cùng xây hệ sinh thái phục vụ con người.">
+<meta name="twitter:image" content="https://meruva.vn/og/og-b2b.png">
+<link rel="alternate" hreflang="vi" href="https://meruva.vn/MeruvaB2B/MeruvaB2B.html">
+<link rel="alternate" hreflang="x-default" href="https://meruva.vn/MeruvaB2B/MeruvaB2B.html">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Cormorant+Garamond:wght@700&display=swap">
+<link rel="stylesheet" href="../meruva-tokens.css?v=4">
+<link rel="stylesheet" href="../meruva.css?v=10">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"MERUVA B2B","description":"Mạng lưới đối tác liên kết của MERUVA — cùng xây hệ sinh thái phục vụ con người.","url":"https://meruva.vn/MeruvaB2B/MeruvaB2B.html","parentOrganization":{"@type":"Organization","name":"MERUVA","url":"https://meruva.vn"}}
+</script>
+
+<style>
+/* riêng của MERUVA B2B — phần chung nằm ở meruva.css */
+
+/* ── HERO ── */
+.b2b-hero{padding:4.8rem 0 3.6rem;position:relative;overflow:hidden}
+.b2b-hero-bg{position:absolute;bottom:0;left:0;right:0;height:60%;pointer-events:none;overflow:hidden;z-index:0}
+.b2b-hero-bg svg{width:100%;height:100%;display:block}
+.b2b-hero-in{position:relative;z-index:1;max-width:640px}
+.b2b-hero-in .lbl{margin-top:1.1rem}
+.b2b-hero-in h1{margin:1.1rem 0 1.5rem}
+
+/* thanh số liệu — 3 cột, dùng riêng cho trang này (không đủ 4 mục để dùng .figs) */
+.b2b-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);
+  margin-top:2.6rem;max-width:640px}
+.b2b-stat{padding:1.6rem 1.4rem 0 0}
+.b2b-stat .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--shu-text,#B64A35)}
+.b2b-stat .v{font-family:var(--wm);font-size:1.5rem;font-weight:700;margin-top:.4rem;line-height:1.15}
+
+/* ── LƯỚI ĐỐI TÁC ── */
+.b2b-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line)}
+.b2b-card{background:var(--white);padding:2.2rem 1.9rem;min-height:340px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;text-decoration:none;color:inherit;
+  transition:background .35s,transform .35s cubic-bezier(.22,1,.36,1)}
+.b2b-card::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--ac,var(--shu));transform:scaleX(0);transform-origin:left;
+  transition:transform .4s cubic-bezier(.22,1,.36,1)}
+a.b2b-card:hover{background:var(--paper);transform:translateY(-3px)}
+a.b2b-card:hover::after{transform:scaleX(1)}
+.b2b-card-num{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ac,var(--shu));margin-bottom:1.4rem;font-weight:500}
+.b2b-card-icon{width:38px;height:38px;color:var(--ac,var(--shu));margin-bottom:1.3rem}
+.b2b-card-icon svg{width:100%;height:100%}
+.b2b-card-cat{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:.6rem}
+.b2b-card-name{font-family:var(--wm);font-weight:700;font-size:1.6rem;margin-bottom:.6rem}
+.b2b-card-desc{font-size:.88rem;color:var(--ink-soft);line-height:1.62}
+.b2b-card-bottom{margin-top:1.8rem}
+.b2b-card-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem}
+/* opacity:.75 tren mau xanh Vemil chi con 3.49:1 — duoi chuan 4.5 cho chu
+   nho. Bo do mo, dung mau dac de dat chuan; hieu ung "im hon luc thuong"
+   chuyen sang gap-tang khi hover thay vi lam nhat chu. */
+.b2b-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ac,var(--shu));border:1px solid currentColor;padding:.2rem .55rem}
+.b2b-card-enter{display:flex;align-items:center;gap:.5rem;font-size:.65rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ac,var(--shu));
+  transition:gap .3s}
+a.b2b-card:hover .b2b-card-enter{gap:.85rem}
+
+/* thẻ "sắp có" — im lặng hơn hẳn, không phải điểm nhấn */
+.b2b-card--soon{opacity:.4}
+.b2b-card--soon::after{display:none}
+.b2b-card-soon-label{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:.9rem}
+.b2b-card-soon-desc{font-size:.84rem;color:var(--ink-faint);line-height:1.6}
+
+/* .pil trên trang chủ đựng <ul>/<li> nên meruva.css chỉ có kiểu cho li.
+   Ở đây nội dung là một đoạn văn, không phải danh sách — nếu để trần thì
+   <p> rơi về 16px màu giấy đặc, to và sáng ngang tiêu đề. Trả về đúng
+   thang mà .pil li đang dùng. */
+.b2b-crit .pil p{font-size:.95rem;color:rgba(242,240,238,.64);line-height:1.55}
+
+@media(max-width:1100px){
+  .b2b-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .b2b-hero{padding:2.8rem 0 2.4rem}
+  .b2b-stats{grid-template-columns:1fr 1fr}
+  .b2b-stat:nth-child(3){grid-column:1/-1;padding-top:1.4rem;border-top:1px solid var(--line);margin-top:1.4rem}
+  .b2b-grid{grid-template-columns:1fr}
+  .b2b-card{min-height:auto}
+}
+</style>
+<link rel="stylesheet" href="../meruva-loader.css?v=1">
+</head>
+<body>
+
+<div class="ldr" aria-hidden="true">
+  <div class="ldr-in">
+    <div class="ldr-seal">山</div>
+    <div class="ldr-wm">MERUVA</div>
+    <div class="ldr-line"></div>
+  </div>
+</div>
+
+<div id="bar"></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="../index.html">
+      <img src="../logo-mark-96.png" alt="MERUVA" width="32" height="32">
+      <span><b>MERUVA</b><i>B2B · Đối tác</i></span>
+    </a>
+    <nav class="hdr-nav" id="nav">
+      <a href="#doi-tac">Đối tác</a>
+      <a href="#hop-tac">Hợp tác</a>
+      <a href="mailto:meruva.main@gmail.com?subject=%5BMERUVA%20B2B%5D%20Y%C3%AAu%20c%E1%BA%A7u%20h%E1%BB%A3p%20t%C3%A1c" class="btn btn-sm btn-ink">Liên hệ</a>
+    </nav>
+    <div class="hdr-right">
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══ HERO ═══ -->
+<section class="b2b-hero">
+  <div class="b2b-hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 400" preserveAspectRatio="none" fill="none">
+      <defs>
+        <linearGradient id="b2bGrad" x1="720" y1="0" x2="720" y2="400" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#B64E3A" stop-opacity=".05"/>
+          <stop offset="100%" stop-color="#B64E3A" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 400 L240 220 L400 300 L560 120 L720 260 L880 80 L1040 300 L1200 160 L1440 400Z" fill="url(#b2bGrad)"/>
+      <path d="M0 400 L240 220 L400 300 L560 120 L720 260 L880 80 L1040 300 L1200 160 L1440 400" fill="none" stroke="rgba(182,78,58,.16)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="wrap b2b-hero-in">
+    <a class="back rv" href="../index.html">Trang chủ</a>
+    <p class="lbl rv">B2B · Đối tác liên kết</p>
+    <h1 class="rv">Cùng xây <span class="hl">hệ sinh thái.</span></h1>
+    <p class="lead rv">MERUVA B2B là nơi kết nối các thương hiệu có cùng tinh thần phục vụ thật. Mỗi đối tác là một mắt xích — cùng nâng cao trải nghiệm cho người dùng cuối.</p>
+
+    <div class="b2b-stats rv">
+      <div class="b2b-stat"><div class="k">Đối tác hiện tại</div><div class="v" id="partnerCount">1</div></div>
+      <div class="b2b-stat"><div class="k">Lĩnh vực</div><div class="v">F&amp;B · Vegan</div></div>
+      <div class="b2b-stat"><div class="k">Mô hình</div><div class="v">Co-branding</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ĐỐI TÁC ═══ -->
+<section id="doi-tac" class="blk-white">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx">Đối tác · 01</span>
+      <div>
+        <span class="lbl">Mạng lưới</span>
+        <h2>Đối tác đang hợp tác.</h2>
+        <p class="lead">Mỗi đối tác được chọn vì cùng một tinh thần: chất lượng không thỏa hiệp, làm thật chứ không chỉ nói.</p>
+      </div>
+    </div>
+
+    <div class="b2b-grid rv">
+
+      <!-- Vemil – đối tác đang hoạt động.
+           Xanh Vemil bản ĐẬM (#3F6B3F, lấy từ vemil-tokens.css). Bản nhạt
+           #6BA26B trước đây sinh ra cho nền tối, trên nền giấy chỉ đạt
+           2.63:1 nên nhãn và nút của thẻ này gần như không đọc được. -->
+      <a href="Vemil/Vemil.html" class="b2b-card" style="--ac:#3F6B3F">
+        <div>
+          <div class="b2b-card-num">— 01</div>
+          <div class="b2b-card-icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M32 10 C24 10 16 18 16 28 C16 36 20 42 26 48 C28 50 30 52 32 54 C34 52 36 50 38 48 C44 42 48 36 48 28 C48 18 40 10 32 10Z"/>
+              <path d="M23 30 C23 25 27 21 32 21 C37 21 41 25 41 30"/>
+              <circle cx="32" cy="36" r="4" fill="currentColor" stroke="none" opacity=".6"/>
+            </svg>
+          </div>
+          <div class="b2b-card-cat">F&amp;B · Plant-based · Vegan</div>
+          <h3 class="b2b-card-name">Vemil</h3>
+          <p class="b2b-card-desc">Sữa Hạt &amp; Thực phẩm Vegan. Nguyên liệu tự nhiên, không chất bảo quản, thủ công từng mẻ.</p>
+        </div>
+        <div class="b2b-card-bottom">
+          <div class="b2b-card-tags">
+            <span class="b2b-tag">Sữa Hạt</span>
+            <span class="b2b-tag">Vegan</span>
+            <span class="b2b-tag">Organic</span>
+          </div>
+          <div class="b2b-card-enter">Xem chi tiết →</div>
+        </div>
+      </a>
+
+      <!-- Slot 02 – sắp có -->
+      <div class="b2b-card b2b-card--soon">
+        <div>
+          <div class="b2b-card-num">— 02</div>
+          <div class="b2b-card-soon-label">Sắp có</div>
+          <p class="b2b-card-soon-desc">Vị trí dành cho đối tác tiếp theo trong hệ sinh thái MERUVA B2B.</p>
+        </div>
+      </div>
+
+      <!-- Slot 03 – sắp có -->
+      <div class="b2b-card b2b-card--soon">
+        <div>
+          <div class="b2b-card-num">— 03</div>
+          <div class="b2b-card-soon-label">Sắp có</div>
+          <p class="b2b-card-soon-desc">Vị trí dành cho đối tác tiếp theo trong hệ sinh thái MERUVA B2B.</p>
+        </div>
+      </div>
+
+      <!-- Slot 04 – sắp có -->
+      <div class="b2b-card b2b-card--soon">
+        <div>
+          <div class="b2b-card-num">— 04</div>
+          <div class="b2b-card-soon-label">Sắp có</div>
+          <p class="b2b-card-soon-desc">Vị trí dành cho đối tác tiếp theo trong hệ sinh thái MERUVA B2B.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HỢP TÁC ═══ -->
+<section id="hop-tac" class="blk-ink">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx">Hợp tác · 02</span>
+      <div>
+        <span class="lbl">Tiêu chí</span>
+        <h2>Trở thành <span class="hl">đối tác MERUVA.</span></h2>
+        <p class="lead">Nếu thương hiệu của bạn chia sẻ tinh thần phục vụ thật và chất lượng không thỏa hiệp — hãy nói chuyện với chúng tôi.</p>
+      </div>
+    </div>
+
+    <div class="pillars b2b-crit rv">
+      <article class="pil">
+        <span class="pil-k" aria-hidden="true">質</span>
+        <span class="pil-q">Tiêu chí 01</span>
+        <h3>Chất lượng không thỏa hiệp</h3>
+        <p>Sản phẩm và dịch vụ phải đạt chuẩn MERUVA — Summit Quality, không có ngoại lệ cho tốc độ hay chi phí.</p>
+      </article>
+      <article class="pil">
+        <span class="pil-k" aria-hidden="true">誠</span>
+        <span class="pil-q">Tiêu chí 02</span>
+        <h3>Tinh thần phục vụ thật</h3>
+        <p>Không "ngáo". Không buzzword. Làm thật, phục vụ thật — và nói thẳng khi một điều gì đó chưa làm được.</p>
+      </article>
+      <article class="pil">
+        <span class="pil-k" aria-hidden="true">明</span>
+        <span class="pil-q">Tiêu chí 03</span>
+        <h3>Minh bạch &amp; trung thực</h3>
+        <p>Rõ ràng về nguồn gốc, quy trình, giá thành. Honest Craft — khách hàng có quyền biết họ đang trả tiền cho điều gì.</p>
+      </article>
+    </div>
+
+    <a href="mailto:meruva.main@gmail.com?subject=%5BMERUVA%20B2B%5D%20Y%C3%AAu%20c%E1%BA%A7u%20h%E1%BB%A3p%20t%C3%A1c" class="btn btn-light rv" style="margin-top:2.8rem">Liên hệ hợp tác →</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap f-in">
+    <div>
+      <div class="f-name">MERUVA</div>
+      <div class="f-tag">B2B · Partner Network</div>
+    </div>
+    <ul class="f-links">
+      <li><a href="#doi-tac">Đối tác</a></li>
+      <li><a href="#hop-tac">Hợp tác</a></li>
+      <li><a href="../index.html">Trang chủ</a></li>
+    </ul>
+    <div class="f-right">
+      <div class="f-copy">© 2026 MERUVA</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../meruva.js?v=2"></script>
+<script src="MeruvaB2B.js?v=2"></script>
+</body>
+</html>

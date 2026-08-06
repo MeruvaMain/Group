@@ -1,0 +1,70 @@
+/* ═══════════════════════════════════════════════════════════════
+   MERUVA · LỚP TƯƠNG THÍCH HỆ CŨ
+   (đổi tên từ meruva-v2-tokens.css)
+
+   DÀNH RIÊNG CHO TRANG CHƯA VIẾT LẠI:  Stay · Card · News
+   Những trang này vẫn chạy trên meruva-shared.css (hệ đen–vàng cũ)
+   và giữ nguyên markup riêng của chúng. File này KHÔNG mang theo
+   quy tắc component của hệ mới, nên không đè lên bố cục sẵn có.
+
+   Việc duy nhất nó làm: đổi bảng màu từ đen–vàng sang giấy–mực–ấn son.
+
+   ─────────────────────────────────────────────────────────────
+   THỨ TỰ NẠP  (bắt buộc đúng thứ tự)
+       meruva-shared.css  →  meruva-tokens.css  →  meruva-legacy.css
+
+   Trang mới (index · Kitchen · Thiết kế) KHÔNG nạp file này —
+   chúng dùng meruva-tokens.css + meruva.css.
+   Vemil dùng bảng màu riêng (vemil-tokens.css).
+
+   ─────────────────────────────────────────────────────────────
+   KHI NÀO XOÁ ĐƯỢC FILE NÀY
+   Khi cả ba trang Stay · Card · News đã viết lại trên meruva.css.
+   Lúc đó xoá luôn cả meruva-shared.css.
+   ═══════════════════════════════════════════════════════════════ */
+/* Bảng màu nằm ở meruva-tokens.css — nạp TRƯỚC file này. */
+
+
+/* ── ÁNH XẠ TÊN BIẾN CŨ ──────────────────────────────────────────
+   Đảo sáng–tối theo đúng vai trò ngữ nghĩa:
+     nền tối → nền giấy   ·   chữ sáng → chữ mực
+     vàng    → ấn son     ·   bạc      → mực nhạt
+   Chữ trên nút màu (vd color:var(--black) trên nền teal) vẫn đúng,
+   vì --black giờ là màu giấy — tức sáng trên nền màu.
+   ──────────────────────────────────────────────────────────────── */
+:root{
+  --black:var(--paper); --black-2:var(--white); --black-3:var(--paper-2);
+  --cream:var(--ink);
+  --gold:var(--shu); --gold-light:var(--shu-d); --gold-dark:var(--shu-d);
+  --gold-glow:var(--shu-soft); --gold-glow2:var(--shu-soft);
+  --silver:var(--ink-soft); --silver-soft:var(--ink-faint);
+  --line-soft:var(--line);
+  --blue:#2C5FB8; --blue-light:#3B7BC4;
+}
+
+/* Đổi chữ sang Archivo cho khớp trang mới (shared.css dùng Inter) */
+body{font-family:var(--disp)}
+
+
+/* ── VÁ CÁC THÀNH PHẦN GHI MÀU TỐI TRỰC TIẾP ─────────────────────
+   Những chỗ này trong meruva-shared.css viết màu thẳng, không qua
+   biến, nên lớp ánh xạ ở trên không với tới. */
+nav{background:rgba(242,240,238,.88)!important;
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+nav.scrolled{border-bottom-color:var(--line)}
+#page-loader,#sub-loader .sl-bg,#lang-overlay{background:var(--paper)}
+#floating-back a{background:rgba(242,240,238,.9);border-color:var(--line);color:var(--ink-soft)}
+#floating-back a:hover{background:var(--white);border-color:var(--ink);color:var(--ink)}
+.nav-burger span{background:var(--ink)}
+/* Wordmark cũ tô bằng gradient bạc→trắng→vàng + text-fill trong suốt:
+   trên nền sáng thành tàng hình. Trả về mực đặc. */
+.logo-text,.pl-wm{background:none!important;
+  -webkit-text-fill-color:var(--ink)!important;color:var(--ink)!important}
+.footer-tagline,.pl-tag{color:var(--ink-faint)}
+/* Con trỏ tuỳ biến của hệ cũ: đổi sang mực cho thấy trên nền sáng */
+#cursor{background:var(--shu)}
+#cursor-ring{border-color:rgba(182,78,58,.5)}
+@media(max-width:768px){
+  .nav-links.nav-open{background:rgba(242,240,238,.97)}
+  .nav-links.nav-open li a{color:var(--ink)!important}
+}

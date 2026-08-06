@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /MeruvaNews/_template.html
+# Bản demo dựng riêng cho từng khách — có tên và số liệu cá nhân,
+# không để Google lập chỉ mục. Vẫn mở link trực tiếp cho khách xem được.
+Disallow: /demo/
+# Kho lưu trữ bản cũ — giữ lại để tra cứu, không phải trang đang chạy.
+# Link nội bộ đã hỏng vì các nhánh cũ bị gộp/gỡ, đừng để Google lập chỉ mục.
+Disallow: /meruva-old/
+
+Sitemap: https://meruva.vn/sitemap.xml

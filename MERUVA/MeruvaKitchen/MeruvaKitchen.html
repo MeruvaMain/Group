@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics 4 — async, không chặn render -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTTBTTNR0R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FTTBTTNR0R');
+</script>
+
+<title>MERUVA Kitchen — Cà phê đặc sản &amp; bánh artisan · TP.HCM</title>
+<meta name="description" data-i18n-attr="content:meta_desc" content="MERUVA Kitchen — hạt Đà Lạt rang chậm từng mẻ nhỏ và bánh artisan nướng từ 7 giờ sáng. Bơ Pháp, men tự nhiên, không chất bảo quản.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#F2F0EE">
+<link rel="canonical" href="https://meruva.vn/MeruvaKitchen/MeruvaKitchen.html">
+<link rel="alternate" hreflang="vi" href="https://meruva.vn/MeruvaKitchen/MeruvaKitchen.html">
+<link rel="alternate" hreflang="x-default" href="https://meruva.vn/MeruvaKitchen/MeruvaKitchen.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meruva.vn/MeruvaKitchen/MeruvaKitchen.html">
+<meta property="og:title" content="MERUVA Kitchen — Cà phê đặc sản &amp; bánh artisan">
+<meta property="og:description" content="Nướng lúc 7 giờ. Rang từng mẻ nhỏ.">
+<meta property="og:image" content="https://meruva.vn/og/og-home.png">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Cormorant+Garamond:wght@700&display=swap">
+<link rel="stylesheet" href="../meruva-tokens.css?v=4">
+<link rel="stylesheet" href="../meruva.css?v=10">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"CafeOrCoffeeShop",
+  "name":"MERUVA Kitchen",
+  "url":"https://meruva.vn/MeruvaKitchen/MeruvaKitchen.html",
+  "image":"https://meruva.vn/logo-mark.png",
+  "description":"Cà phê đặc sản rang chậm từ hạt Đà Lạt và bánh artisan nướng mỗi sáng — bơ Pháp, men tự nhiên, không chất bảo quản.",
+  "servesCuisine":["Coffee","Bakery"],
+  "priceRange":"45.000₫ - 450.000₫",
+  "openingHours":"Mo-Su 07:00-22:00",
+  "address":{"@type":"PostalAddress","addressLocality":"Ho Chi Minh City","addressCountry":"VN"},
+  "parentOrganization":{"@type":"Organization","name":"MERUVA","url":"https://meruva.vn"}
+}
+</script>
+
+<style>
+/* riêng của MERUVA Kitchen — phần chung nằm ở meruva.css */
+/* Màu nhận diện nhánh — vàng Kitchen.
+   Lịch sử: #B58A24 (2.78:1) → #AF841E (3.28:1) → #826A30 hiện tại.
+   Bản này hạ bão hoà 71% → 46% cho hợp hướng trung tính, đồng thời đủ
+   4.5:1 khi dùng làm CHỮ NHỎ (.card-k) — hai bản trước đều hụt. */
+:root{ --ac:#826A30; --ac-lt:#B69443 }
+.k-hero{padding:4.6rem 0 3.4rem;position:relative;overflow:hidden}
+.k-hero-in{display:grid;grid-template-columns:1.08fr .92fr;gap:3.4rem;align-items:center}
+.k-hero h1{margin:1.2rem 0 1.5rem}
+.k-hero h1 span{display:block}
+.k-hero h1 span:last-child{color:var(--ac)}
+.k-figs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.k-fig{background:var(--white);padding:1.5rem 1.4rem}
+.k-fig .v{font-size:1.85rem;font-weight:700;letter-spacing:-.04em;line-height:1}
+.k-fig .k{font-family:var(--mono);font-size:.68rem;color:var(--ink-faint);margin-top:.45rem;line-height:1.45}
+.menu-list{border-top:1.5px solid var(--ink)}
+.menu-i{display:grid;grid-template-columns:1fr auto;gap:1.4rem;align-items:baseline;
+  padding:1.15rem 0;border-bottom:1px solid var(--line);transition:padding-left .28s,background .28s}
+.menu-i:hover{padding-left:.6rem;background:linear-gradient(90deg,rgba(130,106,48,.07),transparent 55%)}
+.menu-n{font-size:1.14rem;font-weight:600;letter-spacing:-.018em}
+.menu-d{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);margin-top:.24rem}
+.menu-p{font-size:1.02rem;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.k-order{display:grid;grid-template-columns:.8fr 1.2fr;gap:4rem;margin-top:2.8rem}
+@media(max-width:1080px){
+  .k-hero-in{grid-template-columns:1fr;gap:2.4rem}
+  .k-order{grid-template-columns:1fr;gap:2.4rem}
+}
+@media(max-width:768px){
+  .k-hero{padding:2.6rem 0 2.2rem}
+  .menu-i{grid-template-columns:1fr;gap:.3rem}
+  .menu-p{font-size:.98rem}
+}
+</style>
+<link rel="stylesheet" href="../meruva-loader.css?v=1">
+</head>
+<body>
+
+<div class="ldr" aria-hidden="true">
+  <div class="ldr-in">
+    <div class="ldr-seal">山</div>
+    <div class="ldr-wm">MERUVA</div>
+    <div class="ldr-line"></div>
+  </div>
+</div>
+
+<div id="bar"></div>
+<div id="lang-overlay"></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="../index.html">
+      <img src="../logo-mark-96.png" alt="MERUVA" width="32" height="32">
+      <span><b>MERUVA</b><i>Kitchen</i></span>
+    </a>
+    <nav class="hdr-nav" id="nav">
+      <a href="#ca-phe" data-i18n="nav_coffee">Cà phê</a>
+      <a href="#banh" data-i18n="nav_bakery">Bánh</a>
+      <a href="#cach-lam" data-i18n="nav_craft">Cách làm</a>
+      <a href="#dat-hang" class="btn btn-sm btn-ink" data-i18n="nav_order">Đặt hàng</a>
+    </nav>
+    <div class="hdr-right">
+      <div class="langs">
+        <button class="lang-btn" type="button" data-lang="vi" onclick="setLang('vi')">VI</button>
+        <button class="lang-btn" type="button" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" type="button" data-lang="ja" onclick="setLang('ja')">JA</button>
+      </div>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══ HERO ═══ -->
+<section class="k-hero">
+  <div class="wrap k-hero-in">
+    <div>
+      <a class="back rv" href="../index.html" data-i18n="back">Trang chủ</a>
+      <p class="lbl rv" style="margin-top:1.1rem" data-i18n="hero_eyebrow">Cà phê đặc sản &amp; bánh artisan · TP.HCM</p>
+      <h1 class="rv">
+        <span data-i18n="hero_t1">Nướng lúc 7 giờ.</span>
+        <span data-i18n="hero_t2">Rang từng mẻ nhỏ.</span>
+      </h1>
+      <p class="lead rv" data-i18n="hero_desc">Hạt Đà Lạt tuyển tay, rang chậm theo mẻ. Bánh nướng mỗi sáng bằng bơ Pháp và men tự nhiên. Không hâm nóng, không chất bảo quản — hết là hết.</p>
+      <div class="b-cta rv">
+        <a href="#dat-hang" class="btn btn-fill" data-i18n="hero_cta1">Đặt hàng</a>
+        <a href="#ca-phe" class="btn" data-i18n="hero_cta2">Xem menu</a>
+      </div>
+    </div>
+
+    <div class="k-figs rv">
+      <div class="k-fig"><div class="v" data-i18n="m1_v">7:00</div><div class="k" data-i18n="m1_k">Mẻ bánh đầu tiên mỗi sáng</div></div>
+      <div class="k-fig"><div class="v" data-i18n="m2_v">45.000₫</div><div class="k" data-i18n="m2_k">Bắt đầu từ</div></div>
+      <div class="k-fig"><div class="v" data-i18n="m3_v">12 món</div><div class="k" data-i18n="m3_k">Cà phê &amp; bánh trong menu</div></div>
+      <div class="k-fig"><div class="v" data-i18n="m4_v">0</div><div class="k" data-i18n="m4_k">Chất bảo quản · phụ gia</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MENU · CÀ PHÊ ═══ -->
+<section id="ca-phe" class="blk-white">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx" data-i18n="sec_coffee_lbl">Menu · 01</span>
+      <div>
+        <h2 data-i18n="sec_coffee_h">Cà phê đặc sản.</h2>
+        <p class="lead" data-i18n="sec_coffee_sub">Hạt Đà Lạt được tuyển tay. Rang chậm theo từng mẻ nhỏ. Pha theo kỹ thuật — không phải công thức.</p>
+      </div>
+    </div>
+    <div class="menu-list rv" id="menuCoffee"></div>
+  </div>
+</section>
+
+<!-- ═══ MENU · BÁNH ═══ -->
+<section id="banh">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx" data-i18n="sec_bakery_lbl">Menu · 02</span>
+      <div>
+        <h2 data-i18n="sec_bakery_h">Bánh artisan.</h2>
+        <p class="lead" data-i18n="sec_bakery_sub">Không hâm nóng. Không nhượng bộ chất lượng. Mỗi chiếc bánh là một cam kết — bơ Pháp, bột nguyên cám, men tự nhiên.</p>
+      </div>
+    </div>
+    <div class="menu-list rv" id="menuBakery"></div>
+  </div>
+</section>
+
+<!-- ═══ CÁCH LÀM ═══ -->
+<section id="cach-lam" class="blk-ink">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx" data-i18n="sec_craft_lbl">Cách làm</span>
+      <div><h2 data-i18n="sec_craft_h">Ba thứ không thoả hiệp.</h2></div>
+    </div>
+    <div class="grid-3 rv">
+      <article class="card" style="background:var(--ink-2);border-color:var(--line-dark)">
+        <div class="card-k" data-i18n="c1_k">Nguyên liệu</div>
+        <h3 style="color:var(--paper)" data-i18n="c1_h">Hạt Đà Lạt · bơ Pháp</h3>
+        <p style="color:rgba(242,240,238,.64)" data-i18n="c1_d">Hạt tuyển tay từ Đà Lạt, rang theo mẻ nhỏ để giữ hương. Bánh dùng bơ Pháp, bột nguyên cám và men tự nhiên — không phụ gia tổng hợp.</p>
+      </article>
+      <article class="card" style="background:var(--ink-2);border-color:var(--line-dark)">
+        <div class="card-k" data-i18n="c2_k">Quy trình</div>
+        <h3 style="color:var(--paper)" data-i18n="c2_h">Nướng lúc 7h, không hâm lại</h3>
+        <p style="color:rgba(242,240,238,.64)" data-i18n="c2_d">Mẻ đầu ra lò lúc 7 giờ sáng. Bánh không được hâm nóng lại để bán tiếp — hết là hết, ngày mai nướng mẻ mới.</p>
+      </article>
+      <article class="card" style="background:var(--ink-2);border-color:var(--line-dark)">
+        <div class="card-k" data-i18n="c3_k">Minh bạch</div>
+        <h3 style="color:var(--paper)" data-i18n="c3_h">Nói đúng thứ mình làm</h3>
+        <p style="color:rgba(242,240,238,.64)" data-i18n="c3_d">Giá niêm yết, định lượng ghi rõ, nguyên liệu nói thật. Không có món nào “đặc biệt” mà không giải thích được vì sao.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ĐẶT HÀNG ═══ -->
+<section id="dat-hang" class="blk-ink" style="border-top:1px solid var(--line-dark)">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx" data-i18n="sec_order_lbl">Đặt hàng</span>
+      <div>
+        <h2 data-i18n="sec_order_h">Đặt trước, ghé lấy.</h2>
+        <p class="lead" data-i18n="sec_order_sub">Điền vào đây, MERUVA xác nhận trong 24 giờ. Bánh đặt riêng nên báo trước 2 ngày.</p>
+      </div>
+    </div>
+
+    <div class="k-order">
+      <div class="rv">
+        <div class="ci"><div class="ci-k">Email</div><div class="ci-v">meruva.main@gmail.com</div></div>
+        <div class="ci"><div class="ci-k" data-i18n="ci_hours_k">Giờ phục vụ</div><div class="ci-v" data-i18n="ci_hours_v">Mỗi ngày · 7:00 → 22:00</div></div>
+        <div class="ci"><div class="ci-k" data-i18n="ci_area_k">Khu vực</div><div class="ci-v" data-i18n="ci_area_v">TP.HCM</div></div>
+      </div>
+
+      <form class="rv" id="orderForm" data-appt-form="MERUVA Kitchen — Đặt hàng" novalidate>
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="f-two">
+          <div class="f-row"><label for="o-name" data-i18n="f_name">Họ và tên *</label>
+            <input type="text" id="o-name" name="name" autocomplete="name" required></div>
+          <div class="f-row"><label for="o-phone" data-i18n="f_phone">Điện thoại / Zalo *</label>
+            <input type="tel" id="o-phone" name="phone" autocomplete="tel" required></div>
+        </div>
+        <div class="f-two">
+          <div class="f-row"><label for="o-item" data-i18n="f_item">Món quan tâm</label>
+            <select id="o-item" name="service"></select></div>
+          <div class="f-row"><label for="o-date" data-i18n="f_date">Ngày muốn lấy</label>
+            <input type="date" id="o-date" name="appt_date"></div>
+        </div>
+        <div class="f-row"><label for="o-note" data-i18n="f_note">Ghi chú</label>
+          <textarea id="o-note" name="note" rows="3" data-i18n-placeholder="f_note_ph" placeholder="Số lượng, yêu cầu riêng, hỏi về hạt rang..."></textarea></div>
+        <button type="submit" class="btn btn-fill" data-i18n="f_submit">Gửi yêu cầu đặt hàng →</button>
+        <p class="form-ok" data-i18n="f_ok">Đã nhận. MERUVA sẽ liên hệ trong 24 giờ — cảm ơn bạn.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap f-in">
+    <div>
+      <div class="f-name">MERUVA</div>
+      <div class="f-tag" data-i18n="f_tag">Từ đỉnh cao — chúng tôi phục vụ.</div>
+    </div>
+    <ul class="f-links">
+      <li><a href="#ca-phe" data-i18n="nav_coffee">Cà phê</a></li>
+      <li><a href="#banh" data-i18n="nav_bakery">Bánh</a></li>
+      <li><a href="#cach-lam" data-i18n="nav_craft">Cách làm</a></li>
+      <li><a href="#dat-hang" data-i18n="nav_order">Đặt hàng</a></li>
+      <li><a href="../index.html" data-i18n="back">Trang chủ</a></li>
+    </ul>
+    <div class="f-right">
+      <div class="langs">
+        <button class="lang-btn" type="button" data-lang="vi" onclick="setLang('vi')">VI</button>
+        <button class="lang-btn" type="button" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" type="button" data-lang="ja" onclick="setLang('ja')">JA</button>
+      </div>
+      <div class="f-copy">© 2026 MERUVA</div>
+    </div>
+  </div>
+</footer>
+
+<script src="kitchen-lang.js?v=1"></script>
+<script src="../meruva.js?v=2"></script>
+<script>
+/* ── Dựng menu + ô chọn món theo ngôn ngữ hiện tại ── */
+(function(){
+  var M = window.MERUVA_KITCHEN_MENU;
+
+  function render(lang){
+    ['coffee','bakery'].forEach(function(group){
+      var host = document.getElementById(group === 'coffee' ? 'menuCoffee' : 'menuBakery');
+      host.innerHTML = M[group].map(function(it){
+        var r = it[lang] || it.vi;
+        return '<div class="menu-i"><div><div class="menu-n">'+r[0]+'</div>'+
+               '<div class="menu-d">'+r[1]+'</div></div>'+
+               '<div class="menu-p">'+r[2]+'</div></div>';
+      }).join('');
+    });
+
+    var sel = document.getElementById('o-item');
+    var keep = sel.selectedIndex;
+    var T = (window.MERUVA_T[lang] || window.MERUVA_T.vi);
+    sel.innerHTML = M.coffee.concat(M.bakery).map(function(it){
+      var r = it[lang] || it.vi;
+      return '<option>'+r[0]+' · '+r[2]+'</option>';
+    }).join('') + '<option>'+T.f_opt_other+'</option>';
+    if(keep > -1 && keep < sel.options.length) sel.selectedIndex = keep;
+  }
+
+  render(window.MERUVA.lang);
+  document.addEventListener('meruva:lang', function(e){ render(e.detail.lang); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# MERUVA — cấu hình build Netlify
+# Mỗi lần deploy (git push hoặc Build Hook), Netlify chạy build.js:
+# kéo bài báo ĐÃ XUẤT BẢN từ Supabase → sinh HTML tĩnh chuẩn SEO.
+# Lưu ý: chỉ chạy khi site nối với Git hoặc deploy qua CLI có --build;
+# deploy kéo-thả thủ công KHÔNG chạy lệnh build này.
+
+[build]
+  command = "node MeruvaNews/build.js"
+  publish = "."

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics 4 — async, không chặn render -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTTBTTNR0R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FTTBTTNR0R');
+</script>
+
+<title>MERUVA Consulting — Tư vấn ứng dụng AI và đo lường ROI</title>
+<meta name="description" content="Biết chính xác nên ứng dụng AI ở đâu, triển khai theo lộ trình nào và đo được ROI — thay vì chỉ mua thêm công cụ. Tư vấn 1:1 tại TP.HCM." data-i18n-attr="content:meta_desc">
+<meta name="author" content="Pham Duy Kha (Bin) — MERUVA Consulting">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#F2F0EE">
+<link rel="canonical" href="https://meruva.vn/">
+<link rel="alternate" hreflang="vi" href="https://meruva.vn/">
+<link rel="alternate" hreflang="x-default" href="https://meruva.vn/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meruva.vn/">
+<meta property="og:title" content="MERUVA Consulting — Ứng dụng AI đúng chỗ, có lộ trình, đo được ROI">
+<meta property="og:description" content="Mua thêm công cụ AI không phải là chiến lược AI.">
+<meta property="og:image" content="https://meruva.vn/og/og-home.png">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://ztqyojsyafhpkmhrawtd.supabase.co">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Cormorant+Garamond:wght@700&display=swap">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"ProfessionalService",
+  "name":"MERUVA Consulting",
+  "url":"https://meruva.vn/","image":"https://meruva.vn/logo-mark.png",
+  "description":"Tư vấn ứng dụng AI cho doanh nghiệp: xác định điểm ứng dụng, xây lộ trình triển khai và đo lường ROI — thay vì chỉ mua thêm công cụ AI.",
+  "areaServed":{"@type":"Country","name":"Vietnam"},
+  "address":{"@type":"PostalAddress","addressLocality":"Ho Chi Minh City","addressCountry":"VN"},
+  "founder":{"@type":"Person","name":"Pham Duy Kha","alternateName":"Bin",
+    "jobTitle":"AI Adoption Consultant",
+    "knowsAbout":["AI adoption","Business process design","Workflow automation","ROI measurement","Notion","Kaizen"]},
+  "parentOrganization":{"@type":"Organization","name":"MERUVA","url":"https://meruva.vn"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Chúng tôi nên bắt đầu ứng dụng AI từ phòng ban nào?","acceptedAnswer":{"@type":"Answer","text":"Không bắt đầu từ phòng ban, bắt đầu từ luồng việc. Việc đáng làm trước là việc lặp lại nhiều, tốn giờ công, và sai sót không gây hậu quả nghiêm trọng nếu AI làm chưa chuẩn."}},
+    {"@type":"Question","name":"Doanh nghiệp tôi mới 8 người, làm AI có sớm quá không?","acceptedAnswer":{"@type":"Answer","text":"Ngược lại, đây là quy mô AI phát huy nhanh nhất vì mỗi giờ tiết kiệm chiếm tỷ trọng lớn. Lộ trình dựng trong vài tuần thay vì vài quý."}},
+    {"@type":"Question","name":"Chi phí AI hằng tháng thực tế là bao nhiêu?","acceptedAnswer":{"@type":"Answer","text":"Với doanh nghiệp dưới 20 người, phần lớn chi phí là tài khoản trả phí cho vài người dùng chính, không phải toàn công ty. Con số cụ thể phụ thuộc số người thật sự cần bản trả phí — đây là thứ được chốt ở bước lộ trình."}},
+    {"@type":"Question","name":"Đưa dữ liệu công ty vào AI có an toàn không?","acceptedAnswer":{"@type":"Answer","text":"An toàn hay không phụ thuộc dữ liệu nào và công cụ nào. Bin phân loại dữ liệu theo mức nhạy cảm trước, rồi mới quyết định nhóm nào được đưa vào AI và trên gói nào."}},
+    {"@type":"Question","name":"AI có thay thế nhân sự của tôi không?","acceptedAnswer":{"@type":"Answer","text":"Trong phần lớn doanh nghiệp vừa và nhỏ, AI thay phần việc chứ không thay người: nhập liệu, soạn thảo lặp lại, tổng hợp báo cáo."}},
+    {"@type":"Question","name":"Nếu đo xong mà số không thuyết phục?","acceptedAnswer":{"@type":"Answer","text":"Thì dừng, và đó là kết quả tốt — bạn biết sau vài tuần thay vì sau một năm trả phí. Bạn có quyền dừng sau bất kỳ bước nào trong lộ trình."}}
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="meruva-tokens.css?v=4">
+<link rel="stylesheet" href="meruva.css?v=10">
+<link rel="stylesheet" href="meruva-loader.css?v=1">
+</head>
+<body>
+
+<div class="ldr" aria-hidden="true">
+  <div class="ldr-in">
+    <div class="ldr-seal">山</div>
+    <div class="ldr-wm">MERUVA</div>
+    <div class="ldr-line"></div>
+  </div>
+</div>
+
+<div id="bar"></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#top">
+      <img src="logo-mark-96.png" alt="MERUVA" width="32" height="32">
+      <span><b>MERUVA</b><i data-i18n="brand_sub">Consulting · AI &amp; ROI</i></span>
+    </a>
+    <nav class="hdr-nav" id="nav">
+      <a href="#dau-hieu" data-i18n="nav_signs">Dấu hiệu</a>
+      <a href="#ba-ve" data-i18n="nav_how">Cách làm</a>
+      <a href="#san-pham" data-i18n="nav_work">Sản phẩm</a>
+      <a href="#cau-hoi" data-i18n="nav_faq">Câu hỏi</a>
+      <a href="#dich-vu" data-i18n="nav_svc">Dịch vụ</a>
+      <a href="#dat-lich" class="btn btn-sm btn-ink" data-i18n="nav_book">Đặt lịch</a>
+    </nav>
+    <div class="hdr-right">
+      <div class="langs">
+        <button class="lang-btn" type="button" data-lang="vi" onclick="setLang('vi')">VI</button>
+        <button class="lang-btn" type="button" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" type="button" data-lang="ja" onclick="setLang('ja')">JA</button>
+      </div>
+      <button class="burger" id="burger" type="button" data-i18n-attr="aria-label:aria_burger" aria-label="Mở menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="lbl rv" data-i18n="hero_lbl">Tư vấn ứng dụng AI cho doanh nghiệp · TP.HCM</p>
+      <h1 class="rv"><span data-i18n="hero_t1">Mua thêm</span><span data-i18n="hero_t2">công cụ AI</span><span data-i18n="hero_t3">không phải là</span><span class="hl" data-i18n="hero_t4">chiến lược AI.</span></h1>
+      <p class="hero-lead rv" data-i18n="hero_lead">MERUVA giúp bạn biết chính xác nên ứng dụng AI <b>ở đâu</b>, triển khai theo <b>lộ trình nào</b>, và <b>đo lường được ROI</b>.</p>
+      <div class="hero-cta rv">
+        <a href="#dat-lich" class="btn btn-fill" data-i18n="hero_cta1">Đặt buổi rà soát AI</a>
+        <a href="#san-pham" class="btn" data-i18n="hero_cta2">Xem sản phẩm đã dựng</a>
+      </div>
+      <p class="hero-fine rv" data-i18n="hero_fine">Buổi đầu tiên bạn nhận bản đồ điểm ứng dụng và con số nền để đo ROI — kể cả khi không làm tiếp với MERUVA.</p>
+    </div>
+
+    <div class="diag rv" id="diag">
+      <div class="diag-head">
+        <span class="diag-t" data-i18n="dg_title">Ứng dụng AI trong doanh nghiệp</span>
+        <span class="diag-state" id="dgState">Mua rời rạc</span>
+      </div>
+      <svg class="diag-svg" id="dgSvg" viewBox="0 0 520 400" role="img"
+           data-i18n-attr="aria-label:dg_aria"
+           aria-label="Sơ đồ minh hoạ: các công cụ AI mua rời rạc, mọi thứ đổ về một người và không đo được, chuyển thành ba làn có thứ tự — Điểm ứng dụng, Lộ trình, Đo ROI.">
+        <defs>
+          <marker id="dgArrow" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="5.5" markerHeight="5.5" orient="auto">
+            <path d="M0 1 L7 4 L0 7 z" fill="#23221F"/>
+          </marker>
+        </defs>
+        <g id="dgLanes" opacity="0"></g>
+        <g id="dgEdges" fill="none" stroke-linecap="round"></g>
+        <g id="dgNodes"></g>
+      </svg>
+      <div class="diag-foot">
+        <div class="diag-ends"><span><b data-i18n="dg_end1">Rời rạc</b></span><span><b data-i18n="dg_end2">Có lộ trình · đo được</b></span></div>
+        <input class="slider" type="range" id="dgRange" min="0" max="100" value="0" step="1"
+               data-i18n-attr="aria-label:dg_slider_aria"
+               aria-label="Kéo để xem doanh nghiệp trước và sau khi có lộ trình AI">
+        <div class="diag-hint" id="dgHint" data-i18n="dg_hint">← kéo thanh trượt →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CÂU ĐỊNH VỊ ═══ -->
+<div class="blk-ink stance">
+  <div class="wrap stance-in">
+    <span class="sec-idx" data-i18n="stance_idx">Định vị</span>
+    <div>
+      <p data-i18n="stance_p">Chúng tôi giúp doanh nghiệp biết chính xác nên ứng dụng AI <b>ở đâu</b>, triển khai theo <b>lộ trình nào</b> và <b>đo lường được ROI</b><span class="neg"> — thay vì chỉ mua thêm công cụ AI.</span></p>
+      <p class="stance-by" data-i18n="stance_by">MERUVA Consulting · Phạm Duy Kha (Bin)</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ THANH SỐ ═══ -->
+<div class="wrap">
+  <div class="figs">
+    <div class="fig"><div class="v" data-count="4">4</div><div class="k" data-i18n="fig1_k">nhánh kinh doanh<br>Bin đang tự vận hành</div></div>
+    <div class="fig"><div class="v" data-count="5">5</div><div class="k" data-i18n="fig2_k">sản phẩm đã dựng<br>mở xem được ngay</div></div>
+    <div class="fig"><div class="v">1:1</div><div class="k" data-i18n="fig3_k">trực tiếp với Bin<br>không qua trung gian</div></div>
+    <div class="fig"><div class="v" data-count="24">24</div><div class="k" data-i18n="fig4_k">giờ — thời gian<br>phản hồi lịch hẹn</div></div>
+  </div>
+</div>
+
+<!-- ═══ 01 · DẤU HIỆU ═══ -->
+<section id="dau-hieu">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx">01 / 08</span>
+      <div>
+        <span class="lbl" data-i18n="s1_lbl">Rà soát</span>
+        <h2 data-i18n="s1_h2">Bạn thấy mình ở đâu trong bốn dấu hiệu này?</h2>
+        <p class="lead" data-i18n="s1_lead">Không phải doanh nghiệp nào cũng cần làm AI ngay. Chạm vào những dòng đúng với bạn.</p>
+      </div>
+    </div>
+
+    <div class="sig-list rv" id="sigList">
+      <button class="sig" type="button" aria-pressed="false">
+        <span class="sig-box" aria-hidden="true"></span>
+        <span>
+          <span class="sig-t" data-i18n="sig1_t">Đã trả tiền vài công cụ AI, nhưng ít ai dùng</span>
+          <span class="sig-d" data-i18n="sig1_d">Mua theo phong trào, dùng sôi nổi hai tuần rồi nguội. Không ai biết cái nào còn đang bị trừ tiền hằng tháng.</span>
+        </span>
+        <span class="sig-n">01</span>
+      </button>
+      <button class="sig" type="button" aria-pressed="false">
+        <span class="sig-box" aria-hidden="true"></span>
+        <span>
+          <span class="sig-t" data-i18n="sig2_t">Không nói được AI đang tiết kiệm bao nhiêu</span>
+          <span class="sig-d" data-i18n="sig2_d">Cảm giác là có nhanh hơn. Nhưng không có số giờ công, không có số nền trước khi dùng, nên không ai chứng minh được gì.</span>
+        </span>
+        <span class="sig-n">02</span>
+      </button>
+      <button class="sig" type="button" aria-pressed="false">
+        <span class="sig-box" aria-hidden="true"></span>
+        <span>
+          <span class="sig-t" data-i18n="sig3_t">Mỗi người tự xài một kiểu AI riêng</span>
+          <span class="sig-d" data-i18n="sig3_d">Người dùng bản miễn phí, người dùng bản trả phí, dữ liệu công ty đi vào những nơi không ai kiểm soát. Không có quy định chung.</span>
+        </span>
+        <span class="sig-n">03</span>
+      </button>
+      <button class="sig" type="button" aria-pressed="false">
+        <span class="sig-box" aria-hidden="true"></span>
+        <span>
+          <span class="sig-t" data-i18n="sig4_t">Biết phải làm AI, nhưng không biết bắt đầu ở đâu</span>
+          <span class="sig-d" data-i18n="sig4_d">Đọc nhiều, nghe nhiều, sợ chậm chân. Nhưng chưa ai chỉ ra trong doanh nghiệp bạn thì việc nào đáng làm trước, việc nào chưa tới lúc.</span>
+        </span>
+        <span class="sig-n">04</span>
+      </button>
+    </div>
+
+    <div class="sig-out rv" id="sigOut" aria-live="polite">
+      <p id="sigMsg">Chọn những dấu hiệu đúng với doanh nghiệp bạn.<span class="c">Cả bốn đều cùng một gốc: AI được mua trước khi được đặt đúng chỗ.</span></p>
+      <a href="#dat-lich" class="btn btn-light btn-sm" id="sigCta" data-i18n="sig_cta">Đặt buổi rà soát AI</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02 · BA VẾ ═══ -->
+<section id="ba-ve" class="blk-ink">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx">02 / 08</span>
+      <div>
+        <span class="lbl" data-i18n="s2_lbl">Cách làm</span>
+        <h2 data-i18n="s2_h2">Ba câu hỏi phải trả lời trước khi chi đồng nào cho AI.</h2>
+        <p class="lead" data-i18n="s2_lead">Bỏ qua bất kỳ vế nào cũng dẫn tới cùng một kết cục: một khoản chi hằng tháng không ai bảo vệ được khi bị hỏi.</p>
+      </div>
+    </div>
+
+    <div class="pillars rv">
+      <article class="pil">
+        <span class="pil-k" aria-hidden="true">所</span>
+        <span class="pil-q" data-i18n="pil1_q">Vế 01 — Ở đâu?</span>
+        <h3 data-i18n="pil1_h3">Điểm ứng dụng</h3>
+        <ul>
+          <li data-i18n="pil1_l1">Kiểm kê công cụ AI đang trả tiền &amp; ai thật sự dùng</li>
+          <li data-i18n="pil1_l2">Đo giờ công đang tiêu ở từng luồng việc</li>
+          <li data-i18n="pil1_l3">Chấm điểm: tiết kiệm bao nhiêu × dễ làm tới đâu</li>
+          <li data-i18n="pil1_l4">Loại thẳng những việc AI chưa nên đụng vào</li>
+        </ul>
+      </article>
+      <article class="pil">
+        <span class="pil-k" aria-hidden="true">道</span>
+        <span class="pil-q" data-i18n="pil2_q">Vế 02 — Theo lộ trình nào?</span>
+        <h3 data-i18n="pil2_h3">Thứ tự triển khai</h3>
+        <ul>
+          <li data-i18n="pil2_l1">Bắt đầu từ một việc thắng nhanh, thấy kết quả trong tuần</li>
+          <li data-i18n="pil2_l2">Quy định dùng AI &amp; phân loại dữ liệu được phép</li>
+          <li data-i18n="pil2_l3">Đào tạo theo vai trò, không đào tạo đại trà</li>
+          <li data-i18n="pil2_l4">Mở rộng chỉ khi việc trước đã thật sự chạy</li>
+        </ul>
+      </article>
+      <article class="pil">
+        <span class="pil-k" aria-hidden="true">数</span>
+        <span class="pil-q" data-i18n="pil3_q">Vế 03 — Đo bằng gì?</span>
+        <h3 data-i18n="pil3_h3">Thước đo ROI</h3>
+        <ul>
+          <li data-i18n="pil3_l1">Chốt con số nền <em>trước</em> khi triển khai</li>
+          <li data-i18n="pil3_l2">Giờ công tiết kiệm mỗi tuần, quy ra tiền</li>
+          <li data-i18n="pil3_l3">Chi phí công cụ so với phần cắt được</li>
+          <li data-i18n="pil3_l4">Bảng theo dõi để bạn tự đọc, không cần hỏi Bin</li>
+        </ul>
+      </article>
+    </div>
+
+    <p class="pil-note rv" data-i18n="pil_note">Thiếu vế "ở đâu", bạn tự động hoá nhầm việc. Thiếu vế "lộ trình", đội ngũ bỏ cuộc ở tuần thứ ba. <b>Thiếu vế "ROI", bạn không bao giờ biết khoản chi đó nên tăng hay nên cắt.</b></p>
+  </div>
+</section>
+
+<!-- ═══ 03 · LỘ TRÌNH ═══ -->
+<section id="lo-trinh">
+  <div class="wrap road">
+    <div class="road-side">
+      <div class="rv">
+        <span class="sec-idx">03 / 08</span>
+        <p class="lbl" style="margin-top:.8rem" data-i18n="s3_lbl">Lộ trình</p>
+        <h2 style="margin:.8rem 0 1.1rem" data-i18n="s3_h2">Từ buổi rà soát đến con số ROI đầu tiên.</h2>
+        <p class="lead" style="font-size:1rem" data-i18n="s3_lead">Bạn biết mình đang ở bước nào, nhận được gì ở cuối mỗi bước, và có quyền dừng sau bất kỳ bước nào.</p>
+      </div>
+      <nav class="road-prog" id="roadProg" data-i18n-attr="aria-label:aria_road" aria-label="Các bước trong lộ trình">
+        <a href="#b1" class="act"><span class="rn">01</span> <span data-i18n="road1">Rà soát &amp; chấm điểm</span></a>
+        <a href="#b2"><span class="rn">02</span> <span data-i18n="road2">Chọn điểm &amp; chốt số nền</span></a>
+        <a href="#b3"><span class="rn">03</span> <span data-i18n="road3">Triển khai thí điểm</span></a>
+        <a href="#b4"><span class="rn">04</span> <span data-i18n="road4">Đo ROI &amp; nhân rộng</span></a>
+      </nav>
+    </div>
+
+    <div class="steps" id="steps">
+      <article class="step rv" id="b1">
+        <div class="step-h"><span class="step-n">01</span><h3 data-i18n="step1_h3">Rà soát &amp; chấm điểm</h3><span class="step-when" data-i18n="step1_when">90 phút · tại chỗ hoặc online</span></div>
+        <p data-i18n="step1_p">Bin ngồi cùng bạn và một hai người vận hành chính: kiểm kê công cụ AI đang trả tiền, đo giờ công đang tiêu ở từng luồng việc, rồi chấm điểm từng việc theo mức tiết kiệm và độ khó.</p>
+        <div class="step-out"><b data-i18n="step_out_b">Bạn nhận</b><span data-i18n="step1_out">Bản đồ điểm ứng dụng AI, xếp theo thứ tự đáng làm trước.</span></div>
+      </article>
+      <article class="step rv" id="b2">
+        <div class="step-h"><span class="step-n">02</span><h3 data-i18n="step2_h3">Chọn điểm &amp; chốt số nền</h3><span class="step-when" data-i18n="step2_when">1 – 2 tuần</span></div>
+        <p data-i18n="step2_p">Chọn một tới hai việc làm trước, viết business case cho từng việc, và chốt con số nền trước khi đụng vào bất cứ thứ gì. Không có số nền thì sau này không thể nói AI có hiệu quả hay không.</p>
+        <div class="step-out"><b data-i18n="step_out_b">Bạn nhận</b><span data-i18n="step2_out">Business case + con số nền đã chốt + quy định dùng AI và phân loại dữ liệu.</span></div>
+      </article>
+      <article class="step rv" id="b3">
+        <div class="step-h"><span class="step-n">03</span><h3 data-i18n="step3_h3">Triển khai thí điểm</h3><span class="step-when" data-i18n="step3_when">2 – 6 tuần</span></div>
+        <p data-i18n="step3_p">Bin dựng tận tay trên một luồng việc thật, đào tạo đúng những người sẽ dùng nó hằng ngày, rồi sửa cho vừa trước khi nhân rộng. Ưu tiên dùng sâu công cụ bạn đã có trước khi mua thêm.</p>
+        <div class="step-out"><b data-i18n="step_out_b">Bạn nhận</b><span data-i18n="step3_out">Luồng việc chạy thật + hướng dẫn theo vai trò + automation đã bật.</span></div>
+      </article>
+      <article class="step rv" id="b4">
+        <div class="step-h"><span class="step-n">04</span><h3 data-i18n="step4_h3">Đo ROI &amp; nhân rộng</h3><span class="step-when" data-i18n="step4_when">14 – 30 ngày sau khi chạy</span></div>
+        <p data-i18n="step4_p">So số thật với số nền: giờ công tiết kiệm, chi phí cắt được, thời gian hoàn tất luồng việc. Có số rồi mới quyết định mở rộng — hoặc dừng lại nếu số không thuyết phục.</p>
+        <div class="step-out"><b data-i18n="step_out_b">Bạn nhận</b><span data-i18n="step4_out">Báo cáo ROI đọc được trong một phút + bảng theo dõi bạn tự cập nhật.</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 04 · SẢN PHẨM THẬT ═══ -->
+<section id="san-pham" class="blk-white">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx">04 / 08</span>
+      <div>
+        <span class="lbl" data-i18n="s4_lbl">Bằng chứng</span>
+        <h2 data-i18n="s4_h2">Đây là thứ Bin đã dựng. Mở ra bấm thử được.</h2>
+        <p class="lead" data-i18n="s4_lead">Không phải ảnh chụp màn hình, không phải mockup. Năm sản phẩm dưới đây đang chạy thật — bấm vào là mở bản đầy đủ, tương tác trực tiếp trên máy bạn.</p>
+      </div>
+    </div>
+
+    <div class="works rv" id="works"></div>
+
+    <p class="works-note rv" data-i18n="works_note">Hai sản phẩm đầu là công cụ vận hành. Ba cái sau Bin dựng cho chính mình và người nhà dùng hằng ngày — không phải bài tập cho đẹp hồ sơ. Đó cũng là cách Bin làm việc với doanh nghiệp: dựng thứ chạy được rồi mới nói chuyện mở rộng.</p>
+  </div>
+</section>
+
+<!-- ═══ 05 · BỘ CÂU HỎI TÍCH LUỸ ═══ -->
+<section id="cau-hoi">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx">05 / 08</span>
+      <div>
+        <span class="lbl" data-i18n="s5_lbl">Bộ câu hỏi</span>
+        <h2 data-i18n="s5_h2">Những câu doanh nghiệp thật sự đang mắc.</h2>
+        <p class="lead" data-i18n="s5_lead">Đây là các câu lặp đi lặp lại mỗi khi Bin ngồi xuống với một chủ doanh nghiệp. Gom lại một chỗ, trả lời thẳng — để bạn đọc trước, khỏi mất buổi tư vấn chỉ để hỏi những điều này.</p>
+      </div>
+    </div>
+
+    <div class="qb-bar rv" id="qbBar" role="group" data-i18n-attr="aria-label:qb_bar_aria" aria-label="Lọc câu hỏi theo nhóm">
+      <button class="qb-chip on" type="button" data-f="all" data-i18n="qb_all">Tất cả</button>
+      <button class="qb-chip" type="button" data-f="start" data-i18n="qb_start">Bắt đầu</button>
+      <button class="qb-chip" type="button" data-f="money" data-i18n="qb_money">Chi phí &amp; ROI</button>
+      <button class="qb-chip" type="button" data-f="data" data-i18n="qb_data">Dữ liệu &amp; rủi ro</button>
+      <button class="qb-chip" type="button" data-f="team" data-i18n="qb_team">Con người</button>
+      <button class="qb-chip" type="button" data-f="tool" data-i18n="qb_tool">Công cụ</button>
+      <span class="qb-count" id="qbCount"></span>
+    </div>
+
+    <div class="qb rv" id="qbList" aria-live="polite"></div>
+
+    <div class="qb-foot rv">
+      <p data-i18n="qb_foot">Câu của bạn chưa có ở đây? Ghi vào ô cuối trang khi đặt lịch — Bin trả lời trong buổi rà soát, và câu đó sẽ được bổ sung vào danh sách này.</p>
+      <a class="alink" href="#dat-lich" data-i18n="qb_foot_link">Đặt câu hỏi của bạn →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 06 · BIN ═══ -->
+<section id="bin" class="blk-white">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx">06 / 08</span>
+      <div>
+        <span class="lbl" data-i18n="s6_lbl">Người làm</span>
+        <h2 data-i18n="s6_h2">Người đã tự chạy AI trong doanh nghiệp của chính mình.</h2>
+      </div>
+    </div>
+
+    <div class="bin">
+      <div class="rv">
+        <div class="port">
+          <!-- Khi có ảnh: thay khối .port-ph bên dưới bằng
+               <img src="bin.jpg" alt="Phạm Duy Kha (Bin) — MERUVA Consulting"> -->
+          <div class="port-ph">
+            <div class="port-mono">B</div>
+            <p data-i18n="port_ph">Chỗ dành cho ảnh chân dung Bin<br>— cần một tấm thật</p>
+          </div>
+        </div>
+        <p class="port-cap" data-i18n="port_cap">Phạm Duy Kha (Bin)<br>Sáng lập MERUVA · TP.HCM</p>
+      </div>
+
+      <div class="rv">
+        <p class="bin-q" data-i18n="bin_q">Công cụ AI thì ai mua cũng được. Cái khó là biết đặt nó vào đúng chỗ, và dám đo xem nó có đáng tiền không.</p>
+        <p class="bin-body" data-i18n="bin_p1">Năm năm làm việc trong môi trường Nhật để lại cho Bin ba thói quen: <em>genchi genbutsu</em> — xuống tận nơi nhìn việc thật trước khi kết luận; <em>kaizen</em> — cải tiến từng bước nhỏ đo được, thay vì làm một cú lớn; và thói quen chốt con số trước khi bắt đầu. Ba thói quen đó là toàn bộ cách MERUVA tiếp cận AI hôm nay.</p>
+        <p class="bin-body" data-i18n="bin_p2">Bin cũng đang tự vận hành bốn nhánh kinh doanh nhỏ của chính mình — cà phê &amp; bánh, thiết kế, cho thuê studio, thẻ thành viên. Mỗi điểm ứng dụng AI đề xuất cho khách đều đã chạy ở đó trước: có việc thành, có việc bỏ, và cả hai đều là dữ liệu.</p>
+
+        <div class="creed">
+          <div class="creed-i">
+            <span class="n">01</span>
+            <div><h4 data-i18n="creed1_h4">Xuống tận nơi, nhìn việc thật</h4><p data-i18n="creed1_p">Không tư vấn AI qua bản mô tả công việc. Bin ngồi cạnh người đang làm, xem họ thao tác, rồi mới nói AI nên chen vào chỗ nào.</p></div>
+          </div>
+          <div class="creed-i">
+            <span class="n">02</span>
+            <div><h4 data-i18n="creed2_h4">Dùng sâu trước khi mua thêm</h4><p data-i18n="creed2_p">Bước đầu tiên thường là cắt bớt, không phải mua thêm. Rất nhiều doanh nghiệp đã trả tiền cho thứ mình chưa dùng hết 20%.</p></div>
+          </div>
+          <div class="creed-i">
+            <span class="n">03</span>
+            <div><h4 data-i18n="creed3_h4">Không có số nền thì không triển khai</h4><p data-i18n="creed3_p">Nếu không đo được trạng thái trước, sau này mọi lời khen AI đều chỉ là cảm giác. Số nền được chốt ngay buổi rà soát.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 07 · CAM KẾT ═══ -->
+<section id="cam-ket" class="blk-ink pad-sm">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx">07 / 08</span>
+      <div>
+        <span class="lbl" data-i18n="s7_lbl">Cam kết</span>
+        <h2 data-i18n="s7_h2">Bạn không cần đặt cược gì ở bước đầu.</h2>
+        <p class="lead" data-i18n="s7_lead">Ba điều dưới đây áp dụng cho mọi khách, không cần hỏi.</p>
+      </div>
+    </div>
+
+    <div class="vows rv">
+      <article class="vow">
+        <div class="vow-ico" aria-hidden="true">✓</div>
+        <h3 data-i18n="vow1_h3">Dừng sau bất kỳ bước nào</h3>
+        <p data-i18n="vow1_p">Lộ trình chia bốn bước rời nhau. Hết mỗi bước bạn quyết định đi tiếp hay dừng — không ràng buộc trọn gói, không phí huỷ.</p>
+      </article>
+      <article class="vow">
+        <div class="vow-ico" aria-hidden="true">✓</div>
+        <h3 data-i18n="vow2_h3">Bản đồ là của bạn</h3>
+        <p data-i18n="vow2_p">Bản đồ điểm ứng dụng và con số nền từ buổi rà soát thuộc về bạn — kể cả khi bạn quyết định tự làm hoặc thuê bên khác triển khai.</p>
+      </article>
+      <article class="vow">
+        <div class="vow-ico" aria-hidden="true">✓</div>
+        <h3 data-i18n="vow3_h3">Báo giá chốt trước khi bắt đầu</h3>
+        <p data-i18n="vow3_p">Giá triển khai được chốt bằng con số cố định sau buổi rà soát, trước khi làm. Không tính theo giờ, không phát sinh giữa chừng.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 08 · DỊCH VỤ ═══ -->
+<section id="dich-vu">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx">08 / 08</span>
+      <div>
+        <span class="lbl" data-i18n="s8_lbl">Dịch vụ</span>
+        <h2 data-i18n="s8_h2">Ba cách làm việc với MERUVA Consulting.</h2>
+        <p class="lead" data-i18n="s8_lead">Mọi gói đều trực tiếp với Bin. Chạm vào từng dòng để xem chi tiết. Đặt lịch chưa cần thanh toán — Bin xác nhận trong 24 giờ rồi mới gửi hướng dẫn.</p>
+      </div>
+    </div>
+
+    <div class="tier-h rv"><span class="lbl" data-i18n="tier_h">Doanh nghiệp</span></div>
+    <div class="plans rv">
+      <!-- TODO GIÁ: con số dưới đây là VÍ DỤ để xem bố cục — Bin cần chốt lại -->
+      <article class="plan">
+        <div class="plan-row" data-toggle>
+          <div>
+            <h3 class="plan-name" data-i18n="plan1_name">Buổi rà soát AI</h3>
+            <p class="plan-tag" data-i18n="plan1_tag">90 phút · tại chỗ hoặc online — khi bạn biết phải làm AI nhưng chưa biết bắt đầu ở đâu</p>
+          </div>
+          <!-- GIA: thay bang so that khi da chot, vd: 3.000.000₫ -->
+          <div class="plan-price q" data-i18n="plan1_price">Trao đổi riêng</div>
+          <button class="btn btn-sm" data-book="review" data-i18n="plan1_cta">Đặt lịch</button>
+        </div>
+        <div class="plan-detail"><div class="plan-detail-in">
+          <div data-i18n="plan1_d1">90 phút cùng bạn &amp; người vận hành chính</div>
+          <div data-i18n="plan1_d2">Kiểm kê công cụ AI đang trả tiền</div>
+          <div data-i18n="plan1_d3">Bản đồ điểm ứng dụng đã chấm điểm</div>
+          <div data-i18n="plan1_d4">Con số nền để sau này đo ROI</div>
+          <div data-i18n="plan1_d5">Đề xuất bước tiếp theo — không ràng buộc</div>
+          <div data-i18n="plan1_d6">Follow-up 7 ngày qua Zalo</div>
+        </div></div>
+      </article>
+
+      <article class="plan">
+        <div class="plan-row" data-toggle>
+          <div>
+            <h3 class="plan-name"><span data-i18n="plan2_name">Triển khai AI trọn gói</span> <span class="pop" data-i18n="plan2_pop">Được chọn nhiều nhất</span></h3>
+            <p class="plan-tag" data-i18n="plan2_tag">Rà soát → chốt số nền → triển khai thí điểm → báo cáo ROI, Bin làm tận tay cùng đội ngũ bạn</p>
+          </div>
+          <!-- GIA: thay bang so that khi da chot, vd: từ 25.000.000₫ -->
+          <div class="plan-price q" data-i18n="plan2_price">Báo giá theo quy mô</div>
+          <button class="btn btn-sm btn-fill" data-book="rollout" data-i18n="plan2_cta">Nhận báo giá</button>
+        </div>
+        <div class="plan-detail"><div class="plan-detail-in">
+          <div data-i18n="plan2_d1">Trọn bộ bốn bước của lộ trình</div>
+          <div data-i18n="plan2_d2">Business case cho từng điểm ứng dụng</div>
+          <div data-i18n="plan2_d3">Quy định dùng AI &amp; phân loại dữ liệu</div>
+          <div data-i18n="plan2_d4">Dựng trên công cụ phù hợp đội bạn</div>
+          <div data-i18n="plan2_d5">Đào tạo theo vai trò, tận tay</div>
+          <div data-i18n="plan2_d6">Báo cáo ROI so với số nền đã chốt</div>
+        </div></div>
+      </article>
+
+      <article class="plan">
+        <div class="plan-row" data-toggle>
+          <div>
+            <h3 class="plan-name" data-i18n="plan3_name">Đồng hành theo tháng</h3>
+            <p class="plan-tag" data-i18n="plan3_tag">Cho doanh nghiệp đã chạy điểm đầu tiên — cần người giữ nhịp mở rộng và canh con số</p>
+          </div>
+          <!-- GIA: thay bang so that khi da chot, vd: từ 8.000.000₫ -->
+          <div class="plan-price q" data-i18n="plan3_price">Trao đổi riêng</div>
+          <button class="btn btn-sm" data-book="retainer" data-i18n="plan3_cta">Trao đổi</button>
+        </div>
+        <div class="plan-detail"><div class="plan-detail-in">
+          <div data-i18n="plan3_d1">Nhịp review ROI hằng tháng</div>
+          <div data-i18n="plan3_d2">Mở rộng sang điểm ứng dụng tiếp theo</div>
+          <div data-i18n="plan3_d3">Rà soát chi phí công cụ, cắt phần thừa</div>
+          <div data-i18n="plan3_d4">Cập nhật khi công cụ AI đổi tính năng</div>
+          <div data-i18n="plan3_d5">Kèm cặp người phụ trách AI nội bộ</div>
+          <div data-i18n="plan3_d6">Huỷ bất kỳ tháng nào, không ràng buộc</div>
+        </div></div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ ĐẶT LỊCH ═══ -->
+<section id="dat-lich" class="blk-ink">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx" data-i18n="bk_idx">Bắt đầu</span>
+      <div>
+        <span class="lbl" data-i18n="bk_lbl">Đặt lịch</span>
+        <h2 data-i18n="bk_h2">Một buổi rà soát là có bản đồ mang về.</h2>
+        <p class="lead" data-i18n="bk_lead">Điền vào đây, Bin xác nhận trong 24 giờ. Chưa cần thanh toán ở bước này.</p>
+      </div>
+    </div>
+
+    <div class="book">
+      <div class="rv">
+        <div class="ci"><div class="ci-k" data-i18n="ci_email_k">Email</div><div class="ci-v">meruva.main@gmail.com</div></div>
+        <div class="ci"><div class="ci-k" data-i18n="ci_web_k">Website</div><div class="ci-v">meruva.vn</div></div>
+        <div class="ci"><div class="ci-k" data-i18n="ci_area_k">Khu vực</div><div class="ci-v" data-i18n="ci_area_v">TP.HCM · online toàn quốc</div></div>
+        <div class="ci"><div class="ci-k" data-i18n="ci_hours_k">Giờ phản hồi</div><div class="ci-v" data-i18n="ci_hours_v">Mỗi ngày · 7:00 → 22:00</div></div>
+
+        <div class="after">
+          <div class="after-h" data-i18n="after_h">Sau khi bạn gửi</div>
+          <div class="after-i"><span class="n">01</span><span data-i18n="after1">Bin đọc và phản hồi trong 24 giờ, qua Zalo hoặc điện thoại.</span></div>
+          <div class="after-i"><span class="n">02</span><span data-i18n="after2">Hai bên chốt giờ và hình thức — tại chỗ hoặc online.</span></div>
+          <div class="after-i"><span class="n">03</span><span data-i18n="after3">Bin gửi hướng dẫn thanh toán sau khi lịch đã xác nhận.</span></div>
+        </div>
+      </div>
+
+      <form class="rv" id="bookForm" data-appt-form="MERUVA Consulting — Đặt lịch" novalidate>
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="f-two">
+          <div class="f-row"><label for="b-name" data-i18n="f_name">Tên của bạn *</label>
+            <input type="text" id="b-name" name="name" autocomplete="name" required></div>
+          <div class="f-row"><label for="b-phone" data-i18n="f_phone">Điện thoại / Zalo *</label>
+            <input type="tel" id="b-phone" name="phone" autocomplete="tel" required></div>
+        </div>
+        <div class="f-two">
+          <div class="f-row"><label for="b-service" data-i18n="f_service">Bạn quan tâm</label>
+            <select id="b-service" name="service">
+              <option value="review" data-i18n="f_opt1">Buổi rà soát AI · 90 phút</option>
+              <option value="rollout" data-i18n="f_opt2">Triển khai AI trọn gói · dự án</option>
+              <option value="retainer" data-i18n="f_opt3">Đồng hành theo tháng · retainer</option>
+              <option value="unsure" data-i18n="f_opt4">Chưa rõ — cần tư vấn thêm</option>
+            </select></div>
+          <div class="f-row"><label for="b-date" data-i18n="f_date">Ngày mong muốn</label>
+            <input type="date" id="b-date" name="appt_date"></div>
+        </div>
+        <div class="f-row"><label for="b-note" data-i18n="f_note">Câu hỏi của bạn, hoặc việc đang tốn thời gian nhất</label>
+          <textarea id="b-note" name="note" rows="3" placeholder="Quy mô đội ngũ, ngành nghề, công cụ AI đang dùng (nếu có)..." data-i18n-placeholder="f_note_ph"></textarea></div>
+        <button type="submit" class="btn btn-fill" id="bookBtn" data-i18n="f_submit">Gửi yêu cầu đặt lịch →</button>
+        <p class="form-ok" id="ok" data-i18n="f_ok">Đã nhận. Bin sẽ phản hồi trong 24 giờ — cảm ơn bạn đã tin tưởng.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ KHUNG NHÁNH — phụ, không đánh số mục ═══
+     Trái: 5 nhánh MERUVA, gom dưới một dấu MERUVA nhỏ.
+     Phải: Vemil là đối tác, cố ý KHÔNG mang logo hay tên MERUVA. -->
+<div class="branches">
+  <div class="wrap">
+    <div class="br-frame rv">
+      <div class="br-zone">
+        <div class="br-head">
+          <img src="logo-mark-96.png" alt="" width="19" height="19" aria-hidden="true">
+          <span class="br-wm">MERUVA</span>
+          <span class="br-kind" data-i18n="br_kind1">· 4 nhánh Bin tự vận hành</span>
+        </div>
+        <nav class="br-list" data-i18n-attr="aria-label:aria_branches" aria-label="Các nhánh của MERUVA">
+          <a href="MeruvaKitchen/MeruvaKitchen.html" style="--ac:#826A30">Kitchen</a>
+          <a href="Meruva3D/Meruva3D.html" style="--ac:#547078" data-i18n="br_design">Thiết kế</a>
+          <a href="MeruvaStay/MeruvaStay.html" style="--ac:#41766D">Stay</a>
+          <a href="MeruvaCard/MeruvaCard.html" style="--ac:#716E60">Card</a>
+        </nav>
+      </div>
+
+      <div class="br-split" aria-hidden="true"></div>
+
+      <div class="br-zone">
+        <span class="br-kind" data-i18n="br_partner">Đối tác</span>
+        <a class="br-vemil" href="MeruvaB2B/Vemil/Vemil.html">
+          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+            <path d="M40 14C28 14 18 24 18 36c0 10 5 18 13 25 3 3 6 6 9 9 3-3 6-6 9-9 8-7 13-15 13-25 0-12-10-22-22-22Z"
+                  stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/>
+            <path d="M29 38c0-7 5-12 11-12s11 5 11 12" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+            <circle cx="40" cy="46" r="5" fill="currentColor" opacity=".7"/>
+          </svg>
+          <span>
+            <span class="br-vn">Vemil</span>
+            <span class="br-vd" data-i18n="br_vemil_d">Sữa hạt &amp; thực phẩm vegan · thủ công</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap f-in">
+    <div>
+      <div class="f-name">MERUVA</div>
+      <div class="f-tag">From the summit, we serve.</div>
+    </div>
+    <ul class="f-links">
+      <li><a href="#dau-hieu" data-i18n="nav_signs">Dấu hiệu</a></li>
+      <li><a href="#ba-ve" data-i18n="nav_how">Cách làm</a></li>
+      <li><a href="#san-pham" data-i18n="nav_work">Sản phẩm</a></li>
+      <li><a href="#cau-hoi" data-i18n="nav_faq">Câu hỏi</a></li>
+      <li><a href="#dich-vu" data-i18n="nav_svc">Dịch vụ</a></li>
+      <li><a href="#dat-lich" data-i18n="nav_book">Đặt lịch</a></li>
+      <li><a href="MeruvaNews/Main_news.html" data-i18n="ft_news">Báo</a></li>
+    </ul>
+    <div class="f-right">
+      <div class="f-copy" data-i18n="ft_copy">© 2026 MERUVA</div>
+    </div>
+  </div>
+</footer>
+
+<script src="home-lang.js?v=1"></script>
+<script src="meruva.js?v=2"></script>
+</body>
+</html>

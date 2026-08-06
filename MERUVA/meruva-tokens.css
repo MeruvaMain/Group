@@ -1,0 +1,56 @@
+/* ═══════════════════════════════════════════════════════════════
+   MERUVA · BẢNG MÀU GỐC  —  giấy · mực · ấn son
+
+   ĐÂY LÀ NƠI DUY NHẤT KHAI BÁO MÀU CHO TOÀN SITE.
+   Muốn đổi tông cả website: sửa file này, không sửa chỗ nào khác.
+
+   Thứ tự nạp:
+     Trang mới  (index, Kitchen, Thiết kế)
+       meruva-tokens.css → meruva.css          + meruva.js
+     Trang cũ   (Stay, Card, News)
+       meruva-shared.css → meruva-tokens.css → meruva-legacy.css
+     Vemil dùng bảng riêng (vemil-tokens.css), không nạp file này.
+
+   Toàn bộ giao diện mới nằm trong MỘT file meruva.css.
+   Lớp tương thích cho hệ cũ tách riêng ở meruva-legacy.css.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  /* bề mặt: giấy (nền trang) < trắng (thẻ nổi) < giấy-2 (lõm/hover)
+     Giấy đã hạ độ ám vàng: bão hoà 24% → 13%, hue 45° → 42°. Vẫn là
+     giấy chứ không phải trắng phòng thí nghiệm, nhưng bớt ngả kem. */
+  --paper:#F2F0EE; --paper-2:#E9E7E2; --white:#FBFAF9;
+
+  /* chữ: mực đậm → nhạt dần.
+     Mực nâng từ L=6% lên L=13%: trước đây gần đen tuyệt đối, đặt trên
+     nền kem cho 16.6:1 — đọc lâu bị chói. Nay 14:1, vẫn rất đậm.
+     --ink-faint đủ đậm để chữ nhỏ đạt 4.5:1 trên CẢ --paper-2 (4.64). */
+  --ink:#23221F; --ink-2:#312F2B; --ink-soft:#605E57; --ink-faint:#69665D;
+
+  /* ấn son — màu nhấn duy nhất, dùng cho hành động và điểm cần chú ý.
+     Bão hoà hạ 67% → 52%: vẫn nhận ra là ấn son, bớt gắt khi nằm cạnh
+     chữ đen trên nền sáng. */
+  --shu:#B64E3A; --shu-d:#9A3F2D; --shu-soft:rgba(182,78,58,.09);
+
+  /* Ấn son dành riêng cho CHỮ NHỎ (nhãn mono, số thứ tự, link phụ).
+     --shu dùng làm chữ nhỏ hụt chuẩn AA (cần 4.5) ở CẢ HAI nền, và hai
+     hướng sửa ngược nhau nên cần hai giá trị riêng: */
+  --shu-text:#B64A35;        /* trên giấy 4.60 · trên trắng 5.01 */
+  --shu-text-on-ink:#CF6D59; /* trên mực  4.53                   */
+
+  /* đường kẻ — cùng hạ ám vàng theo bề mặt */
+  --line:#D9D6CE; --line-2:#C6C2B8; --line-dark:rgba(242,240,238,.14);
+
+  /* chữ */
+  --disp:'Archivo',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --wm:'Cormorant Garamond',Georgia,serif;
+
+  /* Màu nhận diện nhánh — từng trang tự đặt lại.
+     CẦN HAI BẢN, cùng lý do như ấn son: một màu không thể vừa đủ tương
+     phản trên nền giấy vừa đủ trên nền mực. Trang nào có thẻ đặt trên
+     nền mực thì phải khai cả --ac-lt, nếu không nhãn sẽ chìm.
+       --ac     bản tối  → dùng trên giấy / trắng
+       --ac-lt  bản sáng → dùng trên mực (.blk-ink) */
+  --ac:var(--shu);
+  --ac-lt:var(--shu-text-on-ink);
+}

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics 4 — async, không chặn render -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTTBTTNR0R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FTTBTTNR0R');
+</script>
+
+<title>MERUVA Thiết kế — Nhận diện thương hiệu, 3D và in 3D</title>
+<meta name="description" data-i18n-attr="content:meta_desc" content="MERUVA Thiết kế — xây dựng nhận diện thương hiệu, dựng hình 3D sản phẩm, thiết kế giao diện web/app và in 3D theo yêu cầu. Giao trong 3–5 ngày tại TP.HCM.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#F2F0EE">
+<link rel="canonical" href="https://meruva.vn/Meruva3D/Meruva3D.html">
+<link rel="alternate" hreflang="vi" href="https://meruva.vn/Meruva3D/Meruva3D.html">
+<link rel="alternate" hreflang="x-default" href="https://meruva.vn/Meruva3D/Meruva3D.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meruva.vn/Meruva3D/Meruva3D.html">
+<meta property="og:title" content="MERUVA Thiết kế — Nhận diện thương hiệu · 3D · In theo yêu cầu">
+<meta property="og:description" content="Thiết kế. In thật. Từ ý tưởng đến vật thể trong 3–5 ngày.">
+<meta property="og:image" content="https://meruva.vn/og/og-3d.png">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Cormorant+Garamond:wght@700&display=swap">
+<link rel="stylesheet" href="../meruva-tokens.css?v=4">
+<link rel="stylesheet" href="../meruva.css?v=10">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"ProfessionalService",
+  "name":"MERUVA Thiết kế",
+  "alternateName":"MERUVA Design",
+  "url":"https://meruva.vn/Meruva3D/Meruva3D.html",
+  "image":"https://meruva.vn/logo-mark.png",
+  "description":"Thiết kế nhận diện thương hiệu, dựng hình 3D sản phẩm, thiết kế giao diện web/app và in 3D theo yêu cầu.",
+  "areaServed":{"@type":"Country","name":"Vietnam"},
+  "address":{"@type":"PostalAddress","addressLocality":"Ho Chi Minh City","addressCountry":"VN"},
+  "parentOrganization":{"@type":"Organization","name":"MERUVA","url":"https://meruva.vn"}
+}
+</script>
+
+<style>
+/* riêng của MERUVA Thiết kế — phần chung ở meruva.css */
+:root{ --ac:#547078; --ac-lt:#7E9DA5 }
+.d-hero{padding:4.6rem 0 3.4rem}
+.d-hero-in{display:grid;grid-template-columns:1.08fr .92fr;gap:3.4rem;align-items:center}
+.d-hero h1{margin:1.2rem 0 1.5rem;font-size:clamp(2rem,3.9vw,3.5rem)}
+.d-figs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.d-fig{background:var(--white);padding:1.5rem 1.4rem}
+.d-fig .v{font-size:1.8rem;font-weight:700;letter-spacing:-.04em;line-height:1}
+.d-fig .k{font-family:var(--mono);font-size:.68rem;color:var(--ink-faint);margin-top:.45rem;line-height:1.45}
+.svc-p{display:flex;flex-direction:column;align-items:flex-end;gap:.1rem}
+.svc-p .amt{font-size:1.12rem;font-weight:700;letter-spacing:-.025em;white-space:nowrap}
+.svc-p .unit{font-family:var(--mono);font-size:.63rem;color:var(--ink-faint);white-space:nowrap}
+.pri{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;
+  text-transform:uppercase;color:#fff;background:var(--ac);padding:.2rem .5rem;
+  border-radius:2px;margin-left:.6rem;vertical-align:middle}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-dark);
+  border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark)}
+.step4{background:var(--ink);padding:2.2rem 1.6rem 2.4rem}
+/* .step4 nền mực nên nhãn phải dùng bản SÁNG của màu nhánh (--ac-lt);
+   bản tối --ac dành cho nền giấy, đặt ở đây chỉ được 3:1. */
+.step4 .n{font-family:var(--mono);font-size:.7rem;color:var(--ac-lt);margin-bottom:.9rem}
+.step4 h3{font-size:1.16rem;color:var(--paper);margin-bottom:.5rem}
+.step4 p{font-size:.9rem;color:rgba(242,240,238,.62);line-height:1.55}
+.d-contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:4rem;margin-top:2.8rem}
+.d-quote{font-family:var(--wm);font-size:1.3rem;font-weight:700;color:var(--paper);
+  line-height:1.4;margin-bottom:1.6rem}
+@media(max-width:1080px){
+  .d-hero-in{grid-template-columns:1fr;gap:2.4rem}
+  .steps4{grid-template-columns:1fr 1fr}
+  .d-contact{grid-template-columns:1fr;gap:2.4rem}
+}
+@media(max-width:768px){
+  .d-hero{padding:2.6rem 0 2.2rem}
+  .steps4{grid-template-columns:1fr}
+  .svc-p{align-items:flex-start}
+}
+</style>
+<link rel="stylesheet" href="../meruva-loader.css?v=1">
+</head>
+<body>
+
+<div class="ldr" aria-hidden="true">
+  <div class="ldr-in">
+    <div class="ldr-seal">山</div>
+    <div class="ldr-wm">MERUVA</div>
+    <div class="ldr-line"></div>
+  </div>
+</div>
+
+<div id="bar"></div>
+<div id="lang-overlay"></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="../index.html">
+      <img src="../logo-mark-96.png" alt="MERUVA" width="32" height="32">
+      <span><b>MERUVA</b><i data-i18n="brand_sub">Thiết kế</i></span>
+    </a>
+    <nav class="hdr-nav" id="nav">
+      <a href="#dich-vu" data-i18n="d3_nav_services">Thiết kế</a>
+      <a href="#in-3d" data-i18n="d3_nav_print">In 3D</a>
+      <a href="#vi-sao" data-i18n="d3_nav_about">Về tôi</a>
+      <a href="#lien-he" class="btn btn-sm btn-ink" data-i18n="d3_nav_contact">Liên hệ</a>
+    </nav>
+    <div class="hdr-right">
+      <div class="langs">
+        <button class="lang-btn" type="button" data-lang="vi" onclick="setLang('vi')">VI</button>
+        <button class="lang-btn" type="button" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" type="button" data-lang="ja" onclick="setLang('ja')">JA</button>
+      </div>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══ HERO ═══ -->
+<section class="d-hero">
+  <div class="wrap d-hero-in">
+    <div>
+      <a class="back rv" href="../index.html" data-i18n="back">Trang chủ</a>
+      <p class="lbl rv" style="margin-top:1.1rem" data-i18n="hero_eyebrow">Thiết kế thương hiệu · 3D · In theo yêu cầu · TP.HCM</p>
+      <h1 class="rv" data-i18n="d3_hero_title">Thiết kế thương hiệu, 3D Visualization &amp; In 3D theo yêu cầu</h1>
+      <p class="lead rv" data-i18n="d3_hero_desc">Từ ý tưởng đến vật thể thật — xây dựng hình ảnh chuyên nghiệp cho doanh nghiệp, rồi hiện thực hóa thiết kế thành sản phẩm in 3D trong 3–5 ngày.</p>
+      <div class="b-cta rv">
+        <a href="#lien-he" class="btn btn-fill" data-i18n="d3_hero_btn1">Xem dịch vụ</a>
+        <a href="#in-3d" class="btn" data-i18n="d3_hero_btn2">Đặt in 3D</a>
+      </div>
+    </div>
+
+    <div class="d-figs rv">
+      <div class="d-fig"><div class="v" data-i18n="m1_v">4</div><div class="k" data-i18n="m1_k">Mảng dịch vụ<br>từ logo tới in thật</div></div>
+      <div class="d-fig"><div class="v" data-i18n="m2_v">24h</div><div class="k" data-i18n="m2_k">Phản hồi<br>trong giờ làm việc</div></div>
+      <div class="d-fig"><div class="v" data-i18n="m3_v">3–5</div><div class="k" data-i18n="m3_k">Ngày giao<br>hàng in 3D</div></div>
+      <div class="d-fig"><div class="v" data-i18n="m4_v">VI · EN</div><div class="k" data-i18n="m4_k">Làm việc với khách<br>Việt Nam &amp; quốc tế</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DỊCH VỤ ═══ -->
+<section id="dich-vu" class="blk-white">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx" data-i18n="sec_svc_idx">Dịch vụ</span>
+      <div>
+        <h2 data-i18n="d3_svc_title">Những gì tôi làm tốt nhất</h2>
+        <p class="lead" data-i18n="d3_svc_sub">Bốn mảng dịch vụ thiết kế cốt lõi — từ nhận diện thương hiệu đến hình ảnh 3D và truyền thông marketing.</p>
+      </div>
+    </div>
+
+    <div class="rows rv">
+      <article class="row-i">
+        <div class="row-h" data-toggle>
+          <div>
+            <h3 class="row-n"><span data-i18n="d3_s1_name">Thiết kế Nhận Diện Thương Hiệu</span><span class="pri" data-i18n="d3_s1_pri">Ưu tiên #1</span></h3>
+            <p class="row-t" data-i18n="d3_s1_desc">Xây dựng hệ thống nhận diện thương hiệu chuyên nghiệp và nhất quán.</p>
+          </div>
+          <div class="svc-p"><span class="amt" data-i18n="d3_s1_price">3 – 30 triệu</span><span class="unit" data-i18n="d3_s1_unit">/ dự án tùy quy mô</span></div>
+        </div>
+        <div class="row-d"><div class="row-d-in">
+          <div data-i18n="d3_s1_l1">Thiết kế logo &amp; brand mark</div>
+          <div data-i18n="d3_s1_l2">Bộ nhận diện thương hiệu đầy đủ</div>
+          <div data-i18n="d3_s1_l3">Name card · Hồ sơ năng lực</div>
+          <div data-i18n="d3_s1_l4">Catalogue · Social media kit</div>
+          <div data-i18n="d3_s1_l5">Brand guideline</div>
+        </div></div>
+      </article>
+
+      <article class="row-i">
+        <div class="row-h" data-toggle>
+          <div>
+            <h3 class="row-n"><span data-i18n="d3_s2_name">3D Product Visualization</span><span class="pri" data-i18n="d3_s2_pri">Ưu tiên #2</span></h3>
+            <p class="row-t" data-i18n="d3_s2_desc">Tạo hình ảnh 3D sản phẩm chất lượng cao phục vụ quảng cáo, e-commerce và catalog.</p>
+          </div>
+          <div class="svc-p"><span class="amt" data-i18n="d3_s2_price">500K – 5 triệu</span><span class="unit" data-i18n="d3_s2_unit">/ sản phẩm</span></div>
+        </div>
+        <div class="row-d"><div class="row-d-in">
+          <div data-i18n="d3_s2_l1">Dựng hình 3D sản phẩm</div>
+          <div data-i18n="d3_s2_l2">Render chất lượng quảng cáo</div>
+          <div data-i18n="d3_s2_l3">Ảnh e-commerce</div>
+          <div data-i18n="d3_s2_l4">Catalog &amp; ấn phẩm</div>
+          <div data-i18n="d3_s2_l5">Mỹ phẩm · nội thất · thực phẩm</div>
+        </div></div>
+      </article>
+
+      <article class="row-i">
+        <div class="row-h" data-toggle>
+          <div>
+            <h3 class="row-n" data-i18n="d3_s3_name">Website &amp; App UI Design</h3>
+            <p class="row-t" data-i18n="d3_s3_desc">Thiết kế giao diện website và ứng dụng chuyên nghiệp, tập trung vào trải nghiệm người dùng.</p>
+          </div>
+          <div class="svc-p"><span class="amt" data-i18n="d3_s3_price">5 – 50 triệu</span><span class="unit" data-i18n="d3_s3_unit">/ dự án</span></div>
+        </div>
+        <div class="row-d"><div class="row-d-in">
+          <div data-i18n="d3_s3_l1">Thiết kế giao diện website</div>
+          <div data-i18n="d3_s3_l2">Giao diện ứng dụng di động</div>
+          <div data-i18n="d3_s3_l3">Nghiên cứu trải nghiệm người dùng</div>
+          <div data-i18n="d3_s3_l4">Design system</div>
+          <div data-i18n="d3_s3_l5">Bàn giao file cho lập trình</div>
+        </div></div>
+      </article>
+
+      <article class="row-i">
+        <div class="row-h" data-toggle>
+          <div>
+            <h3 class="row-n" data-i18n="d3_s4_name">Marketing &amp; Advertising Design</h3>
+            <p class="row-t" data-i18n="d3_s4_desc">Thiết kế hình ảnh quảng cáo và truyền thông marketing — từ banner digital đến ấn phẩm in ấn.</p>
+          </div>
+          <div class="svc-p"><span class="amt" data-i18n="d3_s4_price">200K – 2 triệu</span><span class="unit" data-i18n="d3_s4_unit">/ thiết kế</span></div>
+        </div>
+        <div class="row-d"><div class="row-d-in">
+          <div data-i18n="d3_s4_l1">Banner digital</div>
+          <div data-i18n="d3_s4_l2">Ấn phẩm in ấn</div>
+          <div data-i18n="d3_s4_l3">Bài đăng mạng xã hội</div>
+          <div data-i18n="d3_s4_l4">Poster &amp; standee</div>
+          <div data-i18n="d3_s4_l5">Gói tháng cho doanh nghiệp</div>
+        </div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ IN 3D ═══ -->
+<section id="in-3d" class="blk-ink">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx" data-i18n="sec_print_idx">In 3D</span>
+      <div>
+        <h2 data-i18n="d3_print_title">Thiết kế. In thật.</h2>
+        <p class="lead" data-i18n="d3_print_label">In 3D theo yêu cầu</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps4 rv">
+    <article class="step4">
+      <div class="n">01</div>
+      <h3 data-i18n="d3_pf1_t">Gửi yêu cầu</h3>
+      <p data-i18n="d3_pf1_d">Có file STL càng tốt — chưa có, đội thiết kế dựng giúp bạn.</p>
+    </article>
+    <article class="step4">
+      <div class="n">02</div>
+      <h3 data-i18n="d3_pf2_t">Báo giá trong 24h</h3>
+      <p data-i18n="d3_pf2_d">Chốt vật liệu, màu sắc, kích thước và số lượng.</p>
+    </article>
+    <article class="step4">
+      <div class="n">03</div>
+      <h3 data-i18n="d3_pf3_t">In &amp; hoàn thiện</h3>
+      <p data-i18n="d3_pf3_d">PLA · PETG · Resin. Xử lý bề mặt, sơn phủ theo yêu cầu.</p>
+    </article>
+    <article class="step4">
+      <div class="n">04</div>
+      <h3 data-i18n="d3_pf4_t">Giao trong 3–5 ngày</h3>
+      <p data-i18n="d3_pf4_d">Giao tận nơi TP.HCM hoặc gửi toàn quốc.</p>
+    </article>
+  </div>
+
+  <div class="wrap" style="margin-top:2.4rem">
+    <a href="#lien-he" class="btn btn-fill rv" data-i18n="d3_print_btn">Đặt in ngay</a>
+  </div>
+</section>
+
+<!-- ═══ VÌ SAO ═══ -->
+<section id="vi-sao">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx" data-i18n="sec_why_idx">Vì sao</span>
+      <div>
+        <h2 data-i18n="d3_wm_title">Cam kết chất lượng, tận tâm phục vụ</h2>
+        <p class="lead" data-i18n="d3_wm_sub"></p>
+      </div>
+    </div>
+    <div class="grid-2 rv">
+      <article class="card">
+        <div class="card-k">01</div>
+        <h3 data-i18n="d3_w1_t">Năm kinh nghiệm Freelance</h3>
+        <p data-i18n="d3_w1_d">Làm việc với nhiều loại hình doanh nghiệp: từ startup đến tập đoàn.</p>
+      </article>
+      <article class="card">
+        <div class="card-k">02</div>
+        <h3 data-i18n="d3_w2_t">Thành thạo tiếng Anh</h3>
+        <p data-i18n="d3_w2_d">Làm việc với khách hàng quốc tế, đọc tài liệu kỹ thuật.</p>
+      </article>
+      <article class="card">
+        <div class="card-k">03</div>
+        <h3 data-i18n="d3_w3_t">Từ concept đến vật thể thật</h3>
+        <p data-i18n="d3_w3_d">Tư vấn ý tưởng, thiết kế, in 3D và bàn giao hoàn chỉnh.</p>
+      </article>
+      <article class="card">
+        <div class="card-k">04</div>
+        <h3 data-i18n="d3_w4_t">Đa lĩnh vực &amp; đa nền tảng</h3>
+        <p data-i18n="d3_w4_d">Kinh nghiệm doanh nghiệp, giáo dục, game, marketing.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LIÊN HỆ ═══ -->
+<section id="lien-he" class="blk-ink">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <span class="sec-idx" data-i18n="sec_contact_idx">Liên hệ</span>
+      <div>
+        <h2 data-i18n="d3_c_title">Bắt đầu dự án của bạn</h2>
+      </div>
+    </div>
+
+    <div class="d-contact">
+      <div class="rv">
+        <p class="d-quote" data-i18n="d3_c_tagline">"Mỗi thương hiệu đều xứng đáng có một diện mạo chuyên nghiệp."</p>
+        <div class="ci"><div class="ci-k">Email</div><div class="ci-v">meruva.main@gmail.com</div></div>
+        <div class="ci"><div class="ci-k" data-i18n="d3_ci2_label">Phản hồi trong</div><div class="ci-v" data-i18n="d3_ci2_val">24 giờ làm việc</div></div>
+        <div class="ci"><div class="ci-k" data-i18n="d3_ci3_label">In 3D giao trong</div><div class="ci-v" data-i18n="d3_ci3_val">3–5 ngày · TP.HCM &amp; toàn quốc</div></div>
+        <div class="ci"><div class="ci-k" data-i18n="d3_ci4_label">Làm việc với</div><div class="ci-v" data-i18n="d3_ci4_val">Khách Việt Nam &amp; Quốc tế</div></div>
+      </div>
+
+      <form class="rv" id="designForm" data-appt-form="MERUVA Thiết kế — Yêu cầu dự án" novalidate>
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="f-two">
+          <div class="f-row"><label for="d-name" data-i18n="d3_f_name">Họ và tên</label>
+            <input type="text" id="d-name" name="name" autocomplete="name" required
+                   data-i18n-placeholder="d3_f_name_ph"></div>
+          <div class="f-row"><label for="d-phone" data-i18n="d3_f_contact">Liên hệ</label>
+            <input type="tel" id="d-phone" name="phone" autocomplete="tel" required
+                   data-i18n-placeholder="d3_f_contact_ph"></div>
+        </div>
+        <div class="f-two">
+          <div class="f-row"><label for="d-svc" data-i18n="d3_f_service">Dịch vụ quan tâm</label>
+            <select id="d-svc" name="service"></select></div>
+          <div class="f-row"><label for="d-date" data-i18n="f_date">Ngày mong muốn</label>
+            <input type="date" id="d-date" name="appt_date"></div>
+        </div>
+        <div class="f-row"><label for="d-note" data-i18n="d3_f_msg">Nội dung</label>
+          <textarea id="d-note" name="note" rows="3" data-i18n-placeholder="d3_f_msg_ph"></textarea></div>
+        <button type="submit" class="btn btn-fill" data-i18n="d3_f_submit">Gửi yêu cầu →</button>
+        <p class="form-ok" data-i18n="d3_f_thanks">Cảm ơn bạn! MERUVA sẽ phản hồi trong 24 giờ.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap f-in">
+    <div>
+      <div class="f-name">MERUVA</div>
+      <div class="f-tag" data-i18n="f_tag">Từ đỉnh cao — chúng tôi phục vụ.</div>
+    </div>
+    <ul class="f-links">
+      <li><a href="#dich-vu" data-i18n="d3_nav_services">Thiết kế</a></li>
+      <li><a href="#in-3d" data-i18n="d3_nav_print">In 3D</a></li>
+      <li><a href="#vi-sao" data-i18n="d3_nav_about">Về tôi</a></li>
+      <li><a href="#lien-he" data-i18n="d3_nav_contact">Liên hệ</a></li>
+      <li><a href="../index.html" data-i18n="back">Trang chủ</a></li>
+    </ul>
+    <div class="f-right">
+      <div class="langs">
+        <button class="lang-btn" type="button" data-lang="vi" onclick="setLang('vi')">VI</button>
+        <button class="lang-btn" type="button" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" type="button" data-lang="ja" onclick="setLang('ja')">JA</button>
+      </div>
+      <div class="f-copy">© 2026 MERUVA</div>
+    </div>
+  </div>
+</footer>
+
+<script src="Meruva3D_lang.js?v=1"></script>
+<script src="thietke-lang.js?v=1"></script>
+<script src="../meruva.js?v=2"></script>
+<script>
+/* ── Ô chọn dịch vụ: dựng lại theo ngôn ngữ hiện tại ── */
+(function(){
+  var KEYS = ['d3_f_opt1','d3_f_opt2','d3_f_opt3','d3_f_opt4','d3_f_opt5','d3_f_opt6',
+              'd3_f_opt7','d3_f_opt8','d3_f_opt9','d3_f_opt10','d3_f_opt11'];
+  var sel = document.getElementById('d-svc');
+
+  function render(lang){
+    var T = window.MERUVA_T[lang] || window.MERUVA_T.vi;
+    var keep = sel.selectedIndex;
+    sel.innerHTML = KEYS.map(function(k){
+      /* bỏ thẻ HTML trong chuỗi vì <option> chỉ nhận văn bản thuần */
+      var txt = String(T[k] || '').replace(/<[^>]+>/g, '').trim();
+      return txt ? '<option>' + txt + '</option>' : '';
+    }).join('');
+    if(keep > -1 && keep < sel.options.length) sel.selectedIndex = keep;
+  }
+
+  render(window.MERUVA.lang);
+  document.addEventListener('meruva:lang', function(e){ render(e.detail.lang); });
+})();
+</script>
+</body>
+</html>

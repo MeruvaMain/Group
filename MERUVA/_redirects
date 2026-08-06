@@ -1,0 +1,20 @@
+# Ép tên miền chính: chuyển hướng subdomain Netlify -> meruva.vn (tránh duplicate content cho SEO)
+https://meruva.netlify.app/*   https://meruva.vn/:splat   301!
+http://meruva.netlify.app/*    https://meruva.vn/:splat   301!
+
+# Coffee + Bakery đã gộp thành MERUVA Kitchen — giữ link cũ không bị 404
+/MeruvaCoffee/MeruvaCoffee.html   /MeruvaKitchen/MeruvaKitchen.html   301!
+/MeruvaBakery/MeruvaBakery.html   /MeruvaKitchen/MeruvaKitchen.html   301!
+/MeruvaCoffee/*                   /MeruvaKitchen/MeruvaKitchen.html   301!
+/MeruvaBakery/*                   /MeruvaKitchen/MeruvaKitchen.html   301!
+
+# Trang design/ cũ đã gộp vào nhánh Thiết kế
+/design/*                         /Meruva3D/Meruva3D.html             301!
+
+# MeruvaService đã bỏ khỏi site; các bản demo chuyển sang /demo/
+/MeruvaService/demo/*             /demo/:splat                        301!
+/MeruvaService/MeruvaService.html /                                   301!
+/MeruvaService/*                  /                                   301!
+
+# admin/ chỉ chạy cục bộ (chưa deploy) — không để Netlify publish ra web công khai
+/admin/*                          /404.html                           404!

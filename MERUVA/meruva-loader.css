@@ -1,0 +1,54 @@
+/* ═══════════════════════════════════════════════════════════════
+   MERUVA · MÀN CHỜ VÀO TRANG  —  dùng cho MỌI trang
+
+   Vì sao tách riêng một file: site đang chạy song song hai hệ —
+   hệ mới (meruva.css) và hệ cũ (meruva-shared.css + meruva-legacy.css),
+   riêng Vemil dùng bảng màu riêng. Không file nào phủ hết cả chín trang,
+   nên màn chờ nằm riêng và được nạp ở mọi trang.
+
+   Ấn son đóng dấu 山 (núi Meru) → chữ MERUVA hiện lên → nét mực quét
+   ngang, rồi màn tự mờ đi.
+
+   THUẦN CSS, KHÔNG PHỤ THUỘC JS: nếu JS lỗi hoặc bị chặn, màn chờ vẫn
+   tự biến mất — trang không bao giờ bị khoá trắng.
+   Thời gian nhìn thấy ≈ 1,35s · biến mất hẳn ở 1,75s.
+
+   Màu lấy từ meruva-tokens.css, kèm giá trị dự phòng để chạy được cả
+   ở trang không nạp tokens (Vemil).
+
+   Đặt <div class="ldr"> ngay sau <body>, trước mọi thứ khác.
+   ═══════════════════════════════════════════════════════════════ */
+
+.ldr{position:fixed;inset:0;z-index:900;display:grid;place-items:center;
+  background:var(--paper,#F2F0EE);animation:ldrOut .4s 1.35s forwards}
+.ldr-in{display:flex;flex-direction:column;align-items:center;gap:1.05rem}
+
+.ldr-seal{width:46px;height:46px;border:2px solid var(--shu,#B64E3A);border-radius:3px;
+  display:grid;place-items:center;
+  font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;
+  font-size:1.45rem;line-height:1;color:var(--shu,#B64E3A);
+  opacity:0;transform:scale(.82) rotate(-7deg);
+  animation:ldrStamp .5s .1s cubic-bezier(.2,1.45,.4,1) forwards}
+
+.ldr-wm{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;
+  font-size:1.12rem;letter-spacing:.42em;padding-left:.42em;
+  color:var(--ink,#23221F);opacity:0;
+  animation:ldrUp .5s .32s ease forwards}
+
+.ldr-line{width:108px;height:1px;background:var(--line-2,#C6C2B8);
+  position:relative;overflow:hidden}
+.ldr-line::after{content:"";position:absolute;inset:0;background:var(--shu,#B64E3A);
+  transform:translateX(-100%);
+  animation:ldrSweep 1s .35s cubic-bezier(.45,0,.15,1) forwards}
+
+@keyframes ldrStamp{to{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes ldrUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@keyframes ldrSweep{to{transform:translateX(0)}}
+@keyframes ldrOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+
+/* Người bật "giảm chuyển động": bỏ hoạt ảnh, chỉ chớp nhẹ rồi mở trang. */
+@media(prefers-reduced-motion:reduce){
+  .ldr{animation:ldrOut .25s .25s forwards}
+  .ldr-seal,.ldr-wm{animation:none;opacity:1;transform:none}
+  .ldr-line::after{animation:none;transform:none}
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F2F0EE">
+<!-- Google Analytics 4 — async, không chặn render -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTTBTTNR0R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FTTBTTNR0R');
+</script>
+<title>404 — Lạc đường trên núi · MERUVA</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&display=swap"></noscript>
+<!-- Bang mau chung. Trang nay tu chua phan con lai (nho, khong dung
+     component nao cua he thiet ke) nen khong nap meruva.css. -->
+<link rel="stylesheet" href="/meruva-tokens.css?v=4">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--paper);color:var(--ink);font-family:var(--disp);
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:2rem;overflow:hidden;position:relative;
+}
+.glow{position:absolute;top:-250px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(182,78,58,.07),transparent 60%);pointer-events:none}
+.mountain{position:absolute;bottom:0;left:0;right:0;height:38vh;pointer-events:none;opacity:.5}
+.code{
+  font-family:var(--wm),serif;font-weight:300;
+  font-size:clamp(7rem,22vw,14rem);line-height:1;letter-spacing:-.02em;
+  background:linear-gradient(135deg,#E4694F,#B64E3A,#8F2718);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  position:relative;z-index:2;
+}
+h1{font-family:var(--wm),serif;font-weight:500;font-style:italic;font-size:clamp(1.4rem,4vw,2rem);color:var(--ink);margin:1rem 0 .8rem;position:relative;z-index:2}
+p{font-size:.95rem;color:var(--ink-soft);line-height:1.8;max-width:420px;position:relative;z-index:2}
+.btn{
+  display:inline-flex;align-items:center;gap:.8rem;margin-top:2.5rem;
+  padding:1.05rem 2.2rem;background:var(--shu);color:#fff;text-decoration:none;
+  font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;font-weight:600;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%);
+  transition:all .35s;border:1px solid var(--shu);position:relative;z-index:2;
+}
+.btn:hover{background:transparent;color:var(--shu)}
+/* chữ nhỏ nên dùng --shu-text (4.60:1); --shu gốc chỉ được 4.46 */
+.tag{font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:var(--shu-text,#B64A35);margin-bottom:1.5rem;position:relative;z-index:2}
+</style>
+<link rel="stylesheet" href="/meruva-loader.css?v=1">
+</head>
+<body>
+
+<div class="ldr" aria-hidden="true">
+  <div class="ldr-in">
+    <div class="ldr-seal">山</div>
+    <div class="ldr-wm">MERUVA</div>
+    <div class="ldr-line"></div>
+  </div>
+</div>
+<div class="glow"></div>
+<div class="tag">MERUVA · From the summit, we serve.</div>
+<div class="code">404</div>
+<h1>Bạn đã lạc đường trên núi.</h1>
+<p>Trang này không tồn tại hoặc đã được dời đi. Đỉnh núi vẫn ở đó — quay lại con đường chính nhé.</p>
+<a class="btn" href="/">Về trang chủ →</a>
+<div class="mountain">
+  <svg viewBox="0 0 1440 400" preserveAspectRatio="none" fill="none" style="width:100%;height:100%">
+    <path d="M0 400 L200 200 L360 300 L500 100 L640 280 L720 60 L800 280 L940 100 L1080 300 L1240 180 L1440 400 Z" fill="rgba(182,78,58,.05)"/>
+    <path d="M0 400 L200 200 L360 300 L500 100 L640 280 L720 60 L800 280 L940 100 L1080 300 L1240 180 L1440 400" stroke="rgba(182,78,58,.18)" stroke-width="1"/>
+  </svg>
+</div>
+</body>
+</html>

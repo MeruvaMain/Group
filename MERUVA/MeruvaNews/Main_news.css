@@ -1,0 +1,256 @@
+/* ════════════════════════════════════════════════
+   MERUVA NEWS · Báo — timeline theo ngày
+   (Main_news.css)
+════════════════════════════════════════════════ */
+
+/* Brand accent colors — lấy từ ecosystem ở index */
+:root{
+  --c-service:#3B7BC4;
+  --c-3d:#7EB8C8;
+  --c-bakery:#C8A040;
+  --c-coffee:#B64E3A;
+  --c-stay:#2D7D6E;
+  --c-card:#B0B0C0;
+}
+
+/* Atmosphere + watermark logo chìm (như meruva_constitution) */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -8%,rgba(182,78,58,.10),transparent 60%),
+    radial-gradient(ellipse 60% 45% at 50% 108%,rgba(45,125,110,.05),transparent 60%)}
+/* Hinh mo chim (watermark). screen sinh ra cho nen toi; tren nen giay no
+   day moi thu ve trang nen o opacity .045 la tang hinh hoan toan.
+   multiply thi nguoc lai: chi giu phan dam, dung y do ban dau. */
+.wm{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:min(74vw,680px);opacity:.05;z-index:0;pointer-events:none;
+  filter:saturate(.6);mix-blend-mode:multiply}
+
+#read-progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:300;
+  background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));transition:width .12s ease-out}
+
+.jr-wrap{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:0 1.8rem}
+
+/* ── HEADER ──────────────────────────────── */
+.jr-head{padding:10rem 0 3.2rem;text-align:center;border-bottom:1px solid var(--line)}
+.jr-kicker{display:inline-flex;align-items:center;gap:.9rem;margin-bottom:1.8rem;
+  font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.jr-kicker::before,.jr-kicker::after{content:"";width:30px;height:1px;background:var(--gold);opacity:.6}
+.jr-title{font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.8rem,6vw,4.6rem);line-height:1.05;letter-spacing:-.015em;color:var(--cream)}
+.jr-title em{font-style:italic;font-weight:500;color:var(--gold)}
+.jr-intro{margin:1.8rem auto 0;max-width:620px;font-size:1.1rem;line-height:1.75;
+  color:var(--silver);font-weight:300}
+
+/* ── TIMELINE ────────────────────────────── */
+.jr-timeline{padding:3.5rem 0 6rem}
+
+.date-group{margin-bottom:3.4rem}
+.date-bar{display:flex;align-items:center;gap:1.4rem;margin-bottom:.4rem}
+.date-bar .d{font-family:'Inter',sans-serif;font-size:.74rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--cream);font-weight:600;white-space:nowrap}
+.date-bar .d small{color:var(--silver-soft);font-weight:400;margin-left:.6rem;letter-spacing:.12em}
+.date-bar .line{flex:1;height:1px;background:linear-gradient(90deg,var(--gold),rgba(182,78,58,.12))}
+
+/* Entry row — hiển thị ngang: brand | nội dung */
+.entry{display:grid;grid-template-columns:230px 1fr auto;align-items:center;gap:1.8rem;
+  padding:1.6rem .6rem;text-decoration:none;position:relative;cursor:pointer;
+  border-bottom:1px solid var(--line-soft);transition:background .35s,padding-left .4s}
+.entry:focus-visible{outline:2px solid var(--ac,var(--gold));outline-offset:3px;border-radius:4px}
+.entry::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--ac,var(--gold));transform:scaleY(0);transform-origin:center;transition:transform .4s}
+.entry:hover{background:rgba(35,34,31,.015);padding-left:1.4rem}
+.entry:hover::before{transform:scaleY(1)}
+
+.entry .brand{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.55rem;
+  line-height:1.1;color:var(--ac,var(--gold));letter-spacing:.005em}
+.entry .brand small{display:block;font-family:'Inter',sans-serif;font-weight:500;
+  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--silver-soft);margin-top:.35rem}
+
+.entry .body .et{font-family:'Inter',sans-serif;font-weight:600;font-size:1.04rem;
+  color:var(--cream);line-height:1.4;transition:color .3s}
+.entry:hover .body .et{color:#fff}
+.entry .body .ex{font-size:.88rem;color:var(--silver-soft);line-height:1.6;margin-top:.35rem;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.entry .go{font-size:1.2rem;color:var(--silver-soft);transition:transform .4s,color .4s}
+.entry:hover .go{color:var(--ac,var(--gold));transform:translateX(5px)}
+
+/* Ảnh đại diện bài trên timeline */
+.entry.has-thumb{grid-template-columns:230px 1fr 96px auto}
+.entry .thumb{width:96px;height:64px;object-fit:cover;border-radius:6px;
+  opacity:.88;transition:opacity .35s,transform .35s}
+.entry:hover .thumb{opacity:1;transform:scale(1.03)}
+
+/* tag pill nhỏ */
+.entry .tag{display:inline-block;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ac,var(--gold));border:1px solid currentColor;border-radius:2px;
+  padding:.15rem .5rem;margin-bottom:.6rem;opacity:.8}
+
+/* footer mini */
+.jr-foot{position:relative;z-index:2;padding:3rem;text-align:center;border-top:1px solid var(--line)}
+.jr-foot p{font-size:.8rem;color:var(--silver-soft)}
+.jr-foot a{color:var(--gold);text-decoration:none}
+
+@media(max-width:680px){
+  .jr-head{padding:8rem 0 2.6rem}
+  .entry{grid-template-columns:1fr auto;gap:.5rem 1rem;align-items:start}
+  .entry .brand{grid-column:1;font-size:1.3rem}
+  .entry .body{grid-column:1 / -1;margin-top:.3rem}
+  .entry .go{grid-row:1;grid-column:2;align-self:center}
+  .entry.has-thumb{grid-template-columns:1fr auto}
+  .entry .thumb{grid-column:1 / -1;width:100%;height:150px;margin-top:.5rem}
+}
+
+/* ════════════════════════════════════════════════
+   POPUP BÀI ĐĂNG — KÍNH LỎNG MỜ (liquid glass · iOS)
+════════════════════════════════════════════════ */
+body.art-lock{overflow:hidden}
+
+/* Kho bài viết tĩnh: ẩn khỏi giao diện nhưng VẪN nằm trong HTML
+   để Google đọc & index (nguồn cho timeline + popup). */
+.post-store{display:none}
+
+/* Lớp phủ: chỉ làm MỜ trang phía sau — không che/ẩn hoàn toàn */
+.art-overlay{
+  position:fixed;inset:0;z-index:9000;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(1rem,4vw,3rem);
+  background:rgba(35,34,31,.30);
+  -webkit-backdrop-filter:blur(15px) saturate(118%);
+  backdrop-filter:blur(15px) saturate(118%);
+  opacity:0;visibility:hidden;
+  transition:opacity .50s cubic-bezier(.22,1,.36,1),visibility .50s;
+}
+.art-overlay.open{opacity:1;visibility:visible}
+
+/* Panel kính */
+.art-modal{
+  position:relative;
+  width:min(880px,100%);
+  max-height:88vh;
+  display:flex;flex-direction:column;
+  border-radius:26px;overflow:hidden;
+  border:1px solid rgba(35,34,31,.13);
+  background:
+    linear-gradient(155deg,rgba(252,251,248,.90),rgba(242,240,238,.86));
+  -webkit-backdrop-filter:blur(34px) saturate(180%);
+  backdrop-filter:blur(34px) saturate(180%);
+  box-shadow:
+    0 40px 90px -20px rgba(0,0,0,.7),
+    0 8px 30px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(35,34,31,.20),
+    inset 0 0 0 1px rgba(35,34,31,.03);
+  transform:translateY(26px) scale(.965);
+  opacity:.4;
+  transition:transform .6s cubic-bezier(.22,1,.36,1),opacity .6s;
+}
+.art-overlay.open .art-modal{transform:none;opacity:1}
+/* Lop tao chieu sau cho hop bai viet.
+   Ban goc la vet sang (specular) mau trang + screen, hop cho nen toi.
+   Lan doi bang mau da lat gradient sang mau muc, ma screen voi mau toi
+   thi khong lam gi ca — hieu ung chet han. Doi sang multiply de hai
+   gradient toi tro thanh bong do nhe o goc, dung vai tro tren nen sang. */
+.art-modal::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(120% 80% at 12% -10%,rgba(35,34,31,.14),transparent 46%),
+    radial-gradient(90% 60% at 100% 0%,rgba(35,34,31,.06),transparent 50%);
+  mix-blend-mode:multiply;
+}
+
+/* Thanh nhấn màu trên đỉnh */
+.art-accent{position:absolute;top:0;left:0;right:0;height:4px;z-index:3;
+  background:var(--gold);box-shadow:0 0 18px rgba(182,78,58,.5)}
+
+/* Nút đóng — viên kính tròn */
+.art-close{
+  position:absolute;top:1.1rem;right:1.1rem;z-index:5;
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.05rem;color:var(--cream);cursor:pointer;
+  border:1px solid rgba(35,34,31,.16);
+  background:rgba(35,34,31,.08);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  transition:background .3s,transform .3s,color .3s}
+/* Nen thuong da la mang muc nhat tren nen giay, nen hover chi can dam
+   them. Truoc day hover doi chu sang #fff — do la mau cua giao dien toi
+   cu, tren nen xam nhat thanh tang hinh. Giu chu mau muc. */
+.art-close:hover{background:rgba(35,34,31,.18);color:var(--ink);transform:rotate(90deg)}
+
+/* Vùng cuộn nội dung */
+.art-scroll{
+  position:relative;z-index:2;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:clamp(2rem,4vw,3.4rem) clamp(1.6rem,4vw,3.4rem) clamp(1.8rem,4vw,2.6rem);
+}
+.art-scroll::-webkit-scrollbar{width:8px}
+.art-scroll::-webkit-scrollbar-thumb{background:rgba(35,34,31,.14);border-radius:4px}
+.art-scroll::-webkit-scrollbar-track{background:transparent}
+
+/* Header bài */
+.art-head{border-bottom:1px solid var(--line-soft);padding-bottom:1.4rem;margin-bottom:1.8rem}
+.art-kicker{font-family:'Inter',sans-serif;font-size:.66rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--silver-soft);margin-bottom:1rem}
+.art-title{font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:clamp(1.9rem,4.2vw,3rem);line-height:1.12;letter-spacing:-.01em;color:var(--cream)}
+
+/* Nội dung bài */
+.art-content{font-family:'Inter',sans-serif;font-weight:300;
+  font-size:1.04rem;line-height:1.85;color:var(--silver)}
+.art-content p{margin:0 0 1.1rem}
+.art-content img{max-width:100%;height:auto;border-radius:8px;margin:0 0 1.2rem;display:block}
+.art-content .post-cover{width:100%;object-fit:cover;max-height:340px}
+.art-content strong{color:var(--cream);font-weight:600}
+.art-content em{color:var(--gold);font-style:italic}
+.art-content h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
+  font-size:1.5rem;color:var(--cream);margin:2rem 0 .9rem;letter-spacing:.01em}
+.art-content ul{margin:0 0 1.2rem;padding-left:1.3rem;list-style:none}
+.art-content li{position:relative;margin-bottom:.6rem;padding-left:.4rem}
+.art-content li::before{content:"▲";position:absolute;left:-1.1rem;top:.15rem;
+  font-size:.5rem;color:var(--gold);opacity:.7}
+.art-content .promo-note{background:rgba(182,78,58,.08);border:1px solid var(--line);
+  border-radius:14px;padding:1.1rem 1.3rem;color:var(--cream);font-weight:400}
+
+/* Chân bài — link nhánh + chia sẻ */
+.art-foot{display:flex;flex-wrap:wrap;gap:.9rem 1.2rem;align-items:center;
+  margin-top:2.2rem;padding-top:1.6rem;border-top:1px solid var(--line-soft)}
+.art-brandlink{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;
+  font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ac,var(--gold));
+  border:1px solid var(--ac,var(--gold));border-radius:40px;padding:.7rem 1.4rem;
+  transition:background .3s,color .3s}
+.art-brandlink span{transition:transform .3s}
+.art-brandlink:hover{background:var(--ac,var(--gold));color:var(--black)}
+.art-brandlink:hover span{transform:translateX(4px)}
+.art-share{margin-left:auto;background:transparent;border:none;cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.12em;
+  color:var(--silver-soft);text-transform:uppercase;transition:color .3s}
+.art-share:hover{color:var(--cream)}
+
+/* ── Tablet ── */
+@media(max-width:1024px){
+  .art-modal{width:min(720px,100%);max-height:90vh}
+}
+
+/* ── Điện thoại: dạng bottom-sheet trượt lên ── */
+@media(max-width:680px){
+  .art-overlay{padding:0;align-items:flex-end}
+  .art-modal{
+    width:100%;max-height:92vh;
+    border-radius:24px 24px 0 0;
+    border-bottom:none;
+    transform:translateY(100%);opacity:1;
+  }
+  .art-overlay.open .art-modal{transform:translateY(0)}
+  .art-close{top:.8rem;right:.8rem;width:38px;height:38px}
+  /* tay cầm kéo (grabber) gợi ý vuốt */
+  .art-modal::after{content:"";position:absolute;top:.6rem;left:50%;transform:translateX(-50%);
+    width:40px;height:4px;border-radius:3px;background:rgba(35,34,31,.25);z-index:6}
+  .art-scroll{padding-top:2.4rem}
+}
+
+/* Tôn trọng người tắt hiệu ứng chuyển động */
+@media(prefers-reduced-motion:reduce){
+  .art-overlay,.art-modal{transition:opacity .2s}
+  .art-modal{transform:none}
+}

@@ -1,0 +1,56 @@
+/* ═══════════════════════════════════════════════════════════════
+   VEMIL — bảng màu riêng
+
+   Vemil là thương hiệu của đối tác, không phải một nhánh MERUVA.
+   Vì vậy trang này KHÔNG dùng meruva-legacy.css: bảng ấn son của
+   MERUVA sẽ khiến Vemil trông như một trang MERUVA — đúng thứ cần
+   tránh. Ở đây chỉ mượn lại kỷ luật bố cục và độ sáng của hệ v2,
+   còn màu nhấn là xanh lá của chính Vemil.
+
+   Nạp SAU meruva-shared.css để ánh xạ đè tên biến cũ.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  /* nền giấy ngả xanh rất nhạt — gợi thực vật, khác hẳn giấy MERUVA */
+  --v-paper:#F1F3EE; --v-paper-2:#E4E9DF; --v-white:#FBFCFA;
+  --v-ink:#14180F; --v-ink-soft:#4E5648; --v-ink-faint:#6A7263;
+  --v-green:#3F6B3F; --v-green-hi:#5C8F5C; --v-green-soft:rgba(63,107,63,.10);
+  --v-line:#D3DBCE; --v-line-2:#BFC9B9;
+  --disp:'Archivo',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+
+/* ── ánh xạ tên biến cũ sang bảng của Vemil ── */
+:root{
+  --black:var(--v-paper); --black-2:var(--v-white); --black-3:var(--v-paper-2);
+  --cream:var(--v-ink);
+  --gold:var(--v-green); --gold-light:var(--v-green-hi); --gold-dark:#2E5230;
+  --gold-glow:var(--v-green-soft); --gold-glow2:var(--v-green-soft);
+  --silver:var(--v-ink-soft); --silver-soft:var(--v-ink-faint);
+  --line:var(--v-line); --line-soft:var(--v-line);
+}
+
+body{font-family:var(--disp);background:var(--v-paper);color:var(--v-ink)}
+
+/* ── vá các thành phần shared.css ghi màu tối trực tiếp ── */
+nav{background:rgba(241,243,238,.9)!important;
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+nav.scrolled{border-bottom-color:var(--v-line)}
+#page-loader,#lang-overlay,#sub-loader .sl-bg{background:var(--v-paper)}
+.nav-burger span{background:var(--v-ink)}
+#cursor{background:var(--v-green)}
+#cursor-ring{border-color:rgba(63,107,63,.5)}
+/* wordmark cũ tô gradient + text-fill trong suốt → tàng hình trên nền sáng */
+.logo-text,.vpl-brand{background:none!important;
+  -webkit-text-fill-color:var(--v-ink)!important;color:var(--v-ink)!important}
+#floating-back a{background:rgba(241,243,238,.9);border-color:var(--v-line);color:var(--v-ink-soft)}
+#floating-back a:hover{background:var(--v-white);border-color:var(--v-ink);color:var(--v-ink)}
+@media(max-width:768px){
+  .nav-links.nav-open{background:rgba(241,243,238,.97)}
+  .nav-links.nav-open li a{color:var(--v-ink)!important}
+}
+
+/* ── dòng ghi nguồn: nhỏ, mờ, chỉ để không mồ côi điều hướng ── */
+.v-origin{display:inline-flex;align-items:center;gap:.45rem;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;
+  color:var(--v-ink-faint);text-decoration:none;transition:color .22s}
+.v-origin:hover{color:var(--v-ink)}

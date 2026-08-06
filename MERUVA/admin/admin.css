@@ -1,0 +1,266 @@
+/* ═══════════════════════════════════════════════════════════
+   MERUVA · Trung tâm điều hành — admin.css (V1)
+   Palette theo MERUVA_BrandGuide: Summit Gold / Midnight Black / Cream
+   ═══════════════════════════════════════════════════════════ */
+:root{
+  --black:#0A0A0A; --black-2:#111111; --black-3:#1a1a1a;
+  --gold:#D4A437; --gold-light:#F0C860; --gold-dark:#A07820;
+  --gold-glow:rgba(212,164,55,.12);
+  --cream:#F5F0E6; --silver:#C0C0C8; --silver-soft:#888890;
+  --blue:#3B7BC4;
+  --line:rgba(212,164,55,.18); --line-soft:rgba(192,192,200,.10);
+  --green:#5BBF84; --amber:#E0B33A; --red:#D8675F;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--black);color:var(--cream);font-family:'Inter',sans-serif;min-height:100vh;line-height:1.6}
+em{font-style:italic;color:var(--gold)}
+.serif{font-family:'Cormorant Garamond',serif}
+button{font-family:'Inter',sans-serif}
+
+/* ── login ── */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 1.2rem}
+.login-card{width:100%;max-width:380px;background:var(--black-2);border:1px solid var(--line);
+  padding:2.6rem 2.2rem;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%)}
+.login-logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.5rem;letter-spacing:.15em;color:var(--cream);text-align:center}
+.login-logo span{color:var(--gold)}
+.login-sub{text-align:center;font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin:.4rem 0 2rem}
+.login-err{min-height:1.2rem;font-size:.72rem;color:var(--red);text-align:center;margin:.6rem 0 .2rem}
+.login-hint{margin-top:1.2rem;font-size:.68rem;color:var(--silver-soft);text-align:center;line-height:1.7}
+
+/* ── THANH TRÊN: nhận diện + số liệu + nhảy nhanh, dính đỉnh màn hình ── */
+.topbar{position:sticky;top:0;z-index:50;background:var(--black-2);border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:.9rem;padding:.55rem .8rem;flex-wrap:wrap}
+.tb-logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.2rem;letter-spacing:.12em;
+  color:var(--cream);white-space:nowrap}
+.tb-logo span{color:var(--gold)}
+
+/* Số liệu toàn hệ thống gom hết lên đây — không còn dải KPI riêng cho
+   từng mục, nên nhìn một dòng là nắm được tình hình mọi mảng.          */
+.kpis{display:flex;gap:.4rem;flex:1;flex-wrap:wrap;min-width:0}
+.kpi{background:var(--black);border:1px solid var(--line-soft);border-left:2px solid var(--gold);
+  padding:.28rem .55rem;min-width:68px}
+.kpi .n{font-family:'Cormorant Garamond',serif;font-size:1.2rem;line-height:1;color:var(--cream);
+  font-variant-numeric:tabular-nums}
+.kpi .n.g{color:var(--green)} .kpi .n.a{color:var(--amber)} .kpi .n.r{color:var(--red)} .kpi .n.gold{color:var(--gold)}
+.kpi .l{font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--silver-soft);
+  margin-top:.15rem;white-space:nowrap}
+
+.tb-nav{display:flex;gap:.2rem;flex-wrap:wrap}
+.tb-nav button{display:flex;align-items:center;gap:.35rem;background:transparent;border:1px solid transparent;
+  color:var(--silver-soft);font-size:.7rem;font-weight:500;padding:.35rem .6rem;cursor:pointer;transition:.2s;
+  white-space:nowrap;font-family:'Inter',sans-serif}
+.tb-nav button i{font-style:normal;opacity:.9}
+.tb-nav button:hover{color:var(--gold);border-color:var(--line)}
+.tb-nav button .n-badge{font-size:.55rem;font-weight:700;background:var(--red);color:#fff;
+  border-radius:9px;padding:.05rem .38rem;min-width:1.05rem;text-align:center}
+.tb-nav button .n-badge:empty{display:none}
+
+.tb-foot{display:flex;align-items:center;gap:.55rem;font-size:.6rem;color:var(--silver-soft);
+  letter-spacing:.06em;white-space:nowrap}
+
+/* ── BẢNG: masonry xếp bằng JS ──
+   Đã thử CSS grid và CSS columns, cả hai đều chừa lỗ hổng: grid kéo mỗi
+   hàng theo thẻ cao nhất, còn columns cân bằng sai khi thẻ không cắt được
+   (đo thực tế lệch 1279px giữa cột thấp nhất và cao nhất). Nên layoutBoard()
+   trong admin.js tự thả từng thẻ vào cột đang THẤP NHẤT — xếp khít thật sự. */
+.board{padding:.7rem}
+.board > .panel.wide{margin-bottom:.7rem}
+.cols{display:flex;gap:.7rem;align-items:flex-start}
+.col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:.7rem}
+
+/* ── panel ── */
+.panel{background:var(--black-2);border:1px solid var(--line);
+  clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.5rem;
+  padding:.7rem 1rem;border-bottom:1px solid var(--line)}
+.panel-head .ttl{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--cream);line-height:1.25}
+.panel-head .badge{font-size:.64rem;color:var(--silver-soft);letter-spacing:.04em}
+.panel-body{padding:.9rem 1rem}
+.hint{font-size:.68rem;color:var(--silver-soft);line-height:1.6;margin-top:.8rem;border-top:1px dashed var(--line-soft);padding-top:.7rem}
+.hint code{color:var(--gold-light);background:var(--black-3);padding:.08rem .4rem;border-radius:3px;font-size:.68rem}
+
+/* ── tiến độ hệ thống ── */
+.prog-row{display:grid;grid-template-columns:minmax(0,1fr) 62px 38px;gap:.7rem;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--line-soft)}
+.prog-row:last-child{border-bottom:none}
+.prog-row .pn{font-size:.8rem;color:var(--cream)}
+.prog-row .pnote{font-size:.64rem;color:var(--silver-soft);margin-top:.1rem}
+.prog-bar{height:5px;background:var(--black);border:1px solid var(--line-soft);position:relative;overflow:hidden}
+.prog-bar i{position:absolute;inset:0;right:auto;background:linear-gradient(90deg,var(--gold-dark),var(--gold));transition:width .5s}
+.prog-bar.zero i{background:var(--black-3)}
+.prog-pct{font-size:.72rem;color:var(--gold);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+
+/* Hai khối ngôn ngữ phụ nằm cạnh nhau trong dải soạn bài rộng suốt trang */
+.lang-pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:.7rem;margin-top:.9rem}
+.lang-pair details.lang-extra{margin-top:0}
+
+/* ── activity log ── */
+.act-list{list-style:none}
+.act-list li{display:flex;gap:.8rem;padding:.5rem 0;border-bottom:1px solid var(--line-soft);font-size:.78rem}
+.act-list li:last-child{border-bottom:none}
+.act-list .at{color:var(--silver-soft);font-size:.66rem;white-space:nowrap;padding-top:.15rem;min-width:82px;font-variant-numeric:tabular-nums}
+.act-list .ax{color:var(--silver);flex:1}
+.empty{color:var(--silver-soft);font-size:.78rem;font-style:italic;padding:.4rem 0}
+
+/* ── STAY: lưới phòng ── */
+.floor-row{margin-bottom:1.1rem}
+.floor-label{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:.55rem;display:flex;align-items:center;gap:.6rem}
+.floor-label::before{content:"";width:12px;height:1px;background:var(--gold)}
+.room-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem}
+.room-mod{background:var(--black);border:1px solid var(--line-soft);padding:.75rem .85rem;transition:.25s}
+.room-mod.free{border-color:rgba(91,191,132,.4);box-shadow:inset 0 0 0 1px rgba(91,191,132,.06)}
+.room-mod.occupied{opacity:.55}
+.room-mod .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem}
+.room-mod .rid{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--cream);line-height:1}
+.room-mod .area{font-size:.62rem;color:var(--silver-soft);border:1px solid var(--line);padding:.12rem .4rem;letter-spacing:.04em}
+.room-mod .room-price{margin-bottom:.6rem}
+.room-mod .room-price input{width:100%;background:var(--black-2);border:1px solid var(--line-soft);color:var(--gold-light);
+  padding:.35rem .6rem;font-size:.78rem;outline:none;font-variant-numeric:tabular-nums;font-family:'Inter',sans-serif}
+.room-mod .room-price input:focus{border-color:var(--gold)}
+.room-mod .bot{display:flex;justify-content:space-between;align-items:center}
+.room-mod .stxt{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.room-mod .stxt.free{color:var(--green)} .room-mod .stxt.full{color:var(--red)}
+
+/* iPhone switch */
+.switch{position:relative;display:inline-block;width:46px;height:26px;flex-shrink:0}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;cursor:pointer;inset:0;background:#2a2a2a;border:1px solid var(--line);transition:.3s;border-radius:30px}
+.slider:before{content:"";position:absolute;height:18px;width:18px;left:3px;top:3px;background:#777;transition:.3s;border-radius:50%}
+.switch input:checked + .slider{background:var(--gold);border-color:var(--gold-light)}
+.switch input:checked + .slider:before{transform:translateX(20px);background:var(--black)}
+.switch.sm{width:38px;height:22px}
+.switch.sm .slider:before{height:14px;width:14px}
+.switch.sm input:checked + .slider:before{transform:translateX(16px)}
+
+/* ── form chung ── */
+.frm{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.8rem}
+.frm .full{grid-column:1/-1}
+.field label{display:block;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.field input,.field select,.field textarea{width:100%;background:var(--black);border:1px solid var(--line);color:var(--cream);
+  padding:.68rem .9rem;font-family:'Inter',sans-serif;font-size:.86rem;outline:none;transition:.25s}
+.field textarea{resize:vertical;min-height:110px;line-height:1.6}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
+.field select{appearance:none;cursor:pointer}
+.btn{padding:.85rem 1.6rem;background:var(--gold);color:var(--black);border:1px solid var(--gold);
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:.3s;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 100%,0 100%)}
+.btn:hover{background:transparent;color:var(--gold)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:var(--gold);color:var(--black)}
+.btn-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem}
+details.lang-extra{border:1px dashed var(--line-soft);padding:.8rem 1rem;margin-top:.9rem}
+details.lang-extra summary{cursor:pointer;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--silver-soft)}
+details.lang-extra[open] summary{color:var(--gold);margin-bottom:.9rem}
+details.lang-extra .frm{margin-top:.4rem}
+
+/* ── bảng lịch hẹn ── */
+.appt{display:flex;align-items:flex-start;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
+.appt:last-child{border-bottom:none}
+.appt .when{min-width:96px;text-align:center;border:1px solid var(--line);padding:.4rem .5rem;flex-shrink:0}
+.appt .when .d{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--cream);line-height:1.2}
+.appt .when .t{font-size:.66rem;color:var(--gold);letter-spacing:.08em}
+.appt .who{flex:1;min-width:200px}
+.appt .who .nm{font-size:.9rem;font-weight:600;color:var(--cream)}
+.appt .who .ph{font-size:.74rem;color:var(--gold-light);margin-top:.1rem}
+.appt .who .sv{font-size:.7rem;color:var(--silver-soft);margin-top:.15rem}
+.appt .who .nt{font-size:.72rem;color:var(--silver);margin-top:.3rem;font-style:italic}
+.appt .ops{display:flex;flex-direction:column;gap:.4rem;align-items:flex-end}
+.pill{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:.22rem .6rem;border:1px solid}
+.pill.pending{color:var(--amber);border-color:rgba(224,179,58,.5);background:rgba(224,179,58,.08)}
+.pill.confirmed{color:var(--green);border-color:rgba(91,191,132,.5);background:rgba(91,191,132,.08)}
+.pill.done{color:var(--silver-soft);border-color:var(--line-soft)}
+.pill.cancelled{color:var(--red);border-color:rgba(216,103,95,.45)}
+.mini-ops{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end}
+.mini{font-size:.62rem;letter-spacing:.08em;padding:.32rem .7rem;background:transparent;border:1px solid var(--line);
+  color:var(--silver);cursor:pointer;transition:.2s;text-transform:uppercase;font-weight:600}
+.mini:hover{border-color:var(--gold);color:var(--gold)}
+.mini.ok:hover{border-color:var(--green);color:var(--green)}
+.mini.no:hover{border-color:var(--red);color:var(--red)}
+
+/* ── calendar ── */
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+.cal-head .cm{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--cream)}
+.cal-nav{display:flex;gap:.4rem}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem;margin-top:.5rem}
+.cal-dow{text-align:center;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--silver-soft);padding:.3rem 0}
+.cal-day{aspect-ratio:1;border:1px solid var(--line-soft);display:flex;flex-direction:column;align-items:center;
+  justify-content:center;cursor:pointer;transition:.2s;background:var(--black);font-size:.9rem;gap:.1rem;user-select:none;position:relative}
+.cal-day.empty{border:none;background:transparent;cursor:default}
+.cal-day.free{border-color:rgba(91,191,132,.5);color:var(--cream)} .cal-day.free .tag{color:var(--green)}
+.cal-day.near{background:#1f1a0c;border-color:rgba(224,179,58,.55);color:var(--cream)} .cal-day.near .tag{color:var(--amber)}
+.cal-day.full{background:#1a0f0e;border-color:rgba(216,103,95,.45);color:var(--silver-soft)} .cal-day.full .tag{color:var(--red)}
+.cal-day .tag{font-size:.5rem;letter-spacing:.05em;text-transform:uppercase}
+.cal-day.today::after{content:"";position:absolute;bottom:5px;left:50%;transform:translateX(-50%);
+  width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px var(--gold)}
+.cal-legend{display:flex;gap:1.3rem;margin-top:1rem;font-size:.7rem;color:var(--silver-soft);flex-wrap:wrap;align-items:center}
+.cal-legend i{display:inline-block;width:11px;height:11px;margin-right:.4rem;vertical-align:middle}
+
+/* ── menu (bakery/coffee) ── */
+.menu-row{display:flex;align-items:center;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line-soft)}
+.menu-row:last-child{border-bottom:none}
+.menu-row.off .mi-name,.menu-row.off .mi-note{opacity:.4;text-decoration:line-through}
+.mi-main{flex:1;min-width:0}
+.mi-name{font-size:.9rem;font-weight:600;color:var(--cream)}
+.mi-note{font-size:.7rem;color:var(--silver-soft);margin-top:.1rem}
+.mi-price{width:110px;flex-shrink:0}
+.mi-price input{width:100%;background:var(--black);border:1px solid var(--line-soft);color:var(--gold-light);
+  padding:.4rem .6rem;font-size:.8rem;text-align:right;outline:none;font-variant-numeric:tabular-nums}
+.mi-price input:focus{border-color:var(--gold)}
+.mi-stt{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;width:66px;text-align:center;flex-shrink:0}
+.mi-stt.on{color:var(--green)} .mi-stt.off{color:var(--red)}
+.mi-del{background:transparent;border:none;color:var(--silver-soft);cursor:pointer;font-size:1rem;padding:.2rem .4rem;transition:.2s}
+.mi-del:hover{color:var(--red)}
+
+/* ── tin tức: nháp ── */
+.post-row{display:flex;align-items:center;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
+.post-row:last-child{border-bottom:none}
+.post-main{flex:1;min-width:220px}
+.post-title{font-size:.9rem;font-weight:600;color:var(--cream)}
+.post-meta{font-size:.68rem;color:var(--silver-soft);margin-top:.15rem;display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}
+.pub-dot{font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.15rem .5rem;
+  display:inline-flex;align-items:center;gap:.35rem}
+.pub-dot::before{content:"";width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.pub-dot.live{color:var(--green);border:1px solid rgba(91,191,132,.45)}
+.pub-dot.live::before{background:var(--green)}
+.pub-dot.draft{color:var(--silver-soft);border:1px solid var(--line-soft)}
+.pub-dot.draft::before{background:var(--silver-soft)}
+.acc{font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.15rem .5rem;border:1px solid var(--line);color:var(--gold)}
+.acc.coffee{color:var(--gold)} .acc.bakery{color:var(--cream)} .acc.stay{color:var(--green)}
+.acc.service{color:var(--blue)} .acc.promo{color:var(--red)} .acc.card,.acc.3d{color:var(--silver)}
+
+/* ── góc claude ── */
+.todo{list-style:none}
+.todo li{display:flex;gap:.8rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--line-soft);cursor:pointer}
+.todo li:last-child{border-bottom:none}
+.todo .cb{width:19px;height:19px;border:1px solid var(--line);flex-shrink:0;margin-top:.15rem;display:flex;
+  align-items:center;justify-content:center;color:var(--black);font-size:.72rem;font-weight:800;transition:.2s}
+.todo li.done .cb{background:var(--gold);border-color:var(--gold)}
+.todo .tx{font-size:.82rem;color:var(--cream)}
+.todo li.done .tx{color:var(--silver-soft);text-decoration:line-through}
+.todo .sub{font-size:.68rem;color:var(--silver-soft);margin-top:.15rem;line-height:1.5}
+.changelog{list-style:none}
+.changelog li{padding:.6rem 0;border-bottom:1px solid var(--line-soft);font-size:.78rem;color:var(--silver)}
+.changelog li:last-child{border-bottom:none}
+.changelog .cd{color:var(--gold);font-size:.66rem;letter-spacing:.1em;margin-right:.7rem;font-variant-numeric:tabular-nums}
+#claude-notes{min-height:140px}
+
+/* ── đánh giá khách hàng ── */
+.pill.approved{color:var(--green);border-color:rgba(91,191,132,.5);background:rgba(91,191,132,.08)}
+.pill.hidden{color:var(--silver-soft);border-color:var(--line-soft)}
+.rv-stars-admin{color:var(--gold);font-size:.72rem;letter-spacing:.15em;margin-top:.15rem}
+.rv-content{font-size:.78rem;color:var(--silver);margin-top:.35rem;line-height:1.6;font-style:italic}
+
+/* ── responsive ── (số cột do layoutBoard() quyết theo bề ngang) */
+@media(max-width:820px){
+  .cols{flex-direction:column}
+  .board{padding:.6rem}
+  /* Xuống một cột thanh trên phải xuống dòng, cao ~143px — dính lại thì
+     ăn mất 1/5 màn hình điện thoại, nên cho nó cuộn đi cùng nội dung. */
+  .topbar{position:static;gap:.6rem;padding:.5rem .6rem}
+  .tb-foot{display:none}
+  .kpis{order:3;width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:.15rem}
+  .kpi{flex-shrink:0}
+  .tb-nav{overflow-x:auto;flex-wrap:nowrap;max-width:100%}
+  .prog-row{grid-template-columns:1fr;gap:.3rem}
+  .prog-pct{text-align:left}
+}

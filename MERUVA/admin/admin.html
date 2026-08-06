@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>MERUVA · Trung tâm điều hành</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css?v=8">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<!-- ══ LOGIN ══ -->
+<div id="login-view" class="login-wrap">
+  <form class="login-card" onsubmit="doLogin(event)">
+    <div class="login-logo">MERUVA<span>.</span></div>
+    <div class="login-sub">Trung tâm điều hành</div>
+    <div class="field"><label>Email</label><input id="l-email" type="email" required autocomplete="username"></div>
+    <div class="field"><label>Mật khẩu</label><input id="l-pass" type="password" required autocomplete="current-password"></div>
+    <div class="login-err" id="l-err"></div>
+    <button class="btn" type="submit" style="width:100%">Đăng nhập</button>
+    <div class="login-hint">Tài khoản tạo tại Supabase → Authentication → Add user.</div>
+  </form>
+</div>
+
+<div id="app-view" style="display:none">
+
+  <!-- ══ THANH TRÊN: nhận diện + toàn bộ số liệu + nhảy nhanh ══ -->
+  <header class="topbar">
+    <div class="tb-logo">MERUVA<span>.</span></div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="n g" id="s-free">–</div><div class="l">Phòng trống</div></div>
+      <div class="kpi"><div class="n r" id="s-full">–</div><div class="l">Đã thuê</div></div>
+      <div class="kpi"><div class="n a" id="o-pend">–</div><div class="l">Hẹn chờ</div></div>
+      <div class="kpi"><div class="n a" id="rv-pending">–</div><div class="l">Đ.giá chờ</div></div>
+      <div class="kpi"><div class="n g" id="rv-approved">–</div><div class="l">Đ.giá hiện</div></div>
+      <div class="kpi"><div class="n gold" id="kitchen-on">–</div><div class="l">Món bán</div></div>
+      <div class="kpi"><div class="n r" id="kitchen-off">–</div><div class="l">Món ẩn</div></div>
+      <div class="kpi"><div class="n g" id="o-posts">–</div><div class="l">Bài đăng</div></div>
+      <div class="kpi"><div class="n" id="o-drafts">–</div><div class="l">Bài nháp</div></div>
+      <div class="kpi"><div class="n gold" id="todo-left">–</div><div class="l">Việc còn</div></div>
+    </div>
+
+    <nav class="tb-nav">
+      <button id="nav-news"><i>✎</i> Tin tức</button>
+      <button id="nav-service"><i>◷</i> Lịch hẹn <span class="n-badge" id="svc-badge"></span></button>
+      <button id="nav-stay"><i>⌂</i> Phòng</button>
+      <button id="nav-reviews"><i>★</i> Đánh giá <span class="n-badge" id="rv-badge"></span></button>
+      <button id="nav-kitchen"><i>☕</i> Menu</button>
+      <button id="nav-claude"><i>✦</i> Claude</button>
+    </nav>
+
+    <div class="tb-foot">
+      <span id="who-email">–</span>
+      <button class="mini" onclick="doLogout()">Đăng xuất</button>
+    </div>
+  </header>
+
+  <!-- ══ BẢNG: tất cả trên một trang, xếp dày theo cột ══ -->
+  <div class="board">
+
+    <!-- ── TIN TỨC · soạn bài (dải rộng suốt trang) ── -->
+    <section class="panel wide" id="sec-news">
+      <div class="panel-head">
+        <div class="ttl">Tin tức · <em>soạn bài</em></div>
+        <div class="badge">chỉ bắt buộc phần tiếng Việt · Đăng bài = lưu database + lên web ở lần build kế</div>
+      </div>
+      <div class="panel-body">
+        <div class="frm">
+          <div class="field full"><label>Tiêu đề (VI)</label><input id="n-title" placeholder="Tiêu đề bài viết" oninput="newsTitleInput()"></div>
+          <div class="field"><label>Mã bài (tự sinh)</label><input id="n-slug" placeholder="ten-bai-khong-dau"></div>
+          <div class="field"><label>Màu / mảng</label>
+            <select id="n-accent" onchange="newsAccentChange()">
+              <option value="coffee">coffee</option><option value="bakery">bakery</option>
+              <option value="stay">stay</option><option value="service">service</option>
+              <option value="3d">3d</option><option value="card">card</option><option value="promo">promo</option>
+            </select>
+          </div>
+          <div class="field"><label>Ngày đăng</label><input id="n-date" type="date"></div>
+          <div class="field"><label>Brand</label><input id="n-brand" value="MERUVA Coffee"></div>
+          <div class="field"><label>Brand sub</label><input id="n-brandsub" placeholder="Specialty · Đà Lạt"></div>
+          <div class="field"><label>Tag (tuỳ chọn)</label><input id="n-tag" placeholder="Mới / Ưu đãi..."></div>
+          <div class="field"><label>Bảng tin</label><input id="n-board" value="tin-tong-hop" placeholder="tin-tong-hop"></div>
+          <div class="field"><label>Link nút chân bài</label><input id="n-link" placeholder="../MeruvaKitchen/MeruvaKitchen.html"></div>
+          <div class="field"><label>Ảnh đại diện — URL</label><input id="n-image" placeholder="https://...supabase.co/.../anh.webp"></div>
+          <div class="field"><label>Mô tả ảnh (SEO)</label><input id="n-imagealt" placeholder="Mô tả ngắn nội dung ảnh"></div>
+          <div class="field full"><label>Tóm tắt (VI)</label><input id="n-excerpt" placeholder="1–2 câu hiện ở timeline"></div>
+          <div class="field full"><label>Nội dung (VI) — viết HTML: &lt;p&gt;, &lt;h3&gt;, &lt;ul&gt;</label>
+            <textarea id="n-body" placeholder="&lt;p&gt;Nội dung bài...&lt;/p&gt;"></textarea></div>
+        </div>
+
+        <div class="lang-pair">
+          <details class="lang-extra">
+            <summary>＋ Bản tiếng Anh (bỏ trống → dùng bản Việt)</summary>
+            <div class="frm">
+              <div class="field full"><label>Title (EN)</label><input id="ne-title"></div>
+              <div class="field full"><label>Excerpt (EN)</label><input id="ne-excerpt"></div>
+              <div class="field full"><label>Body (EN)</label><textarea id="ne-body"></textarea></div>
+            </div>
+          </details>
+          <details class="lang-extra">
+            <summary>＋ Bản tiếng Nhật (bỏ trống → dùng bản Việt)</summary>
+            <div class="frm">
+              <div class="field full"><label>タイトル (JA)</label><input id="nj-title"></div>
+              <div class="field full"><label>要約 (JA)</label><input id="nj-excerpt"></div>
+              <div class="field full"><label>本文 (JA)</label><textarea id="nj-body"></textarea></div>
+            </div>
+          </details>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn" id="post-pub-btn" onclick="savePost(true)">✓ Đăng bài</button>
+          <button class="btn ghost" id="post-save-btn" onclick="savePost(false)">Lưu nháp</button>
+          <button class="btn ghost" onclick="downloadPost(null)">⬇ Tải .post</button>
+          <button class="btn ghost" onclick="clearPostForm()">Làm mới form</button>
+        </div>
+        <div class="hint"><b>Đăng bài</b> đặt cờ <code>published</code> trong database. Bài lên web sau lần build kế tiếp — <code>node MeruvaNews/build.js</code> chạy tự động mỗi lần Netlify deploy. Bài nháp chỉ mình bạn thấy: RLS chỉ mở cho bài <code>published = true</code>.</div>
+      </div>
+    </section>
+
+    <!-- Các thẻ dưới đây được layoutBoard() phân vào cột lúc chạy -->
+    <div class="cols" id="cols">
+
+    <!-- ── LỊCH HẸN ── -->
+    <section class="panel" id="sec-service">
+      <div class="panel-head"><div class="ttl">Lịch hẹn <em>tư vấn</em></div><div class="badge" id="appt-count">–</div></div>
+      <div class="panel-body">
+        <div class="frm">
+          <div class="field"><label>Tên khách</label><input id="a-name" placeholder="Nguyễn Văn A"></div>
+          <div class="field"><label>SĐT / Zalo</label><input id="a-phone" placeholder="09xx xxx xxx"></div>
+          <div class="field"><label>Nhu cầu</label>
+            <select id="a-svc">
+              <option>Tư vấn Service</option><option>Xem phòng Stay</option>
+              <option>Thuê mặt bằng</option><option>Hợp tác B2B</option><option>Khác</option>
+            </select>
+          </div>
+          <div class="field"><label>Ngày</label><input id="a-date" type="date"></div>
+          <div class="field"><label>Giờ</label><input id="a-time" type="time" value="09:00"></div>
+          <div class="field full"><label>Ghi chú</label><input id="a-note" placeholder="Khách hỏi về..."></div>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="addAppt()">＋ Thêm lịch hẹn</button></div>
+        <div style="margin-top:1.1rem" id="appt-list"></div>
+      </div>
+    </section>
+
+    <!-- ── PHÒNG ── -->
+    <section class="panel" id="sec-stay">
+      <div class="panel-head"><div class="ttl">Sơ đồ <em>phòng</em></div><div class="badge">gạt công tắc = lưu ngay</div></div>
+      <div class="panel-body">
+        <div id="rooms"></div>
+      </div>
+    </section>
+
+    <!-- ── LỊCH MỞ KHUNG GIỜ ── -->
+    <section class="panel">
+      <div class="panel-head"><div class="ttl">Lịch <em>mở khung giờ</em></div><div class="badge">bấm ngày: Trống → Sắp kín → Kín</div></div>
+      <div class="panel-body">
+        <div class="cal-head">
+          <div class="cm" id="cal-month">–</div>
+          <div class="cal-nav">
+            <button class="mini" onclick="calShift(-1)">‹ Trước</button>
+            <button class="mini" onclick="calShift(1)">Sau ›</button>
+          </div>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div class="cal-legend">
+          <span><i style="background:rgba(91,191,132,.5)"></i>Trống</span>
+          <span><i style="background:rgba(224,179,58,.55)"></i>Sắp kín</span>
+          <span><i style="background:rgba(216,103,95,.45)"></i>Kín</span>
+        </div>
+        <div class="hint">Chưa trang nào trên web đọc lịch này — trang Service cũ đã gỡ khỏi site.</div>
+      </div>
+    </section>
+
+    <!-- ── ĐÁNH GIÁ ── -->
+    <section class="panel" id="sec-reviews">
+      <div class="panel-head"><div class="ttl">Đánh <em>giá</em></div><div class="badge" id="rv-count">–</div></div>
+      <div class="panel-body">
+        <div id="rv-list"></div>
+        <div class="hint">Chưa trang nào trên web hiển thị đánh giá — carousel cũ nằm ở trang Service đã gỡ.</div>
+      </div>
+    </section>
+
+    <!-- ── BÀI ĐÃ SOẠN ── -->
+    <section class="panel">
+      <div class="panel-head"><div class="ttl">Bài <em>đã soạn</em></div><div class="badge" id="post-count">–</div></div>
+      <div class="panel-body"><div id="post-list"></div></div>
+    </section>
+
+    <!-- ── MENU: CÀ PHÊ ── -->
+    <section class="panel" id="sec-kitchen">
+      <div class="panel-head"><div class="ttl">Kitchen · <em>cà phê</em></div><div class="badge" id="coffee-badge">–</div></div>
+      <div class="panel-body">
+        <div id="coffee-list"></div>
+        <div class="frm" style="margin-top:1.1rem">
+          <div class="field"><label>Tên món mới</label><input id="coffee-new-name" placeholder="Espresso..."></div>
+          <div class="field"><label>Mô tả ngắn</label><input id="coffee-new-note" placeholder="Cách pha · dung tích"></div>
+          <div class="field"><label>Giá</label><input id="coffee-new-price" placeholder="45.000₫"></div>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="menuAdd('coffee')">＋ Thêm món</button></div>
+      </div>
+    </section>
+
+    <!-- ── MENU: BÁNH ── -->
+    <section class="panel">
+      <div class="panel-head"><div class="ttl">Kitchen · <em>bánh</em></div><div class="badge" id="bakery-badge">–</div></div>
+      <div class="panel-body">
+        <div id="bakery-list"></div>
+        <div class="frm" style="margin-top:1.1rem">
+          <div class="field"><label>Tên món mới</label><input id="bakery-new-name" placeholder="Bánh..."></div>
+          <div class="field"><label>Mô tả ngắn</label><input id="bakery-new-note" placeholder="Nguyên liệu · khối lượng"></div>
+          <div class="field"><label>Giá</label><input id="bakery-new-price" placeholder="45.000₫"></div>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="menuAdd('bakery')">＋ Thêm món</button></div>
+        <div class="hint">Hai nhóm vẫn lưu riêng trong database (cột <code>brand</code>) — tách lại lúc nào cũng được.</div>
+      </div>
+    </section>
+
+    <!-- ── HOẠT ĐỘNG ── -->
+    <section class="panel">
+      <div class="panel-head"><div class="ttl">Hoạt động <em>gần đây</em></div></div>
+      <div class="panel-body"><ul class="act-list" id="o-act"></ul></div>
+    </section>
+
+    <!-- ── THÊM ĐÁNH GIÁ TAY ── -->
+    <section class="panel">
+      <div class="panel-head"><div class="ttl">Thêm đánh giá <em>thủ công</em></div><div class="badge">khách gửi qua Zalo</div></div>
+      <div class="panel-body">
+        <div class="frm">
+          <div class="field"><label>Tên khách</label><input id="rv-name" placeholder="Nguyễn Văn A"></div>
+          <div class="field"><label>Giới tính</label>
+            <select id="rv-gender"><option value="male">Nam</option><option value="female">Nữ</option></select>
+          </div>
+          <div class="field"><label>Nghề nghiệp</label><input id="rv-role" placeholder="Founder · Studio"></div>
+          <div class="field"><label>Số sao</label>
+            <select id="rv-rating"><option value="5">★★★★★</option><option value="4">★★★★</option><option value="3">★★★</option><option value="2">★★</option><option value="1">★</option></select>
+          </div>
+          <div class="field full"><label>Nội dung</label><input id="rv-content" placeholder="Cảm nhận của khách..."></div>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="reviewAdd()">＋ Thêm & duyệt sẵn</button></div>
+      </div>
+    </section>
+
+    <!-- ── VIỆC CHÍNH CHỦ ── -->
+    <section class="panel" id="sec-claude">
+      <div class="panel-head"><div class="ttl">Việc cần <em>chính chủ</em></div><div class="badge">bấm để đánh dấu xong</div></div>
+      <div class="panel-body">
+        <ul class="todo" id="todo-list"></ul>
+      </div>
+    </section>
+
+    <!-- ── TIẾN ĐỘ ── -->
+    <section class="panel">
+      <div class="panel-head"><div class="ttl">Tiến độ <em>hệ thống</em></div></div>
+      <div class="panel-body" id="o-prog"></div>
+    </section>
+
+    <!-- ── NHẬT KÝ BUILD ── -->
+    <section class="panel">
+      <div class="panel-head"><div class="ttl">Nhật ký <em>build</em></div></div>
+      <div class="panel-body"><ul class="changelog" id="changelog"></ul></div>
+    </section>
+
+    <!-- ── SỔ TAY ── -->
+    <section class="panel">
+      <div class="panel-head"><div class="ttl">Sổ tay <em>của bạn</em></div><div class="badge" id="notes-saved"></div></div>
+      <div class="panel-body">
+        <div class="field"><textarea id="claude-notes" placeholder="Ghi yêu cầu, ý tưởng, điều muốn sửa..."></textarea></div>
+        <div class="btn-row"><button class="btn ghost" onclick="saveNotes()">Lưu ghi chú</button></div>
+      </div>
+    </section>
+
+    </div><!-- /.cols -->
+  </div>
+</div>
+
+<script src="admin.js?v=8"></script>
+</body>
+</html>

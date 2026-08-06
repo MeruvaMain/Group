@@ -1,0 +1,24 @@
+{
+  "name": "MERUVA — From the summit, we serve.",
+  "short_name": "MERUVA",
+  "description": "Hệ sinh thái phục vụ con người — tư vấn hệ thống cá nhân, thiết kế & in 3D, coffee, bakery, studio, thẻ thành viên.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F2F0EA",
+  "theme_color": "#F2F0EA",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

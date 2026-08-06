@@ -1,0 +1,183 @@
+/* ═══════════════════════════════════════════════════════════════
+   MERUVA Kitchen — nội dung 3 ngôn ngữ
+   Gộp từ MERUVA Coffee + MERUVA Bakery (giữ nguyên bản dịch cũ
+   trong meruva_lang.js, không dịch lại).
+   ═══════════════════════════════════════════════════════════════ */
+window.MERUVA_T = {
+
+vi: {
+  page_title: 'MERUVA Kitchen — Cà phê đặc sản & bánh artisan · TP.HCM',
+  meta_desc: 'MERUVA Kitchen — hạt Đà Lạt rang chậm từng mẻ nhỏ và bánh artisan nướng từ 7 giờ sáng. Bơ Pháp, men tự nhiên, không chất bảo quản.',
+  nav_coffee: 'Cà phê', nav_bakery: 'Bánh', nav_craft: 'Cách làm', nav_order: 'Đặt hàng',
+  back: 'Trang chủ',
+  hero_eyebrow: 'Cà phê đặc sản &amp; bánh artisan · TP.HCM',
+  hero_t1: 'Nướng lúc 7 giờ.', hero_t2: 'Rang từng mẻ nhỏ.',
+  hero_desc: 'Hạt Đà Lạt tuyển tay, rang chậm theo mẻ. Bánh nướng mỗi sáng bằng bơ Pháp và men tự nhiên. Không hâm nóng, không chất bảo quản — hết là hết.',
+  hero_cta1: 'Đặt hàng', hero_cta2: 'Xem menu',
+  m1_v: '7:00', m1_k: 'Mẻ bánh đầu tiên mỗi sáng',
+  m2_v: '45.000₫', m2_k: 'Bắt đầu từ',
+  m3_v: '12 món', m3_k: 'Cà phê &amp; bánh trong menu',
+  m4_v: '0', m4_k: 'Chất bảo quản · phụ gia',
+
+  sec_coffee_lbl: 'Menu · 01', sec_coffee_h: 'Cà phê đặc sản.',
+  sec_coffee_sub: 'Hạt Đà Lạt được tuyển tay. Rang chậm theo từng mẻ nhỏ. Pha theo kỹ thuật — không phải công thức.',
+  sec_bakery_lbl: 'Menu · 02', sec_bakery_h: 'Bánh artisan.',
+  sec_bakery_sub: 'Không hâm nóng. Không nhượng bộ chất lượng. Mỗi chiếc bánh là một cam kết — bơ Pháp, bột nguyên cám, men tự nhiên.',
+
+  sec_craft_lbl: 'Cách làm', sec_craft_h: 'Ba thứ không thoả hiệp.',
+  c1_k: 'Nguyên liệu', c1_h: 'Hạt Đà Lạt · bơ Pháp',
+  c1_d: 'Hạt tuyển tay từ Đà Lạt, rang theo mẻ nhỏ để giữ hương. Bánh dùng bơ Pháp, bột nguyên cám và men tự nhiên — không phụ gia tổng hợp.',
+  c2_k: 'Quy trình', c2_h: 'Nướng lúc 7h, không hâm lại',
+  c2_d: 'Mẻ đầu ra lò lúc 7 giờ sáng. Bánh không được hâm nóng lại để bán tiếp — hết là hết, ngày mai nướng mẻ mới.',
+  c3_k: 'Minh bạch', c3_h: 'Nói đúng thứ mình làm',
+  c3_d: 'Giá niêm yết, định lượng ghi rõ, nguyên liệu nói thật. Không có món nào “đặc biệt” mà không giải thích được vì sao.',
+
+  sec_order_lbl: 'Đặt hàng', sec_order_h: 'Đặt trước, ghé lấy.',
+  sec_order_sub: 'Điền vào đây, MERUVA xác nhận trong 24 giờ. Bánh đặt riêng nên báo trước 2 ngày.',
+  f_name: 'Họ và tên *', f_phone: 'Điện thoại / Zalo *',
+  f_item: 'Món quan tâm', f_date: 'Ngày muốn lấy',
+  f_note: 'Ghi chú', f_note_ph: 'Số lượng, yêu cầu riêng, hỏi về hạt rang...',
+  f_submit: 'Gửi yêu cầu đặt hàng →',
+  f_ok: 'Đã nhận. MERUVA sẽ liên hệ trong 24 giờ — cảm ơn bạn.',
+  f_opt_other: 'Món khác — sẽ ghi ở ghi chú',
+  form_sending: 'Đang gửi...',
+  form_err: 'Có lỗi xảy ra. Vui lòng thử lại hoặc nhắn Zalo.',
+  form_neterr: 'Không gửi được. Kiểm tra kết nối và thử lại.',
+  ci_hours_k: 'Giờ phục vụ', ci_hours_v: 'Mỗi ngày · 7:00 → 22:00',
+  ci_area_k: 'Khu vực', ci_area_v: 'TP.HCM',
+  f_tag: 'Từ đỉnh cao — chúng tôi phục vụ.',
+  f_other: 'Nhánh khác'
+},
+
+en: {
+  page_title: 'MERUVA Kitchen — Specialty coffee & artisan bakery · Ho Chi Minh City',
+  meta_desc: 'MERUVA Kitchen — Đà Lạt beans slow-roasted in small batches, artisan pastries baked from 7am. French butter, natural yeast, no preservatives.',
+  nav_coffee: 'Coffee', nav_bakery: 'Bakery', nav_craft: 'Craft', nav_order: 'Order',
+  back: 'Home',
+  hero_eyebrow: 'Specialty coffee &amp; artisan bakery · Ho Chi Minh City',
+  hero_t1: 'Baked at seven.', hero_t2: 'Roasted in small batches.',
+  hero_desc: 'Hand-selected Đà Lạt beans, slow-roasted batch by batch. Pastries baked every morning with French butter and natural yeast. No reheating, no preservatives — gone is gone.',
+  hero_cta1: 'Place an order', hero_cta2: 'See the menu',
+  m1_v: '7:00', m1_k: 'First bake, every morning',
+  m2_v: '45,000₫', m2_k: 'Starting from',
+  m3_v: '12 items', m3_k: 'Coffee &amp; pastries on the menu',
+  m4_v: '0', m4_k: 'Preservatives · additives',
+
+  sec_coffee_lbl: 'Menu · 01', sec_coffee_h: 'Specialty coffee.',
+  sec_coffee_sub: 'Đà Lạt beans, hand-selected. Slow-roasted in small batches. Brewed with technique — not formula.',
+  sec_bakery_lbl: 'Menu · 02', sec_bakery_h: 'Artisan bakery.',
+  sec_bakery_sub: 'No reheating. No compromise on quality. Every piece is a commitment — French butter, whole grain flour, natural yeast.',
+
+  sec_craft_lbl: 'Craft', sec_craft_h: 'Three things we never compromise.',
+  c1_k: 'Ingredients', c1_h: 'Đà Lạt beans · French butter',
+  c1_d: 'Beans hand-picked in Đà Lạt, roasted in small batches to keep the aroma. Pastries made with French butter, whole grain flour and natural yeast — no synthetic additives.',
+  c2_k: 'Process', c2_h: 'Baked at 7, never reheated',
+  c2_d: 'The first batch leaves the oven at 7am. Nothing is reheated to be sold again — gone is gone, and tomorrow we bake fresh.',
+  c3_k: 'Honesty', c3_h: 'We say exactly what we make',
+  c3_d: 'Listed prices, stated volumes, honest ingredients. Nothing is called “special” unless we can explain why.',
+
+  sec_order_lbl: 'Order', sec_order_h: 'Order ahead, pick it up.',
+  sec_order_sub: 'Fill this in and MERUVA confirms within 24 hours. Custom cakes need 2 days notice.',
+  f_name: 'Your name *', f_phone: 'Phone / Zalo *',
+  f_item: 'What you want', f_date: 'Pick-up date',
+  f_note: 'Notes', f_note_ph: 'Quantity, special requests, questions about the beans...',
+  f_submit: 'Send order request →',
+  f_ok: 'Received. MERUVA will reply within 24 hours — thank you.',
+  f_opt_other: 'Something else — I will write it in the notes',
+  form_sending: 'Sending...',
+  form_err: 'Something went wrong. Please try again or message us on Zalo.',
+  form_neterr: 'Could not send. Check your connection and try again.',
+  ci_hours_k: 'Hours', ci_hours_v: 'Daily · 7:00 → 22:00',
+  ci_area_k: 'Area', ci_area_v: 'Ho Chi Minh City',
+  f_tag: 'From the summit, we serve.',
+  f_other: 'Other branches'
+},
+
+ja: {
+  page_title: 'MERUVA Kitchen — スペシャルティコーヒー & アルチザンベーカリー · ホーチミン',
+  meta_desc: 'MERUVA Kitchen — ダラットの豆を小バッチでスローロースト、朝7時から焼き上げるアルチザンパン。フランスバター、天然酵母、保存料不使用。',
+  nav_coffee: 'コーヒー', nav_bakery: 'パン', nav_craft: 'つくり方', nav_order: '注文',
+  back: 'ホーム',
+  hero_eyebrow: 'スペシャルティコーヒー & アルチザンパン · ホーチミン',
+  hero_t1: '7時に焼き上げる。', hero_t2: '小バッチで焙煎する。',
+  hero_desc: 'ダラットの豆を手で選び、バッチごとにゆっくり焙煎。パンは毎朝、フランスバターと天然酵母で焼き上げます。温め直しなし、保存料なし — なくなり次第終了。',
+  hero_cta1: '注文する', hero_cta2: 'メニューを見る',
+  m1_v: '7:00', m1_k: '毎朝、最初のひと窯',
+  m2_v: '45,000₫', m2_k: '価格は',
+  m3_v: '12品', m3_k: 'コーヒーとパンのメニュー',
+  m4_v: '0', m4_k: '保存料 · 添加物',
+
+  sec_coffee_lbl: 'メニュー · 01', sec_coffee_h: 'スペシャルティコーヒー。',
+  sec_coffee_sub: 'ダラットの豆を手選び。小バッチでスローロースト。テクニックで淹れる — 公式ではなく。',
+  sec_bakery_lbl: 'メニュー · 02', sec_bakery_h: 'アルチザンパン。',
+  sec_bakery_sub: '温め直しなし。品質への妥協なし。すべてのパンは一つの約束 — フランスバター、全粒粉、天然酵母。',
+
+  sec_craft_lbl: 'つくり方', sec_craft_h: '妥協しない三つのこと。',
+  c1_k: '素材', c1_h: 'ダラットの豆 · フランスバター',
+  c1_d: 'ダラットで手摘みした豆を、香りを保つため小バッチで焙煎。パンにはフランスバター、全粒粉、天然酵母を使用 — 合成添加物は使いません。',
+  c2_k: '工程', c2_h: '7時に焼き、温め直さない',
+  c2_d: '最初のひと窯は朝7時に焼き上がります。売り続けるために温め直すことはしません — なくなり次第終了、明日また焼きます。',
+  c3_k: '誠実さ', c3_h: 'つくるものを、そのまま伝える',
+  c3_d: '価格も分量も素材も、そのまま表示します。理由を説明できないものを「特別」とは呼びません。',
+
+  sec_order_lbl: '注文', sec_order_h: '事前注文、店頭受け取り。',
+  sec_order_sub: 'こちらにご記入いただければ、24時間以内にご連絡します。オーダーケーキは2日前までにお願いします。',
+  f_name: 'お名前 *', f_phone: '電話 / Zalo *',
+  f_item: 'ご希望の品', f_date: '受け取り希望日',
+  f_note: '備考', f_note_ph: '数量、ご要望、豆についてのご質問など...',
+  f_submit: '注文リクエストを送る →',
+  f_ok: '受け付けました。24時間以内にご連絡します — ありがとうございます。',
+  f_opt_other: 'その他 — 備考に記入します',
+  form_sending: '送信中...',
+  form_err: 'エラーが発生しました。もう一度お試しいただくか、Zaloでご連絡ください。',
+  form_neterr: '送信できませんでした。接続を確認して再度お試しください。',
+  ci_hours_k: '営業時間', ci_hours_v: '毎日 · 7:00 → 22:00',
+  ci_area_k: 'エリア', ci_area_v: 'ホーチミン市',
+  f_tag: '頂きから、私たちは尽くす。',
+  f_other: '他のブランチ'
+}
+};
+
+/* ── Menu: 12 món, 3 ngôn ngữ (giữ nguyên dữ liệu cũ) ── */
+window.MERUVA_KITCHEN_MENU = {
+  coffee: [
+    { vi:['Summit Espresso','Single origin · house blend · 30ml','45.000₫'],
+      en:['Summit Espresso','Single origin · house blend · 30ml','45,000₫'],
+      ja:['サミットエスプレッソ','シングルオリジン · ハウスブレンド · 30ml','45,000₫'] },
+    { vi:['Pour-over Đà Lạt','V60 · hand-brew · 200ml','65.000₫'],
+      en:['Đà Lạt Pour-over','V60 · hand-brew · 200ml','65,000₫'],
+      ja:['ダラットプアオーバー','V60 · ハンドブリュー · 200ml','65,000₫'] },
+    { vi:['Cappuccino Cream','Double shot · sữa tươi nguyên kem','55.000₫'],
+      en:['Cappuccino Cream','Double shot · full-fat fresh milk','55,000₫'],
+      ja:['カプチーノクリーム','ダブルショット · 全脂新鮮牛乳','55,000₫'] },
+    { vi:['Cold Brew 12h','Ủ lạnh chậm · 300ml','55.000₫'],
+      en:['Cold Brew 12h','Slow cold-extracted · 300ml','55,000₫'],
+      ja:['コールドブリュー12時間','スローコールドエクストラクト · 300ml','55,000₫'] },
+    { vi:['Flat White','Ristretto · micro-foam milk','60.000₫'],
+      en:['Flat White','Ristretto · micro-foam milk','60,000₫'],
+      ja:['フラットホワイト','リストレット · マイクロフォームミルク','60,000₫'] },
+    { vi:['Hạt rang Summit','Túi 250g · medium roast · pha ở nhà','180.000₫'],
+      en:['Summit roasted beans','250g bag · medium roast · brew at home','180,000₫'],
+      ja:['サミット焙煎豆','250g袋 · ミディアムロースト · 自宅用','180,000₫'] }
+  ],
+  bakery: [
+    { vi:['Croissant Butter','Bơ Pháp · 27 lớp · nướng 7h sáng','45.000₫'],
+      en:['Butter Croissant','French butter · 27 layers · baked at 7am','45,000₫'],
+      ja:['バタークロワッサン','フランスバター · 27層 · 朝7時焼成','45,000₫'] },
+    { vi:['Pain au Chocolat','Sô-cô-la đen 70% · bột nguyên cám','55.000₫'],
+      en:['Pain au Chocolat','70% dark chocolate · whole grain flour','55,000₫'],
+      ja:['パン・オ・ショコラ','70%ダークチョコ · 全粒粉','55,000₫'] },
+    { vi:['Sourdough 36h','Men tự nhiên · ủ 36 giờ · ổ 800g','120.000₫'],
+      en:['36h Sourdough','Natural yeast · 36h ferment · 800g loaf','120,000₫'],
+      ja:['36時間サワードウ','天然酵母 · 36時間発酵 · 800g','120,000₫'] },
+    { vi:['Cinnamon Roll','Quế Ceylon · phủ cream cheese','65.000₫'],
+      en:['Cinnamon Roll','Ceylon cinnamon · cream cheese glaze','65,000₫'],
+      ja:['シナモンロール','セイロンシナモン · クリームチーズ','65,000₫'] },
+    { vi:['Kouign-Amann','Đặc sản Bretagne · caramel bơ','70.000₫'],
+      en:['Kouign-Amann','Brittany speciality · butter caramel','70,000₫'],
+      ja:['クイニーアマン','ブルターニュ名物 · バターキャラメル','70,000₫'] },
+    { vi:['Bánh kem đặt riêng','Theo yêu cầu · báo trước 2 ngày','Từ 450.000₫'],
+      en:['Custom cake','Made to order · 2 days notice','From 450,000₫'],
+      ja:['オーダーケーキ','ご要望に応じて · 2日前までに','450,000₫〜'] }
+  ]
+};

@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Energy Flow Tracker — Cá nhân · MERUVA</title>
+<meta name="description" content="Demo công cụ theo dõi dòng năng lượng cá nhân theo ngày: tập trung, nghỉ ngơi và phục hồi. Một sản phẩm minh hoạ năng lực dựng hệ thống của MERUVA.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://meruva.vn/demo/energy_flow_tracker.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meruva.vn/demo/energy_flow_tracker.html">
+<meta property="og:title" content="Energy Flow Tracker — Cá nhân · MERUVA">
+<meta property="og:description" content="Demo công cụ theo dõi dòng năng lượng cá nhân theo ngày: tập trung, nghỉ ngơi, phục hồi.">
+<meta property="og:image" content="https://meruva.vn/logo-mark.png">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Energy Flow Tracker · MERUVA">
+<meta name="twitter:description" content="Demo theo dõi dòng năng lượng cá nhân theo ngày.">
+<meta name="twitter:image" content="https://meruva.vn/logo-mark.png">
+<link rel="icon" type="image/png" href="../logo-mark.png" />
+<link rel="apple-touch-icon" href="../logo-mark.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+
+<style>
+  :root {
+    --bg:      #0A0B10;
+    --panel:   #11131A;
+    --elev:    #161924;
+    --elev2:   #1C2030;
+    --line:    #222636;
+    --line2:   #2C3146;
+    --t1:      #E7E9F2;
+    --t2:      #9BA1B5;
+    --t3:      #5C6378;
+
+    --z-peak:     #22C55E;  --z-peak-bg:    rgba(34,197,94,.14);
+    --z-high:     #3B82F6;  --z-high-bg:    rgba(59,130,246,.14);
+    --z-normal:   #F59E0B;  --z-normal-bg:  rgba(245,158,11,.14);
+    --z-low:      #F97316;  --z-low-bg:     rgba(249,115,22,.14);
+    --z-recovery: #EF4444;  --z-recovery-bg:rgba(239,68,68,.14);
+
+    --teal:    #14B8A6;
+    --purple:  #A855F7;
+    --pink:    #EC4899;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--t1);
+    -webkit-font-smoothing: antialiased;
+    margin: 0; padding: 0;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(60% 50% at 0% 0%, rgba(20,184,166,.08) 0%, transparent 60%),
+      radial-gradient(50% 40% at 100% 0%, rgba(59,130,246,.08) 0%, transparent 60%),
+      radial-gradient(40% 40% at 100% 100%, rgba(168,85,247,.06) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--t3); }
+
+  .app { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 24px 28px 60px; }
+
+  /* Header */
+  .top-bar {
+    display: flex; align-items: center; gap: 14px;
+    padding: 0 0 18px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 22px;
+  }
+  .logo-mark {
+    width: 42px; height: 42px; border-radius: 12px;
+    background: linear-gradient(135deg, #14B8A6 0%, #3B82F6 60%, #A855F7 100%);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 22px rgba(20,184,166,.35), inset 0 0 0 1px rgba(255,255,255,.12);
+  }
+  .logo-mark svg { width: 20px; height: 20px; color: white; }
+  .top-bar h1 { font-size: 18px; font-weight: 700; letter-spacing: -.01em; margin: 0; }
+  .top-bar .sub { font-size: 11.5px; color: var(--t3); margin-top: 2px; }
+  .top-bar .grow { flex: 1; }
+  .top-bar #today-label { font-size: 12.5px; color: var(--t2); display: flex; align-items: center; gap: 6px; }
+  .top-bar #today-label svg { width: 14px; height: 14px; color: var(--teal); }
+
+  .icon-btn {
+    width: 36px; height: 36px; border-radius: 9px;
+    background: var(--elev); border: 1px solid var(--line); color: var(--t2);
+    display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .15s;
+  }
+  .icon-btn:hover { background: var(--elev2); color: var(--t1); border-color: var(--line2); }
+  .icon-btn svg { width: 16px; height: 16px; }
+
+  /* Tabs */
+  .tab-row {
+    display: inline-flex; gap: 4px;
+    background: var(--elev); border: 1px solid var(--line); border-radius: 11px;
+    padding: 4px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 8px 14px; border: none; background: transparent;
+    color: var(--t2); font-family: inherit; font-size: 12.5px; font-weight: 600;
+    border-radius: 8px; cursor: pointer; transition: all .15s;
+  }
+  .tab-btn svg { width: 14px; height: 14px; }
+  .tab-btn:hover { color: var(--t1); }
+  .tab-btn.active {
+    background: linear-gradient(135deg, rgba(20,184,166,.18), rgba(59,130,246,.14));
+    color: var(--t1);
+    box-shadow: inset 0 0 0 1px rgba(20,184,166,.25);
+  }
+
+  .tab-pane { display: none; animation: fadeUp .35s ease both; }
+  .tab-pane.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Summary cards */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .metric-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px 16px 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .metric-card::after {
+    content: ''; position: absolute; right: -30px; top: -30px;
+    width: 100px; height: 100px; border-radius: 50%;
+    background: var(--card-glow, rgba(20,184,166,.08));
+    filter: blur(28px);
+  }
+  .metric-h { display: flex; align-items: center; justify-content: space-between; }
+  .metric-ic {
+    width: 32px; height: 32px; border-radius: 9px;
+    background: var(--elev); color: var(--card-color, var(--teal));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .metric-ic svg { width: 16px; height: 16px; }
+  .metric-delta { font-size: 10.5px; font-weight: 700; padding: 2px 7px; border-radius: 99px; background: var(--card-glow); color: var(--card-color, var(--teal)); font-family: 'JetBrains Mono', monospace; }
+  .metric-label { font-size: 11.5px; color: var(--t2); margin-top: 12px; font-weight: 500; }
+  .metric-val { font-size: 24px; font-weight: 700; letter-spacing: -.02em; margin-top: 2px; font-family: 'JetBrains Mono', monospace; }
+  .metric-sub { font-size: 11px; color: var(--t3); margin-top: 2px; }
+  .metric-foot { display: flex; align-items: center; gap: 5px; margin-top: 8px; font-size: 10.5px; color: var(--t3); }
+
+  /* Input table */
+  .input-wrap {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .input-h {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; border-bottom: 1px solid var(--line);
+    gap: 12px; flex-wrap: wrap;
+  }
+  .input-h h3 { font-size: 14px; font-weight: 700; margin: 0; }
+  .input-h .sub { font-size: 11.5px; color: var(--t3); margin-top: 2px; }
+  .weight-legend { display: flex; gap: 8px; flex-wrap: wrap; }
+  .weight-legend span {
+    font-size: 10.5px; color: var(--t2); font-weight: 600;
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 9px; background: var(--elev); border-radius: 99px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .weight-legend b { color: var(--t1); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th {
+    font-size: 10.5px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .08em;
+    text-align: center; padding: 11px 10px; background: var(--elev);
+    border-bottom: 1px solid var(--line);
+  }
+  thead th:first-child { text-align: left; padding-left: 18px; }
+  tbody tr { transition: background .15s; }
+  tbody tr:hover { background: var(--elev); }
+  td {
+    padding: 11px 10px; border-bottom: 1px solid var(--line); text-align: center; color: var(--t1);
+    vertical-align: middle;
+  }
+  td:first-child { text-align: left; padding-left: 18px; font-weight: 600; color: var(--t1); font-size: 13px; }
+  td:first-child small { display: block; font-size: 10.5px; color: var(--t3); font-weight: 500; margin-top: 1px; font-family: 'JetBrains Mono', monospace; }
+  tbody tr:last-child td { border-bottom: none; }
+
+  .rate-cell { display: flex; gap: 3px; justify-content: center; align-items: center; }
+  .rate-btn {
+    width: 24px; height: 24px; border-radius: 6px;
+    background: var(--elev); border: 1px solid var(--line);
+    color: var(--t3); cursor: pointer; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+    transition: all .15s;
+  }
+  .rate-btn:hover { background: var(--elev2); color: var(--t1); }
+  .rate-btn.on { background: linear-gradient(135deg, var(--teal), #0D9488); border-color: transparent; color: #04201B; box-shadow: 0 0 0 2px rgba(20,184,166,.2); }
+  .rate-val { font-family: 'JetBrains Mono', monospace; font-weight: 700; min-width: 22px; text-align: center; color: var(--t1); font-size: 12.5px; }
+
+  .score-cell { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 16px; min-width: 50px; }
+
+  .zone-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 10.5px; padding: 3px 10px; border-radius: 99px;
+    font-weight: 700; white-space: nowrap;
+  }
+  .zone-badge .dot { width: 6px; height: 6px; border-radius: 50%; }
+  .z-peak     { background: var(--z-peak-bg);     color: var(--z-peak); }
+  .z-peak     .dot { background: var(--z-peak); }
+  .z-high     { background: var(--z-high-bg);     color: var(--z-high); }
+  .z-high     .dot { background: var(--z-high); }
+  .z-normal   { background: var(--z-normal-bg);   color: var(--z-normal); }
+  .z-normal   .dot { background: var(--z-normal); }
+  .z-low      { background: var(--z-low-bg);      color: var(--z-low); }
+  .z-low      .dot { background: var(--z-low); }
+  .z-recovery { background: var(--z-recovery-bg); color: var(--z-recovery); }
+  .z-recovery .dot { background: var(--z-recovery); }
+
+  .actions {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 0 0; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    height: 36px; padding: 0 16px;
+    border-radius: 9px; border: 1px solid transparent;
+    font-family: inherit; font-size: 12.5px; font-weight: 600;
+    cursor: pointer; transition: all .15s; white-space: nowrap;
+  }
+  .btn svg { width: 14px; height: 14px; }
+  .btn-pri {
+    background: linear-gradient(135deg, #14B8A6, #0D9488); color: #04201B;
+    box-shadow: 0 4px 14px rgba(20,184,166,.35);
+  }
+  .btn-pri:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(20,184,166,.5); }
+  .btn-gh { background: var(--elev); border-color: var(--line); color: var(--t2); }
+  .btn-gh:hover { background: var(--elev2); color: var(--t1); border-color: var(--line2); }
+  .saved-msg { font-size: 12px; color: var(--teal); display: flex; align-items: center; gap: 5px; }
+  .saved-msg svg { width: 14px; height: 14px; }
+
+  /* History */
+  .day-selector {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 11px;
+    padding: 8px 10px; margin-bottom: 14px;
+  }
+  .day-btn {
+    font-size: 11.5px; padding: 5px 11px; border: 1px solid transparent;
+    border-radius: 7px; background: var(--elev); color: var(--t2);
+    cursor: pointer; transition: all .15s; font-family: 'JetBrains Mono', monospace; font-weight: 600;
+  }
+  .day-btn:hover { background: var(--elev2); color: var(--t1); }
+  .day-btn.active { background: linear-gradient(135deg, var(--teal), #0D9488); color: #04201B; }
+
+  .insight-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin-bottom: 16px;
+  }
+  .insight-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 13px;
+    padding: 14px 16px; position: relative; overflow: hidden;
+  }
+  .insight-card::after {
+    content: ''; position: absolute; right: -20px; top: -20px;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: var(--ins-glow, rgba(20,184,166,.1)); filter: blur(20px);
+  }
+  .insight-title { font-size: 11px; color: var(--t2); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+  .insight-val { font-size: 20px; font-weight: 700; margin-top: 6px; font-family: 'JetBrains Mono', monospace; letter-spacing: -.01em; }
+  .insight-sub { font-size: 10.5px; color: var(--t3); margin-top: 3px; }
+
+  .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 12px; }
+  .col-8 { grid-column: span 8; }
+  .col-4 { grid-column: span 4; }
+  .col-12 { grid-column: span 12; }
+  .col-6 { grid-column: span 6; }
+
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px; display: flex; flex-direction: column;
+  }
+  .card-h { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; gap: 10px; }
+  .card-t { font-size: 13.5px; font-weight: 700; }
+  .card-sub { font-size: 11px; color: var(--t3); margin-top: 2px; }
+  .card-b { flex: 1; min-height: 0; position: relative; }
+
+  /* Heatmap */
+  .heatmap-wrap { overflow-x: auto; padding-bottom: 4px; }
+  .heatmap-grid { display: grid; grid-template-columns: 90px repeat(14, minmax(40px, 1fr)); gap: 4px; min-width: 700px; }
+  .hm-header { font-size: 10.5px; color: var(--t3); text-align: center; padding: 4px 2px; font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+  .hm-label { font-size: 11px; color: var(--t2); padding: 4px 8px 4px 0; white-space: nowrap; align-self: center; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+  .hm-cell {
+    height: 36px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10.5px; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+    transition: transform .15s;
+  }
+  .hm-cell:hover { transform: scale(1.06); z-index: 2; }
+  .hm-cell.empty { background: var(--elev); color: var(--t3); }
+
+  .chart-wrap { position: relative; width: 100%; height: 240px; }
+
+  /* Workmap */
+  .work-intro {
+    background: linear-gradient(135deg, rgba(20,184,166,.08), rgba(59,130,246,.06));
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 18px; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .work-intro svg { width: 18px; height: 18px; color: var(--teal); flex-shrink: 0; }
+  .work-intro .t { font-size: 13px; color: var(--t1); }
+  .work-intro .s { font-size: 11.5px; color: var(--t3); margin-top: 1px; }
+
+  .work-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  }
+  .work-card {
+    border: 1px solid var(--line); border-radius: 13px;
+    padding: 16px 18px; background: var(--panel);
+    position: relative; overflow: hidden;
+  }
+  .work-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--zone-c, var(--teal));
+  }
+  .work-h { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .work-h h4 { font-size: 13.5px; font-weight: 700; margin: 0; }
+  .work-h .badge { margin-left: auto; font-size: 11px; font-weight: 700; color: var(--t1); font-family: 'JetBrains Mono', monospace; }
+  .work-items { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .work-items li {
+    font-size: 12.5px; color: var(--t2);
+    display: flex; align-items: center; gap: 8px;
+    padding-left: 4px;
+  }
+  .work-items li::before { content: '→'; color: var(--zone-c, var(--teal)); font-weight: 700; }
+
+  .personal-insight {
+    margin-top: 16px;
+    background: linear-gradient(135deg, rgba(168,85,247,.08), rgba(236,72,153,.06));
+    border: 1px solid var(--line); border-radius: 13px;
+    padding: 16px 18px;
+  }
+  .personal-insight .h { font-size: 12px; font-weight: 700; color: var(--purple); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .08em; display: flex; align-items: center; gap: 6px; }
+  .personal-insight .h svg { width: 14px; height: 14px; }
+  .personal-insight .b { font-size: 13px; color: var(--t1); line-height: 1.65; }
+  .personal-insight .b b { color: var(--teal); font-weight: 700; }
+
+  /* Goals */
+  .goals-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    margin-bottom: 18px;
+  }
+  .goal-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px; position: relative; overflow: hidden;
+  }
+  .goal-card::after {
+    content: ''; position: absolute; right: -30px; top: -30px;
+    width: 90px; height: 90px; border-radius: 50%;
+    background: var(--goal-glow); filter: blur(24px);
+  }
+  .goal-h { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
+  .goal-ic {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--goal-bg); color: var(--goal-color);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .goal-ic svg { width: 17px; height: 17px; }
+  .goal-t { font-size: 13px; font-weight: 700; }
+  .goal-sub { font-size: 10.5px; color: var(--t3); margin-top: 1px; }
+  .goal-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+  .goal-row .l { font-size: 11px; color: var(--t2); }
+  .goal-row .v { font-size: 14px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--t1); }
+  .goal-bar { height: 8px; background: var(--elev2); border-radius: 99px; overflow: hidden; margin-top: 8px; position: relative; }
+  .goal-bar i {
+    display: block; height: 100%; border-radius: 99px;
+    background: linear-gradient(90deg, var(--goal-color), var(--goal-color2));
+    transition: width .6s cubic-bezier(.4,1.4,.6,1);
+  }
+  .goal-foot { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 10.5px; color: var(--t3); }
+  .goal-foot .pct {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    padding: 2px 7px; border-radius: 99px;
+    background: var(--goal-bg); color: var(--goal-color);
+  }
+
+  .goal-list { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .goal-list-h {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; border-bottom: 1px solid var(--line);
+    flex-wrap: wrap; gap: 8px;
+  }
+  .goal-list-h h3 { font-size: 14px; font-weight: 700; margin: 0; }
+  .goal-list-h .sub { font-size: 11px; color: var(--t3); margin-top: 2px; }
+
+  .goal-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 13px 18px; border-bottom: 1px solid var(--line);
+    transition: background .15s;
+  }
+  .goal-item:last-child { border-bottom: none; }
+  .goal-item:hover { background: var(--elev); }
+  .goal-check {
+    width: 22px; height: 22px; border-radius: 6px;
+    background: var(--elev); border: 1.5px solid var(--line2);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: all .15s;
+  }
+  .goal-check:hover { border-color: var(--teal); }
+  .goal-check.on { background: var(--teal); border-color: var(--teal); }
+  .goal-check svg { width: 12px; height: 12px; color: #04201B; display: none; }
+  .goal-check.on svg { display: block; }
+  .goal-text { flex: 1; min-width: 0; }
+  .goal-name { font-size: 13px; color: var(--t1); font-weight: 500; }
+  .goal-item.done .goal-name { color: var(--t3); text-decoration: line-through; }
+  .goal-meta { font-size: 11px; color: var(--t3); margin-top: 2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .goal-meta .pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 1px 8px; border-radius: 99px; font-size: 10px; font-weight: 700;
+  }
+  .pill-pri-hi { background: rgba(239,68,68,.12); color: var(--z-recovery); }
+  .pill-pri-md { background: rgba(245,158,11,.12); color: var(--z-normal); }
+  .pill-pri-lo { background: rgba(59,130,246,.12); color: var(--z-high); }
+  .goal-x { color: var(--t3); cursor: pointer; padding: 4px; }
+  .goal-x:hover { color: var(--z-recovery); }
+  .goal-x svg { width: 14px; height: 14px; }
+
+  .add-goal {
+    display: flex; gap: 8px; padding: 12px 18px;
+    background: var(--elev); border-top: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .add-goal input, .add-goal select {
+    background: var(--elev2); border: 1px solid var(--line); border-radius: 8px;
+    padding: 8px 11px; color: var(--t1); font-family: inherit; font-size: 12.5px;
+    outline: none; transition: all .15s;
+  }
+  .add-goal input:focus, .add-goal select:focus { border-color: var(--teal); }
+  .add-goal input { flex: 1; min-width: 160px; }
+  .add-goal select { width: 130px; }
+
+  .empty {
+    text-align: center; padding: 60px 20px; color: var(--t3);
+    background: var(--panel); border: 1px dashed var(--line2); border-radius: 13px;
+  }
+  .empty svg { width: 40px; height: 40px; margin-bottom: 10px; opacity: .5; }
+  .empty h4 { color: var(--t2); font-size: 14px; margin: 0 0 4px; font-weight: 600; }
+  .empty p { font-size: 12px; margin: 0; }
+
+  @media (max-width: 1100px) {
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    .insight-row { grid-template-columns: repeat(2, 1fr); }
+    .col-8, .col-4 { grid-column: span 12; }
+    .goals-grid { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px) {
+    .summary-grid { grid-template-columns: 1fr; }
+    .insight-row { grid-template-columns: 1fr; }
+    .heatmap-grid { grid-template-columns: 80px repeat(14, minmax(32px, 1fr)); }
+    .weight-legend { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Header -->
+  <div class="top-bar">
+    <div class="logo-mark">
+      <i data-lucide="zap"></i>
+    </div>
+    <div>
+      <h1>Energy Flow Tracker</h1>
+      <div class="sub">Theo dõi năng lượng cá nhân · 8 block trong ngày</div>
+    </div>
+    <div class="grow"></div>
+    <div id="today-label"><i data-lucide="calendar"></i> <span id="today-txt"></span></div>
+    <button class="icon-btn" onclick="exportData()" title="Xuất dữ liệu"><i data-lucide="download"></i></button>
+    <button class="icon-btn" onclick="importData()" title="Nhập dữ liệu"><i data-lucide="upload"></i></button>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tab-row">
+    <button class="tab-btn active" data-tab="input">
+      <i data-lucide="edit-3"></i> Nhập hôm nay
+    </button>
+    <button class="tab-btn" data-tab="history">
+      <i data-lucide="line-chart"></i> Lịch sử & Heatmap
+    </button>
+    <button class="tab-btn" data-tab="workmap">
+      <i data-lucide="map"></i> Work Map
+    </button>
+    <button class="tab-btn" data-tab="goals">
+      <i data-lucide="target"></i> Mục tiêu
+    </button>
+  </div>
+
+  <!-- ============ TAB: INPUT ============ -->
+  <div class="tab-pane active" id="tab-input">
+
+    <div class="summary-grid" id="summary-cards">
+      <div class="metric-card" style="--card-color:#14B8A6;--card-glow:rgba(20,184,166,.16)">
+        <div class="metric-h">
+          <div class="metric-ic"><i data-lucide="activity"></i></div>
+          <span class="metric-delta" id="avg-delta">—</span>
+        </div>
+        <div class="metric-label">Điểm trung bình hôm nay</div>
+        <div class="metric-val" id="avg-today">—</div>
+        <div class="metric-foot">trên 5.0 · 8 block</div>
+      </div>
+
+      <div class="metric-card" style="--card-color:#22C55E;--card-glow:rgba(34,197,94,.16)">
+        <div class="metric-h">
+          <div class="metric-ic"><i data-lucide="trending-up"></i></div>
+        </div>
+        <div class="metric-label">Zone cao nhất</div>
+        <div class="metric-val" id="peak-zone" style="font-size:13px;padding-top:6px">—</div>
+        <div class="metric-foot" id="peak-block">chưa nhập</div>
+      </div>
+
+      <div class="metric-card" style="--card-color:#A855F7;--card-glow:rgba(168,85,247,.16)">
+        <div class="metric-h">
+          <div class="metric-ic"><i data-lucide="clock"></i></div>
+        </div>
+        <div class="metric-label">Block đỉnh</div>
+        <div class="metric-val" id="peak-time" style="font-size:18px">—</div>
+        <div class="metric-foot" id="peak-score">—</div>
+      </div>
+
+      <div class="metric-card" style="--card-color:#3B82F6;--card-glow:rgba(59,130,246,.16)">
+        <div class="metric-h">
+          <div class="metric-ic"><i data-lucide="database"></i></div>
+        </div>
+        <div class="metric-label">Ngày đã lưu</div>
+        <div class="metric-val" id="saved-days">0</div>
+        <div class="metric-foot"><i data-lucide="trending-up" style="width:11px;height:11px"></i> tổng dữ liệu</div>
+      </div>
+    </div>
+
+    <div class="input-wrap">
+      <div class="input-h">
+        <div>
+          <h3>Đánh giá 4 trục theo từng block</h3>
+          <div class="sub">Chấm điểm 1–5 cho mỗi trục · Điểm block = Body×20% + Focus×40% + Motive×10% + Output×30%</div>
+        </div>
+        <div class="weight-legend">
+          <span>Body <b>×20%</b></span>
+          <span>Focus <b>×40%</b></span>
+          <span>Motive <b>×10%</b></span>
+          <span>Output <b>×30%</b></span>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Block</th>
+            <th>Body<br><span style="font-weight:400;color:var(--t3);text-transform:none;letter-spacing:0">×20%</span></th>
+            <th>Focus<br><span style="font-weight:400;color:var(--t3);text-transform:none;letter-spacing:0">×40%</span></th>
+            <th>Motive<br><span style="font-weight:400;color:var(--t3);text-transform:none;letter-spacing:0">×10%</span></th>
+            <th>Output<br><span style="font-weight:400;color:var(--t3);text-transform:none;letter-spacing:0">×30%</span></th>
+            <th>Score</th>
+            <th>Zone</th>
+          </tr>
+        </thead>
+        <tbody id="input-body"></tbody>
+      </table>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-pri" onclick="saveToday()">
+        <i data-lucide="save"></i> Lưu hôm nay
+      </button>
+      <button class="btn btn-gh" onclick="resetToday()">
+        <i data-lucide="rotate-ccw"></i> Reset hôm nay
+      </button>
+      <span class="saved-msg" id="save-msg"></span>
+    </div>
+  </div>
+
+  <!-- ============ TAB: HISTORY ============ -->
+  <div class="tab-pane" id="tab-history">
+    <div class="day-selector" id="day-selector"></div>
+    <div class="insight-row" id="insight-row"></div>
+
+    <div class="grid-12">
+      <div class="card col-8" style="min-height:340px">
+        <div class="card-h">
+          <div>
+            <div class="card-t">Heatmap trung bình theo block</div>
+            <div class="card-sub">14 ngày gần nhất · mỗi ô là 1 block trong ngày</div>
+          </div>
+          <div style="display:flex;gap:6px;align-items:center;font-size:10.5px;color:var(--t3)">
+            Thấp <span style="display:inline-flex;gap:2px">
+              <span style="width:14px;height:14px;background:rgba(239,68,68,.4);border-radius:3px"></span>
+              <span style="width:14px;height:14px;background:rgba(249,115,22,.5);border-radius:3px"></span>
+              <span style="width:14px;height:14px;background:rgba(245,158,11,.6);border-radius:3px"></span>
+              <span style="width:14px;height:14px;background:rgba(59,130,246,.6);border-radius:3px"></span>
+              <span style="width:14px;height:14px;background:rgba(34,197,94,.7);border-radius:3px"></span>
+            </span> Cao
+          </div>
+        </div>
+        <div class="card-b">
+          <div class="heatmap-wrap"><div class="heatmap-grid" id="heatmap"></div></div>
+        </div>
+      </div>
+
+      <div class="card col-4" style="min-height:340px">
+        <div class="card-h">
+          <div>
+            <div class="card-t">Phân bố zone</div>
+            <div class="card-sub">Tổng các block đã ghi</div>
+          </div>
+        </div>
+        <div class="card-b"><canvas id="zoneChart"></canvas></div>
+      </div>
+    </div>
+
+    <div class="grid-12" style="margin-top:12px">
+      <div class="card col-8">
+        <div class="card-h">
+          <div>
+            <div class="card-t">Xu hướng điểm trung bình theo ngày</div>
+            <div class="card-sub">Đường xu hướng 14 ngày gần nhất</div>
+          </div>
+        </div>
+        <div class="card-b chart-wrap"><canvas id="trend-chart"></canvas></div>
+      </div>
+
+      <div class="card col-4">
+        <div class="card-h">
+          <div>
+            <div class="card-t">Top 3 block mạnh nhất</div>
+            <div class="card-sub">Trung bình các ngày</div>
+          </div>
+        </div>
+        <div class="card-b" id="topBlocks"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TAB: WORKMAP ============ -->
+  <div class="tab-pane" id="tab-workmap">
+    <div class="work-intro">
+      <i data-lucide="info"></i>
+      <div>
+        <div class="t">Dựa trên dữ liệu của bạn — block nào làm việc gì tối ưu nhất.</div>
+        <div class="s">Peak Zone: deep work · High: họp & sáng tạo · Normal: admin · Low: nghỉ chủ động</div>
+      </div>
+    </div>
+
+    <div class="work-grid">
+      <div class="work-card" style="--zone-c:var(--z-peak)">
+        <div class="work-h">
+          <span class="zone-badge z-peak"><span class="dot"></span> Peak Zone 4.5–5</span>
+          <span class="badge" id="wmap-peak">0 block</span>
+        </div>
+        <ul class="work-items">
+          <li>Gọi khách hàng (sales)</li>
+          <li>Chiến lược / quyết định lớn</li>
+          <li>Viết nội dung TikTok / content</li>
+          <li>Học kỹ năng khó</li>
+          <li>Deep work không gián đoạn</li>
+        </ul>
+      </div>
+
+      <div class="work-card" style="--zone-c:var(--z-high)">
+        <div class="work-h">
+          <span class="zone-badge z-high"><span class="dot"></span> High Zone 4.0–4.49</span>
+          <span class="badge" id="wmap-high">0 block</span>
+        </div>
+        <ul class="work-items">
+          <li>Họp với khách / nội bộ</li>
+          <li>Soạn email, proposal</li>
+          <li>Follow-up pipeline CRM</li>
+          <li>Review báo cáo</li>
+        </ul>
+      </div>
+
+      <div class="work-card" style="--zone-c:var(--z-normal)">
+        <div class="work-h">
+          <span class="zone-badge z-normal"><span class="dot"></span> Normal Zone 3.0–3.99</span>
+          <span class="badge" id="wmap-normal">0 block</span>
+        </div>
+        <ul class="work-items">
+          <li>Admin / nhập dữ liệu</li>
+          <li>Kiểm tra WMS J&V</li>
+          <li>Đăng bài, lên lịch post</li>
+          <li>Trả lời tin nhắn thông thường</li>
+        </ul>
+      </div>
+
+      <div class="work-card" style="--zone-c:var(--z-low)">
+        <div class="work-h">
+          <span class="zone-badge z-low"><span class="dot"></span> Low Zone ≤2.99</span>
+          <span class="badge" id="wmap-low">0 block</span>
+        </div>
+        <ul class="work-items">
+          <li>Việc lặp lại, checklist</li>
+          <li>Sắp xếp file, email</li>
+          <li>Xem lại tài liệu cũ</li>
+          <li>Nghỉ ngơi chủ động</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="personal-insight" id="personal-insight-wrap">
+      <div class="h"><i data-lucide="sparkles"></i> Phân tích cá nhân</div>
+      <div class="b" id="personal-insight">Chưa có đủ dữ liệu. Nhập ít nhất 3 ngày để xem phân tích cá nhân.</div>
+    </div>
+  </div>
+
+  <!-- ============ TAB: GOALS ============ -->
+  <div class="tab-pane" id="tab-goals">
+    <div class="goals-grid" id="goalsGrid"></div>
+
+    <div class="grid-12">
+      <div class="card col-8">
+        <div class="card-h">
+          <div>
+            <div class="card-t">Tiến độ tuần này</div>
+            <div class="card-sub">Mục tiêu hoàn thành & điểm năng lượng theo ngày trong tuần</div>
+          </div>
+        </div>
+        <div class="card-b chart-wrap"><canvas id="weekChart"></canvas></div>
+      </div>
+
+      <div class="card col-4">
+        <div class="card-h">
+          <div>
+            <div class="card-t">Streak & Động lực</div>
+            <div class="card-sub">Theo dõi chuỗi ngày</div>
+          </div>
+        </div>
+        <div class="card-b" id="streakBlock"></div>
+      </div>
+    </div>
+
+    <div class="goal-list" style="margin-top:18px">
+      <div class="goal-list-h">
+        <div>
+          <h3>Danh sách mục tiêu</h3>
+          <div class="sub">Click để đánh dấu hoàn thành</div>
+        </div>
+        <span style="font-size:11.5px;color:var(--t3)"><b style="color:var(--t1)" id="goalDone">0</b> / <b style="color:var(--t1)" id="goalTotal">0</b> hoàn thành</span>
+      </div>
+      <div id="goalList"></div>
+      <div class="add-goal">
+        <input type="text" id="newGoalInput" placeholder="Thêm mục tiêu mới..." onkeydown="if(event.key==='Enter')addGoal()" />
+        <select id="newGoalPriority">
+          <option value="hi">Cao</option>
+          <option value="md" selected>Trung bình</option>
+          <option value="lo">Thấp</option>
+        </select>
+        <input type="text" id="newGoalMeta" placeholder="Mốc / deadline (tùy chọn)" style="max-width:200px" />
+        <button class="btn btn-pri" onclick="addGoal()" style="height:36px">
+          <i data-lucide="plus"></i> Thêm
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ============================================================
+  // CONFIG (giữ nguyên logic cũ)
+  // ============================================================
+  const BLOCKS = [
+    {id:'B1',time:'06h–08h',label:'Sáng sớm'},
+    {id:'B2',time:'08h–10h',label:'Bắt đầu'},
+    {id:'B3',time:'10h–12h',label:'Peak buổi sáng'},
+    {id:'B4',time:'12h–14h',label:'Sau trưa'},
+    {id:'B5',time:'14h–16h',label:'Đầu chiều'},
+    {id:'B6',time:'16h–18h',label:'Chiều muộn'},
+    {id:'B7',time:'18h–20h',label:'Tối sớm'},
+    {id:'B8',time:'20h–22h',label:'Cuối ngày'},
+  ];
+  const WEIGHTS = {body:0.2, focus:0.4, motivation:0.1, output:0.3};
+  const ZONE_DATA = [
+    {min:4.5, label:'Peak Zone',     cls:'z-peak',     hex:'#22C55E', bg:'rgba(34,197,94,.14)'},
+    {min:4.0, label:'High Zone',     cls:'z-high',     hex:'#3B82F6', bg:'rgba(59,130,246,.14)'},
+    {min:3.0, label:'Normal Zone',   cls:'z-normal',   hex:'#F59E0B', bg:'rgba(245,158,11,.14)'},
+    {min:2.0, label:'Low Zone',      cls:'z-low',      hex:'#F97316', bg:'rgba(249,115,22,.14)'},
+    {min:0,   label:'Recovery Zone', cls:'z-recovery', hex:'#EF4444', bg:'rgba(239,68,68,.14)'},
+  ];
+  const HEATMAP_COLORS = [
+    'rgba(239,68,68,.5)',
+    'rgba(249,115,22,.55)',
+    'rgba(245,158,11,.6)',
+    'rgba(59,130,246,.65)',
+    'rgba(34,197,94,.75)',
+  ];
+  const HEATMAP_TEXT = ['#7F1D1D','#7C2D12','#78350F','#1E3A8A','#14532D'];
+
+  const STORAGE_KEY   = 'efv2_history';
+  const GOALS_KEY     = 'efv2_goals';
+
+  function getZone(s) { for (let z of ZONE_DATA) if (s >= z.min) return z; return ZONE_DATA[4]; }
+  function calcScore(b,f,m,o) { return b*WEIGHTS.body + f*WEIGHTS.focus + m*WEIGHTS.motivation + o*WEIGHTS.output; }
+  function getTodayKey() { return new Date().toISOString().slice(0,10); }
+  function getHistory() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; } }
+  function saveHistory(h) { localStorage.setItem(STORAGE_KEY, JSON.stringify(h)); }
+  function getGoals() { try { return JSON.parse(localStorage.getItem(GOALS_KEY) || '[]'); } catch(e) { return []; } }
+  function saveGoals(g) { localStorage.setItem(GOALS_KEY, JSON.stringify(g)); }
+
+  function showSavedMsg(msg) {
+    const el = document.getElementById('save-msg');
+    el.innerHTML = '<i data-lucide="check-circle-2"></i> ' + msg;
+    lucide.createIcons();
+    setTimeout(() => { el.innerHTML = ''; }, 3000);
+  }
+
+  // Tab switch
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const t = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === 'tab-' + t));
+      if (t === 'history') buildHistory();
+      if (t === 'workmap') buildWorkMap();
+      if (t === 'goals')   buildGoals();
+    });
+  });
+
+  // ============================================================
+  // INPUT TABLE
+  // ============================================================
+  function buildInputTable() {
+    const tbody = document.getElementById('input-body');
+    const today = getTodayKey();
+    const hist = getHistory();
+    const saved = hist[today] || null;
+    tbody.innerHTML = '';
+    BLOCKS.forEach((b, i) => {
+      const vals = saved ? saved[i] : {body:3, focus:3, motivation:3, output:3};
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${b.id}<small>${b.time} · ${b.label}</small></td>
+        ${['body','focus','motivation','output'].map(k => `
+          <td>
+            <div class="rate-cell" data-row="${i}" data-key="${k}">
+              ${[1,2,3,4,5].map(v => `<button class="rate-btn ${vals[k]==v?'on':''}" onclick="setRate(${i},'${k}',${v})">${v}</button>`).join('')}
+            </div>
+          </td>
+        `).join('')}
+        <td><span class="score-cell" id="score${i}">—</span></td>
+        <td id="zone${i}"><span class="zone-badge">—</span></td>
+      `;
+      tbody.appendChild(row);
+      recalcRow(i);
+    });
+    updateSummary();
+    document.getElementById('today-txt').textContent = today;
+    document.getElementById('saved-days').textContent = Object.keys(hist).length;
+  }
+
+  function setRate(row, key, val) {
+    const cell = document.querySelector(`.rate-cell[data-row="${row}"][data-key="${key}"]`);
+    cell.querySelectorAll('.rate-btn').forEach((b, i) => b.classList.toggle('on', (i+1) === val));
+    recalcRow(row);
+  }
+
+  function recalcRow(i) {
+    const v = (k) => {
+      const cell = document.querySelector(`.rate-cell[data-row="${i}"][data-key="${k}"]`);
+      const on = cell ? cell.querySelector('.rate-btn.on') : null;
+      return on ? parseInt(on.textContent) : 3;
+    };
+    const s = calcScore(v('body'), v('focus'), v('motivation'), v('output'));
+    const z = getZone(s);
+    document.getElementById(`score${i}`).textContent = s.toFixed(2);
+    document.getElementById(`score${i}`).style.color = z.hex;
+    document.getElementById(`zone${i}`).innerHTML = `<span class="zone-badge ${z.cls}"><span class="dot"></span>${z.label}</span>`;
+    updateSummary();
+  }
+
+  function updateSummary() {
+    const scores = [];
+    BLOCKS.forEach((_, i) => {
+      const el = document.getElementById(`score${i}`);
+      if (el && el.textContent !== '—') scores.push({score: parseFloat(el.textContent), block: BLOCKS[i]});
+    });
+    if (!scores.length) return;
+    const avg = scores.reduce((a,b) => a + b.score, 0) / scores.length;
+    document.getElementById('avg-today').textContent = avg.toFixed(2);
+    document.getElementById('avg-today').style.color = getZone(avg).hex;
+
+    const hist = getHistory();
+    const days = Object.keys(hist).sort();
+    const yest = days[days.length - 1];
+    if (yest && yest !== getTodayKey()) {
+      const yScores = hist[yest].map(b => calcScore(b.body, b.focus, b.motivation, b.output));
+      const yAvg = yScores.reduce((a,v) => a + v, 0) / yScores.length;
+      const dlt = avg - yAvg;
+      const dEl = document.getElementById('avg-delta');
+      dEl.textContent = (dlt >= 0 ? '+' : '') + dlt.toFixed(2);
+      dEl.style.background = dlt >= 0 ? 'rgba(34,197,94,.14)' : 'rgba(239,68,68,.14)';
+      dEl.style.color = dlt >= 0 ? '#22C55E' : '#EF4444';
+    }
+
+    const top = scores.reduce((a,b) => b.score > a.score ? b : a);
+    const z = getZone(top.score);
+    document.getElementById('peak-zone').innerHTML = `<span class="zone-badge ${z.cls}"><span class="dot"></span>${z.label}</span>`;
+    document.getElementById('peak-block').textContent = `${top.block.id} · ${top.block.time}`;
+    document.getElementById('peak-time').textContent = top.block.time;
+    document.getElementById('peak-score').textContent = `Score: ${top.score.toFixed(2)} · ${top.block.label}`;
+  }
+
+  function saveToday() {
+    const today = getTodayKey();
+    const hist = getHistory();
+    const data = BLOCKS.map((_, i) => {
+      const get = (k) => {
+        const cell = document.querySelector(`.rate-cell[data-row="${i}"][data-key="${k}"]`);
+        const on = cell ? cell.querySelector('.rate-btn.on') : null;
+        return on ? parseInt(on.textContent) : 3;
+      };
+      return {body: get('body'), focus: get('focus'), motivation: get('motivation'), output: get('output')};
+    });
+    hist[today] = data;
+    saveHistory(hist);
+    document.getElementById('saved-days').textContent = Object.keys(hist).length;
+    showSavedMsg('Đã lưu ' + today);
+  }
+
+  function resetToday() {
+    if (!confirm('Reset điểm hôm nay về mặc định 3?')) return;
+    BLOCKS.forEach((_, i) => {
+      ['body','focus','motivation','output'].forEach(k => setRate(i, k, 3));
+    });
+  }
+
+  // ============================================================
+  // HISTORY
+  // ============================================================
+  let trendChart = null;
+  let zoneChart  = null;
+
+  function buildHistory() {
+    const hist = getHistory();
+    const days = Object.keys(hist).sort().reverse();
+    buildDaySelector(days);
+    buildHeatmap(hist, days);
+    buildTrendChart(hist, days);
+    buildInsights(hist, days);
+    buildZoneChart(hist, days);
+    buildTopBlocks(hist, days);
+  }
+
+  function buildDaySelector(days) {
+    const el = document.getElementById('day-selector');
+    el.innerHTML = '';
+    if (!days.length) {
+      el.innerHTML = '<span style="font-size:12px;color:var(--t3)">Chưa có dữ liệu. Hãy nhập và lưu hôm nay.</span>';
+      return;
+    }
+    days.slice(0, 14).forEach((d, i) => {
+      const b = document.createElement('button');
+      b.className = 'day-btn' + (i === 0 ? ' active' : '');
+      b.textContent = d.slice(5);
+      b.onclick = () => {
+        document.querySelectorAll('.day-btn').forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+      };
+      el.appendChild(b);
+    });
+  }
+
+  function buildHeatmap(hist, days) {
+    const el = document.getElementById('heatmap');
+    el.innerHTML = '';
+    const useDays = days.slice(0, 14);
+    if (!useDays.length) { el.innerHTML = '<span style="font-size:12px;color:var(--t3)">Chưa có dữ liệu</span>'; return; }
+    el.appendChild(Object.assign(document.createElement('div'), {className: 'hm-header', textContent: 'Block'}));
+    useDays.forEach(d => {
+      const h = document.createElement('div');
+      h.className = 'hm-header';
+      h.textContent = d.slice(5);
+      el.appendChild(h);
+    });
+    BLOCKS.forEach((b, bi) => {
+      const lbl = document.createElement('div');
+      lbl.className = 'hm-label';
+      lbl.textContent = b.id + ' · ' + b.time;
+      el.appendChild(lbl);
+      useDays.forEach(d => {
+        const c = document.createElement('div');
+        const entry = hist[d];
+        if (entry && entry[bi]) {
+          const s = calcScore(entry[bi].body, entry[bi].focus, entry[bi].motivation, entry[bi].output);
+          const idx = Math.min(4, Math.floor((s - 1) / 0.8));
+          c.className = 'hm-cell';
+          c.style.background = HEATMAP_COLORS[Math.max(0, idx)];
+          c.style.color = HEATMAP_TEXT[Math.max(0, idx)];
+          c.textContent = s.toFixed(1);
+        } else {
+          c.className = 'hm-cell empty';
+          c.textContent = '—';
+        }
+        el.appendChild(c);
+      });
+    });
+  }
+
+  function buildTrendChart(hist, days) {
+    const useDays = days.slice(0, 14).reverse();
+    const avgs = useDays.map(d => {
+      const e = hist[d]; if (!e) return null;
+      const scores = e.map(b => calcScore(b.body, b.focus, b.motivation, b.output));
+      return parseFloat((scores.reduce((a,v) => a + v, 0) / scores.length).toFixed(2));
+    });
+    const ctx = document.getElementById('trend-chart');
+    if (trendChart) trendChart.destroy();
+    if (!useDays.length) return;
+    trendChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: useDays.map(d => d.slice(5)),
+        datasets: [{
+          label: 'Điểm TB',
+          data: avgs,
+          borderColor: '#14B8A6',
+          backgroundColor: ctx => {
+            const c = ctx.chart.ctx;
+            const g = c.createLinearGradient(0, 0, 0, 240);
+            g.addColorStop(0, 'rgba(20,184,166,.35)');
+            g.addColorStop(1, 'rgba(20,184,166,0)');
+            return g;
+          },
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: '#14B8A6',
+          pointBorderColor: '#0A0B10',
+          pointBorderWidth: 2,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          borderWidth: 2.5,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { min: 1, max: 5, grid: { color: 'rgba(255,255,255,.05)' }, ticks: { color: '#5C6378', font: { size: 11 } } },
+          x: { grid: { display: false }, ticks: { color: '#5C6378', font: { size: 11 } } }
+        }
+      }
+    });
+  }
+
+  function buildZoneChart(hist, days) {
+    const ctx = document.getElementById('zoneChart');
+    if (!ctx) return;
+    if (zoneChart) zoneChart.destroy();
+    if (!days.length) return;
+    const counts = {peak:0, high:0, normal:0, low:0, recovery:0};
+    days.forEach(d => {
+      const e = hist[d]; if (!e) return;
+      e.forEach(b => {
+        const s = calcScore(b.body, b.focus, b.motivation, b.output);
+        const z = getZone(s);
+        const key = z.cls.replace('z-','');
+        counts[key]++;
+      });
+    });
+    zoneChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Peak','High','Normal','Low','Recovery'],
+        datasets: [{
+          data: [counts.peak, counts.high, counts.normal, counts.low, counts.recovery],
+          backgroundColor: ['#22C55E','#3B82F6','#F59E0B','#F97316','#EF4444'],
+          borderColor: '#11131A', borderWidth: 3, hoverOffset: 8,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        cutout: '65%',
+        plugins: {
+          legend: { display: true, position: 'bottom',
+            labels: { boxWidth: 8, boxHeight: 8, padding: 10, usePointStyle: true, pointStyle: 'circle', color: '#9BA1B5', font: { size: 11 } } }
+        }
+      }
+    });
+  }
+
+  function buildInsights(hist, days) {
+    const el = document.getElementById('insight-row');
+    if (!days.length) { el.innerHTML = ''; return; }
+    const blockAvgs = BLOCKS.map((_, bi) => {
+      const scores = days.map(d => {
+        const e = hist[d]; return e && e[bi] ? calcScore(e[bi].body, e[bi].focus, e[bi].motivation, e[bi].output) : null;
+      }).filter(v => v !== null);
+      return scores.length ? scores.reduce((a,v) => a + v, 0) / scores.length : 0;
+    });
+    const topIdx = blockAvgs.indexOf(Math.max(...blockAvgs));
+    const lowIdx = blockAvgs.indexOf(Math.min(...blockAvgs.filter(v => v > 0)));
+    const overallAvg = days.length ? days.reduce((sum, d) => {
+      const e = hist[d]; if (!e) return sum;
+      const s = e.reduce((a,b) => a + calcScore(b.body, b.focus, b.motivation, b.output), 0) / e.length;
+      return sum + s;
+    }, 0) / days.length : 0;
+    const z = getZone(overallAvg);
+    el.innerHTML = `
+      <div class="insight-card" style="--ins-glow:rgba(34,197,94,.18)">
+        <div class="insight-title">Block đỉnh nhất</div>
+        <div class="insight-val" style="color:var(--z-peak)">${BLOCKS[topIdx].id}</div>
+        <div class="insight-sub">${BLOCKS[topIdx].time} · ${blockAvgs[topIdx].toFixed(2)} điểm</div>
+      </div>
+      <div class="insight-card" style="--ins-glow:rgba(249,115,22,.18)">
+        <div class="insight-title">Block thấp nhất</div>
+        <div class="insight-val" style="color:var(--z-low)">${BLOCKS[lowIdx].id}</div>
+        <div class="insight-sub">${BLOCKS[lowIdx].time} · ${blockAvgs[lowIdx].toFixed(2)} điểm</div>
+      </div>
+      <div class="insight-card" style="--ins-glow:rgba(20,184,166,.18)">
+        <div class="insight-title">Điểm TB tổng</div>
+        <div class="insight-val" style="color:${z.hex}">${overallAvg.toFixed(2)}</div>
+        <div class="insight-sub">trên ${days.length} ngày dữ liệu</div>
+      </div>
+      <div class="insight-card" style="--ins-glow:${z.bg}">
+        <div class="insight-title">Zone thống trị</div>
+        <div class="insight-val" style="font-size:13px;padding-top:4px"><span class="zone-badge ${z.cls}"><span class="dot"></span>${z.label}</span></div>
+        <div class="insight-sub">trung bình toàn thời gian</div>
+      </div>
+    `;
+  }
+
+  function buildTopBlocks(hist, days) {
+    const el = document.getElementById('topBlocks');
+    if (!days.length) { el.innerHTML = '<div class="empty" style="padding:30px 10px"><i data-lucide="inbox"></i><h4>Chưa có dữ liệu</h4></div>'; lucide.createIcons(); return; }
+    const blockAvgs = BLOCKS.map((b, bi) => {
+      const scores = days.map(d => {
+        const e = hist[d]; return e && e[bi] ? calcScore(e[bi].body, e[bi].focus, e[bi].motivation, e[bi].output) : null;
+      }).filter(v => v !== null);
+      return {b, avg: scores.length ? scores.reduce((a,v) => a + v, 0) / scores.length : 0, count: scores.length};
+    }).sort((a,b) => b.avg - a.avg);
+    const top3 = blockAvgs.slice(0, 3);
+    const max = Math.max(...top3.map(t => t.avg), 1);
+    el.innerHTML = top3.map((t, i) => {
+      const z = getZone(t.avg);
+      const medals = ['🥇','🥈','🥉'];
+      return `
+        <div style="display:flex;align-items:center;gap:11px;padding:9px 4px;border-bottom:1px solid var(--line)">
+          <div style="font-size:18px;width:28px;text-align:center">${medals[i]}</div>
+          <div style="flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+              <div style="font-size:12.5px;font-weight:600">${t.b.id} · ${t.b.time}</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:${z.hex}">${t.avg.toFixed(2)}</div>
+            </div>
+            <div style="height:5px;background:var(--elev2);border-radius:99px;overflow:hidden">
+              <div style="width:${(t.avg/max)*100}%;height:100%;background:${z.hex};border-radius:99px;transition:width .6s"></div>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // ============================================================
+  // WORKMAP
+  // ============================================================
+  function buildWorkMap() {
+    const hist = getHistory();
+    const days = Object.keys(hist);
+    const el = document.getElementById('personal-insight');
+    const counts = {peak:0, high:0, normal:0, low:0, recovery:0};
+    days.forEach(d => {
+      const e = hist[d]; if (!e) return;
+      e.forEach(b => {
+        const s = calcScore(b.body, b.focus, b.motivation, b.output);
+        const z = getZone(s);
+        counts[z.cls.replace('z-','')]++;
+      });
+    });
+    document.getElementById('wmap-peak').textContent   = counts.peak + ' block';
+    document.getElementById('wmap-high').textContent   = counts.high + ' block';
+    document.getElementById('wmap-normal').textContent = counts.normal + ' block';
+    document.getElementById('wmap-low').textContent    = counts.low + ' block';
+
+    if (days.length < 3) { el.textContent = 'Chưa có đủ dữ liệu. Nhập ít nhất 3 ngày để xem phân tích cá nhân.'; return; }
+    const blockAvgs = BLOCKS.map((b, bi) => {
+      const scores = days.map(d => {
+        const e = hist[d]; return e && e[bi] ? calcScore(e[bi].body, e[bi].focus, e[bi].motivation, e[bi].output) : null;
+      }).filter(v => v !== null);
+      const avg = scores.length ? scores.reduce((a,v) => a + v, 0) / scores.length : 0;
+      return {block: b, avg};
+    }).sort((a,b) => b.avg - a.avg);
+    const top3 = blockAvgs.slice(0, 3);
+    const bot = blockAvgs[blockAvgs.length - 1];
+    el.innerHTML = `
+      <div style="margin-bottom:8px"><b>Luồng năng lượng cá nhân của bạn</b> (dựa trên ${days.length} ngày)</div>
+      <div style="margin-bottom:6px">🔥 <b>Đỉnh cao nhất:</b> <b>${top3.map(t => t.block.time + ' (' + t.avg.toFixed(1) + ')').join(' → ')}</b></div>
+      <div>😮‍💨 <b>Thấp nhất:</b> <b>${bot.block.time} (${bot.avg.toFixed(1)})</b> — tránh việc quan trọng khung này</div>
+    `;
+  }
+
+  // ============================================================
+  // GOALS
+  // ============================================================
+  let weekChart = null;
+  function buildGoals() {
+    const goals = getGoals();
+    const done = goals.filter(g => g.done).length;
+    document.getElementById('goalDone').textContent = done;
+    document.getElementById('goalTotal').textContent = goals.length;
+
+    // Compute average score for current week
+    const hist = getHistory();
+    const today = new Date();
+    const monday = new Date(today);
+    monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
+    let weekAvg = 0, weekCount = 0;
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(monday);
+      d.setDate(monday.getDate() + i);
+      const key = d.toISOString().slice(0, 10);
+      const e = hist[key];
+      if (e) {
+        const s = e.map(b => calcScore(b.body, b.focus, b.motivation, b.output));
+        weekAvg += s.reduce((a,v) => a + v, 0) / s.length;
+        weekCount++;
+      }
+    }
+    weekAvg = weekCount ? weekAvg / weekCount : 0;
+
+    // Compute streak
+    let streak = 0;
+    for (let i = 0; i < 365; i++) {
+      const d = new Date(today);
+      d.setDate(today.getDate() - i);
+      const key = d.toISOString().slice(0, 10);
+      if (hist[key]) streak++;
+      else if (i > 0) break;
+    }
+
+    // 3 goal cards
+    const goalsGrid = document.getElementById('goalsGrid');
+    const goalCount = Math.max(goals.length, 1);
+    const sampleGoals = [
+      { name: 'Đạt 4.0+ điểm TB/tuần', cur: parseFloat(weekAvg.toFixed(2)), tgt: 4.0, unit: '', color: '#14B8A6', color2: '#3B82F6', glow: 'rgba(20,184,166,.18)', bg: 'rgba(20,184,166,.14)', ic: 'target' },
+      { name: '7 ngày nhập liệu liên tục', cur: Math.min(streak, 7), tgt: 7, unit: ' ngày', color: '#22C55E', color2: '#14B8A6', glow: 'rgba(34,197,94,.18)', bg: 'rgba(34,197,94,.14)', ic: 'calendar-check-2' },
+      { name: 'Hoàn thành mục tiêu tháng', cur: done, tgt: Math.max(goalCount, 5), unit: '', color: '#A855F7', color2: '#EC4899', glow: 'rgba(168,85,247,.18)', bg: 'rgba(168,85,247,.14)', ic: 'trophy' },
+    ];
+    goalsGrid.innerHTML = sampleGoals.map((g, i) => {
+      const pct = Math.min(100, (g.cur / g.tgt) * 100);
+      const remain = g.tgt - g.cur;
+      return `
+        <div class="goal-card" style="--goal-color:${g.color};--goal-color2:${g.color2};--goal-glow:${g.glow};--goal-bg:${g.bg}">
+          <div class="goal-h">
+            <div class="goal-ic"><i data-lucide="${g.ic}"></i></div>
+            <div>
+              <div class="goal-t">${g.name}</div>
+              <div class="goal-sub">Mục tiêu tháng 6</div>
+            </div>
+          </div>
+          <div class="goal-row">
+            <div class="l">Tiến độ hiện tại</div>
+            <div class="v">${g.cur}${g.unit} / ${g.tgt}${g.unit}</div>
+          </div>
+          <div class="goal-bar">
+            <i style="width:${pct}%"></i>
+          </div>
+          <div class="goal-foot">
+            <span class="pct">${pct.toFixed(0)}%</span>
+            <span>Còn ${remain > 0 ? remain.toFixed(g.cur % 1 === 0 ? 0 : 1) + g.unit : 'đạt mục tiêu 🎉'}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Goal list
+    const list = document.getElementById('goalList');
+    if (!goals.length) {
+      list.innerHTML = '<div class="empty" style="border-radius:0;background:transparent;border:none;padding:30px 20px"><i data-lucide="target"></i><h4>Chưa có mục tiêu nào</h4><p>Thêm mục tiêu bên dưới để bắt đầu theo dõi</p></div>';
+    } else {
+      list.innerHTML = goals.map((g, i) => `
+        <div class="goal-item ${g.done ? 'done' : ''}">
+          <div class="goal-check ${g.done ? 'on' : ''}" onclick="toggleGoal(${i})">
+            <i data-lucide="check"></i>
+          </div>
+          <div class="goal-text">
+            <div class="goal-name">${escapeHTML(g.name)}</div>
+            <div class="goal-meta">
+              <span class="pill pill-pri-${g.priority || 'md'}">${g.priority === 'hi' ? 'Cao' : g.priority === 'lo' ? 'Thấp' : 'Trung bình'}</span>
+              ${g.meta ? `<span>· ${escapeHTML(g.meta)}</span>` : ''}
+            </div>
+          </div>
+          <span class="goal-x" onclick="deleteGoal(${i})"><i data-lucide="trash-2"></i></span>
+        </div>
+      `).join('');
+    }
+
+    buildWeekChart();
+    buildStreak();
+    lucide.createIcons();
+  }
+
+  function buildWeekChart() {
+    const ctx = document.getElementById('weekChart');
+    if (!ctx) return;
+    if (weekChart) weekChart.destroy();
+    const hist = getHistory();
+    const days = ['T2','T3','T4','T5','T6','T7','CN'];
+    const today = new Date();
+    const monday = new Date(today);
+    monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
+    const dateKeys = days.map((_, i) => {
+      const d = new Date(monday);
+      d.setDate(monday.getDate() + i);
+      return d.toISOString().slice(0, 10);
+    });
+    const goals = getGoals();
+    const totalGoals = Math.max(goals.length, 1);
+    const data = dateKeys.map((dk) => {
+      const d = hist[dk];
+      if (d) {
+        const scores = d.map(b => calcScore(b.body, b.focus, b.motivation, b.output));
+        return parseFloat((scores.reduce((a,v) => a + v, 0) / scores.length).toFixed(2));
+      }
+      return null;
+    });
+    const goalsDoneData = dateKeys.map((dk) => {
+      const stored = JSON.parse(localStorage.getItem('efv2_goals_done_' + dk) || '[]');
+      return stored[0] || 0;
+    });
+    weekChart = new Chart(ctx, {
+      data: {
+        labels: days,
+        datasets: [
+          { type: 'bar', label: 'Mục tiêu hoàn thành', data: goalsDoneData, backgroundColor: 'rgba(168,85,247,.7)', borderRadius: 6, yAxisID: 'y', barPercentage: .55 },
+          { type: 'line', label: 'Điểm năng lượng TB', data: data, borderColor: '#14B8A6', backgroundColor: 'rgba(20,184,166,.18)', tension: .4, fill: true, pointRadius: 5, pointBackgroundColor: '#14B8A6', pointBorderColor: '#0A0B10', pointBorderWidth: 2, yAxisID: 'y1' }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        interaction: { intersect: false, mode: 'index' },
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: '#5C6378', font: { size: 11 } } },
+          y: { position: 'left', grid: { color: 'rgba(255,255,255,.05)' }, ticks: { color: '#5C6378', font: { size: 11 } }, beginAtZero: true, title: { display: true, text: 'Mục tiêu', color: '#5C6378', font: { size: 10 } } },
+          y1: { position: 'right', grid: { display: false }, ticks: { color: '#5C6378', font: { size: 11 } }, min: 1, max: 5, title: { display: true, text: 'Điểm NL', color: '#5C6378', font: { size: 10 } } }
+        }
+      }
+    });
+  }
+
+  function buildStreak() {
+    const hist = getHistory();
+    const days = Object.keys(hist).sort();
+    let streak = 0;
+    const today = new Date();
+    for (let i = 0; i < 365; i++) {
+      const d = new Date(today);
+      d.setDate(today.getDate() - i);
+      const key = d.toISOString().slice(0, 10);
+      if (hist[key]) streak++;
+      else if (i > 0) break;
+    }
+    const maxStored = parseInt(localStorage.getItem('efv2_max_streak') || '0');
+    const maxStreak = Math.max(streak, maxStored);
+    localStorage.setItem('efv2_max_streak', String(maxStreak));
+    const el = document.getElementById('streakBlock');
+    el.innerHTML = `
+      <div style="display:flex;flex-direction:column;gap:14px;padding:6px 4px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#F59E0B,#EF4444);display:flex;align-items:center;justify-content:center;font-size:24px">🔥</div>
+          <div>
+            <div style="font-size:11px;color:var(--t2);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Streak hiện tại</div>
+            <div style="font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;letter-spacing:-.02em">${streak} ngày</div>
+          </div>
+        </div>
+        <div style="background:var(--elev);border:1px solid var(--line);border-radius:10px;padding:11px 13px">
+          <div style="font-size:10.5px;color:var(--t3);margin-bottom:3px">Mục tiêu streak tháng</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="flex:1;height:6px;background:var(--elev2);border-radius:99px;overflow:hidden">
+              <div style="width:${Math.min(100, (streak/30)*100)}%;height:100%;background:linear-gradient(90deg,#F59E0B,#EF4444);border-radius:99px;transition:width .6s"></div>
+            </div>
+            <div style="font-size:11px;color:var(--t2);font-weight:600;font-family:'JetBrains Mono',monospace">${streak}/30</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <div style="flex:1;background:var(--elev);border:1px solid var(--line);border-radius:9px;padding:9px 11px;text-align:center">
+            <div style="font-size:9.5px;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;font-weight:600">Tổng ngày</div>
+            <div style="font-size:16px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-top:2px">${days.length}</div>
+          </div>
+          <div style="flex:1;background:var(--elev);border:1px solid var(--line);border-radius:9px;padding:9px 11px;text-align:center">
+            <div style="font-size:9.5px;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;font-weight:600">Đỉnh streak</div>
+            <div style="font-size:16px;font-weight:700;font-family:'JetBrains Mono',monospace;margin-top:2px">${maxStreak}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function addGoal() {
+    const inp = document.getElementById('newGoalInput');
+    const pri = document.getElementById('newGoalPriority');
+    const meta = document.getElementById('newGoalMeta');
+    const txt = inp.value.trim();
+    if (!txt) { inp.focus(); return; }
+    const goals = getGoals();
+    goals.push({ name: txt, priority: pri.value, meta: meta.value.trim(), done: false, created: Date.now() });
+    saveGoals(goals);
+    inp.value = ''; meta.value = '';
+    buildGoals();
+  }
+
+  function toggleGoal(i) {
+    const goals = getGoals();
+    goals[i].done = !goals[i].done;
+    saveGoals(goals);
+    const dk = getTodayKey();
+    const completed = goals.filter(g => g.done).length;
+    localStorage.setItem('efv2_goals_done_' + dk, JSON.stringify([completed]));
+    buildGoals();
+  }
+
+  function deleteGoal(i) {
+    if (!confirm('Xóa mục tiêu này?')) return;
+    const goals = getGoals();
+    goals.splice(i, 1);
+    saveGoals(goals);
+    buildGoals();
+  }
+
+  // ============================================================
+  // EXPORT / IMPORT
+  // ============================================================
+  function exportData() {
+    const data = { history: getHistory(), goals: getGoals(), exportedAt: new Date().toISOString() };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `energy-tracker-${getTodayKey()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showSavedMsg('Đã xuất dữ liệu');
+  }
+  function importData() {
+    const inp = document.createElement('input');
+    inp.type = 'file'; inp.accept = '.json';
+    inp.onchange = (e) => {
+      const f = e.target.files[0]; if (!f) return;
+      const r = new FileReader();
+      r.onload = (ev) => {
+        try {
+          const data = JSON.parse(ev.target.result);
+          if (data.history) saveHistory(data.history);
+          if (data.goals) saveGoals(data.goals);
+          alert('Đã nhập dữ liệu thành công!');
+          location.reload();
+        } catch (err) { alert('File không hợp lệ'); }
+      };
+      r.readAsText(f);
+    };
+    inp.click();
+  }
+
+  function escapeHTML(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  // Init
+  Chart.defaults.color = '#9BA1B5';
+  Chart.defaults.font.family = 'Inter, system-ui, sans-serif';
+  Chart.defaults.font.size = 11;
+  Chart.defaults.borderColor = 'rgba(255,255,255,.04)';
+  Chart.defaults.plugins.legend.display = false;
+  Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(17,19,26,.95)';
+  Chart.defaults.plugins.tooltip.borderColor = 'rgba(255,255,255,.08)';
+  Chart.defaults.plugins.tooltip.borderWidth = 1;
+  Chart.defaults.plugins.tooltip.padding = 10;
+  Chart.defaults.plugins.tooltip.cornerRadius = 8;
+  Chart.defaults.plugins.tooltip.titleColor = '#E7E9F2';
+  Chart.defaults.plugins.tooltip.bodyColor = '#9BA1B5';
+
+  // ============================================================
+  // SEED DỮ LIỆU DEMO — chỉ chạy khi chưa có dữ liệu thật
+  // (để bản demo trông sống động ngay khi mở: lịch sử, heatmap,
+  //  biểu đồ tuần, streak, mục tiêu đều có số liệu)
+  // ============================================================
+  (function seedDemo(){
+    try {
+      if (localStorage.getItem(STORAGE_KEY)) return; // tôn trọng dữ liệu người dùng
+
+      var clamp = function(v){ return Math.max(1, Math.min(5, Math.round(v))); };
+      // Đường cong năng lượng điển hình theo 8 block trong ngày
+      var curve = [3.2, 3.9, 4.5, 3.0, 3.4, 4.0, 3.7, 2.9];
+      var skip = { 9: true, 16: true }; // vài ngày nghỉ cho tự nhiên
+      var hist = {};
+      var today = new Date();
+
+      for (var d = 0; d <= 22; d++) {
+        if (skip[d]) continue;
+        var date = new Date(today);
+        date.setDate(today.getDate() - d);
+        var key = date.toISOString().slice(0, 10);
+        var trend = (22 - d) * 0.018; // tiến bộ dần theo thời gian
+        hist[key] = BLOCKS.map(function(b, i){
+          var wobble = Math.sin(d * 1.27 + i * 0.9) * 0.45;
+          var base = curve[i] + trend;
+          return {
+            body:       clamp(base + wobble * 0.6),
+            focus:      clamp(base + wobble),
+            motivation: clamp(base + wobble * 0.8 + 0.2),
+            output:     clamp(base + wobble * 0.5)
+          };
+        });
+      }
+      saveHistory(hist);
+
+      var dayMs = 86400000;
+      saveGoals([
+        { name: 'Tập gym 4 buổi/tuần',          priority: 'hi', meta: 'Sức khỏe',   done: true,  created: Date.now() - dayMs * 12 },
+        { name: 'Đọc 20 trang sách mỗi tối',     priority: 'md', meta: 'Phát triển', done: true,  created: Date.now() - dayMs * 10 },
+        { name: 'Ngủ trước 23h',                 priority: 'hi', meta: 'Hồi phục',   done: false, created: Date.now() - dayMs * 6 },
+        { name: 'Thiền 10 phút buổi sáng',       priority: 'lo', meta: 'Tinh thần',  done: false, created: Date.now() - dayMs * 4 },
+        { name: 'Hoàn thành hệ thống cá nhân',   priority: 'hi', meta: 'Công việc',  done: false, created: Date.now() - dayMs * 2 }
+      ]);
+
+      // Số mục tiêu hoàn thành mỗi ngày (cho cột biểu đồ tuần)
+      Object.keys(hist).forEach(function(k, idx){
+        localStorage.setItem('efv2_goals_done_' + k, JSON.stringify([ (idx % 3) + 1 ]));
+      });
+    } catch (e) { /* localStorage có thể bị chặn — bỏ qua */ }
+  })();
+
+  buildInputTable();
+  lucide.createIcons();
+</script>
+</body>
+</html>
